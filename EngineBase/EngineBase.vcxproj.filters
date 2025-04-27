@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="PreCompile.cpp">
+      <Filter>00_Precompile</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDebug.cpp">
+      <Filter>02_Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDirectory.cpp">
+      <Filter>03_FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineFile.cpp">
+      <Filter>03_FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="EnginePath.cpp">
+      <Filter>03_FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineSerializer.cpp">
+      <Filter>03_FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineMath.cpp">
+      <Filter>11_Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>12_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineString.cpp">
+      <Filter>04_String</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTimer.cpp">
+      <Filter>13_Time</Filter>
+    </ClCompile>
+    <ClCompile Include="FSMStateManager.cpp">
+      <Filter>12_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeEvent.cpp">
+      <Filter>12_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDelegate.cpp">
+      <Filter>14_Event</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineRandom.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PreCompile.h">
+      <Filter>00_Precompile</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDefine.h">
+      <Filter>01_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDebug.h">
+      <Filter>02_Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDirectory.h">
+      <Filter>03_FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineFile.h">
+      <Filter>03_FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="EnginePath.h">
+      <Filter>03_FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSerializer.h">
+      <Filter>03_FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineMath.h">
+      <Filter>11_Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>12_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineString.h">
+      <Filter>04_String</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTimer.h">
+      <Filter>13_Time</Filter>
+    </ClInclude>
+    <ClInclude Include="FSMStateManager.h">
+      <Filter>12_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeEvent.h">
+      <Filter>12_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDelegate.h">
+      <Filter>14_Event</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineRandom.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="00_Precompile">
+      <UniqueIdentifier>{73dc3923-126f-452c-8924-5f2c7565df8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_Debug">
+      <UniqueIdentifier>{20013f8a-19e7-4601-8677-77af0deb15f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03_FileIO">
+      <UniqueIdentifier>{52680d4e-ce7b-434b-bb79-c01dccef3d82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01_Header">
+      <UniqueIdentifier>{6fb7c196-a59f-4a0b-b2bc-34b9ef0811ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Math">
+      <UniqueIdentifier>{b4501ab0-e954-48b7-9614-c6ba2d787004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12_Object">
+      <UniqueIdentifier>{67c6cc72-c397-4b3b-b74b-0d94ae5ebdb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_String">
+      <UniqueIdentifier>{8cb8d0a6-7860-4bf7-b7a9-54335ff7e5ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="13_Time">
+      <UniqueIdentifier>{16dd6aed-6008-4925-86d4-ac7d497b77fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="14_Event">
+      <UniqueIdentifier>{15cbe489-edc5-413d-8aa7-f86b8d46518f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

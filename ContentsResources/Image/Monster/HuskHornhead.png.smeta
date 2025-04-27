@@ -1,0 +1,924 @@
+fileFormatVersion: 2
+guid: fc277deebb87b2e458c2ab448813f8a7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2237113113228063768
+    second: PC Computer - Hollow Knight - Husk Hornhead_0
+  - first:
+      213: 1805736970440249374
+    second: PC Computer - Hollow Knight - Husk Hornhead_1
+  - first:
+      213: -6588533175045191500
+    second: PC Computer - Hollow Knight - Husk Hornhead_2
+  - first:
+      213: 824944048312940891
+    second: PC Computer - Hollow Knight - Husk Hornhead_3
+  - first:
+      213: -2260449753616251191
+    second: PC Computer - Hollow Knight - Husk Hornhead_4
+  - first:
+      213: 6419452985488654625
+    second: PC Computer - Hollow Knight - Husk Hornhead_5
+  - first:
+      213: -8588993106762348978
+    second: PC Computer - Hollow Knight - Husk Hornhead_6
+  - first:
+      213: -5778648984469085105
+    second: PC Computer - Hollow Knight - Husk Hornhead_7
+  - first:
+      213: 3558735316938451065
+    second: PC Computer - Hollow Knight - Husk Hornhead_8
+  - first:
+      213: -4016606988536643174
+    second: PC Computer - Hollow Knight - Husk Hornhead_9
+  - first:
+      213: 5147168623661220953
+    second: PC Computer - Hollow Knight - Husk Hornhead_10
+  - first:
+      213: 1762618159643336421
+    second: PC Computer - Hollow Knight - Husk Hornhead_11
+  - first:
+      213: 1353341605959320406
+    second: PC Computer - Hollow Knight - Husk Hornhead_12
+  - first:
+      213: 1044811041127625697
+    second: PC Computer - Hollow Knight - Husk Hornhead_13
+  - first:
+      213: -9208896727127889991
+    second: PC Computer - Hollow Knight - Husk Hornhead_14
+  - first:
+      213: 3297508806212487406
+    second: PC Computer - Hollow Knight - Husk Hornhead_15
+  - first:
+      213: 8122663563105163088
+    second: PC Computer - Hollow Knight - Husk Hornhead_16
+  - first:
+      213: 7489975259317553378
+    second: PC Computer - Hollow Knight - Husk Hornhead_17
+  - first:
+      213: -1676872738270909296
+    second: PC Computer - Hollow Knight - Husk Hornhead_18
+  - first:
+      213: -2061981948755305145
+    second: PC Computer - Hollow Knight - Husk Hornhead_19
+  - first:
+      213: -9001419063684850035
+    second: PC Computer - Hollow Knight - Husk Hornhead_20
+  - first:
+      213: 9046291960590343103
+    second: PC Computer - Hollow Knight - Husk Hornhead_21
+  - first:
+      213: 2657544997496088771
+    second: PC Computer - Hollow Knight - Husk Hornhead_22
+  - first:
+      213: -3607599640900248904
+    second: PC Computer - Hollow Knight - Husk Hornhead_23
+  - first:
+      213: -8223153059344453754
+    second: PC Computer - Hollow Knight - Husk Hornhead_24
+  - first:
+      213: -5632876209784770810
+    second: PC Computer - Hollow Knight - Husk Hornhead_25
+  - first:
+      213: -8704430955738134967
+    second: PC Computer - Hollow Knight - Husk Hornhead_26
+  - first:
+      213: 4153478337700587965
+    second: PC Computer - Hollow Knight - Husk Hornhead_27
+  - first:
+      213: -4345243904375808875
+    second: PC Computer - Hollow Knight - Husk Hornhead_28
+  - first:
+      213: 7920576095637514768
+    second: PC Computer - Hollow Knight - Husk Hornhead_29
+  - first:
+      213: -230350033299365124
+    second: PC Computer - Hollow Knight - Husk Hornhead_30
+  - first:
+      213: 6066172376396404135
+    second: PC Computer - Hollow Knight - Husk Hornhead_31
+  - first:
+      213: 3083306210280963751
+    second: PC Computer - Hollow Knight - Husk Hornhead_32
+  - first:
+      213: -4841939444053530886
+    second: PC Computer - Hollow Knight - Husk Hornhead_33
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1394
+        width: 110
+        height: 197
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eb4cabe97d24f0e0800000000000000
+      internalID: -2237113113228063768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_1
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 1394
+        width: 113
+        height: 196
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1091e815344f0910800000000000000
+      internalID: 1805736970440249374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_2
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 1394
+        width: 113
+        height: 194
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b80e8e1cf3d094a0800000000000000
+      internalID: -6588533175045191500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_3
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 1394
+        width: 114
+        height: 191
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59f34fbd3ac27b00800000000000000
+      internalID: 824944048312940891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_4
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 1394
+        width: 113
+        height: 190
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6851bece441a0e0800000000000000
+      internalID: -2260449753616251191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_5
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 1394
+        width: 111
+        height: 192
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1214f548a7a761950800000000000000
+      internalID: 6419452985488654625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1190
+        width: 130
+        height: 169
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e46c62d9644cdc880800000000000000
+      internalID: -8588993106762348978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_7
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1190
+        width: 134
+        height: 160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f446c0f7d5d1ecfa0800000000000000
+      internalID: -5778648984469085105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_8
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 1190
+        width: 135
+        height: 165
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978e0cf6aea236130800000000000000
+      internalID: 3558735316938451065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_9
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1190
+        width: 130
+        height: 173
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a910ced89352248c0800000000000000
+      internalID: -4016606988536643174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_10
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 1191
+        width: 127
+        height: 177
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9540d54a79a6e6740800000000000000
+      internalID: 5147168623661220953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_11
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 1191
+        width: 125
+        height: 180
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ee9130a0e3167810800000000000000
+      internalID: 1762618159643336421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_12
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1191
+        width: 128
+        height: 173
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65346f2350908c210800000000000000
+      internalID: 1353341605959320406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_13
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 972
+        width: 100
+        height: 195
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e371d33b1aef7e00800000000000000
+      internalID: 1044811041127625697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_14
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 973
+        width: 103
+        height: 194
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7e84ea73d633080800000000000000
+      internalID: -9208896727127889991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_15
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 760
+        width: 103
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee8840ec9ca13cd20800000000000000
+      internalID: 3297508806212487406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_16
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 761
+        width: 116
+        height: 172
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05754e4997f79b070800000000000000
+      internalID: 8122663563105163088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_17
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 760
+        width: 141
+        height: 129
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8461490dcb1f760800000000000000
+      internalID: 7489975259317553378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_18
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 760
+        width: 151
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09c63d5012d8ab8e0800000000000000
+      internalID: -1676872738270909296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_19
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 760
+        width: 159
+        height: 107
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d1c2ba75e5263e0800000000000000
+      internalID: -2061981948755305145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_20
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 622
+        width: 182
+        height: 116
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e92aa9d09841380800000000000000
+      internalID: -9001419063684850035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_21
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 626
+        width: 171
+        height: 102
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbb957ddb92ea8d70800000000000000
+      internalID: 9046291960590343103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_22
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 623
+        width: 169
+        height: 113
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c8ee5e481f71e420800000000000000
+      internalID: 2657544997496088771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_23
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 622
+        width: 172
+        height: 103
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba50509d3b3fedc0800000000000000
+      internalID: -3607599640900248904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_24
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 437
+        width: 131
+        height: 162
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f6b145cdd71ed80800000000000000
+      internalID: -8223153059344453754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_25
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 284
+        width: 153
+        height: 131
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60fa7047ee004d1b0800000000000000
+      internalID: -5632876209784770810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_26
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 135
+        width: 174
+        height: 113
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 946805fe926a33780800000000000000
+      internalID: -8704430955738134967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_27
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 135
+        width: 172
+        height: 117
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db96ce4ca8e14a930800000000000000
+      internalID: 4153478337700587965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_28
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 134
+        width: 172
+        height: 121
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c9f39e0b792b3c0800000000000000
+      internalID: -4345243904375808875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_29
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 135
+        width: 173
+        height: 114
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01aace47ef98bed60800000000000000
+      internalID: 7920576095637514768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_30
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 135
+        width: 175
+        height: 117
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2213b7dd1adccf0800000000000000
+      internalID: -230350033299365124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_31
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 4
+        width: 175
+        height: 126
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a51569e2af5f2450800000000000000
+      internalID: 6066172376396404135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_32
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 4
+        width: 176
+        height: 119
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae7d8589aa1aca20800000000000000
+      internalID: 3083306210280963751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Hollow Knight - Husk Hornhead_33
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 4
+        width: 174
+        height: 112
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af6ac35bab9fdccb0800000000000000
+      internalID: -4841939444053530886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 427f45c73326db843992f58e17a6dc63
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

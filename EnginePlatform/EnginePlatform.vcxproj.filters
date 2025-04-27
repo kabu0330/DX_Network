@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="PreCompile.h">
+      <Filter>00_PreCompile</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineWindow.h">
+      <Filter>02_Window</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineInput.h">
+      <Filter>03_Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineWinDebug.h">
+      <Filter>01_Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineWorkThreadPool.h">
+      <Filter>04_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineThread.h">
+      <Filter>04_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineWinImage.h">
+      <Filter>05_WindowImage</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod.h">
+      <Filter>06_ThirdParty\FMOD\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod.hpp">
+      <Filter>06_ThirdParty\FMOD\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_codec.h">
+      <Filter>06_ThirdParty\FMOD\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_common.h">
+      <Filter>06_ThirdParty\FMOD\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_dsp.h">
+      <Filter>06_ThirdParty\FMOD\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_dsp_effects.h">
+      <Filter>06_ThirdParty\FMOD\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_errors.h">
+      <Filter>06_ThirdParty\FMOD\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h">
+      <Filter>06_ThirdParty\FMOD\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSound.h">
+      <Filter>07_Sound</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PreCompile.cpp">
+      <Filter>00_PreCompile</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineWindow.cpp">
+      <Filter>02_Window</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineInput.cpp">
+      <Filter>03_Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineWinDebug.cpp">
+      <Filter>01_Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineWorkThreadPool.cpp">
+      <Filter>04_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineThread.cpp">
+      <Filter>04_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineWinImage.cpp">
+      <Filter>05_WindowImage</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineSound.cpp">
+      <Filter>07_Sound</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="00_PreCompile">
+      <UniqueIdentifier>{bbe863b7-ef32-4052-a740-019611c2a97d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01_Debug">
+      <UniqueIdentifier>{4c9dba08-5976-4b0a-b814-b0e3da94f95d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_Window">
+      <UniqueIdentifier>{e83f5a58-996c-49a6-87fb-cff1b09c41b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03_Input">
+      <UniqueIdentifier>{3963d26f-2bf5-4c94-a005-d9391d6546fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Thread">
+      <UniqueIdentifier>{418f8da2-b379-4849-9b3d-bc005b9bc11b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_WindowImage">
+      <UniqueIdentifier>{5f89d3e4-be10-47af-921f-ea936f38f95e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty">
+      <UniqueIdentifier>{76e32047-9d52-404a-b31b-5ba344c9af43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\FMOD">
+      <UniqueIdentifier>{37659f43-c3f9-4179-b87d-9dc059ee4f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\FMOD\Inc">
+      <UniqueIdentifier>{82766ad3-df94-4f5a-a003-cf6bb8a9b9b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\FMOD\Debug">
+      <UniqueIdentifier>{4acc5e42-745b-44c2-9b2a-7387ef5658ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\FMOD\Release">
+      <UniqueIdentifier>{533db269-c48e-46ed-934c-83234308cb68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Sound">
+      <UniqueIdentifier>{4be9b992-b63e-43ce-8d4d-aa9a3cfc1e51}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThirdParty\FMOD\Release\fmod.dll">
+      <Filter>06_ThirdParty\FMOD\Release</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="ThirdParty\FMOD\Debug\fmodL.dll">
+      <Filter>06_ThirdParty\FMOD\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FMOD\Debug\fmodL_vc.lib">
+      <Filter>06_ThirdParty\FMOD\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FMOD\Release\fmod_vc.lib">
+      <Filter>06_ThirdParty\FMOD\Release</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+</Project>

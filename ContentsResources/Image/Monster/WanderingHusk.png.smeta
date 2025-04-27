@@ -1,0 +1,924 @@
+fileFormatVersion: 2
+guid: 0443e0c6acd4ddb47a03ddf11821c655
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4487959953002987510
+    second: HuskBully_0
+  - first:
+      213: 5612781849253047301
+    second: HuskBully_1
+  - first:
+      213: 4955445927242563858
+    second: HuskBully_2
+  - first:
+      213: 6629301896153858725
+    second: HuskBully_3
+  - first:
+      213: -1552116001447467709
+    second: HuskBully_4
+  - first:
+      213: 2798961689428393545
+    second: HuskBully_5
+  - first:
+      213: -1189065504578775793
+    second: HuskBully_6
+  - first:
+      213: -9161557750476696291
+    second: HuskBully_7
+  - first:
+      213: 855587650722923635
+    second: HuskBully_8
+  - first:
+      213: 5733568660066817787
+    second: HuskBully_9
+  - first:
+      213: 2948834540656243604
+    second: HuskBully_10
+  - first:
+      213: -8038620721867427252
+    second: HuskBully_11
+  - first:
+      213: -1000502334943779104
+    second: HuskBully_12
+  - first:
+      213: 9172448905887888706
+    second: HuskBully_13
+  - first:
+      213: 1604546340861551738
+    second: HuskBully_14
+  - first:
+      213: -8254158087919797132
+    second: HuskBully_15
+  - first:
+      213: 2305199987177921487
+    second: HuskBully_16
+  - first:
+      213: 9099322296882907679
+    second: HuskBully_17
+  - first:
+      213: 2879984262007225035
+    second: HuskBully_18
+  - first:
+      213: 7496689195550669269
+    second: HuskBully_19
+  - first:
+      213: -701497884312233824
+    second: HuskBully_20
+  - first:
+      213: -8408963775029787874
+    second: HuskBully_21
+  - first:
+      213: -8954169809757799878
+    second: HuskBully_22
+  - first:
+      213: -4671603912039045551
+    second: HuskBully_23
+  - first:
+      213: -5228151050281748353
+    second: HuskBully_24
+  - first:
+      213: -3742852495609317138
+    second: HuskBully_25
+  - first:
+      213: -8834635845365785909
+    second: HuskBully_26
+  - first:
+      213: -3308008352901167382
+    second: HuskBully_27
+  - first:
+      213: -1109931414677089553
+    second: HuskBully_28
+  - first:
+      213: 2996055888129831472
+    second: HuskBully_29
+  - first:
+      213: 1177452196801237762
+    second: HuskBully_30
+  - first:
+      213: -5666886386066306060
+    second: HuskBully_31
+  - first:
+      213: -8200331642984012604
+    second: HuskBully_32
+  - first:
+      213: -335705759162684256
+    second: HuskBully_33
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HuskBully_0
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1949
+        width: 106
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a000413733097b1c0800000000000000
+      internalID: -4487959953002987510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_1
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1950
+        width: 103
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50cec76aa5b94ed40800000000000000
+      internalID: 5612781849253047301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_2
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 1950
+        width: 105
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21103f4d0d745c440800000000000000
+      internalID: 4955445927242563858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_3
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1950
+        width: 101
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2031573f2000c50800000000000000
+      internalID: 6629301896153858725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_4
+      rect:
+        serializedVersion: 2
+        x: 1298
+        y: 1949
+        width: 105
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 345268b58b6c57ae0800000000000000
+      internalID: -1552116001447467709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_5
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1649
+        width: 106
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94e7e46b3d8e7d620800000000000000
+      internalID: 2798961689428393545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_6
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1649
+        width: 108
+        height: 123
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0559e839379f7fe0800000000000000
+      internalID: -1189065504578775793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_7
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1650
+        width: 110
+        height: 124
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d151c9514cb9bd080800000000000000
+      internalID: -9161557750476696291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_8
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 1650
+        width: 107
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3740d8b6f68afdb00800000000000000
+      internalID: 855587650722923635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_9
+      rect:
+        serializedVersion: 2
+        x: 1297
+        y: 1650
+        width: 107
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf6589e815ab19f40800000000000000
+      internalID: 5733568660066817787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_10
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1350
+        width: 107
+        height: 129
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493b731246d5ce820800000000000000
+      internalID: 2948834540656243604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_11
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 1349
+        width: 107
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c427ffc3b05117090800000000000000
+      internalID: -8038620721867427252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_12
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 1349
+        width: 110
+        height: 126
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e62ab06d608d12f0800000000000000
+      internalID: -1000502334943779104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_13
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 1349
+        width: 98
+        height: 130
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2453ed3aea51b4f70800000000000000
+      internalID: 9172448905887888706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_14
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 1349
+        width: 91
+        height: 130
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74a4b0556e744610800000000000000
+      internalID: 1604546340861551738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_15
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 1050
+        width: 101
+        height: 127
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c7f9193f6537d80800000000000000
+      internalID: -8254158087919797132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_16
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1050
+        width: 104
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb99f3cc27bdff10800000000000000
+      internalID: 2305199987177921487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_17
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 1050
+        width: 104
+        height: 130
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1a4f723b69474e70800000000000000
+      internalID: 9099322296882907679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_18
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 1050
+        width: 98
+        height: 136
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcaf7af6d62c7f720800000000000000
+      internalID: 2879984262007225035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_19
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 1049
+        width: 101
+        height: 137
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d97e4caa17990860800000000000000
+      internalID: 7496689195550669269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_20
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 750
+        width: 121
+        height: 117
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a891e21467c346f0800000000000000
+      internalID: -701497884312233824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_21
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 750
+        width: 120
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13c83ccffb5d4b80800000000000000
+      internalID: -8408963775029787874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_22
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 750
+        width: 124
+        height: 121
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3afbdecff56cb380800000000000000
+      internalID: -8954169809757799878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_23
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 751
+        width: 119
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15666934ef02b2fb0800000000000000
+      internalID: -4671603912039045551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_24
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 750
+        width: 107
+        height: 123
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78fed7d150e177b0800000000000000
+      internalID: -5228151050281748353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_25
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 450
+        width: 129
+        height: 101
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee8b5885c77be0cc0800000000000000
+      internalID: -3742852495609317138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_26
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 450
+        width: 124
+        height: 103
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bca1a0da181156580800000000000000
+      internalID: -8834635845365785909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_27
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 449
+        width: 118
+        height: 110
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae60d4bfde79712d0800000000000000
+      internalID: -3308008352901167382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_28
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 449
+        width: 115
+        height: 116
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2102f424bb890f0800000000000000
+      internalID: -1109931414677089553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_29
+      rect:
+        serializedVersion: 2
+        x: 1286
+        y: 449
+        width: 130
+        height: 104
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032323bd4f0249920800000000000000
+      internalID: 2996055888129831472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_30
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 150
+        width: 117
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203575ad886275010800000000000000
+      internalID: 1177452196801237762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_31
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 150
+        width: 117
+        height: 115
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fb45083bdc2b51b0800000000000000
+      internalID: -5666886386066306060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_32
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 150
+        width: 118
+        height: 107
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4ea8361d1923e80800000000000000
+      internalID: -8200331642984012604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HuskBully_33
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 150
+        width: 116
+        height: 93
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ac2e040465575bf0800000000000000
+      internalID: -335705759162684256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4b63a5b9f2f362c418c442fec642ff90
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="PreCompile.h">
+      <Filter>00_PreCompile</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineCore.h">
+      <Filter>03_Core</Filter>
+    </ClInclude>
+    <ClInclude Include="IContentsCore.h">
+      <Filter>02_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorComponent.h">
+      <Filter>04_Object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneComponent.h">
+      <Filter>04_Object\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>04_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMode.h">
+      <Filter>04_Object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Pawn.h">
+      <Filter>04_Object\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>04_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineGraphicDevice.h">
+      <Filter>05_Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\DirectxTex\Inc\DirectXTex.h">
+      <Filter>06_ThirdParty\DirectxTex\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineResources.h">
+      <Filter>07_Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineGUI.h">
+      <Filter>08_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_truetype.h">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imconfig.h">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui.h">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_dx11.h">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_win32.h">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_internal.h">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_rectpack.h">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_textedit.h">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineGUIWindow.h">
+      <Filter>08_GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>04_Object\Component\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="DefaultSceneComponent.h">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraActor.h">
+      <Filter>04_Object\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineCamera.h">
+      <Filter>04_Object\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>07_Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineVertex.h">
+      <Filter>07_Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineInputLayOutInfo.h">
+      <Filter>07_Resources\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineConstantBuffer.h">
+      <Filter>07_Resources\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDeviceBuffer.h">
+      <Filter>07_Resources\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineIndexBuffer.h">
+      <Filter>07_Resources\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineVertexBuffer.h">
+      <Filter>07_Resources\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTexture.h">
+      <Filter>07_Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSampler.h">
+      <Filter>07_Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineSprite.h">
+      <Filter>07_Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="EnginePixelShader.h">
+      <Filter>07_Resources\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineShader.h">
+      <Filter>07_Resources\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineVertexShader.h">
+      <Filter>07_Resources\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineEnums.h">
+      <Filter>09_Data</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineBlend.h">
+      <Filter>07_Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineMaterial.h">
+      <Filter>07_Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineRasterizerState.h">
+      <Filter>07_Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineShaderResources.h">
+      <Filter>10_Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderUnit.h">
+      <Filter>10_Render</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDepthStencilState.h">
+      <Filter>07_Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>04_Object\Component\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FW1FontWrapper\Inc\FW1FontWrapper.h">
+      <Filter>06_ThirdParty\FW1FontWrapper\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>04_Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDataStruct.h">
+      <Filter>09_Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Widget.h">
+      <Filter>04_Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineFont.h">
+      <Filter>07_Resources\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineRenderTarget.h">
+      <Filter>07_Resources\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="FontWidget.h">
+      <Filter>04_Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageWidget.h">
+      <Filter>04_Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInstance.h">
+      <Filter>03_Core</Filter>
+    </ClInclude>
+    <ClInclude Include="FontRenderer.h">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeEventComponent.h">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformObject.h">
+      <Filter>04_Object\Component</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PreCompile.cpp">
+      <Filter>00_PreCompile</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineCore.cpp">
+      <Filter>03_Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorComponent.cpp">
+      <Filter>04_Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneComponent.cpp">
+      <Filter>04_Object\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>04_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMode.cpp">
+      <Filter>04_Object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Pawn.cpp">
+      <Filter>04_Object\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>04_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineGraphicDevice.cpp">
+      <Filter>05_Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineResources.cpp">
+      <Filter>07_Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineGUI.cpp">
+      <Filter>08_GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui.cpp">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_draw.cpp">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_dx11.cpp">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_win32.cpp">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_tables.cpp">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_widgets.cpp">
+      <Filter>08_GUI\IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineGUIWindow.cpp">
+      <Filter>08_GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>04_Object\Component\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultSceneComponent.cpp">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraActor.cpp">
+      <Filter>04_Object\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineCamera.cpp">
+      <Filter>04_Object\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineGraphicDevice_Resources.cpp">
+      <Filter>05_Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>07_Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineVertex.cpp">
+      <Filter>07_Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineInputLayOutInfo.cpp">
+      <Filter>07_Resources\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineConstantBuffer.cpp">
+      <Filter>07_Resources\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDeviceBuffer.cpp">
+      <Filter>07_Resources\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineIndexBuffer.cpp">
+      <Filter>07_Resources\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineVertexBuffer.cpp">
+      <Filter>07_Resources\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineTexture.cpp">
+      <Filter>07_Resources\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineSampler.cpp">
+      <Filter>07_Resources\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineSprite.cpp">
+      <Filter>07_Resources\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="EnginePixelShader.cpp">
+      <Filter>07_Resources\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineShader.cpp">
+      <Filter>07_Resources\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineVertexShader.cpp">
+      <Filter>07_Resources\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineBlend.cpp">
+      <Filter>07_Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineMaterial.cpp">
+      <Filter>07_Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineRasterizerState.cpp">
+      <Filter>07_Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderUnit.cpp">
+      <Filter>10_Render</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineShaderResources.cpp">
+      <Filter>10_Render</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDepthStencilState.cpp">
+      <Filter>07_Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>04_Object\Component\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Widget.cpp">
+      <Filter>04_Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>04_Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineFont.cpp">
+      <Filter>07_Resources\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineRenderTarget.cpp">
+      <Filter>07_Resources\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="FontWidget.cpp">
+      <Filter>04_Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageWidget.cpp">
+      <Filter>04_Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameInstance.cpp">
+      <Filter>03_Core</Filter>
+    </ClCompile>
+    <ClCompile Include="FontRenderer.cpp">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeEventComponent.cpp">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformObject.cpp">
+      <Filter>04_Object\Component</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="00_PreCompile">
+      <UniqueIdentifier>{93badbb1-d9da-4d8b-a5c5-6b3fb32df970}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01_Debug">
+      <UniqueIdentifier>{c2a20759-58f5-42a3-a13b-f0fe46fb06b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_Interface">
+      <UniqueIdentifier>{64defd88-9750-44ab-8174-4ba6bacdb78f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03_Core">
+      <UniqueIdentifier>{7e0ab060-2bfe-4b3d-8efe-299c0b52cab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Object">
+      <UniqueIdentifier>{e6558d85-b9f5-46d1-8664-a932494e6f3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Object\Actor">
+      <UniqueIdentifier>{a8db7a7a-14ee-49be-9386-830b52517ce0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Object\Component">
+      <UniqueIdentifier>{d536e0a4-84b7-4214-bda7-87f281f6a958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Object\Component\Contents">
+      <UniqueIdentifier>{09853dd8-b1c0-4862-aff3-0846b792b761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_Graphics">
+      <UniqueIdentifier>{0022a7e8-d2e3-43df-853e-a96ac8c511be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Object\Component\Render">
+      <UniqueIdentifier>{05426816-4eab-4608-a200-e5943dd6607e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty">
+      <UniqueIdentifier>{afc4023c-aedd-46d3-bbbe-e92c8bf9a94e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\DirectxTex">
+      <UniqueIdentifier>{47b06ae0-2753-4175-91cc-d3663f217a79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\DirectxTex\Inc">
+      <UniqueIdentifier>{804a1782-9e97-472b-a54f-34e3797f8f44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\DirectxTex\Debug">
+      <UniqueIdentifier>{f87fd847-91eb-4215-8330-3252167a30bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\DirectxTex\Release">
+      <UniqueIdentifier>{6fad4dca-b645-447a-b936-362c15932b8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Resources">
+      <UniqueIdentifier>{f44ad2df-9292-4705-aa1f-9cca10d1056d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Object\Render">
+      <UniqueIdentifier>{f0fc40e5-8297-44dc-ae31-6620bca09549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Resources\Buffer">
+      <UniqueIdentifier>{099f2c83-2650-4681-9bbf-09c9625b50f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Resources\Shader">
+      <UniqueIdentifier>{a39b64b2-8ab0-41c6-ba32-0d4f88342717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Resources\Mesh">
+      <UniqueIdentifier>{1871e9e6-b6c2-4aab-80ae-f47248dc33fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Resources\Texture">
+      <UniqueIdentifier>{64d02e29-ae4a-4f3c-aaf2-9d243e1d740f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_GUI">
+      <UniqueIdentifier>{52de7838-98ca-4a71-b8a2-6382f149fa19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_GUI\IMGUI">
+      <UniqueIdentifier>{c0b47a39-820e-475e-bfcc-7d5022a970c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09_Data">
+      <UniqueIdentifier>{2d7190c1-7dae-4bc2-99e4-d3a33753bd8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="10_Render">
+      <UniqueIdentifier>{b4a2530f-4b09-485a-93bb-5896ba254221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Object\Component\Collision">
+      <UniqueIdentifier>{e101feb8-a92d-471e-acdb-f621139da07c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\FW1FontWrapper">
+      <UniqueIdentifier>{589da404-be3d-47b0-ab0e-51736335dc0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\FW1FontWrapper\Debug">
+      <UniqueIdentifier>{72b0e805-4ff2-412b-a616-075807a79205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\FW1FontWrapper\Release">
+      <UniqueIdentifier>{7a76d380-2036-49ad-880f-78821dd75631}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06_ThirdParty\FW1FontWrapper\Inc">
+      <UniqueIdentifier>{feffa54c-fc8a-4164-b597-a683fd27acff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Resources\Font">
+      <UniqueIdentifier>{7455c403-b120-4677-b007-381a53235298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Object\UI">
+      <UniqueIdentifier>{5c644b65-9af3-4291-93e6-26e0a070c8ad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThirdParty\DirectxTex\Inc\DirectXTex.inl">
+      <Filter>06_ThirdParty\DirectxTex\Inc</Filter>
+    </None>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="ThirdParty\DirectxTex\Release\DirectXTex_Release.lib">
+      <Filter>06_ThirdParty\DirectxTex\Release</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\DirectxTex\Debug\DirectXTex_Debug.lib">
+      <Filter>06_ThirdParty\DirectxTex\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.dll">
+      <Filter>06_ThirdParty\FW1FontWrapper\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.lib">
+      <Filter>06_ThirdParty\FW1FontWrapper\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.lib">
+      <Filter>06_ThirdParty\FW1FontWrapper\Release</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.dll">
+      <Filter>06_ThirdParty\FW1FontWrapper\Release</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+</Project>

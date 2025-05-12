@@ -7,33 +7,6 @@ public:
 	std::function<void()> Function;
 };
 
-UEngineWorkThreadPool::UEngineWorkThreadPool()
-{
-}
-
-UEngineWorkThreadPool::~UEngineWorkThreadPool()
-{
-	IsWork = false;
-
-	// 쓰레드를 종료하라는 숫자가 -1
-
-	while (0 < RunningCount)
-	{
-		PostQueuedCompletionStatus(IOCPHandle, static_cast<DWORD>(EThreadStatus::Destroy), 0, nullptr);
-	}
-
-}
-
-void UEngineWorkThreadPool::WorkQueue(std::function<void()> _Work)
-{
-	UWork* NewWork = new UWork();
-	NewWork->Function = _Work;
-
-	// 쓰레드풀을 만들때는 이게 가장 핵심 함수이다.
-	// IOCP 쓰레드중 가장 적절한 쓰레드를 깨워라.
-	PostQueuedCompletionStatus(IOCPHandle, static_cast<DWORD>(EThreadStatus::Work), reinterpret_cast<ULONG_PTR>(NewWork), nullptr);
-}
-
 void UEngineWorkThreadPool::Initialize(std::string_view ThreadName /*= "WorkThread"*/, int Count /*= 0*/)
 {
 	ThreadCount = Count;
@@ -42,16 +15,12 @@ void UEngineWorkThreadPool::Initialize(std::string_view ThreadName /*= "WorkThre
 	{
 		SYSTEM_INFO Info;
 		GetSystemInfo(&Info);
-		// 내 컴퓨터의 코어 개수
-		ThreadCount = Info.dwNumberOfProcessors;
+		ThreadCount = Info.dwNumberOfProcessors; // 내 컴퓨터의 코어 개수
 	}
 
 	RunningCount = ThreadCount;
 
-	// IOCP의 핵심함수인
 	// CreateIoCompletionPort 윈도우야 나 이제부터 쓰레드 관리할래 
-	// IOCP 쓰고 싶어.
-
 	// 나이제 IOCP 시작하고 싶어
 	// IOCP 관리핸들 만들어줘.
 	IOCPHandle = CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
@@ -67,9 +36,9 @@ void UEngineWorkThreadPool::Initialize(std::string_view ThreadName /*= "WorkThre
 	if (nullptr == IOCPHandle)
 	{
 		MSGASSERT("IOCP 핸들 생성에 실패했습니다.");
+		return;
 	}
 
-	// IOCPHandle
 	Threads.resize(ThreadCount);
 	for (size_t i = 0; i < ThreadCount; i++)
 	{
@@ -77,6 +46,16 @@ void UEngineWorkThreadPool::Initialize(std::string_view ThreadName /*= "WorkThre
 
 		Threads[i]->Start(std::string(ThreadName) + std::to_string(i), std::bind(ThreadQueueFunction, IOCPHandle, this));
 	}
+}
+
+void UEngineWorkThreadPool::WorkQueue(std::function<void()> _Work)
+{
+	UWork* NewWork = new UWork();
+	NewWork->Function = _Work;
+
+	// 쓰레드풀을 만들때는 이게 가장 핵심 함수이다.
+	// IOCP 쓰레드중 가장 적절한 쓰레드를 깨워라.
+	PostQueuedCompletionStatus(IOCPHandle, static_cast<DWORD>(EThreadStatus::Work), reinterpret_cast<ULONG_PTR>(NewWork), nullptr);
 }
 
 void UEngineWorkThreadPool::ThreadQueueFunction(HANDLE _IOCPHandle, UEngineWorkThreadPool* _JobQueue)
@@ -102,7 +81,6 @@ void UEngineWorkThreadPool::ThreadQueueFunction(HANDLE _IOCPHandle, UEngineWorkT
 		// 마지막 인자는 1000의 시간이 지나면 그냥 아무일 없어도 일어나
 		// GetQueuedCompletionStatus(_IOCPHandle, &Byte, &Ptr, &OverPtr, 1000);
 
-		// 종료될수 있나요 없나요?
 		GetQueuedCompletionStatus(_IOCPHandle, &Byte, &Ptr, &OverPtr, INFINITE);
 
 		if (-1 == Byte)
@@ -124,4 +102,19 @@ void UEngineWorkThreadPool::ThreadQueueFunction(HANDLE _IOCPHandle, UEngineWorkT
 	}
 
 	_JobQueue->RunningCount -= 1;
+}
+
+UEngineWorkThreadPool::UEngineWorkThreadPool()
+{
+}
+
+UEngineWorkThreadPool::~UEngineWorkThreadPool()
+{
+	IsWork = false;
+
+	// 쓰레드를 종료하라는 숫자가 -1
+	while (0 < RunningCount)
+	{
+		PostQueuedCompletionStatus(IOCPHandle, static_cast<DWORD>(EThreadStatus::Destroy), 0, nullptr);
+	}
 }

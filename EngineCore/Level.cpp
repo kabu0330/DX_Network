@@ -196,6 +196,7 @@ void ULevel::Render(float _DeltaTime)
 	}
 
 	// IMGUI 랜더링
+	// GUI랜더링은 기존 랜더링이 다 끝나고 해주는게 좋다.
 	if (true == UEngineWindow::IsApplicationOn())
 	{
 		UEngineGUI::GUIRender(this);

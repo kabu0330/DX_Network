@@ -8,7 +8,7 @@
 
 namespace UEngineDebug
 {
-	ENGINEAPI void LeakCheck();
+	ENGINEAPI void CheckMemoryLeak();
 
 	ENGINEAPI void OutPutString(const std::string& Text);
 

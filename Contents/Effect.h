@@ -126,7 +126,7 @@ public:
 	}
 
 protected:
-	AKnight* Knight = nullptr;
+	//AKnight* Knight = nullptr;
 	class UTimeEventComponent* TimeEventer = nullptr;
 
 	void BeginPlay() override;

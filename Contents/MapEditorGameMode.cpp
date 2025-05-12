@@ -12,7 +12,6 @@
 
 #include "ContentsEditorGUI.h"
 #include "MapObject.h"
-#include "Background.h"
 #include "DebugWindowGUI.h"
 #include "MapEditorGUI.h"
 #include "CollisionManager.h"

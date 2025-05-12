@@ -1,7 +1,6 @@
 #include "PreCompile.h"
 #include "Skill.h"
 #include <EnginePlatform/EngineInput.h>
-#include "FightUnit.h"
 
 ASkill::ASkill()
 {
@@ -20,7 +19,6 @@ ASkill::ASkill()
 void ASkill::BeginPlay()
 {
 	AEffect::BeginPlay();
-	SetCollisionEvent();
 
 	if (nullptr != BodyRenderer)
 	{
@@ -38,7 +36,6 @@ void ASkill::Tick(float _DeltaTime)
 	AEffect::Tick(_DeltaTime);
 
 	ChangeNextAnimation();
-	ActivePixelCollision();
 	Release();
 }
 
@@ -56,64 +53,6 @@ void ASkill::Release()
 			Collision->Destroy();
 		}
 		Destroy();
-	}
-}
-
-void ASkill::SetCollisionEvent()
-{
-}
-
-bool ASkill::IsCurRoom()
-{
-	if (nullptr == ParentRoom)
-	{
-		return false;
-	}
-
-	ARoom* CurRoom = ARoom::GetCurRoom();
-	if (CurRoom == ParentRoom)
-	{
-		return true;
-	}
-	return false;
-}
-
-void ASkill::ActivePixelCollision()
-{
-	if (true == IsCurRoom())
-	{
-		FVector HalfScale = { CollisionScale.Half().X, -CollisionScale.Half().Y };
-		if (true == bIsLeft)
-		{
-			HalfScale.X = -CollisionScale.Half().X;
-		}
-
-		FVector CollisionPoint = ParentRoom->GetPixelCollisionPoint(this, HalfScale);
-		if (true == IsPixelCollision(CollisionPoint))
-		{
-			bIsPixelCollision = true; // 픽셀충돌
-		}
-		else
-		{
-			bIsPixelCollision = false;
-		}
-	}
-}
-
-bool ASkill::IsPixelCollision(FVector _CollisionPoint)
-{
-	FVector CollisionPoint = _CollisionPoint;
-	CollisionPoint.RoundVector();
-
-	UColor CollisionColor = ParentRoom->GetPixelCollisionImage().GetColor({ CollisionPoint.X, -CollisionPoint.Y }); // y축 반전
-
-	if (CollisionColor != UColor::WHITE)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
 	}
 }
 

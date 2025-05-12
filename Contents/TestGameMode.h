@@ -5,7 +5,7 @@
 class ATestGameMode : public AGameMode
 {
 public:
-	// constrcuter destructer
+	// construter destructer
 	ATestGameMode();
 	~ATestGameMode();
 
@@ -16,9 +16,6 @@ public:
 	ATestGameMode& operator=(ATestGameMode&& _Other) noexcept = delete;
 
 protected:
-	void BeginPlay() override;
-	void Tick(float _DeltaTime) override;
-
 
 private:
 

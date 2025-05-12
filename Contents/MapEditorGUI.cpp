@@ -14,7 +14,6 @@
 #include <EngineCore/EngineCamera.h>
 
 #include "MapObject.h"
-#include "Background.h"
 #include "MapEditorGameMode.h"
 
 enum class ESpawnList
@@ -408,17 +407,17 @@ void MapEditorGUI::SpawnActor()
 		ZValue -= 1;
 		Pos.Z = static_cast<float>(ZValue);
 
-		switch (Select)
-		{
-		case ESpawnList::Background:
-			AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>("Background");
-			break;
-		case ESpawnList::Object:
-			AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>("Background");
-			break;
-		default:
-			break;
-		}
+		//switch (Select)
+		//{
+		//case ESpawnList::Background:
+		//	AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>("Background");
+		//	break;
+		//case ESpawnList::Object:
+		//	AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>("Background");
+		//	break;
+		//default:
+		//	break;
+		//}
 
 		AMapEditorGameMode::GetMapObject()->SetSpriteIndex(SelectButtonIndex);
 
@@ -545,11 +544,11 @@ void MapEditorGUI::LoadFile()
 
 				switch (ObjectType)
 				{
-				case BACKGROUND_COLOR:
-					AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>();
-					break;
-				case BACKGROUND_OBJECT:
-					AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>();
+				//case BACKGROUND_COLOR:
+				//	AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>();
+				//	break;
+				//case BACKGROUND_OBJECT:
+				//	AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>();
 					break;
 				case COLLISION_OBJECT:
 					break;

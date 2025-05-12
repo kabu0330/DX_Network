@@ -15,7 +15,5 @@
 #pragma comment(lib, "EngineCore.lib")
 
 #include "Global.h"
-#include "Knight.h"
 #include "ContentsRenderer.h"
-#include "Room.h"
 #include "ContentsConst.h"

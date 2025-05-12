@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "Effect.h"
+#include <EngineCore/TimeEventComponent.h>
 
 AEffect::AEffect()
 {
@@ -110,7 +111,6 @@ void AEffect::SetZSort(int _Value)
 void AEffect::BeginPlay()
 {
 	AActor::BeginPlay();
-	Knight = AKnight::GetPawn();
 	if (nullptr != TargetActor)
 	{
 		SrcPos = TargetActor->GetActorLocation();
@@ -205,23 +205,7 @@ void AEffect::SetPosition()
 
 void AEffect::CheckDirection()
 {
-	if (false == bIsRotation)
-	{
-		return;
-	}
-	AMonster* Monster = dynamic_cast<AMonster*>(TargetActor);
-	if (nullptr != Monster)
-	{
-		bIsSwitchDirection = false; // AddLocation 방향전환 안할거임
-		bIsLeft = Monster->IsLeft();
-		return;
 
-	}
-	else
-	{
-		bIsLeft = AKnight::GetPawn()->IsLeft();
-		return;
-	}
 
 }
 

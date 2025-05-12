@@ -7,32 +7,14 @@
     <ClInclude Include="ContentsCore.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="TitleGameMode.h">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayGameMode.h">
-      <Filter>Level</Filter>
-    </ClInclude>
     <ClInclude Include="Global.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Title</Filter>
-    </ClInclude>
-    <ClInclude Include="Knight.h">
-      <Filter>Global\Knight</Filter>
-    </ClInclude>
-    <ClInclude Include="StatusUnit.h">
-      <Filter>Play\Unit</Filter>
-    </ClInclude>
-    <ClInclude Include="FightUnit.h">
-      <Filter>Play\Unit</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEditorGUI.h">
       <Filter>ContentsSetting\GUI</Filter>
     </ClInclude>
     <ClInclude Include="MapEditorGameMode.h">
-      <Filter>Level</Filter>
+      <Filter>HollowKnight\Level</Filter>
     </ClInclude>
     <ClInclude Include="DebugWindowGUI.h">
       <Filter>ContentsSetting\GUI</Filter>
@@ -44,110 +26,27 @@
       <Filter>ContentsSetting\Resource</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
-      <Filter>Play\Setting</Filter>
-    </ClInclude>
-    <ClInclude Include="RoomManager.h">
-      <Filter>Play\Setting</Filter>
+      <Filter>HollowKnight\Play\Setting</Filter>
     </ClInclude>
     <ClInclude Include="ContentsRenderer.h">
       <Filter>ContentsSetting\Render</Filter>
     </ClInclude>
     <ClInclude Include="Skill.h">
-      <Filter>Global</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClInclude>
     <ClInclude Include="Effect.h">
-      <Filter>Global</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClInclude>
     <ClInclude Include="ContentsConst.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="Room.h">
-      <Filter>Play\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Door.h">
-      <Filter>Play\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Background.h">
-      <Filter>Play\MapEditor</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClInclude>
     <ClInclude Include="MapObject.h">
-      <Filter>Play\MapEditor</Filter>
-    </ClInclude>
-    <ClInclude Include="KnightSkill.h">
-      <Filter>Global\Knight\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="KnightSlash.h">
-      <Filter>Global\Knight\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="KnightFireball.h">
-      <Filter>Global\Knight\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="KnightEffect.h">
-      <Filter>Global\Knight\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="KnightStunEffect.h">
-      <Filter>Global\Knight\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayHUD.h">
-      <Filter>Play\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleHUD.h">
-      <Filter>Play\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Play\Monster\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="WanderingHusk.h">
-      <Filter>Play\Monster\Normal</Filter>
-    </ClInclude>
-    <ClInclude Include="LeapingHusk.h">
-      <Filter>Play\Monster\Normal</Filter>
-    </ClInclude>
-    <ClInclude Include="HuskHornhead.h">
-      <Filter>Play\Monster\Normal</Filter>
-    </ClInclude>
-    <ClInclude Include="Crawlid.h">
-      <Filter>Play\Monster\Normal</Filter>
-    </ClInclude>
-    <ClInclude Include="AspidHatchling.h">
-      <Filter>Play\Monster\Normal\Fly</Filter>
-    </ClInclude>
-    <ClInclude Include="AspidMother.h">
-      <Filter>Play\Monster\Normal\Fly</Filter>
-    </ClInclude>
-    <ClInclude Include="AspidHunter.h">
-      <Filter>Play\Monster\Normal\Fly</Filter>
-    </ClInclude>
-    <ClInclude Include="Vengefly.h">
-      <Filter>Play\Monster\Normal\Fly</Filter>
-    </ClInclude>
-    <ClInclude Include="Gruzzer.h">
-      <Filter>Play\Monster\Normal\Fly</Filter>
+      <Filter>HollowKnight\Play\MapEditor</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
-      <Filter>Global</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClInclude>
-    <ClInclude Include="KnightFireballEffect.h">
-      <Filter>Global\Knight\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterSkill.h">
-      <Filter>Play\Monster\Base\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterProjectile.h">
-      <Filter>Play\Monster\Base\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterEffect.h">
-      <Filter>Play\Monster\Base\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="FalseKnight.h">
-      <Filter>Play\Monster\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="FalseKnightHead.h">
-      <Filter>Play\Monster\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Barrier.h">
-      <Filter>Play\Map</Filter>
-    </ClInclude>
+    <ClInclude Include="TestGameMode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -156,32 +55,14 @@
     <ClCompile Include="ContentsCore.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="PlayGameMode.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleGameMode.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
     <ClCompile Include="Global.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>Title</Filter>
-    </ClCompile>
-    <ClCompile Include="Knight.cpp">
-      <Filter>Global\Knight</Filter>
-    </ClCompile>
-    <ClCompile Include="FightUnit.cpp">
-      <Filter>Play\Unit</Filter>
-    </ClCompile>
-    <ClCompile Include="StatusUnit.cpp">
-      <Filter>Play\Unit</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClCompile>
     <ClCompile Include="ContentsEditorGUI.cpp">
       <Filter>ContentsSetting\GUI</Filter>
     </ClCompile>
     <ClCompile Include="MapEditorGameMode.cpp">
-      <Filter>Level</Filter>
+      <Filter>HollowKnight\Level</Filter>
     </ClCompile>
     <ClCompile Include="DebugWindowGUI.cpp">
       <Filter>ContentsSetting\GUI</Filter>
@@ -193,122 +74,24 @@
       <Filter>ContentsSetting\Resource</Filter>
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
-      <Filter>Play\Setting</Filter>
-    </ClCompile>
-    <ClCompile Include="RoomManager.cpp">
-      <Filter>Play\Setting</Filter>
-    </ClCompile>
-    <ClCompile Include="Knight_AnimSetting.cpp">
-      <Filter>Global\Knight</Filter>
-    </ClCompile>
-    <ClCompile Include="Knight_FSM.cpp">
-      <Filter>Global\Knight</Filter>
+      <Filter>HollowKnight\Play\Setting</Filter>
     </ClCompile>
     <ClCompile Include="ContentsRenderer.cpp">
       <Filter>ContentsSetting\Render</Filter>
     </ClCompile>
     <ClCompile Include="Skill.cpp">
-      <Filter>Global</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClCompile>
     <ClCompile Include="Effect.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="Room.cpp">
-      <Filter>Play\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Door.cpp">
-      <Filter>Play\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Background.cpp">
-      <Filter>Play\MapEditor</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClCompile>
     <ClCompile Include="MapObject.cpp">
-      <Filter>Play\MapEditor</Filter>
-    </ClCompile>
-    <ClCompile Include="Knight_Animation.cpp">
-      <Filter>Global\Knight</Filter>
-    </ClCompile>
-    <ClCompile Include="KnightSkill.cpp">
-      <Filter>Global\Knight\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="KnightSlash.cpp">
-      <Filter>Global\Knight\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="KnightFireball.cpp">
-      <Filter>Global\Knight\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="KnightEffect.cpp">
-      <Filter>Global\Knight\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="KnightStunEffect.cpp">
-      <Filter>Global\Knight\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayHUD.cpp">
-      <Filter>Play\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleHUD.cpp">
-      <Filter>Play\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Play\Monster\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster_CollisionAndAnimation.cpp">
-      <Filter>Play\Monster\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster_FSM.cpp">
-      <Filter>Play\Monster\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="LeapingHusk.cpp">
-      <Filter>Play\Monster\Normal</Filter>
-    </ClCompile>
-    <ClCompile Include="WanderingHusk.cpp">
-      <Filter>Play\Monster\Normal</Filter>
-    </ClCompile>
-    <ClCompile Include="HuskHornhead.cpp">
-      <Filter>Play\Monster\Normal</Filter>
-    </ClCompile>
-    <ClCompile Include="Crawlid.cpp">
-      <Filter>Play\Monster\Normal</Filter>
-    </ClCompile>
-    <ClCompile Include="AspidHatchling.cpp">
-      <Filter>Play\Monster\Normal\Fly</Filter>
-    </ClCompile>
-    <ClCompile Include="AspidMother.cpp">
-      <Filter>Play\Monster\Normal\Fly</Filter>
-    </ClCompile>
-    <ClCompile Include="AspidHunter.cpp">
-      <Filter>Play\Monster\Normal\Fly</Filter>
-    </ClCompile>
-    <ClCompile Include="Vengefly.cpp">
-      <Filter>Play\Monster\Normal\Fly</Filter>
-    </ClCompile>
-    <ClCompile Include="Gruzzer.cpp">
-      <Filter>Play\Monster\Normal\Fly</Filter>
+      <Filter>HollowKnight\Play\MapEditor</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
-      <Filter>Global</Filter>
+      <Filter>HollowKnight\Global</Filter>
     </ClCompile>
-    <ClCompile Include="KnightFireballEffect.cpp">
-      <Filter>Global\Knight\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterSkill.cpp">
-      <Filter>Play\Monster\Base\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterProjectile.cpp">
-      <Filter>Play\Monster\Base\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterEffect.cpp">
-      <Filter>Play\Monster\Base\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="FalseKnight.cpp">
-      <Filter>Play\Monster\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="FalseKnightHead.cpp">
-      <Filter>Play\Monster\Boss</Filter>
-    </ClCompile>
-    <ClCompile Include="Barrier.cpp">
-      <Filter>Play\Map</Filter>
-    </ClCompile>
+    <ClCompile Include="TestGameMode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="PreCompile">
@@ -316,21 +99,6 @@
     </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{09ff3bdc-96dc-4229-8b75-39c1c3dc0dd8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Global">
-      <UniqueIdentifier>{73895d3d-87b8-4ffd-a962-7cd03df8a97f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Global\Knight">
-      <UniqueIdentifier>{67f0f42c-79c4-49df-862a-fa3d6732c0ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Title">
-      <UniqueIdentifier>{3800a162-1370-4574-8d59-4350535b3ba0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play">
-      <UniqueIdentifier>{90d40787-bd6c-4314-b86a-fd988ad3fbe1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level">
-      <UniqueIdentifier>{58d3821e-f186-4e77-a861-8f16b9ad13ed}</UniqueIdentifier>
     </Filter>
     <Filter Include="ContentsSetting">
       <UniqueIdentifier>{705f4313-018d-4c2b-84c9-0b0201018210}</UniqueIdentifier>
@@ -344,47 +112,23 @@
     <Filter Include="ContentsSetting\Render">
       <UniqueIdentifier>{487692e4-6b76-4236-8869-624e3b36942f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Play\Setting">
+    <Filter Include="HollowKnight">
+      <UniqueIdentifier>{bffa65cf-d5c5-4df9-b3b9-897d9d0f9236}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HollowKnight\Play">
+      <UniqueIdentifier>{90d40787-bd6c-4314-b86a-fd988ad3fbe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HollowKnight\Play\Setting">
       <UniqueIdentifier>{cbf9cc41-8d7d-4084-959d-3decaa2e300c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Play\Monster">
-      <UniqueIdentifier>{49b0de12-e844-402b-8ba8-d1b81d51b80a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\Map">
-      <UniqueIdentifier>{984de52d-cd76-4f19-8dcb-bfa33fefa2cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\MapEditor">
+    <Filter Include="HollowKnight\Play\MapEditor">
       <UniqueIdentifier>{b1501c4b-3474-4292-923d-b04a0b5a6cb4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Global\Knight\Skill">
-      <UniqueIdentifier>{b7206834-6b8c-4154-b91a-056981c7e22e}</UniqueIdentifier>
+    <Filter Include="HollowKnight\Level">
+      <UniqueIdentifier>{58d3821e-f186-4e77-a861-8f16b9ad13ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Global\Knight\Effect">
-      <UniqueIdentifier>{6b15a996-4177-4a19-ac56-42a6d3291d1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\UI">
-      <UniqueIdentifier>{cb882d1b-00c5-45a1-8db7-be1bee71d584}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\Unit">
-      <UniqueIdentifier>{d5827386-64e6-4cdb-98a2-7aeab606afa1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\Monster\Base">
-      <UniqueIdentifier>{a467d1f8-ce1e-4492-9161-22b222de1a59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\Monster\Normal">
-      <UniqueIdentifier>{f3236117-d2f1-4164-9124-405de932a732}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\Monster\Boss">
-      <UniqueIdentifier>{c0fd44bc-9723-4188-92b7-ece9aa8c76cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\Monster\Normal\Fly">
-      <UniqueIdentifier>{214cd3a8-c991-4d63-9faa-9247fc4bbb16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\Monster\Base\Skill">
-      <UniqueIdentifier>{3b4f948e-ad18-4df5-8136-d57b782b0961}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Play\Monster\Base\Effect">
-      <UniqueIdentifier>{7b5b58f4-9f35-4fc3-887b-05a50e58872a}</UniqueIdentifier>
+    <Filter Include="HollowKnight\Global">
+      <UniqueIdentifier>{73895d3d-87b8-4ffd-a962-7cd03df8a97f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

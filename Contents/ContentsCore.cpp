@@ -28,6 +28,7 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 	UContentsResource::LoadShaderResource();
 
 	CreateLevel();
+	OpenLevel();
 
 	UEngineGUI::AllWindowOff();
 
@@ -46,13 +47,15 @@ void UContentsCore::CreateLevel()
 {
 	UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
 	//UEngineCore::CreateLevel<AMapEditorGameMode, APawn, AHUD>("MapEditorMode");
+}
 
+void UContentsCore::OpenLevel()
+{
 #ifdef _DEBUG
 	UEngineCore::OpenLevel("Title");
 #else
 	UEngineCore::OpenLevel("Title");
-#endif // _DEBUG
-	//UEngineCore::OpenLevel("MapEditorMode");
+#endif
 }
 
 void UContentsCore::EngineTick(float _DeltaTime)

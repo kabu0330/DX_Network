@@ -344,12 +344,6 @@ ENGINEAPI void FTransform::Decompose()
 
 void FTransform::TransformUpdate(bool _IsAbsolut /*= false*/)
 {
-	// 10000 10000 10000
-
-	// 절대로
-	// 100 100 100
-	
-	
 	// world인지 local
 	ScaleMat.Scale(Scale);
 	RotationMat.RotationDeg(Rotation);

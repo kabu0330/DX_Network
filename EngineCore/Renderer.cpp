@@ -54,7 +54,7 @@ void URenderer::SetMaterial(std::string_view _Name, UINT _Index /*= 0*/)
 
 void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 {
-	this->CameraTransUpdate(_Camera); // WVP 연산을 렌더러에서 카메라로 옮겼다.
+	this->CameraTransUpdate(_Camera); // WVP 연산
 
 	for (size_t i = 0; i < Units.size(); i++)
 	{

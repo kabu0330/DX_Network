@@ -25,6 +25,7 @@ private:
 
 
 	void CreateLevel();
+	void OpenLevel();
 	//void LoadContentsResource(std::string_view _Path);
 
 

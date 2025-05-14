@@ -10,7 +10,6 @@ ABasicVisualActor::ABasicVisualActor()
 	Renderer = CreateDefaultSubObject<USpriteRenderer>().get();
 	Renderer->SetupAttachment(RootComponent);
 	Renderer->SetScale3D(FVector(50, 50, 50));
-	
 }
 
 ABasicVisualActor::~ABasicVisualActor()

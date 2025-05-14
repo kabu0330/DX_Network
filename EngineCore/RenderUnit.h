@@ -27,14 +27,14 @@ public:
 	// 머티리얼(피부)
 	std::shared_ptr<UEngineMaterial> Material;
 
-	Microsoft::WRL::ComPtr<ID3D11InputLayout> InputLayOut;
+	Microsoft::WRL::ComPtr<ID3D11InputLayout> InputLayout;
 
 	ENGINEAPI void SetMesh(std::string_view _Name);
 	ENGINEAPI void SetMaterial(std::string_view _Name);
 
 	ENGINEAPI virtual void Render(class UEngineCamera* _Camera, float _DeltaTime);
 
-	ENGINEAPI void MaterialResourcesCheck();
+	ENGINEAPI void CheckMaterialResources();
 
 	template<typename Data>
 	ENGINEAPI void ConstantBufferLinkData(std::string_view _Name, Data& _Data)
@@ -56,6 +56,6 @@ public:
 
 private:
 
-	void InputLayOutCreate();
+	void CreateInputLayout();
 };
 

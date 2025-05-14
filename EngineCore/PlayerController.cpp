@@ -23,17 +23,17 @@ void APlayerController::SwitchArrowKeys()
 {
 	if ('A' == ArrowKeys[0])
 	{
-		ArrowKeys[0] = VK_LEFT;
-		ArrowKeys[1] = VK_RIGHT;
-		ArrowKeys[2] = VK_UP;
-		ArrowKeys[3] = VK_DOWN;
+		LEFT_KEY  = VK_LEFT;
+		RIGHT_KEY = VK_RIGHT;
+		UP_KEY    = VK_UP;
+		DOWN_KEY  = VK_DOWN;
 	}
 	else
 	{
-		ArrowKeys[0] = 'A';
-		ArrowKeys[1] = 'D';
-		ArrowKeys[2] = 'W';
-		ArrowKeys[3] = 'S';
+		LEFT_KEY  = 'A';
+		RIGHT_KEY = 'D';
+		UP_KEY	  = 'W';
+		DOWN_KEY  = 'S';
 	}
 }
 
@@ -52,19 +52,19 @@ void APlayerController::HandleInput(float _DeltaTime)
 {
 	FVector Velocity = FVector::ZERO;
 
-	if (true == UEngineInput::IsPress(ArrowKeys[0]))
+	if (true == UEngineInput::IsPress(LEFT_KEY))
 	{
 		Velocity.X -= Speed.X * _DeltaTime;
 	}
-	if (true == UEngineInput::IsPress(ArrowKeys[1]))
+	if (true == UEngineInput::IsPress(RIGHT_KEY))
 	{
 		Velocity.X += Speed.X * _DeltaTime;
 	}
-	if (true == UEngineInput::IsPress(ArrowKeys[2]))
+	if (true == UEngineInput::IsPress(UP_KEY))
 	{
 		Velocity.Y += Speed.Y * _DeltaTime;
 	}
-	if (true == UEngineInput::IsPress(ArrowKeys[3]))
+	if (true == UEngineInput::IsPress(DOWN_KEY))
 	{
 		Velocity.Y -= Speed.Y * _DeltaTime;
 	}

@@ -37,5 +37,10 @@ private:
 	FVector Speed = FVector(100.0f, 100.0f, 100.0f);
 	AActor* Pawn = nullptr;
 	int ArrowKeys[4] = {'A', 'D', 'W', 'S'};
+
+#define LEFT_KEY ArrowKeys[0]
+#define RIGHT_KEY ArrowKeys[1]
+#define UP_KEY ArrowKeys[2]
+#define DOWN_KEY ArrowKeys[3]
 };
 

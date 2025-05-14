@@ -127,7 +127,7 @@ public:
 			return;
 		}
 
-		RootComponent->SetRotation(_Value);
+		RootComponent->SetLocalRotation(_Value);
 	}
 
 	FVector GetActorRotation()

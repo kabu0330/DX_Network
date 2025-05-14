@@ -3,22 +3,13 @@
 #include <memory>
 #include "EngineSerializer.h"
 
-// 설명 : std::enable_shared_from_this<UObject>
+// 설명 : 이름 설정, 액티브 유무, 디버그 기능 지원
+// std::enable_shared_from_this<UObject>
 class UObject : public std::enable_shared_from_this<UObject>, public ISerializeObject
 {
 public:
-	// constrcuter destructer
 	ENGINEAPI UObject();
-
-	// 혹여나 자식들의 소멸자가 호출 안되는 경우를 막기위에서
-	// 가상함수 테이블을 만들 것이므로 왠만하면 자식쪽의 소멸자가 호출안되는 경우는 없을 것이다.
-	ENGINEAPI virtual ~UObject();
-
-	// delete Function
-	UObject(const UObject& _Other) = delete;
-	UObject(UObject&& _Other) noexcept = delete;
-	UObject& operator=(const UObject& _Other) = delete;
-	UObject& operator=(UObject&& _Other) noexcept = delete;
+	ENGINEAPI virtual ~UObject(); // 가상함수 테이블 생성
 
 	template<typename ChildPtrType>
 	std::shared_ptr<ChildPtrType> GetThis()
@@ -51,7 +42,6 @@ public:
 		return IsDestroyValue;
 	}
 
-	// _Time 시간후에 죽어라.
 	void Destroy(float _Time = 0.0f)
 	{
 		DeathTime = _Time;
@@ -85,8 +75,7 @@ public:
 
 	}
 
-	// 모든 기능 정지.
-	// 얼음 외부에서 다른 객체가 풀어줘야 한다.
+	// 모든 기능 정지, 외부에서 다른 객체가 풀어줘야 한다.
 	void SetActive(bool _IsActive)
 	{
 		IsActiveValue = _IsActive;
@@ -148,5 +137,13 @@ private:
 	std::string Name;
 
 	bool IsDebugValue = false;
+
+
+private:
+	// delete Function
+	UObject(const UObject& _Other) = delete;
+	UObject(UObject&& _Other) noexcept = delete;
+	UObject& operator=(const UObject& _Other) = delete;
+	UObject& operator=(UObject&& _Other) noexcept = delete;
 };
 

@@ -426,7 +426,7 @@ void MapEditorGUI::SpawnActor()
 
 
 		AMapEditorGameMode::GetMapObject()->GetRenderer()->SetAutoScaleRatio(ScaleRatio);
-		AMapEditorGameMode::GetMapObject()->GetRenderer()->SetRotation(RotationValue);
+		//AMapEditorGameMode::GetMapObject()->GetRenderer()->SetRotation(RotationValue);
 		AMapEditorGameMode::GetMapObject()->SetActorLocation(Pos);
 
 		// 미리보기 유지

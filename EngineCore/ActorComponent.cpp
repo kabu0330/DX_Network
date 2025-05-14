@@ -12,11 +12,9 @@ UActorComponent::~UActorComponent()
 
 bool UActorComponent::IsActive()
 {
-	// URenderer* NewRender = new URenderer();
-
 	if (nullptr == GetActor())
 	{
-		MSGASSERT("부모가 존재하지 않는 컴포넌트가 존재합니다");
+		MSGASSERT("액터 컴포넌트에 부모가 설정되어있지 않습니다.");
 		return false;
 	}
 

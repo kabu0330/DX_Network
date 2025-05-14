@@ -10,19 +10,10 @@ class ULevel : public UObject
 	friend class UEngineCore;
 
 public:
-	// constrcuter destructer
 	ENGINEAPI ULevel();
 	ENGINEAPI ~ULevel();
 
-	// delete Function
-	ULevel(const ULevel& _Other) = delete;
-	ULevel(ULevel&& _Other) noexcept = delete;
-	ULevel& operator=(const ULevel& _Other) = delete;
-	ULevel& operator=(ULevel&& _Other) noexcept = delete;
-
-	// 내가 이제 실행되는 레벨이 되었을때
 	void LevelChangeStart();
-	// 내가 교체 당했을때
 	void LevelChangeEnd();
 
 	template<typename Type>
@@ -55,7 +46,6 @@ public:
 		return dynamic_cast<Type*>(HUD);
 	}
 
-
 	void Tick(float _DeltaTime);
 	void Render(float _DeltaTime);
 	void Collision(float _DeltaTime);
@@ -76,7 +66,7 @@ public:
 	{
 		if (false == Cameras.contains(_Order))
 		{
-			MSGASSERT("존재하지 않는 카메라를 사용하려고 했습니다.");
+			MSGASSERT("존재하지 않는 카메라 인덱스입니다.");
 		}
 
 		return Cameras[_Order];
@@ -198,5 +188,12 @@ private:
 	std::map<int, std::list<std::shared_ptr<class UWidget>>> Widgets;
 
 	ENGINEAPI void InitLevel(AGameMode* _GameMode, APawn* _Pawn, AHUD* _HUD);
+
+private:
+	// delete Function
+	ULevel(const ULevel& _Other) = delete;
+	ULevel(ULevel&& _Other) noexcept = delete;
+	ULevel& operator=(const ULevel& _Other) = delete;
+	ULevel& operator=(ULevel&& _Other) noexcept = delete;
 };
 

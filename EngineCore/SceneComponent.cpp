@@ -13,7 +13,7 @@ void USceneComponent::BeginPlay()
 {
 	UActorComponent::BeginPlay();
 
-	for (UTransformObject* Child : Childs)
+	for (UTransformObject* Child : Children)
 	{
 		USceneComponent* SceneChild = dynamic_cast<USceneComponent*>(Child);
 
@@ -25,7 +25,7 @@ void USceneComponent::ComponentTick(float _DeltaTime)
 {
 	UActorComponent::ComponentTick(_DeltaTime);
 
-	for (UTransformObject* Child : Childs)
+	for (UTransformObject* Child : Children)
 	{
 		USceneComponent* SceneChild = dynamic_cast<USceneComponent*>(Child);
 

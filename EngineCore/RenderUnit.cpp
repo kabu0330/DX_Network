@@ -11,7 +11,7 @@ URenderUnit::~URenderUnit()
 {
 }
 
-void URenderUnit::MaterialResourcesCheck()
+void URenderUnit::CheckMaterialResources()
 {
 	if (nullptr == Material)
 	{
@@ -133,12 +133,13 @@ void URenderUnit::SetMesh(std::string_view _Name)
 
 	if (nullptr == Mesh)
 	{
-		MSGASSERT("존재하지 않는 매쉬를 세팅하려고 했습니다.");
+		std::string Name = _Name.data();
+		MSGASSERT("존재하지 않는 메시입니다." + Name);
 	}
 
 	if (nullptr != Material)
 	{
-		InputLayOutCreate();
+		CreateInputLayout();
 	}
 }
 
@@ -148,66 +149,46 @@ void URenderUnit::SetMaterial(std::string_view _Name)
 
 	if (nullptr == Material)
 	{
-		MSGASSERT("존재하지 않는 머티리얼을를 세팅하려고 했습니다.");
+		std::string Name = _Name.data();
+		MSGASSERT("존재하지 않는 머티리얼을를 세팅하려고 했습니다." + Name);
 	}
 
-	MaterialResourcesCheck();
-
-	// UEngineConstantBufferRes Res;
+	CheckMaterialResources();
 
 	if (nullptr != Mesh)
 	{
-		InputLayOutCreate();
-
+		CreateInputLayout();
 	}
-
-
 }
 
 void URenderUnit::Render(class UEngineCamera* _Camera, float _DeltaTime)
 {
-	//	ShaderResSetting();
-	
-	//for (std::pair<EShaderType, UEngineShaderResources>& ShaderRes : Resources)
-	//{
-	//	UEngineShaderResources& Res = ShaderRes.second;
-	//	Res.Setting();
-	//}
-	
-
 	for (std::pair<const EShaderType, UEngineShaderResources>& Pair : Resources)
 	{
 		Pair.second.Setting();
 	}
 
-	//	InputAssembler1Setting();
-	Mesh->GetVertexBuffer()->Setting();
-
-	//	VertexShaderSetting();
-	Material->GetVertexShader()->Setting();
+	Mesh->GetVertexBuffer()->Setting();			//	InputAssembler1Setting();
+	Material->GetVertexShader()->Setting();		//	VertexShaderSetting();
 	
-	//	InputAssembler2Setting();
-	Mesh->GetIndexBuffer()->Setting();
+	Mesh->GetIndexBuffer()->Setting();			//	InputAssembler2Setting();
 	Material->PrimitiveTopologySetting();
 
-	UEngineCore::GetDevice().GetContext()->IASetInputLayout(InputLayOut.Get());
+	UEngineCore::GetDevice().GetContext()->IASetInputLayout(InputLayout.Get());
 
-	//	RasterizerSetting();
-	Material->GetRasterizerState()->Setting();
+	Material->GetRasterizerState()->Setting(); 	//	RasterizerSetting();
 
-	//	PixelShaderSetting();
-	Material->GetPixelShader()->Setting();
+	Material->GetPixelShader()->Setting(); 	//	PixelShaderSetting();
 
 	//	OutPutMergeSetting();
 	// 랜더타겟이 바뀐다.
 	Material->GetBlend()->Setting();
-
 	Material->GetDepthStencilState()->Setting();
 
 	UEngineCore::GetDevice().GetContext()->DrawIndexed(Mesh->GetIndexBuffer()->GetIndexCount(), 0, 0);
 }
 
-void URenderUnit::InputLayOutCreate()
+void URenderUnit::CreateInputLayout()
 {
 	Microsoft::WRL::ComPtr<ID3DBlob> Blob = Material->GetVertexShader()->GetShaderCodeBlob();
 
@@ -218,7 +199,7 @@ void URenderUnit::InputLayOutCreate()
 		static_cast<unsigned int>(InfoPtr->InputLayOutData.size()),
 		Blob->GetBufferPointer(),
 		Blob->GetBufferSize(),
-		&InputLayOut);
+		&InputLayout);
 
 	int a = 0;
 }

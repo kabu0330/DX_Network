@@ -2,46 +2,38 @@
 #include "TransformObject.h"
 #include "EngineCamera.h"
 
-UTransformObject::UTransformObject()
-{
-}
-
-UTransformObject::~UTransformObject()
-{
-}
-
 void UTransformObject::SetupAttachment(std::shared_ptr<UTransformObject> _Parent)
 {
 	SetupAttachment(_Parent.get());
 }
 
-void UTransformObject::ParentMatrixCheck()
-{
-	if (nullptr != Parent)
-	{
-		Transform.ParentMat = Parent->Transform.World;
-	}
-}
-
 void UTransformObject::SetupAttachment(UTransformObject* _Parent)
 {
 	Parent = _Parent;
-	Parent->Childs.push_back(this);
+	Parent->Children.push_back(this);
 
 	TransformUpdate();
 }
 
 void UTransformObject::TransformUpdate()
 {
-	ParentMatrixCheck();
-	Transform.TransformUpdate(IsAbsolute);
+	CheckParentMatrix();
+	Transform.TransformUpdate(bIsAbsolute);
 
-	for (UTransformObject* Child : Childs)
+	for (UTransformObject* Child : Children)
 	{
 		Child->TransformUpdate();
 	}
 
-	IsAbsolute = false;
+	bIsAbsolute = false;
+}
+
+void UTransformObject::CheckParentMatrix()
+{
+	if (nullptr != Parent)
+	{
+		Transform.ParentMat = Parent->Transform.World;
+	}
 }
 
 void UTransformObject::CameraTransUpdate(UEngineCamera* _Camera)
@@ -54,4 +46,12 @@ void UTransformObject::CameraTransUpdate(UEngineCamera* _Camera)
 	RendererTrans.Projection = CameraTrans.Projection;
 
 	RendererTrans.WVP = RendererTrans.World * RendererTrans.View * RendererTrans.Projection;
+}
+
+UTransformObject::UTransformObject()
+{
+}
+
+UTransformObject::~UTransformObject()
+{
 }

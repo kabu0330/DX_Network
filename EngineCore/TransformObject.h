@@ -1,35 +1,29 @@
 #pragma once
 
-// 설명 :
+// 설명 : 크기와 위치를 설정할 수 있는 클래스
 class UTransformObject 
 {
 public:
-	// constrcuter destructer
 	ENGINEAPI UTransformObject();
 	ENGINEAPI virtual ~UTransformObject();
 
-	// delete Function
-	UTransformObject(const UTransformObject& _Other) = delete;
-	UTransformObject(UTransformObject&& _Other) noexcept = delete;
-	UTransformObject& operator=(const UTransformObject& _Other) = delete;
-	UTransformObject& operator=(UTransformObject&& _Other) noexcept = delete;
+	ENGINEAPI virtual void CameraTransUpdate(class UEngineCamera* _Camera);
 
+	ENGINEAPI void SetupAttachment(std::shared_ptr<UTransformObject> _Parent);
+
+	ENGINEAPI void SetupAttachment(UTransformObject* _Parent);
+
+	ENGINEAPI void TransformUpdate();
+
+	// 이동
 	void AddRelativeLocation(const FVector& _Value)
 	{
 		Transform.Location += _Value;
 		TransformUpdate();
 	}
-
-	void SetWorldLocation(const FVector& _Value)
-	{
-		IsAbsolute = true;
-		Transform.Location = _Value;
-		TransformUpdate();
-	}
-
 	void AddWorldLocation(const FVector& _Value)
 	{
-		IsAbsolute = true;
+		bIsAbsolute = true;
 		Transform.Location += _Value;
 		TransformUpdate();
 	}
@@ -39,45 +33,11 @@ public:
 		Transform.Location = _Value;
 		TransformUpdate();
 	}
-
-
-	void AddWorldRotation(const FVector& _Value)
+	void SetWorldLocation(const FVector& _Value)
 	{
-		IsAbsolute = true;
-		Transform.Rotation += _Value;
+		bIsAbsolute = true;
+		Transform.Location = _Value;
 		TransformUpdate();
-	}
-
-	void AddLocalRotation(const FVector& _Value)
-	{
-		Transform.Rotation += _Value;
-		TransformUpdate();
-	}
-
-	void SetRotation(const FVector& _Value)
-	{
-		Transform.Rotation = _Value;
-		TransformUpdate();
-	}
-
-	void SetScale3D(const FVector& _Value)
-	{
-		IsAbsolute = true;
-		Transform.Scale = _Value;
-		TransformUpdate();
-	}
-
-	// local
-	void SetRelativeScale3D(const FVector& _Value)
-	{
-		Transform.Scale = _Value;
-		Transform.Scale.W = 0.0f;
-		TransformUpdate();
-	}
-
-	FVector GetWorldScale3D()
-	{
-		return Transform.WorldScale;
 	}
 
 	FVector GetRelativeLocation()
@@ -90,25 +50,80 @@ public:
 		return Transform.WorldLocation;
 	}
 
+
+	// 회전
+	void AddLocalRotation(const FVector& _Value)
+	{
+		Transform.Rotation += _Value;
+		TransformUpdate();
+	}
+	void AddWorldRotation(const FVector& _Value)
+	{
+		bIsAbsolute = true;
+		Transform.Rotation += _Value;
+		TransformUpdate();
+	}
+
+	void SetLocalRotation(const FVector& _Value)
+	{
+		Transform.Rotation = _Value;
+		TransformUpdate();
+	}
+
+
+	// 크기
+	void AddRelativeScale3D(const FVector& _Value)
+	{
+		Transform.Scale += _Value;
+		Transform.Scale.W = 0.0f;
+		TransformUpdate();
+	}
+	void AddScale3D(const FVector& _Value)
+	{
+		bIsAbsolute = true;
+		Transform.Scale += _Value;
+		TransformUpdate();
+	}
+
+	void SetRelativeScale3D(const FVector& _Value)
+	{
+		Transform.Scale = _Value;
+		Transform.Scale.W = 0.0f;
+		TransformUpdate();
+	}
+	void SetScale3D(const FVector& _Value)
+	{
+		bIsAbsolute = true;
+		Transform.Scale = _Value;
+		TransformUpdate();
+	}
+
+	FVector GetWorldScale3D()
+	{
+		return Transform.WorldScale;
+	}
+
+
 	FTransform& GetTransformRef()
 	{
 		return Transform;
 	}
 
-	ENGINEAPI virtual void CameraTransUpdate(class UEngineCamera* _Camera);
-
-	ENGINEAPI void SetupAttachment(std::shared_ptr<UTransformObject> _Parent);
-
-	ENGINEAPI void SetupAttachment(UTransformObject* _Parent);
-
-	ENGINEAPI void TransformUpdate();
-
 	UTransformObject* Parent = nullptr;
+
 protected:
-	bool IsAbsolute = false;
+	void CheckParentMatrix();
 
 	FTransform Transform;
-	void ParentMatrixCheck();
-	std::list<UTransformObject*> Childs;
+	std::list<UTransformObject*> Children;
+
+	bool bIsAbsolute = false;
+
+private:
+	// delete Function
+	UTransformObject(const UTransformObject& _Other) = delete;
+	UTransformObject(UTransformObject&& _Other) noexcept = delete;
+	UTransformObject& operator=(const UTransformObject& _Other) = delete;
+	UTransformObject& operator=(UTransformObject&& _Other) noexcept = delete;
 };
 

@@ -19,7 +19,8 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
-private:
 	class USpriteRenderer* Renderer = nullptr;
+private:
+
 };
 

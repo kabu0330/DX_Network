@@ -220,6 +220,10 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Pawn.h" />
+    <ClInclude Include="PlayerController.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PreCompile.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderUnit.h" />
@@ -281,6 +285,10 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Pawn.cpp" />
+    <ClCompile Include="PlayerController.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PreCompile.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">PreCompile.h</PrecompiledHeaderFile>

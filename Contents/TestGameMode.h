@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/GameMode.h>
+#include <EnginePlatform/EngineThread.h>
 
 // Ό³Έν :
 class ATestGameMode : public AGameMode
@@ -16,8 +17,14 @@ public:
 	ATestGameMode& operator=(ATestGameMode&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
+	void LevelChangeStart() override;
+
 
 private:
+	class ACameraActor* Camera = nullptr;
 
+	UEngineThread Thread;
 };
 

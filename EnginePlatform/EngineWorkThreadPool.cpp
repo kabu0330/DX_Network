@@ -60,20 +60,11 @@ void UEngineWorkThreadPool::WorkQueue(std::function<void()> _Work)
 
 void UEngineWorkThreadPool::ThreadQueueFunction(HANDLE _IOCPHandle, UEngineWorkThreadPool* _JobQueue)
 {
-	/*_Out_ LPDWORD lpNumberOfBytesTransferred,
-	_Out_ PULONG_PTR lpCompletionKey,
-	_Out_ LPOVERLAPPED* lpOverlapped,
-	_In_ DWORD dwMilliseconds*/
-
-	// 이게 만약 파일입출력이면 받은 바이트 크기
 	unsigned long Byte = 0;
 	unsigned __int64 Ptr;
 
-	// 가장 쓸모가 없다.
-	// 지금 파일이나 소켓을 얼마나 읽어고 등의 정보가 
 	LPOVERLAPPED OverPtr = nullptr;
 
-	// 쓰레드를 죽이지 않고 계속 살려두기 위해서 while걸었다.
 	while (_JobQueue->IsWork)
 	{
 		// 일이 있을때까지 잔다.

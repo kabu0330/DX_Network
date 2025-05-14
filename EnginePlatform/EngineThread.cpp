@@ -33,14 +33,12 @@ bool UEngineThread::Start(std::string _Name, std::function<void()> _Function)
 
 void UEngineThread::ThreadBaseFunction(UEngineThread* _Thread)
 {
-	// 이 함수가 쓰레드로 실행되는 것이다.
-
+	// 스레드 작업의 진입점
 	std::wstring WName = UEngineString::AnsiToUnicode(_Thread->Name);
 	SetThreadDescription(GetCurrentThread(), WName.c_str());
 
-	_Thread->ThreadFunction();
+	_Thread->ThreadFunction(); // Start()에서 넘겨준 함수 호출
 
-	// 쓰레드로 실행된 함수 내에서만 이름을 바꿀 수가 있다.
 }
 
 void UEngineThread::Join()

@@ -181,6 +181,7 @@
     <ClInclude Include="TransformObject.h">
       <Filter>04_Object\Component</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -345,6 +346,7 @@
     <ClCompile Include="TransformObject.cpp">
       <Filter>04_Object\Component</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="00_PreCompile">

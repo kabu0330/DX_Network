@@ -22,13 +22,13 @@ std::shared_ptr<UEngineBlend> UEngineBlend::Create(std::string_view _Name, const
 
 	std::shared_ptr<UEngineBlend> NewRes = std::make_shared<UEngineBlend>();
 	PushRes<UEngineBlend>(NewRes, _Name, "");
-	NewRes->ResCreate(_Value);
+	NewRes->CreateViewObject(_Value);
 
 	return NewRes;
 }
 
 
-void UEngineBlend::ResCreate(const D3D11_BLEND_DESC& _Value)
+void UEngineBlend::CreateViewObject(const D3D11_BLEND_DESC& _Value)
 {
 	if (UEngineCore::GetDevice().GetDevice()->CreateBlendState(&_Value, &State))
 	{

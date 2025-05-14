@@ -24,13 +24,13 @@ std::shared_ptr<UEngineDepthStencilState> UEngineDepthStencilState::Create(std::
 
 	std::shared_ptr<UEngineDepthStencilState> NewRes = std::make_shared<UEngineDepthStencilState>();
 	PushRes<UEngineDepthStencilState>(NewRes, _Name, "");
-	NewRes->ResCreate(_Value);
+	NewRes->CreateViewObject(_Value);
 
 	return NewRes;
 }
 
 
-void UEngineDepthStencilState::ResCreate(const D3D11_DEPTH_STENCIL_DESC& _Value)
+void UEngineDepthStencilState::CreateViewObject(const D3D11_DEPTH_STENCIL_DESC& _Value)
 {
 	if (UEngineCore::GetDevice().GetDevice()->CreateDepthStencilState(&_Value, &State))
 	{

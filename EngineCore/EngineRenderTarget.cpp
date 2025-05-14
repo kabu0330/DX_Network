@@ -34,7 +34,7 @@ void UEngineRenderTarget::CreateTarget(float4 _Scale, float4 _ClearColor /*= flo
     //                                   렌더 타겟이면서                        셰이더도 사용한다.
     Desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_RENDER_TARGET | D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE;
 
-    NewTarget->ResCreate(Desc); // 텍스처만들고 DSV도 만들고
+    NewTarget->CreateViewObject(Desc); // 텍스처만들고 DSV도 만들고
     NewTarget->Size = _Scale;
 
     ArrRTVs.push_back(NewTarget->GetRTV()); // 렌더타겟뷰를 관리할 자료구조에 넣는다.
@@ -45,7 +45,7 @@ void UEngineRenderTarget::CreateTarget(float4 _Scale, float4 _ClearColor /*= flo
 void UEngineRenderTarget::CreateTarget(Microsoft::WRL::ComPtr<ID3D11Texture2D> _Texture2D)
 {
 	std::shared_ptr<class UEngineTexture> NewTarget = std::make_shared<UEngineTexture>();
-	NewTarget->ResCreate(_Texture2D);
+	NewTarget->CreateViewObject(_Texture2D);
 
     if (nullptr == NewTarget->GetRTV())
     {
@@ -84,7 +84,7 @@ void UEngineRenderTarget::CreateDepth(int _Index)
     Desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL; // 이 구조체의 용도는 뎁스 스텐실
 
     DepthTexture = std::make_shared<UEngineTexture>();
-    DepthTexture->ResCreate(Desc);
+    DepthTexture->CreateViewObject(Desc);
 }
 
 // 먼저 화면을 지우고 난 뒤에 그린다.

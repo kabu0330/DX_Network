@@ -124,13 +124,13 @@ void UEngineTexture::Reset(EShaderType _Type, UINT _BindIndex)
 	case EShaderType::GS:
 	case EShaderType::CS:
 	default:
-		MSGASSERT("아직 존재하지 않는 쉐이더에 세팅하려고 했습니다.");
+		MSGASSERT("현재 존재하지 않는 셰이더 타입입니다.");
 		break;
 	}
 }
 
-// 뎁스 스텐실 뷰 객체 생성
-void UEngineTexture::ResCreate(const D3D11_TEXTURE2D_DESC& _Value)
+// 뷰 객체 생성
+void UEngineTexture::CreateViewObject(const D3D11_TEXTURE2D_DESC& _Value)
 {
 	Desc = _Value;
 
@@ -158,7 +158,8 @@ void UEngineTexture::ResCreate(const D3D11_TEXTURE2D_DESC& _Value)
 	}
 }
 
-void UEngineTexture::ResCreate(Microsoft::WRL::ComPtr<ID3D11Texture2D> _Texture2D)
+// RTV 생성
+void UEngineTexture::CreateViewObject(Microsoft::WRL::ComPtr<ID3D11Texture2D> _Texture2D)
 {
 	Texture2D = _Texture2D;
 	
@@ -174,7 +175,7 @@ void UEngineTexture::CreateRenderTargetView()
 {
 	if (S_OK != UEngineCore::GetDevice().GetDevice()->CreateRenderTargetView(Texture2D.Get(), nullptr, &RTV))
 	{
-		MSGASSERT("텍스처의 렌더 타겟 뷰 생성에 실패했습니다.");
+		MSGASSERT("RTV 생성에 실패했습니다.");
 		return;
 	}
 }
@@ -183,7 +184,7 @@ void UEngineTexture::CreateShaderResourceView()
 {
 	if (S_OK != UEngineCore::GetDevice().GetDevice()->CreateShaderResourceView(Texture2D.Get(), nullptr, &SRV))
 	{
-		MSGASSERT("깊이버퍼 생성에 실패했습니다..");
+		MSGASSERT("SRV 생성에 실패했습니다.");
 		return;
 	}
 }
@@ -191,7 +192,7 @@ void UEngineTexture::CreateDepthStencilView()
 {
 	if (S_OK != UEngineCore::GetDevice().GetDevice()->CreateDepthStencilView(Texture2D.Get(), nullptr, &DSV))
 	{
-		MSGASSERT("깊이버퍼 생성에 실패했습니다..");
+		MSGASSERT("DSV 생성에 실패했습니다.");
 		return;
 	}
 }

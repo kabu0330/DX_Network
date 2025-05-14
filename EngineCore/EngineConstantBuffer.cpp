@@ -36,14 +36,14 @@ std::shared_ptr<UEngineConstantBuffer> UEngineConstantBuffer::CreateOrFind(UINT 
 
 	std::shared_ptr<UEngineConstantBuffer> NewRes = std::make_shared<UEngineConstantBuffer>();
 	NewRes->SetName(UpperName);
-	NewRes->ResCreate(_Byte); // 상수 버퍼 생성
+	NewRes->CreateViewObject(_Byte); // 상수 버퍼 생성
 	BufferMap[_Byte][UpperName] = NewRes;
 
 	return NewRes;
 }
 
 // 상수 버퍼 생성, 상수버퍼의 특징은 CPU가 동적으로 계산해준 데이터를 그래픽카드가 읽는 것
-void UEngineConstantBuffer::ResCreate(UINT _Byte)
+void UEngineConstantBuffer::CreateViewObject(UINT _Byte)
 {
 	BufferInfo.ByteWidth = _Byte;
 	BufferInfo.BindFlags = D3D11_BIND_CONSTANT_BUFFER;

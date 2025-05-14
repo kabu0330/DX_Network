@@ -24,7 +24,7 @@ public:
 	void Reset(EShaderType _Type, UINT _BindIndex);
 
 protected:
-	void ResCreate(const D3D11_SAMPLER_DESC& _Value);
+	void CreateViewObject(const D3D11_SAMPLER_DESC& _Value);
 
 private:
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> State = nullptr;

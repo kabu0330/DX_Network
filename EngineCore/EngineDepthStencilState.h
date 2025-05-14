@@ -21,7 +21,7 @@ public:
 	void Setting();
 
 protected:
-	void ResCreate(const D3D11_DEPTH_STENCIL_DESC& _Value);
+	void CreateViewObject(const D3D11_DEPTH_STENCIL_DESC& _Value);
 
 private:
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> State = nullptr;

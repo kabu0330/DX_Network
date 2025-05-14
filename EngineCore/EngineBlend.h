@@ -20,7 +20,7 @@ public:
 	void Setting();
 
 protected:
-	void ResCreate(const D3D11_BLEND_DESC& _Value);
+	void CreateViewObject(const D3D11_BLEND_DESC& _Value);
 
 private:
 	Microsoft::WRL::ComPtr<ID3D11BlendState> State = nullptr;

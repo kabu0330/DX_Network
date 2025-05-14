@@ -32,6 +32,6 @@ private:
 	// 어떤 이름으로 상수버퍼를 몇 바이트 저장할거냐?
 	static std::map<int, std::map<std::string, std::shared_ptr<UEngineConstantBuffer>>> BufferMap;
 
-	void ResCreate(UINT _Byte);
+	void CreateViewObject(UINT _Byte);
 };
 

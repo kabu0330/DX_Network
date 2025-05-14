@@ -32,7 +32,7 @@ public:
 	}
 
 protected:
-	void ResCreate(const void* _InitData, size_t _VertexSize, size_t _VertexCount);
+	void CreateViewObject(const void* _InitData, size_t _VertexSize, size_t _VertexCount);
 
 private:
 	UINT IndexSize = 0;

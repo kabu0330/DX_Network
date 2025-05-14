@@ -24,13 +24,13 @@ std::shared_ptr<UEngineSampler> UEngineSampler::Create(std::string_view _Name, c
 
 	std::shared_ptr<UEngineSampler> NewRes = std::make_shared<UEngineSampler>();
 	PushRes<UEngineSampler>(NewRes, _Name, "");
-	NewRes->ResCreate(_Value);
+	NewRes->CreateViewObject(_Value);
 
 	return NewRes;
 }
 
 
-void UEngineSampler::ResCreate(const D3D11_SAMPLER_DESC& _Value)
+void UEngineSampler::CreateViewObject(const D3D11_SAMPLER_DESC& _Value)
 {
 	if (UEngineCore::GetDevice().GetDevice()->CreateSamplerState(&_Value, &State))
 	{

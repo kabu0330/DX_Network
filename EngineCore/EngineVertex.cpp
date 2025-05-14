@@ -1,9 +1,9 @@
 #include "PreCompile.h"
 #include "EngineVertex.h"
 
-UEngineInputLayOutInfo FEngineVertex::Info;
+UEngineInputLayoutInfo FEngineVertex::Info;
 
-UEngineInputLayOutInfo& FEngineVertex::GetInfo()
+UEngineInputLayoutInfo& FEngineVertex::GetInfo()
 {
 	return Info;
 }

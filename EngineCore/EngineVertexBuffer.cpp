@@ -10,13 +10,13 @@ UEngineVertexBuffer::~UEngineVertexBuffer()
 }
 
 std::shared_ptr<UEngineVertexBuffer> UEngineVertexBuffer::Create(std::string_view _Name, const void* _InitData, size_t _VertexSize, size_t _VertexCount,
-	UEngineInputLayOutInfo* _InfoPtr)
+	UEngineInputLayoutInfo* _InfoPtr)
 {
 	std::string UpperName = ToUpperName(_Name);
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 도 로드하려고 했습니다." + UpperName);
+		MSGASSERT("이미 로드한 텍스처를 다시 로드하려고 했습니다." + UpperName);
 		return nullptr;
 	}
 

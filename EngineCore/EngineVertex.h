@@ -5,9 +5,9 @@
 struct FEngineVertex
 {
 	friend class EngineVertexInit;
-	__declspec(dllexport) static UEngineInputLayOutInfo Info;
+	__declspec(dllexport) static UEngineInputLayoutInfo Info;
 
-	ENGINEAPI static UEngineInputLayOutInfo& GetInfo();
+	ENGINEAPI static UEngineInputLayoutInfo& GetInfo();
 
 	float4 POSITION;
 	float4 TEXCOORD;

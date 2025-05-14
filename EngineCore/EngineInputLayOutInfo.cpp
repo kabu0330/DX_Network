@@ -1,15 +1,15 @@
 #include "PreCompile.h"
-#include "EngineInputLayOutInfo.h"
+#include "EngineInputLayoutInfo.h"
 
-UEngineInputLayOutInfo::UEngineInputLayOutInfo()
+UEngineInputLayoutInfo::UEngineInputLayoutInfo()
 {
 }
 
-UEngineInputLayOutInfo::~UEngineInputLayOutInfo()
+UEngineInputLayoutInfo::~UEngineInputLayoutInfo()
 {
 }
 
-UINT UEngineInputLayOutInfo::FormatSize(DXGI_FORMAT _Value)
+UINT UEngineInputLayoutInfo::FormatSize(DXGI_FORMAT _Value)
 {
 	switch (_Value)
 	{
@@ -153,7 +153,7 @@ UINT UEngineInputLayOutInfo::FormatSize(DXGI_FORMAT _Value)
 	return -1;
 }
 
-void UEngineInputLayOutInfo::AddInputLayout(
+void UEngineInputLayoutInfo::AddInputLayout(
 	LPCSTR _SemanticName, // 내가 포지션이다 내가 컬러다.
 	DXGI_FORMAT _Format, // 내가 n바이트 짜리 정보다 자료형
 	D3D11_INPUT_CLASSIFICATION _InputSlotClass, //= D3D11_INPUT_PER_VERTEX_DATA, // 버텍스 데이터가 인스턴싱 데이터다 라는걸 표현

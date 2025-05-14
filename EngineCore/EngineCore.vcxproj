@@ -188,7 +188,7 @@
     <ClInclude Include="EngineGUI.h" />
     <ClInclude Include="EngineGUIWindow.h" />
     <ClInclude Include="EngineIndexBuffer.h" />
-    <ClInclude Include="EngineInputLayOutInfo.h" />
+    <ClInclude Include="EngineInputLayoutInfo.h" />
     <ClInclude Include="EngineMaterial.h" />
     <ClInclude Include="EnginePixelShader.h" />
     <ClInclude Include="EngineRasterizerState.h" />
@@ -256,7 +256,7 @@
     <ClCompile Include="EngineGUI.cpp" />
     <ClCompile Include="EngineGUIWindow.cpp" />
     <ClCompile Include="EngineIndexBuffer.cpp" />
-    <ClCompile Include="EngineInputLayOutInfo.cpp" />
+    <ClCompile Include="EngineInputLayoutInfo.cpp" />
     <ClCompile Include="EngineMaterial.cpp" />
     <ClCompile Include="EnginePixelShader.cpp" />
     <ClCompile Include="EngineRasterizerState.cpp" />

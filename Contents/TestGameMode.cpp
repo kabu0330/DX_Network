@@ -37,6 +37,6 @@ void ATestGameMode::Tick(float _DeltaTime)
 
 void ATestGameMode::LevelChangeStart()
 {
-	
+
 }
 

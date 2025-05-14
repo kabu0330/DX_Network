@@ -88,7 +88,7 @@
     <ClInclude Include="EngineVertex.h">
       <Filter>07_Resources\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="EngineInputLayOutInfo.h">
+    <ClInclude Include="EngineInputLayoutInfo.h">
       <Filter>07_Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="EngineConstantBuffer.h">
@@ -262,7 +262,7 @@
     <ClCompile Include="EngineVertex.cpp">
       <Filter>07_Resources\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="EngineInputLayOutInfo.cpp">
+    <ClCompile Include="EngineInputLayoutInfo.cpp">
       <Filter>07_Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineConstantBuffer.cpp">

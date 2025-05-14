@@ -1,6 +1,5 @@
 #pragma once
 #include <EngineCore/GameMode.h>
-#include <EnginePlatform/EngineThread.h>
 
 // Ό³Έν :
 class ATestGameMode : public AGameMode
@@ -25,6 +24,5 @@ protected:
 private:
 	class ACameraActor* Camera = nullptr;
 
-	UEngineThread Thread;
 };
 

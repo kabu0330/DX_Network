@@ -145,34 +145,10 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
 // DSV와 RTV 객체 생성, 스왑체인 및 백버퍼 생성
 void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 {
-    // 2. 백버퍼 관련 설정값 입력	
+    // 1. 백버퍼 관련 설정값 입력	
     FVector Size = _Window.GetWindowSize(); // 윈도우 크기에 맞는 백버퍼를 만들기 위해 ContentsCore에서 윈도우 세팅값이 설정된 이후 백버퍼를 만든다.
 
-    // 렌더 타겟 구조
-    // 2-1. 뎁스-스텐실 뷰(DSV) 객체 생성
-    //D3D11_TEXTURE2D_DESC Desc = {0}; // 텍스처의 속성을 설정하는 구조체
-
-    //Desc.ArraySize = 1;         // 텍스처의 배열 크기 : 일반적으로 1로 설정
-    //Desc.Width = Size.iX();     // 텍스처의 가로 크기 : 윈도우 사이즈
-    //Desc.Height = Size.iY();    // 텍스처의 세로 크기 : 윈도우 사이즈
-
-    //Desc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT; // Format : 픽셀 형식
-    //// unsigned 24바이트 : 깊이 값 // unsigned 8바이트 : 스텐실 값
-
-    //Desc.SampleDesc.Count = 1;      // 멀티샘플링(안티 앨리어싱) : 사용 안함
-    //Desc.SampleDesc.Quality = 0;    // 품질 : 기본값
-
-    //Desc.MipLevels = 1;                                         // Mipmap(다중 해상도 텍스처) 레벨 설정 : 1(원본 텍스처만 사용) 
-    //Desc.Usage = D3D11_USAGE_DEFAULT;                           // 리소스 사용 방식 : GPU
-    //Desc.CPUAccessFlags = 0;                                    // CPU 접근 플래그 : CPU 접근 불허
-    //Desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL; // 바인딩 플래그 : 뎁스-스텐실 텍스처로 바인딩
-
-    //DepthTex = std::make_shared<UEngineTexture>();
-    //DepthTex->ResCreate(Desc); 
-    // 뎁스 스텐실 뷰(DSV) 객체 생성 성공
-
-
-    // 2-2. 스왑체인 생성
+    // 2. 스왑체인 생성
     // 스왑 체인 : GPU가 렌더링한 결과를 화면에 출력하기 위해 사용되는 백버퍼의 집합
     DXGI_SWAP_CHAIN_DESC ScInfo = {0}; // 스왑 체인 속성을 설정하는 구조체
 
@@ -238,22 +214,6 @@ void UEngineGraphicDevice::RenderStart()
 {
     BackBufferTarget->Clear();
     BackBufferTarget->Setting();
-
-    //FVector ClearColor;
-    //ClearColor = FVector(0.0f, 0.0f, 1.0f, 1.0f); // Blue
-
-    //Context->ClearRenderTargetView(RTV.Get(), ClearColor.Arr1D); // 백버퍼 초기화, 특정 색상으로 지운다.
-    //Context->ClearDepthStencilView(DepthTex->GetDSV(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0); // 깊이값, 스텐실 값 초기화
-    ////                                                                            깊이 초기화값 1.0f / 스텐실 초기화값 0
-
-    //ID3D11RenderTargetView* RTV = UEngineCore::GetDevice().GetRTV();
-    //ID3D11RenderTargetView* ArrRtv[16] = { 0 }; // 렌더 타겟은 최대 16개까지 가능
-    //ArrRtv[0] = RTV; // SV_Target0
-
-    ////                       RTV 수, RTV 배열, DSV
-    //Context->OMSetRenderTargets(1, &ArrRtv[0], DepthTex->GetDSV());     // 출력 병합 단계에서 사용할 렌더타겟과 뎁스-스텐실 뷰 설정
-
-    // Context->OMSetDepthStencilState();
 }
 
 void UEngineGraphicDevice::RenderEnd()

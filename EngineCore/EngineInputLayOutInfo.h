@@ -1,18 +1,18 @@
 #pragma once
 
 // Ό³Έν :
-class UEngineInputLayOutInfo
+class UEngineInputLayoutInfo
 {
 public:
 	// constrcuter destructer
-	ENGINEAPI UEngineInputLayOutInfo();
-	ENGINEAPI ~UEngineInputLayOutInfo();
+	ENGINEAPI UEngineInputLayoutInfo();
+	ENGINEAPI ~UEngineInputLayoutInfo();
 
 	// delete Function
-	UEngineInputLayOutInfo(const UEngineInputLayOutInfo& _Other) = delete;
-	UEngineInputLayOutInfo(UEngineInputLayOutInfo&& _Other) noexcept = delete;
-	UEngineInputLayOutInfo& operator=(const UEngineInputLayOutInfo& _Other) = delete;
-	UEngineInputLayOutInfo& operator=(UEngineInputLayOutInfo&& _Other) noexcept = delete;
+	UEngineInputLayoutInfo(const UEngineInputLayoutInfo& _Other) = delete;
+	UEngineInputLayoutInfo(UEngineInputLayoutInfo&& _Other) noexcept = delete;
+	UEngineInputLayoutInfo& operator=(const UEngineInputLayoutInfo& _Other) = delete;
+	UEngineInputLayoutInfo& operator=(UEngineInputLayoutInfo&& _Other) noexcept = delete;
 
 
 	ENGINEAPI void AddInputLayout(

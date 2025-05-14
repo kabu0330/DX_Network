@@ -179,7 +179,6 @@ public:
 		return RootComponent.get();
 	}
 
-
 	ENGINEAPI FVector GetActorUpVector();
 	ENGINEAPI FVector GetActorRightVector();
 	ENGINEAPI FVector GetActorForwardVector();
@@ -200,8 +199,6 @@ public:
 
 		return Result;
 	}
-
-
 
 protected:
 	std::shared_ptr<class USceneComponent> RootComponent = nullptr;

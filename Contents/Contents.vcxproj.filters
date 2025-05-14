@@ -47,10 +47,13 @@
       <Filter>HollowKnight\Global</Filter>
     </ClInclude>
     <ClInclude Include="TestGameMode.h">
-      <Filter>NewFilter1</Filter>
+      <Filter>Test</Filter>
     </ClInclude>
     <ClInclude Include="BasicVisualActor.h">
       <Filter>ContentsSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadTestLevel.h">
+      <Filter>Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -97,10 +100,13 @@
       <Filter>HollowKnight\Global</Filter>
     </ClCompile>
     <ClCompile Include="TestGameMode.cpp">
-      <Filter>NewFilter1</Filter>
+      <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="BasicVisualActor.cpp">
       <Filter>ContentsSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadTestLevel.cpp">
+      <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +146,7 @@
     <Filter Include="HollowKnight\Global">
       <UniqueIdentifier>{73895d3d-87b8-4ffd-a962-7cd03df8a97f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewFilter1">
+    <Filter Include="Test">
       <UniqueIdentifier>{43cd829c-2afe-4280-b415-e406698d6a8c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

@@ -16,7 +16,9 @@ public:
 	APlayerController& operator=(APlayerController&& _Other) noexcept = delete;
 
 	ENGINEAPI void Possess(AActor* _Pawn);
+
 	ENGINEAPI void SwitchArrowKeys();
+
 	ENGINEAPI void SetSpeed(FVector _Speed)
 	{
 		Speed = _Speed;

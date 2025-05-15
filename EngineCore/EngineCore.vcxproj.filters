@@ -31,9 +31,6 @@
     <ClInclude Include="EngineGraphicDevice.h">
       <Filter>05_Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="ThirdParty\DirectxTex\Inc\DirectXTex.h">
-      <Filter>06_ThirdParty\DirectxTex\Inc</Filter>
-    </ClInclude>
     <ClInclude Include="EngineResources.h">
       <Filter>07_Resources</Filter>
     </ClInclude>
@@ -145,9 +142,6 @@
     <ClInclude Include="Collision.h">
       <Filter>04_Object\Component\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="ThirdParty\FW1FontWrapper\Inc\FW1FontWrapper.h">
-      <Filter>06_ThirdParty\FW1FontWrapper\Inc</Filter>
-    </ClInclude>
     <ClInclude Include="HUD.h">
       <Filter>04_Object\UI</Filter>
     </ClInclude>
@@ -182,6 +176,12 @@
       <Filter>04_Object\Component</Filter>
     </ClInclude>
     <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="ThirdParty\DirectxTex\Inc\DirectXTex.h">
+      <Filter>06_ThirdParty\DirectxTex\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdParty\FW1FontWrapper\Inc\FW1FontWrapper.h">
+      <Filter>06_ThirdParty\FW1FontWrapper\Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -447,29 +447,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="ThirdParty\DirectxTex\Inc\DirectXTex.inl">
       <Filter>06_ThirdParty\DirectxTex\Inc</Filter>
     </None>
-    <None Include="cpp.hint" />
+    <None Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.dll">
+      <Filter>06_ThirdParty\FW1FontWrapper\Debug</Filter>
+    </None>
+    <None Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.dll">
+      <Filter>06_ThirdParty\FW1FontWrapper\Release</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="ThirdParty\DirectxTex\Release\DirectXTex_Release.lib">
-      <Filter>06_ThirdParty\DirectxTex\Release</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="ThirdParty\DirectxTex\Debug\DirectXTex_Debug.lib">
+    <Library Include="ThirdParty\DirectxTex\Debug\DirectXTex_Debug.lib">
       <Filter>06_ThirdParty\DirectxTex\Debug</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.dll">
+    </Library>
+    <Library Include="ThirdParty\DirectxTex\Release\DirectXTex_Release.lib">
+      <Filter>06_ThirdParty\DirectxTex\Release</Filter>
+    </Library>
+    <Library Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.lib">
       <Filter>06_ThirdParty\FW1FontWrapper\Debug</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.lib">
-      <Filter>06_ThirdParty\FW1FontWrapper\Debug</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.lib">
+    </Library>
+    <Library Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.lib">
       <Filter>06_ThirdParty\FW1FontWrapper\Release</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.dll">
-      <Filter>06_ThirdParty\FW1FontWrapper\Release</Filter>
-    </CopyFileToFolders>
+    </Library>
   </ItemGroup>
 </Project>

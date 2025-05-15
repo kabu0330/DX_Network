@@ -22,6 +22,9 @@
     <ClInclude Include="EngineWinImage.h">
       <Filter>05_WindowImage</Filter>
     </ClInclude>
+    <ClInclude Include="EngineSound.h">
+      <Filter>07_Sound</Filter>
+    </ClInclude>
     <ClInclude Include="ThirdParty\FMOD\inc\fmod.h">
       <Filter>06_ThirdParty\FMOD\Inc</Filter>
     </ClInclude>
@@ -45,9 +48,6 @@
     </ClInclude>
     <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h">
       <Filter>06_ThirdParty\FMOD\Inc</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineSound.h">
-      <Filter>07_Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +113,6 @@
     <Filter Include="07_Sound">
       <UniqueIdentifier>{4be9b992-b63e-43ce-8d4d-aa9a3cfc1e51}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="ThirdParty\FMOD\Release\fmod.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ThirdParty\FMOD\Debug\fmodL.dll">

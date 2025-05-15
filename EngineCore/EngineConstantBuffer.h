@@ -3,7 +3,7 @@
 #include "EngineBufferBase.h"
 #include "EngineEnums.h"
 
-// 설명 : 상수버퍼 생성 및 관리
+// 설명 : 셰이더에서 cbuffer로 참조되는 GPU 상수 버퍼 클래스
 class UEngineConstantBuffer : public UEngineResources, public UEngineBufferBase
 {
 public:

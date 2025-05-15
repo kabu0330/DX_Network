@@ -20,13 +20,13 @@ void URenderUnit::InitializeShaderResources()
 	}
 
 	{
-		UShaderBindingManager& VS = Material->GetVertexShader()->ShaderResources;
-		Resources[EShaderType::VS] = Material->GetVertexShader()->ShaderResources;
+		UShaderBindingManager& VS = Material->GetVertexShader()->ShaderBindingManager;
+		Resources[EShaderType::VS] = Material->GetVertexShader()->ShaderBindingManager;
 	}
 
 	{
-		UShaderBindingManager& PS = Material->GetPixelShader()->ShaderResources;
-		Resources[EShaderType::PS] = Material->GetPixelShader()->ShaderResources;
+		UShaderBindingManager& PS = Material->GetPixelShader()->ShaderBindingManager;
+		Resources[EShaderType::PS] = Material->GetPixelShader()->ShaderBindingManager;
 	}
 
 	// 부모 렌더러가 없다면, 그건 UI다.
@@ -194,8 +194,8 @@ void URenderUnit::CreateInputLayout()
 	UEngineInputLayoutInfo* InfoPtr = Mesh->GetVertexBuffer()->GetInputLayoutInfo();
 
 	HRESULT Result = UEngineCore::GetDevice().GetDevice()->CreateInputLayout(
-		&InfoPtr->InputLayOutData[0],
-		static_cast<unsigned int>(InfoPtr->InputLayOutData.size()),
+		&InfoPtr->InputLayoutDescs[0],
+		static_cast<unsigned int>(InfoPtr->InputLayoutDescs.size()),
 		Blob->GetBufferPointer(),
 		Blob->GetBufferSize(),
 		&InputLayout);

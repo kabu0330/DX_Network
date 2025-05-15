@@ -52,7 +52,7 @@ void UEngineShader::AutoCompileShaderByNaming(UEngineFile& _File)
 	}
 }
 
-void UEngineShader::ShaderResCheck()
+void UEngineShader::ReflectAndBindShaderResources()
 {
 	if (nullptr == ShaderCodeBlob)
 	{
@@ -100,7 +100,7 @@ void UEngineShader::ShaderResCheck()
 			NewRes.BindIndex = ResDesc.BindPoint;
 			NewRes.EngineConstantBuffer = Buffer;
 			NewRes.BufferSize = BufferInfo.Size;
-			ShaderResources.AddConstantBufferBinding(UpperName, NewRes);
+			ShaderBindingManager.AddConstantBufferBinding(UpperName, NewRes);
 			break;
 		}
 		case D3D_SIT_TEXTURE:
@@ -113,7 +113,7 @@ void UEngineShader::ShaderResCheck()
 			NewRes.BindIndex = ResDesc.BindPoint;
 			NewRes.EngineTexture = Res;
 
-			ShaderResources.AddTextureBinding(UpperName, NewRes);
+			ShaderBindingManager.AddTextureBinding(UpperName, NewRes);
 
 			break;
 		}
@@ -127,7 +127,7 @@ void UEngineShader::ShaderResCheck()
 			NewRes.BindIndex = ResDesc.BindPoint;
 			NewRes.EngineSampler = Res;
 
-			ShaderResources.AddSamplerBinding(UpperName, NewRes);
+			ShaderBindingManager.AddSamplerBinding(UpperName, NewRes);
 
 			break;
 		}
@@ -146,7 +146,7 @@ void UEngineShader::ShaderResCheck()
 
 	// 
 	EntryName;
-	ShaderResources;
+	ShaderBindingManager;
 
 }
 

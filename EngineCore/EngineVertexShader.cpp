@@ -68,7 +68,7 @@ void UEngineVertexShader::CreateVertexShader()
 		ShaderCodeBlob->GetBufferPointer(),
 		ShaderCodeBlob->GetBufferSize(),
 		nullptr,
-		&ShaderRes
+		&VertexShader
 	);
 
 	if (S_OK != Result)
@@ -76,10 +76,10 @@ void UEngineVertexShader::CreateVertexShader()
 		MSGASSERT("버텍스 셰이더 생성에 실패했습니다.");
 	}
 
-	UEngineShader::ShaderResCheck();
+	UEngineShader::ReflectAndBindShaderResources();
 }
 
 void UEngineVertexShader::VSSetShader()
 {
-	UEngineCore::GetDevice().GetContext()->VSSetShader(ShaderRes.Get(), nullptr, 0);
+	UEngineCore::GetDevice().GetContext()->VSSetShader(VertexShader.Get(), nullptr, 0);
 }

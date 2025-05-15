@@ -25,7 +25,7 @@ std::string UEngineString::ToUpper(std::string_view _string)
 
 std::wstring UEngineString::AnsiToUnicode(std::string_view _Name)
 {
-	// 컨버전하면 얼마만큼의 메모리가 필요한지 알려준다.
+	// UTF8 = 1 ~ 4바이트 가변이므로 컨버전하면 얼마만큼의 메모리가 필요한지 알려주는 것
 	int Size = MultiByteToWideChar(CP_ACP, 0, _Name.data(), static_cast<int>(_Name.size()), nullptr, 0);
 
 	if (0 == Size)
@@ -56,11 +56,7 @@ std::string UEngineString::AnsiToUTF8(std::string_view _Name)
 
 std::string UEngineString::UniCodeToUTF8(std::wstring_view _Text)
 {
-	// UTF8 = 알수는 텍스트라고 온다.
-	// 어 이거 잘못된거 아니야?
-	// 1~4로 글자표현
-
-	// 이건 컨버전하면 얼마만큼의 메모리가 필요한지 알려주는 것
+	// UTF8 = 1 ~ 4바이트 가변이므로 컨버전하면 얼마만큼의 메모리가 필요한지 알려주는 것
 	int Size = WideCharToMultiByte(CP_UTF8, 0, _Text.data(), static_cast<int>(_Text.size()), nullptr, 0, nullptr, nullptr);
 
 	if (0 == Size)

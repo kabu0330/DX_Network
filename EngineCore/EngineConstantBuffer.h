@@ -7,15 +7,8 @@
 class UEngineConstantBuffer : public UEngineResources, public UEngineDeviceBuffer
 {
 public:
-	// constrcuter destructer
 	UEngineConstantBuffer();
 	~UEngineConstantBuffer();
-
-	// delete Function
-	UEngineConstantBuffer(const UEngineConstantBuffer& _Other) = delete;
-	UEngineConstantBuffer(UEngineConstantBuffer&& _Other) noexcept = delete;
-	UEngineConstantBuffer& operator=(const UEngineConstantBuffer& _Other) = delete;
-	UEngineConstantBuffer& operator=(UEngineConstantBuffer&& _Other) noexcept = delete;
 
 	// 상수버퍼를 만들거나 찾거나
 	static std::shared_ptr<UEngineConstantBuffer> CreateOrFind(UINT _Byte, const std::string_view& _Name);
@@ -33,5 +26,13 @@ private:
 	static std::map<int, std::map<std::string, std::shared_ptr<UEngineConstantBuffer>>> BufferMap;
 
 	void CreateViewObject(UINT _Byte);
+
+
+private:
+	// delete Function
+	UEngineConstantBuffer(const UEngineConstantBuffer& _Other) = delete;
+	UEngineConstantBuffer(UEngineConstantBuffer&& _Other) noexcept = delete;
+	UEngineConstantBuffer& operator=(const UEngineConstantBuffer& _Other) = delete;
+	UEngineConstantBuffer& operator=(UEngineConstantBuffer&& _Other) noexcept = delete;
 };
 

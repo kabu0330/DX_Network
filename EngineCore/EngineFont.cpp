@@ -42,14 +42,14 @@ std::shared_ptr<UEngineFont> UEngineFont::LoadFont(std::string_view _Name, std::
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 도 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[이름 중복]\n 폰트 이름을 변경해주세요." + UpperName);
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineFont> NewRes = std::make_shared<UEngineFont>();
-	PushResource<UEngineFont>(NewRes, _Name, _Path);
-	NewRes->LoadResource(_Path);
-	return NewRes;
+	std::shared_ptr<UEngineFont> NewFont = std::make_shared<UEngineFont>();
+	PushResource<UEngineFont>(NewFont, _Name, _Path);
+	NewFont->LoadResource(_Path);
+	return NewFont;
 }
 
 void UEngineFont::LoadResource(std::string_view _Path)
@@ -57,7 +57,7 @@ void UEngineFont::LoadResource(std::string_view _Path)
 	std::wstring WPath = UEngineString::AnsiToUnicode(_Path);
 
 	D3D11_BLEND_DESC blendDesc = { 0, };
-	for (int i = 0; i < 4; ++i)
+	for (int i = 0; i < 4; ++i) // 왜 4개지?
 	{
 		blendDesc.RenderTarget[i].BlendEnable = true;
 		blendDesc.RenderTarget[i].RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;

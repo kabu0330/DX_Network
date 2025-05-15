@@ -2,21 +2,13 @@
 #include "EngineShaderResources.h"
 #include "EngineBase/EngineDebug.h"
 
-UEngineShaderResources::UEngineShaderResources()
-{
-}
-
-UEngineShaderResources::~UEngineShaderResources()
-{
-}
-
 void UEngineShaderResources::CreateSamplerRes(std::string_view _Name, UEngineSamplerRes _Res)
 {
 	std::string UpperString = UEngineString::ToUpper(_Name);
 
 	if (true == SamplerRes.contains(UpperString))
 	{
-		MSGASSERT("같은 이름 상수버퍼가 한 쉐이더에 2개가 존재합니다");
+		MSGASSERT("[이름 중복]\n 다른 이름을 입력해주세요.");
 		return;
 	}
 
@@ -29,7 +21,7 @@ void UEngineShaderResources::CreateTextureRes(std::string_view _Name, UEngineTex
 
 	if (true == TextureRes.contains(UpperString))
 	{
-		MSGASSERT("같은 이름 상수버퍼가 한 쉐이더에 2개가 존재합니다");
+		MSGASSERT("[이름 중복]\n 다른 이름을 입력해주세요.");
 		return;
 	}
 
@@ -42,7 +34,7 @@ void UEngineShaderResources::CreateConstantBufferRes(std::string_view _Name, UEn
 
 	if (true == ConstantBufferRes.contains(UpperString))
 	{
-		MSGASSERT("같은 이름 상수버퍼가 한 쉐이더에 2개가 존재합니다");
+		MSGASSERT("[이름 중복]\n 다른 이름을 입력해주세요.");
 		return;
 	}
 
@@ -148,4 +140,12 @@ void UEngineShaderResources::Reset()
 	{
 		Res.second.Reset();
 	}
+}
+
+UEngineShaderResources::UEngineShaderResources()
+{
+}
+
+UEngineShaderResources::~UEngineShaderResources()
+{
 }

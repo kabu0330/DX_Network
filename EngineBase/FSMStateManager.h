@@ -7,15 +7,8 @@
 class UFSMStateManager
 {
 public:
-	// constrcuter destructer
 	UFSMStateManager()	{	}
 	~UFSMStateManager()	{	}
-
-	// delete Function
-	UFSMStateManager(const UFSMStateManager& _Other) = delete;
-	UFSMStateManager(UFSMStateManager&& _Other) noexcept = delete;
-	UFSMStateManager& operator=(const UFSMStateManager& _Other) = delete;
-	UFSMStateManager& operator=(UFSMStateManager&& _Other) noexcept = delete;
 
 	class FSMState
 	{
@@ -35,7 +28,7 @@ public:
 	{
 		if (true == States.contains(_Key))
 		{
-			MSGASSERT("이미 존재하는 스테이트를 또 만들려고 했습니다.");
+			MSGASSERT("이미 존재하는 Key입니다. 중복을 허용하지 않습니다.");
 			return;
 		}
 
@@ -47,7 +40,7 @@ public:
 	{
 		if (nullptr == CurState)
 		{
-			MSGASSERT("상태가 지정되지 않은 스테이트머신 입니다.");
+			MSGASSERT("상태가 지정되지 않은 스테이트머신 입니다. CreateState()로 상태를 추가해주세요.");
 			return;
 		}
 
@@ -64,9 +57,10 @@ public:
 	{
 		if (false == States.contains(_Key))
 		{
-			MSGASSERT("만든적이 없는 스테이트로 체인지 하려고 했습니다.");
+			MSGASSERT("존재하지 않는 상태입니다. CreateState()로 상태를 추가해주세요.");
 			return;
 		}
+
 		PrevState = CurState;
 		CurState = &States[_Key];
 		if (nullptr != CurState->StartFunction)
@@ -74,6 +68,7 @@ public:
 			CurState->StartFunction();
 		}
 	}
+
 	void ChangePrevState()
 	{
 		CurState = PrevState;
@@ -89,5 +84,13 @@ private:
 	FSMState* CurState = nullptr;
 	FSMState* PrevState = nullptr;
 	std::map<int, FSMState> States;
+
+
+private:
+	// delete Function
+	UFSMStateManager(const UFSMStateManager& _Other) = delete;
+	UFSMStateManager(UFSMStateManager&& _Other) noexcept = delete;
+	UFSMStateManager& operator=(const UFSMStateManager& _Other) = delete;
+	UFSMStateManager& operator=(UFSMStateManager&& _Other) noexcept = delete;
 };
 

@@ -17,7 +17,7 @@ UWidget::~UWidget()
 
 void UWidget::Tick(float _DeltaTime)
 {
-	std::shared_ptr<class ACameraActor> CameraActor = GetWorld()->GetCamera(EEngineCameraType::UICamera);
+	std::shared_ptr<class ACameraActor> CameraActor = GetWorld()->GetCamera(EEngineCameraType::UI_CAMERA);
 
 	FVector WorldPos = CameraActor->ScreenMousePosToWorldPos();
 	FTransform Transform;

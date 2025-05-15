@@ -15,7 +15,7 @@ std::shared_ptr<UEngineIndexBuffer> UEngineIndexBuffer::Create(std::string_view 
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 도 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[이름 중복] \n 인덱스 버퍼 이름을 변경해주세요. " + UpperName);
 		return nullptr;
 	}
 
@@ -41,7 +41,8 @@ void UEngineIndexBuffer::CreateViewObject(const void* _InitData, size_t _Size, s
 	}
 	else
 	{
-		MSGASSERT("이런 인덱스 포맷은 지원하지 않습니다.");
+		MSGASSERT("지원하지 않는 인덱스 포맷입니다.");
+		return;
 	}
 
 	BufferInfo.ByteWidth = static_cast<UINT>(_Size * _Count);
@@ -54,7 +55,7 @@ void UEngineIndexBuffer::CreateViewObject(const void* _InitData, size_t _Size, s
 
 	if (S_OK != UEngineCore::GetDevice().GetDevice()->CreateBuffer(&BufferInfo, &Data, &Buffer))
 	{
-		MSGASSERT("버텍스 버퍼 생성에 실패했습니다.");
+		MSGASSERT("인덱스 버퍼 생성에 실패했습니다.");
 		return;
 	}
 }

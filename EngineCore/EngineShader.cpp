@@ -14,11 +14,10 @@ UEngineShader::~UEngineShader()
 
 void UEngineShader::ReflectionCompile(UEngineFile& _File)
 {
-	// 픽셀과 버텍스를 다 만들어야 한다.
-
-	_File.FileOpen("rt");
+	_File.FileOpen("rt"); // 읽기 전용
 	std::string ShaderCode = _File.GetAllFileText();
 	
+	// 맨 뒤 이름 규칙으로 VS와 PS를 구분한다.
 	{
 		size_t EntryIndex = ShaderCode.find("_VS(");
 
@@ -43,7 +42,6 @@ void UEngineShader::ReflectionCompile(UEngineFile& _File)
 		if (EntryIndex != std::string::npos)
 		{
 			{
-				// 역순으로 찾아나가는 함수
 				size_t FirstIndex = ShaderCode.find_last_of(" ", EntryIndex);
 
 				std::string EntryName = ShaderCode.substr(FirstIndex + 1, EntryIndex - FirstIndex - 1);
@@ -59,14 +57,13 @@ void UEngineShader::ShaderResCheck()
 {
 	if (nullptr == ShaderCodeBlob)
 	{
-		MSGASSERT("쉐이더가 컴파일되지 않아서 쉐이더의 리소스를 조사할수가 없습니다.");
+		MSGASSERT("셰이더 코드 블랍이 nullptr입니다.");
 		return;
 	}
 
 	Microsoft::WRL::ComPtr<ID3D11ShaderReflection> CompileInfo = nullptr;
 
-	// RTTI 런타임 타입 인포메이션
-	// #include <d3dcompiler.h>
+	// RTTI
 	if (S_OK != D3DReflect(ShaderCodeBlob->GetBufferPointer(), ShaderCodeBlob->GetBufferSize(), IID_ID3D11ShaderReflection, &CompileInfo))
 	{
 		MSGASSERT("리플렉션에 실패했습니다.");
@@ -96,18 +93,14 @@ void UEngineShader::ShaderResCheck()
 			D3D11_SHADER_BUFFER_DESC BufferInfo = { 0 };
 			Info->GetDesc(&BufferInfo);
 
-			// 상수버퍼 리소스 관리하는 구조랑
-			// 이 쉐이더를 사용해서 랜더링을 할때마다 이 상수버퍼를 세팅해줘야 쉐이더. 
 			std::shared_ptr<UEngineConstantBuffer> Buffer = UEngineConstantBuffer::CreateOrFind(BufferInfo.Size, UpperName);
 
-			// 상수버퍼에 세팅을 위해서 각자가 가져야할 값들을 저장하기 위한 클래스를
 			UEngineConstantBufferRes NewRes;
 			NewRes.ShaderType = ShaderType;
 			NewRes.Name = UpperName;
 			NewRes.BindIndex = ResDesc.BindPoint;
 			NewRes.Res = Buffer;
 			NewRes.BufferSize = BufferInfo.Size;
-
 			ShaderResources.CreateConstantBufferRes(UpperName, NewRes);
 			break;
 		}

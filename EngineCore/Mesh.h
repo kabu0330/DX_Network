@@ -21,6 +21,7 @@ public:
 		return Create(_Name, _Name, _Name);
 	}
 
+	// 다른 인덱스 버퍼 정보를 그대로 사용하고 싶으면 호출
 	static std::shared_ptr<UMesh> Create(std::string_view _Name, std::string_view _VertexBuffer, std::string_view _IndexBuffer);
 
 	std::shared_ptr<UEngineVertexBuffer> GetVertexBuffer()

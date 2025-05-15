@@ -1,33 +1,22 @@
 #pragma once
 #include <Windows.h>
 
-// 설명 :
+// 설명 : 델타타임 계산
 class UEngineTimer
 {
 public:
-	// constrcuter destructer
 	ENGINEAPI UEngineTimer();
 	ENGINEAPI ~UEngineTimer();
-
-	// delete Function
-	UEngineTimer(const UEngineTimer& _Other) = delete;
-	UEngineTimer(UEngineTimer&& _Other) noexcept = delete;
-	UEngineTimer& operator=(const UEngineTimer& _Other) = delete;
-	UEngineTimer& operator=(UEngineTimer&& _Other) noexcept = delete;
 
 	ENGINEAPI void TimeCheck();
 
 	ENGINEAPI float GetDeltaTime()
 	{
-		// 0.0000001
-		// 0.000000000000001
 		return fDeltaTime;
 	}
 
 	ENGINEAPI double GetDoubleDeltaTime()
 	{
-		// 0.0000001
-		// 0.000000000000001
 		return DeltaTime;
 	}
 
@@ -66,5 +55,12 @@ private:
 	double DeltaTime = 0.0;
 	float fDeltaTime = 0.0f;
 	float TimeScale = 1.0f;
+
+private:
+	// delete Function
+	UEngineTimer(const UEngineTimer& _Other) = delete;
+	UEngineTimer(UEngineTimer&& _Other) noexcept = delete;
+	UEngineTimer& operator=(const UEngineTimer& _Other) = delete;
+	UEngineTimer& operator=(UEngineTimer&& _Other) noexcept = delete;
 };
 

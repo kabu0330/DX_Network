@@ -46,7 +46,7 @@ void UContentsCore::SetWindowSize(UEngineInitData& _Data)
 
 void UContentsCore::CreateLevel()
 {
-	//UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
+	UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
 	UEngineCore::CreateLevel<AThreadTestLevel, APawn, AHUD>("Test");
 	//UEngineCore::CreateLevel<AMapEditorGameMode, APawn, AHUD>("MapEditorMode");
 }
@@ -66,7 +66,6 @@ void UContentsCore::EngineTick(float _DeltaTime)
 
 void UContentsCore::EngineEnd()
 {
-
 }
 
 UContentsCore::UContentsCore()

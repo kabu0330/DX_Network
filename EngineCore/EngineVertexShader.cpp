@@ -16,7 +16,7 @@ std::shared_ptr<UEngineVertexShader> UEngineVertexShader::Load(std::string_view 
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 도 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[.fx 이름 중복] \n 셰이더 파일 이름을 변경해주세요." + UpperName);
 		return nullptr;
 	}
 
@@ -60,7 +60,7 @@ void UEngineVertexShader::LoadResource()
 	if (nullptr == ShaderCodeBlob)
 	{
 		std::string ErrString = reinterpret_cast<char*>(ErrorCodeBlob->GetBufferPointer());
-		MSGASSERT("쉐이더 코드 중간빌드에서 실패했습니다\n" + ErrString);
+		MSGASSERT("셰이더 코드 중간 빌드에서 실패했습니다\n" + ErrString);
 		return;
 	}
 
@@ -73,7 +73,7 @@ void UEngineVertexShader::LoadResource()
 
 	if (S_OK != Result)
 	{
-		MSGASSERT("버텍스 쉐이더 생성에 실패했습니다.");
+		MSGASSERT("버텍스 셰이더 생성에 실패했습니다.");
 	}
 
 	UEngineShader::ShaderResCheck();

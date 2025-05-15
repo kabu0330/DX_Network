@@ -34,12 +34,12 @@ public:
 
 	virtual bool IsActive()
 	{
-		return IsActiveValue && false == IsDestroyValue;
+		return bIsActive && false == bIsDestroy;
 	}
 
 	virtual bool IsDestroy()
 	{
-		return IsDestroyValue;
+		return bIsDestroy;
 	}
 
 	void Destroy(float _Time = 0.0f)
@@ -48,16 +48,16 @@ public:
 
 		if (0.0f < _Time)
 		{
-			IsDeathTimeCheck = true;
+			bIsDeathTimeReached = true;
 			return;
 		}
 
-		IsDestroyValue = true;
+		bIsDestroy = true;
 	}
 
 	virtual void ReleaseTimeCheck(float _DeltaTime)
 	{
-		if (false == IsDeathTimeCheck)
+		if (false == bIsDeathTimeReached)
 		{
 			return;
 		}
@@ -66,7 +66,7 @@ public:
 
 		if (DeathTime <= CurDeathTime)
 		{
-			IsDestroyValue = true;
+			bIsDestroy = true;
 		}
 	}
 
@@ -78,32 +78,32 @@ public:
 	// 모든 기능 정지, 외부에서 다른 객체가 풀어줘야 한다.
 	void SetActive(bool _IsActive)
 	{
-		IsActiveValue = _IsActive;
+		bIsActive = _IsActive;
 	}
 
 	void SetActiveSwitch()
 	{
-		IsActiveValue = !IsActiveValue;
+		bIsActive = !bIsActive;
 	}
 
 	bool IsDebug()
 	{
-		return IsDebugValue;
+		return bIsDebug;
 	}
 
 	void DebugOn()
 	{
-		IsDebugValue = true;
+		bIsDebug = true;
 	}
 
 	void DebugOff()
 	{
-		IsDebugValue = false;
+		bIsDebug = false;
 	}
 
 	void DebugSwitch()
 	{
-		IsDebugValue = !IsDebugValue;
+		bIsDebug = !bIsDebug;
 	}
 
 	int GetOrder()
@@ -119,7 +119,7 @@ public:
 	// 수정 가능
 	bool& GetIsActiveValueRef()
 	{
-		return IsActiveValue;
+		return bIsActive;
 	}
 
 protected:
@@ -127,16 +127,16 @@ protected:
 private:
 	int Order = 0;
 
-	bool IsDestroyValue = false;
-	bool IsActiveValue = true;
+	bool bIsDestroy = false;
+	bool bIsActive = true;
 
-	bool IsDeathTimeCheck = false;
+	bool bIsDeathTimeReached = false;
 	float DeathTime = 0.0f;
 	float CurDeathTime = 0.0f;
 
 	std::string Name;
 
-	bool IsDebugValue = false;
+	bool bIsDebug = false;
 
 
 private:

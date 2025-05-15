@@ -14,7 +14,7 @@ public:
 		UEngineSprite* Sprite = nullptr;
 		std::vector<int> FrameIndex;
 		std::vector<float> FrameTime;
-		std::map<int, EngineDelegate> Events;
+		std::map<int, UEngineDelegate> Events;
 
 		int CurIndex = 0;
 		int ResultIndex = 0;

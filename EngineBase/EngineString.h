@@ -1,21 +1,13 @@
 #pragma once
 #include <string>
 
-// 설명 :
+// 설명 : std::string 기능 래퍼
 class UEngineString
 {
 public:
-	// constrcuter destructer
 	~UEngineString();
 
-	// delete Function
-	UEngineString(const UEngineString& _Other) = delete;
-	UEngineString(UEngineString&& _Other) noexcept = delete;
-	UEngineString& operator=(const UEngineString& _Other) = delete;
-	UEngineString& operator=(UEngineString&& _Other) noexcept = delete;
-
-
-	ENGINEAPI static std::string ToUpper(std::string_view);
+	ENGINEAPI static std::string ToUpper(std::string_view _string);
 
 	ENGINEAPI static std::string InterString(const std::string& _Text, std::string_view _Start, std::string_view _End, size_t& _Offset);
 
@@ -27,5 +19,11 @@ public:
 
 private:
 	UEngineString();
+
+	// delete Function
+	UEngineString(const UEngineString& _Other) = delete;
+	UEngineString(UEngineString&& _Other) noexcept = delete;
+	UEngineString& operator=(const UEngineString& _Other) = delete;
+	UEngineString& operator=(UEngineString&& _Other) noexcept = delete;
 };
 

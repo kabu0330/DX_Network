@@ -2,16 +2,16 @@
 #include <functional>
 
 // Ό³Έν :
-class EngineDelegate
+class UEngineDelegate
 {
 public:
-	ENGINEAPI EngineDelegate();
-	ENGINEAPI EngineDelegate(std::function<void()> _Function)
+	ENGINEAPI UEngineDelegate();
+	ENGINEAPI UEngineDelegate(std::function<void()> _Function)
 	{
 		Functions.push_back(_Function);
 	}
 
-	ENGINEAPI ~EngineDelegate();
+	ENGINEAPI ~UEngineDelegate();
 
 	bool IsBind()
 	{

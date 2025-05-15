@@ -5,15 +5,8 @@
 class UEngineDeviceBuffer
 {
 public:
-	// constrcuter destructer
 	UEngineDeviceBuffer();
 	~UEngineDeviceBuffer();
-
-	// delete Function
-	UEngineDeviceBuffer(const UEngineDeviceBuffer& _Other) = delete;
-	UEngineDeviceBuffer(UEngineDeviceBuffer&& _Other) noexcept = delete;
-	UEngineDeviceBuffer& operator=(const UEngineDeviceBuffer& _Other) = delete;
-	UEngineDeviceBuffer& operator=(UEngineDeviceBuffer&& _Other) noexcept = delete;
 
 	const D3D11_BUFFER_DESC& GetBufferInfo()
 	{
@@ -25,5 +18,10 @@ protected:
 	D3D11_BUFFER_DESC BufferInfo = { 0 };
 
 private:
+	// delete Function
+	UEngineDeviceBuffer(const UEngineDeviceBuffer& _Other) = delete;
+	UEngineDeviceBuffer(UEngineDeviceBuffer&& _Other) noexcept = delete;
+	UEngineDeviceBuffer& operator=(const UEngineDeviceBuffer& _Other) = delete;
+	UEngineDeviceBuffer& operator=(UEngineDeviceBuffer&& _Other) noexcept = delete;
 };
 

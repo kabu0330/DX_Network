@@ -122,10 +122,10 @@ void UEngineCamera::CalculateViewAndProjection()
 
 	switch (ProjectionType)
 	{
-	case EProjectionType::Perspective:
+	case EProjectionType::PERSPECTIVE:
 		Trans.Projection.PerspectiveFovDeg(FOV, ProjectionScale.X, ProjectionScale.Y, Near, Far);
 		break;
-	case EProjectionType::Orthographic:
+	case EProjectionType::ORTHOGRAPHIC:
 		Trans.Projection.OrthographicLH(ProjectionScale.X, ProjectionScale.Y, Near, Far);
 		break;
 	default:

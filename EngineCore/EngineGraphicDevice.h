@@ -70,11 +70,11 @@ private:
 	ENGINEAPI void DefaultResourcesInit();
 
 	ENGINEAPI void MeshInit();
-	ENGINEAPI void BlendInit();
-	ENGINEAPI void ShaderInit();
+	ENGINEAPI void InitBlend();
+	ENGINEAPI void InitShader();
 	ENGINEAPI void MaterialInit();
-	ENGINEAPI void RasterizerStateInit();
-	ENGINEAPI void TextureInit();
-	ENGINEAPI void DepthStencilInit();
+	ENGINEAPI void InitRasterizerState();
+	ENGINEAPI void InitTexture();
+	ENGINEAPI void InitDepthStencil();
 };
 

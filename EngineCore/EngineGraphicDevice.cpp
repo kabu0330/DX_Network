@@ -137,18 +137,16 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
         MSGASSERT("스레드 안정성 적용에 실패했습니다.");
         return;
     }
-    // 초기화 종료
-
+   
+    // 렌더링 파이프라인 세팅
     DefaultResourcesInit();
 }
 
-// DSV와 RTV 객체 생성, 스왑체인 및 백버퍼 생성
+// 스왑체인 및 백버퍼 생성
 void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 {
-    // 1. 백버퍼 관련 설정값 입력	
     FVector Size = _Window.GetWindowSize(); // 윈도우 크기에 맞는 백버퍼를 만들기 위해 ContentsCore에서 윈도우 세팅값이 설정된 이후 백버퍼를 만든다.
 
-    // 2. 스왑체인 생성
     // 스왑 체인 : GPU가 렌더링한 결과를 화면에 출력하기 위해 사용되는 백버퍼의 집합
     DXGI_SWAP_CHAIN_DESC ScInfo = {0}; // 스왑 체인 속성을 설정하는 구조체
 
@@ -204,7 +202,7 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
         return;
     };
 
-    // 백버퍼의 수정 권한을 가진 렌더 타겟 뷰(RTV) 생성
+    // RTV : VRam의 메모리 블록의 쓰기 권한
     BackBufferTarget = std::make_shared<UEngineRenderTarget>();
     BackBufferTarget->CreateTarget(DXBackBufferTexture);
     BackBufferTarget->CreateDepth(); // DSV 생성 

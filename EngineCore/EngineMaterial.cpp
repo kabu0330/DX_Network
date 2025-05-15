@@ -19,7 +19,8 @@ void UEngineMaterial::SetVertexShader(std::string_view _Name)
 
 	if (nullptr == VertexShader)
 	{
-		MSGASSERT("존재하지 않는 버텍스 셰이더입니다.");
+		MSGASSERT("[머티리얼 VS 연결 실패] \n 해당 버텍스 셰이더가 존재하지 않습니다. 셰이더 이름을 확인해주세요.");
+		return;
 	}
 }
 
@@ -30,7 +31,8 @@ void UEngineMaterial::SetPixelShader(std::string_view _Name)
 
 	if (nullptr == PixelShader)
 	{
-		MSGASSERT("존재하지 않는 픽셀 셰이더입니다.");
+		MSGASSERT("[머티리얼 PS 연결 실패] \n 해당 픽셀 셰이더가 존재하지 않습니다. 셰이더 이름을 확인해주세요.");
+		return;
 	}
 }
 
@@ -40,7 +42,7 @@ void UEngineMaterial::SetRasterizerState(std::string_view _Name)
 
 	if (nullptr == RasterizerState)
 	{
-		MSGASSERT("존재하지 않는 레스터라이저입니다.");
+		MSGASSERT("[머티리얼 RS 연결 실패] \n 해당 레스터라이저가 존재하지 않습니다. 이름을 확인해주세요.");
 	}
 }
 
@@ -50,7 +52,7 @@ void UEngineMaterial::SetDepthStencilState(std::string_view _Name)
 
 	if (nullptr == RasterizerState)
 	{
-		MSGASSERT("존재하지 않는 뎁스 스텐실입니다.");
+		MSGASSERT("[머티리얼 뎁스 스테이트 연결 실패]\n 해당 뎁스 스테이트가 존재하지 않습니다. 이름을 확인해주세요.");
 	}
 }
 
@@ -60,7 +62,7 @@ void UEngineMaterial::SetBlend(std::string_view _Name)
 
 	if (nullptr == Blend)
 	{
-		MSGASSERT("존재하지 않는 알파 블렌드입니다.");
+		MSGASSERT("[머리티얼 블렌드 연결 실패]\n 해당 블렌드가 존재하지 않습니다. 이름을 확인해주세요.");
 	}
 }
 
@@ -71,13 +73,13 @@ std::shared_ptr<UEngineMaterial> UEngineMaterial::Create(std::string_view _Name)
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 같은 이름의 머티리얼이 존재합니다. " + UpperName);
+		MSGASSERT("[이름 중복] \n 머티리얼 이름을 변경해주세요. " + UpperName);
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineMaterial> NewRes = std::make_shared<UEngineMaterial>();
-	PushResource<UEngineMaterial>(NewRes, _Name, ""); // 텍스처 데이터 저장
-	return NewRes; 
+	std::shared_ptr<UEngineMaterial> NewMaterial = std::make_shared<UEngineMaterial>();
+	PushResource<UEngineMaterial>(NewMaterial, _Name, "");
+	return NewMaterial; 
 }
 
 void UEngineMaterial::PrimitiveTopologySetting()

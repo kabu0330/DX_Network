@@ -29,10 +29,10 @@ std::shared_ptr<class ACameraActor> ULevel::SpawnCamera(int _Order)
 
 ULevel::ULevel()
 {
-	SpawnCamera(EEngineCameraType::MainCamera); // 메인카메라
+	SpawnCamera(EEngineCameraType::MAIN_CAMERA); // 메인카메라
 
-	std::shared_ptr<ACameraActor> UICamera = SpawnCamera(EEngineCameraType::UICamera); // UI 카메라
-	UICamera->GetCameraComponent()->SetProjectionType(EProjectionType::Orthographic); // UI카메라는 원근투영 안한다.
+	std::shared_ptr<ACameraActor> UI_CAMERA = SpawnCamera(EEngineCameraType::UI_CAMERA); // UI 카메라
+	UI_CAMERA->GetCameraComponent()->SetProjectionType(EProjectionType::ORTHOGRAPHIC); // UI카메라는 원근투영 안한다.
 
 	// 화면에 그려질 최종 렌더타겟을 만든다.
 	LastRenderTarget = std::make_shared<UEngineRenderTarget>();
@@ -127,7 +127,7 @@ void ULevel::Render(float _DeltaTime)
 
 	for (std::pair<const int, std::shared_ptr<ACameraActor>>& Camera : Cameras)
 	{
-		if (Camera.first == static_cast<int>(EEngineCameraType::UICamera)) 	// UI카메라는 따로 렌더를 돌려준다.
+		if (Camera.first == static_cast<int>(EEngineCameraType::UI_CAMERA)) 	// UI카메라는 따로 렌더를 돌려준다.
 		{
 			continue;
 		}
@@ -149,12 +149,12 @@ void ULevel::Render(float _DeltaTime)
 	// 여기서 하면 화면 전체 포스트 이펙트 적용
 	// LastRenderTarget->PostEffect(); 
 
-	if (true == Cameras.contains(static_cast<int>(EEngineCameraType::UICamera))) // UI카메라는 따로 렌더를 돌려준다.
+	if (true == Cameras.contains(static_cast<int>(EEngineCameraType::UI_CAMERA))) // UI카메라는 따로 렌더를 돌려준다.
 	{
-		std::shared_ptr<ACameraActor> CameraActor = Cameras[static_cast<int>(EEngineCameraType::UICamera)];
+		std::shared_ptr<ACameraActor> CameraActor = Cameras[static_cast<int>(EEngineCameraType::UI_CAMERA)];
 		if (true == CameraActor->IsActive()) // UI카메라가 액티브 상태일때만 돌린다.
 		{
-			std::shared_ptr<UEngineCamera> CameraComponent = Cameras[static_cast<int>(EEngineCameraType::UICamera)]->GetCameraComponent();
+			std::shared_ptr<UEngineCamera> CameraComponent = Cameras[static_cast<int>(EEngineCameraType::UI_CAMERA)]->GetCameraComponent();
 
 			CameraActor->Tick(_DeltaTime); // 틱도 돌리고
 			CameraComponent->CameraTarget->Clear(); // 화면도 지우고

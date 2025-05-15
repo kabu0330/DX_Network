@@ -9,11 +9,10 @@
 #include "Level.h"
 #include <memory>
 
-// 설명 : 게임 루프를 돌릴 핵심 클래스
+// 설명 : 게임 루프, 레벨 생성 및 관리
 class UEngineCore
 {
 public:
-
 	ENGINEAPI static void EngineStart(HINSTANCE _Instance, std::string_view _DllName);
 
 	template<typename GameModeType, typename MainPawnType, typename HUDType>
@@ -94,7 +93,7 @@ private:
 	UEngineTimer Timer = UEngineTimer();
 
 	static void WindowInit(HINSTANCE _Instance);
-	static void LoadContents(std::string_view _DllName);
+	static void LoadContentsDll(std::string_view _DllName);
 
 	static void EngineFrame();
 	static void EngineEnd();
@@ -110,7 +109,6 @@ private:
 
 	ENGINEAPI static void SetGameInstance(std::shared_ptr<UGameInstance> _Inst);
 
-	// constrcuter destructer
 	ENGINEAPI UEngineCore();
 	ENGINEAPI virtual ~UEngineCore();
 };

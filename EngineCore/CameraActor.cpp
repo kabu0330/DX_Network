@@ -36,11 +36,11 @@ void ACameraActor::Tick(float _DeltaTime)
 		{
 			switch (CameraComponent->ProjectionType)
 			{
-			case EProjectionType::Perspective:
-				CameraComponent->ProjectionType = EProjectionType::Orthographic;
+			case EProjectionType::PERSPECTIVE:
+				CameraComponent->ProjectionType = EProjectionType::ORTHOGRAPHIC;
 				break;
-			case EProjectionType::Orthographic:
-				CameraComponent->ProjectionType = EProjectionType::Perspective;
+			case EProjectionType::ORTHOGRAPHIC:
+				CameraComponent->ProjectionType = EProjectionType::PERSPECTIVE;
 				break;
 			default:
 				break;
@@ -171,7 +171,7 @@ void ACameraActor::FreeCameraCheck()
 	{
 		PrevTrans = GetActorTransform();
 		PrevProjectionType = GetCameraComponent()->ProjectionType;
-		GetCameraComponent()->ProjectionType = EProjectionType::Perspective;
+		GetCameraComponent()->ProjectionType = EProjectionType::PERSPECTIVE;
 	}
 	else
 	{

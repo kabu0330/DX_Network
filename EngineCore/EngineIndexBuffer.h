@@ -6,15 +6,8 @@
 class UEngineIndexBuffer : public UEngineResources, public UEngineDeviceBuffer
 {
 public:
-	// constrcuter destructer
 	UEngineIndexBuffer();
 	~UEngineIndexBuffer();
-
-	// delete Function
-	UEngineIndexBuffer(const UEngineIndexBuffer& _Other) = delete;
-	UEngineIndexBuffer(UEngineIndexBuffer&& _Other) noexcept = delete;
-	UEngineIndexBuffer& operator=(const UEngineIndexBuffer& _Other) = delete;
-	UEngineIndexBuffer& operator=(UEngineIndexBuffer&& _Other) noexcept = delete;
 
 	template<typename IndexType>
 	static std::shared_ptr<UEngineIndexBuffer> Create(std::string_view _Name, const std::vector<IndexType>& _Data)
@@ -38,5 +31,12 @@ private:
 	UINT IndexSize = 0;
 	UINT IndexCount = 0;
 	DXGI_FORMAT Format = DXGI_FORMAT::DXGI_FORMAT_R32_UINT;
+
+private:
+	// delete Function
+	UEngineIndexBuffer(const UEngineIndexBuffer& _Other) = delete;
+	UEngineIndexBuffer(UEngineIndexBuffer&& _Other) noexcept = delete;
+	UEngineIndexBuffer& operator=(const UEngineIndexBuffer& _Other) = delete;
+	UEngineIndexBuffer& operator=(UEngineIndexBuffer&& _Other) noexcept = delete;
 };
 

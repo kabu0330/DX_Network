@@ -15,14 +15,14 @@ std::shared_ptr<UMesh> UMesh::Create(std::string_view _Name, std::string_view _V
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 도 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[이름 중복] \n 메시 이름을 변경해주세요." + UpperName);
 		return nullptr;
 	}
 
-	std::shared_ptr<UMesh> NewRes = std::make_shared<UMesh>();
-	PushResource<UMesh>(NewRes, _Name, "");
-	NewRes->VertexBuffer = UEngineVertexBuffer::Find<UEngineVertexBuffer>(_VertexBuffer);
-	NewRes->IndexBuffer = UEngineIndexBuffer::Find<UEngineIndexBuffer>(_IndexBuffer);
+	std::shared_ptr<UMesh> NewMesh = std::make_shared<UMesh>();
+	PushResource<UMesh>(NewMesh, _Name, "");
+	NewMesh->VertexBuffer = UEngineVertexBuffer::Find<UEngineVertexBuffer>(_VertexBuffer);
+	NewMesh->IndexBuffer = UEngineIndexBuffer::Find<UEngineIndexBuffer>(_IndexBuffer);
 
-	return NewRes;
+	return NewMesh;
 }

@@ -17,13 +17,12 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 
 	// 지역변수로 생성하여 프로그램이 종료되기 전에 먼저 메모리가 정리되도록하여 static으로 인한 메모리 누수 문제를 이 방법으로 대체한다.
 	UEngineCore EngineCore;
-
 	GEngine = &EngineCore;
 
 	GEngine->ThreadPool.Initialize();
 
 	WindowInit(_Instance);
-	LoadContents(_DllName);
+	LoadContentsDll(_DllName);
 
 	UEngineWindow::WindowMessageLoop(
 		[]()
@@ -31,20 +30,14 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 			UEngineSound::Init();
 			// UEngineDebug::StartConsole();
 			
-			// 1. 그래픽카드 정보를 가져와서 Device와 Context를 생성하고
-			GEngine->Device.CreateDeviceAndContext();
+			GEngine->Device.CreateDeviceAndContext();	// 렌더링 파이프라인 세팅
 
-			// 2. 윈도우 초기 세팅값 및 컨텐츠 리소스를 로드하고
-			GEngine->Core->EngineStart(GEngine->Data);
-			
-			// 3. 윈도우 크기를 조절하고
+			GEngine->Core->EngineStart(GEngine->Data);  // 윈도우 크기 세팅, 리소스 로드
 			GEngine->MainWindow.SetWindowPosAndScale(GEngine->Data.WindowPos, GEngine->Data.WindowSize);
 
-			// 4. 윈도우 크기 정보를 바탕으로 백버퍼를 생성한다.
-			GEngine->Device.CreateBackBuffer(GEngine->MainWindow);
+			GEngine->Device.CreateBackBuffer(GEngine->MainWindow); // 백버퍼 생성
 
-			// 5. IMGUI 로드
-			UEngineGUI::Init();
+			UEngineGUI::Init(); // IMGUI 생성
 		},
 		[]()
 		{
@@ -64,7 +57,7 @@ void UEngineCore::WindowInit(HINSTANCE _Instance)
 	GEngine->MainWindow.Open("MainWindow");
 }
 
-void UEngineCore::LoadContents(std::string_view _DllName)
+void UEngineCore::LoadContentsDll(std::string_view _DllName)
 {
 	UEngineDirectory Dir;
 	Dir.MoveParentToDirectory("Build");

@@ -16,17 +16,17 @@ std::shared_ptr<UEngineVertexBuffer> UEngineVertexBuffer::Create(std::string_vie
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 다시 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[이름 중복] \n 버텍스 버퍼 이름을 변경해주세요." + UpperName);
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineVertexBuffer> NewRes = std::make_shared<UEngineVertexBuffer>();
-	PushResource<UEngineVertexBuffer>(NewRes, _Name, "");
-	NewRes->CreateViewObject(_InitData, _VertexSize, _VertexCount);
-	NewRes->InfoPtr = _InfoPtr;
+	std::shared_ptr<UEngineVertexBuffer> NewVertexBuffer = std::make_shared<UEngineVertexBuffer>();
+	PushResource<UEngineVertexBuffer>(NewVertexBuffer, _Name, "");
+	NewVertexBuffer->CreateViewObject(_InitData, _VertexSize, _VertexCount);
+	NewVertexBuffer->InfoPtr = _InfoPtr;
 	
 
-	return NewRes;
+	return NewVertexBuffer;
 }
 
 void UEngineVertexBuffer::CreateViewObject(const void* _InitData, size_t _VertexSize, size_t _VertexCount)

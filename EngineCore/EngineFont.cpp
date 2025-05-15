@@ -36,7 +36,7 @@ UEngineFont::~UEngineFont()
 {
 }
 
-std::shared_ptr<UEngineFont> UEngineFont::Load(std::string_view _Name, std::string_view _Path)
+std::shared_ptr<UEngineFont> UEngineFont::LoadFont(std::string_view _Name, std::string_view _Path)
 {
 	std::string UpperName = ToUpperName(_Name);
 
@@ -47,12 +47,12 @@ std::shared_ptr<UEngineFont> UEngineFont::Load(std::string_view _Name, std::stri
 	}
 
 	std::shared_ptr<UEngineFont> NewRes = std::make_shared<UEngineFont>();
-	PushRes<UEngineFont>(NewRes, _Name, _Path);
-	NewRes->ResLoad(_Path);
+	PushResource<UEngineFont>(NewRes, _Name, _Path);
+	NewRes->LoadResource(_Path);
 	return NewRes;
 }
 
-void UEngineFont::ResLoad(std::string_view _Path)
+void UEngineFont::LoadResource(std::string_view _Path)
 {
 	std::wstring WPath = UEngineString::AnsiToUnicode(_Path);
 

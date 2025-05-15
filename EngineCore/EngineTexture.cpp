@@ -15,7 +15,21 @@ UEngineTexture::~UEngineTexture()
 {
 }
 
-std::shared_ptr<UEngineTexture> UEngineTexture::Load(std::string_view _Name, std::string_view _Path)
+std::shared_ptr<UEngineTexture> UEngineTexture::LoadTextureThreadSafe(std::string_view _Name, std::string_view _Path)
+{
+	std::string UpperName = ToUpperName(_Name);
+	if (true == Contains(UpperName))
+	{
+		MSGASSERT("이미 로드한 텍스처입니다." + UpperName);
+		return nullptr;
+	}
+
+	std::shared_ptr<UEngineTexture> NewTexure = std::make_shared<UEngineTexture>();
+
+	return std::shared_ptr<UEngineTexture>();
+}
+
+std::shared_ptr<UEngineTexture> UEngineTexture::LoadTexture(std::string_view _Name, std::string_view _Path)
 {
 	std::string UpperName = ToUpperName(_Name);
 
@@ -25,26 +39,26 @@ std::shared_ptr<UEngineTexture> UEngineTexture::Load(std::string_view _Name, std
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineTexture> NewRes =  std::make_shared<UEngineTexture>();
-	PushRes<UEngineTexture>(NewRes, _Name, _Path); // 텍스처를 관리구조에 편입
-	NewRes->ResLoad();
+	std::shared_ptr<UEngineTexture> NewTexture =  std::make_shared<UEngineTexture>();
+	PushResource<UEngineTexture>(NewTexture, _Name, _Path); // 텍스처를 관리구조에 편입
+	NewTexture->LoadResource();
 
-	return NewRes;
+	return NewTexture;
 }
 
-void UEngineTexture::ResLoad()
+void UEngineTexture::LoadResource()
 {
 	UEngineFile File = Path;
 
 	std::string Str = File.GetPathToString();
 	std::string Ext = File.GetExtension();
-	std::wstring wLoadPath = UEngineString::AnsiToUnicode(Str.c_str());
+	std::wstring WLoadPath = UEngineString::AnsiToUnicode(Str.c_str());
 	std::string UpperExt = UEngineString::ToUpper(Ext.c_str());
 
 
 	if (UpperExt == ".DDS")
 	{
-		if (S_OK != DirectX::LoadFromDDSFile(wLoadPath.c_str(), DirectX::DDS_FLAGS_NONE, &Metadata, ImageData))
+		if (S_OK != DirectX::LoadFromDDSFile(WLoadPath.c_str(), DirectX::DDS_FLAGS_NONE, &Metadata, ImageData))
 		{
 			MSGASSERT("DDS 파일 로드에 실패했습니다.");
 			return;
@@ -52,7 +66,7 @@ void UEngineTexture::ResLoad()
 	}
 	else if (UpperExt == ".TGA")
 	{
-		if (S_OK != DirectX::LoadFromTGAFile(wLoadPath.c_str(), DirectX::TGA_FLAGS_NONE, &Metadata, ImageData))
+		if (S_OK != DirectX::LoadFromTGAFile(WLoadPath.c_str(), DirectX::TGA_FLAGS_NONE, &Metadata, ImageData))
 		{
 			MSGASSERT("TGA 파일 로드에 실패했습니다.");
 			return;
@@ -60,7 +74,7 @@ void UEngineTexture::ResLoad()
 	}
 	else
 	{
-		if (S_OK != DirectX::LoadFromWICFile(wLoadPath.c_str(), DirectX::WIC_FLAGS_NONE, &Metadata, ImageData))
+		if (S_OK != DirectX::LoadFromWICFile(WLoadPath.c_str(), DirectX::WIC_FLAGS_NONE, &Metadata, ImageData))
 		{
 			MSGASSERT(UpperExt + "파일 로드에 실패했습니다.");
 			return;

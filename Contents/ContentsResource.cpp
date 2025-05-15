@@ -2,22 +2,25 @@
 #include "ContentsResource.h"
 #include <EnginePlatform/EngineSound.h>
 #include <EngineCore/EngineFont.h>
+#include <EngineCore/EngineTexture.h>
 
 void UContentsResource::LoadResource()
 {
-	{
+	{	// 1. 이미지 파일 로드
 		UEngineDirectory Dir;
 		if (false == Dir.MoveParentToDirectory("ContentsResources"))
 		{
 			MSGASSERT("리소스 폴더를 찾지 못했습니다.");
 			return;
 		}
+
 		Dir.Append("Image");
+
 		std::vector<UEngineFile> ImageFiles = Dir.GetAllFile(true, { ".PNG", ".BMP", ".JPG" });
 		for (size_t i = 0; i < ImageFiles.size(); i++)
 		{
 			std::string FilePath = ImageFiles[i].GetPathToString();
-			UEngineTexture::Load(FilePath);
+			UEngineTexture::LoadTexture(FilePath);
 		}
 	}
 
@@ -31,7 +34,7 @@ void UContentsResource::LoadResource()
 		for (size_t i = 0; i < ImageFiles.size(); i++)
 		{
 			std::string FilePath = ImageFiles[i].GetPathToString();
-			UEngineTexture::Load(FilePath);
+			UEngineTexture::LoadTexture(FilePath);
 		}
 	}
 
@@ -45,7 +48,7 @@ void UContentsResource::LoadResource()
 		for (size_t i = 0; i < ImageFiles.size(); i++)
 		{
 			std::string FilePath = ImageFiles[i].GetPathToString();
-			UEngineTexture::Load(FilePath);
+			UEngineTexture::LoadTexture(FilePath);
 		}
 	}	
 
@@ -57,13 +60,14 @@ void UContentsResource::LoadResource()
 			return;
 		}
 		Dir.Append("Sound");
-		// 로딩바 만들고 싶으면  100개면 10 10 10 10 10 10
+
+
 		std::vector<UEngineFile> ImageFiles = Dir.GetAllFile(true, { ".wav", ".mp3" });
 
 		for (size_t i = 0; i < ImageFiles.size(); i++)
 		{
 			std::string FilePath = ImageFiles[i].GetPathToString();
-			UEngineSound::Load(FilePath);
+			UEngineSound::LoadSound(FilePath);
 		}
 	}
 }
@@ -76,7 +80,7 @@ void UContentsResource::LoadFont()
 		Dir.MoveParentToDirectory("ContentsResources");
 		Dir.Append("Font/TrajanPro-Regular.otf");
 		std::string FilePath = Dir.GetPathToString();
-		UEngineFont::Load("TrajanPro-Regular", FilePath);
+		UEngineFont::LoadFont("TrajanPro-Regular", FilePath);
 	}
 	{
 		// 폰트
@@ -84,7 +88,7 @@ void UContentsResource::LoadFont()
 		Dir.MoveParentToDirectory("ContentsResources");
 		Dir.Append("Font/NotoSerifCJKsc-Regular.otf");
 		std::string FilePath = Dir.GetPathToString();
-		UEngineFont::Load("NotoSerifCJKsc-Regular", FilePath);
+		UEngineFont::LoadFont("NotoSerifCJKsc-Regular", FilePath);
 	}
 	{
 		// 폰트
@@ -92,7 +96,7 @@ void UContentsResource::LoadFont()
 		Dir.MoveParentToDirectory("ContentsResources");
 		Dir.Append("Font/Perpetua.ttf");
 		std::string FilePath = Dir.GetPathToString();
-		UEngineFont::Load("Perpetua", FilePath);
+		UEngineFont::LoadFont("Perpetua", FilePath);
 	}
 	{
 		// 폰트
@@ -100,7 +104,7 @@ void UContentsResource::LoadFont()
 		Dir.MoveParentToDirectory("ContentsResources");
 		Dir.Append("Font/TrajanPro-Bold.otf");
 		std::string FilePath = Dir.GetPathToString();
-		UEngineFont::Load("TrajanPro-Bold", FilePath);
+		UEngineFont::LoadFont("TrajanPro-Bold", FilePath);
 	}
 }
 

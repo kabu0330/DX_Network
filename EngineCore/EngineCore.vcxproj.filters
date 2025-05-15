@@ -451,25 +451,25 @@
     <None Include="ThirdParty\DirectxTex\Inc\DirectXTex.inl">
       <Filter>06_ThirdParty\DirectxTex\Inc</Filter>
     </None>
-    <None Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.dll">
-      <Filter>06_ThirdParty\FW1FontWrapper\Debug</Filter>
-    </None>
-    <None Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.dll">
-      <Filter>06_ThirdParty\FW1FontWrapper\Release</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="ThirdParty\DirectxTex\Debug\DirectXTex_Debug.lib">
+    <CopyFileToFolders Include="ThirdParty\DirectxTex\Debug\DirectXTex_Debug.lib">
       <Filter>06_ThirdParty\DirectxTex\Debug</Filter>
-    </Library>
-    <Library Include="ThirdParty\DirectxTex\Release\DirectXTex_Release.lib">
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\DirectxTex\Release\DirectXTex_Release.lib">
       <Filter>06_ThirdParty\DirectxTex\Release</Filter>
-    </Library>
-    <Library Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.lib">
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.dll">
       <Filter>06_ThirdParty\FW1FontWrapper\Debug</Filter>
-    </Library>
-    <Library Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.lib">
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Debug\FW1FontWrapper.lib">
+      <Filter>06_ThirdParty\FW1FontWrapper\Debug</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.dll">
       <Filter>06_ThirdParty\FW1FontWrapper\Release</Filter>
-    </Library>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ThirdParty\FW1FontWrapper\Release\FW1FontWrapper.lib">
+      <Filter>06_ThirdParty\FW1FontWrapper\Release</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

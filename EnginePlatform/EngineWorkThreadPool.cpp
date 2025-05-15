@@ -15,7 +15,7 @@ void UEngineWorkThreadPool::Initialize(std::string_view ThreadName /*= "WorkThre
 	{
 		SYSTEM_INFO Info;
 		GetSystemInfo(&Info);
-		ThreadCount = Info.dwNumberOfProcessors; // 내 컴퓨터의 코어 개수
+		ThreadCount = Info.dwNumberOfProcessors * 2; // 내 컴퓨터의 코어 개수
 	}
 
 	RunningCount = ThreadCount;
@@ -29,9 +29,6 @@ void UEngineWorkThreadPool::Initialize(std::string_view ThreadName /*= "WorkThre
 	/*FILE* FILE;
 	SOCKET Socket;
 	CreateIoCompletionPort(IOCPHandle, Socket, 0, 0);*/
-
-	// 서버통신을 하면 이걸 사용해서 이 파일을 관리하고 
-	// CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
 
 	if (nullptr == IOCPHandle)
 	{

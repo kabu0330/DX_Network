@@ -23,7 +23,7 @@ std::shared_ptr<UEngineDepthStencilState> UEngineDepthStencilState::Create(std::
 	}
 
 	std::shared_ptr<UEngineDepthStencilState> NewRes = std::make_shared<UEngineDepthStencilState>();
-	PushRes<UEngineDepthStencilState>(NewRes, _Name, "");
+	PushResource<UEngineDepthStencilState>(NewRes, _Name, "");
 	NewRes->CreateViewObject(_Value);
 
 	return NewRes;

@@ -20,7 +20,7 @@ std::shared_ptr<UEngineRasterizerState> UEngineRasterizerState::Create(std::stri
 	}
 
 	std::shared_ptr<UEngineRasterizerState> NewRes = std::make_shared<UEngineRasterizerState>();
-	PushRes<UEngineRasterizerState>(NewRes, _Name, "");
+	PushResource<UEngineRasterizerState>(NewRes, _Name, "");
 	NewRes->CreateViewObject(_Value);
 
 	return NewRes;

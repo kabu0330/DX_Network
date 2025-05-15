@@ -21,7 +21,7 @@ std::shared_ptr<UEngineBlend> UEngineBlend::Create(std::string_view _Name, const
 	}
 
 	std::shared_ptr<UEngineBlend> NewRes = std::make_shared<UEngineBlend>();
-	PushRes<UEngineBlend>(NewRes, _Name, "");
+	PushResource<UEngineBlend>(NewRes, _Name, "");
 	NewRes->CreateViewObject(_Value);
 
 	return NewRes;

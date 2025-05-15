@@ -23,7 +23,7 @@ std::shared_ptr<UEngineSampler> UEngineSampler::Create(std::string_view _Name, c
 	}
 
 	std::shared_ptr<UEngineSampler> NewRes = std::make_shared<UEngineSampler>();
-	PushRes<UEngineSampler>(NewRes, _Name, "");
+	PushResource<UEngineSampler>(NewRes, _Name, "");
 	NewRes->CreateViewObject(_Value);
 
 	return NewRes;

@@ -45,8 +45,8 @@ public:
 	UEngineSound& operator=(const UEngineSound& _Other) = delete;
 	UEngineSound& operator=(UEngineSound&& _Other) noexcept = delete;
 
-	ENGINEAPI static void Load(std::string_view _Path);
-	ENGINEAPI static void Load(std::string_view _Name, std::string_view _Path);
+	ENGINEAPI static void LoadSound(std::string_view _Path);
+	ENGINEAPI static void LoadSound(std::string_view _Name, std::string_view _Path);
 	ENGINEAPI static USoundPlayer Play(std::string_view _Name);
 	ENGINEAPI static UEngineSound* Find(std::string_view _Name);
 	ENGINEAPI static void Release();

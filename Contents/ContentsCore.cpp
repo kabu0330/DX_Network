@@ -12,6 +12,7 @@
 #include "ContentsResource.h"
 #include "MapEditorGameMode.h"
 #include "ContentsEditorGUI.h"
+#include "ThreadTestLevel.h"
 
 #include "TestGameMode.h"
 
@@ -45,14 +46,15 @@ void UContentsCore::SetWindowSize(UEngineInitData& _Data)
 
 void UContentsCore::CreateLevel()
 {
-	UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
+	//UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
+	UEngineCore::CreateLevel<AThreadTestLevel, APawn, AHUD>("Test");
 	//UEngineCore::CreateLevel<AMapEditorGameMode, APawn, AHUD>("MapEditorMode");
 }
 
 void UContentsCore::OpenLevel()
 {
 #ifdef _DEBUG
-	UEngineCore::OpenLevel("Title");
+	UEngineCore::OpenLevel("Test");
 #else
 	UEngineCore::OpenLevel("Title");
 #endif

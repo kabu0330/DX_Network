@@ -76,7 +76,7 @@ std::shared_ptr<UEngineMaterial> UEngineMaterial::Create(std::string_view _Name)
 	}
 
 	std::shared_ptr<UEngineMaterial> NewRes = std::make_shared<UEngineMaterial>();
-	PushRes<UEngineMaterial>(NewRes, _Name, ""); // 텍스처 데이터 저장
+	PushResource<UEngineMaterial>(NewRes, _Name, ""); // 텍스처 데이터 저장
 	return NewRes; 
 }
 

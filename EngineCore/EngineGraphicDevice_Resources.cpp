@@ -21,7 +21,7 @@ void UEngineGraphicDevice::DefaultResourcesInit()
 	ShaderInit();
 	MaterialInit();
 
-	UEngineFont::Load("±Ã¼­", "±Ã¼­");
+	UEngineFont::LoadFont("±Ã¼­", "±Ã¼­");
 }
 
 void UEngineGraphicDevice::DepthStencilInit()
@@ -105,7 +105,7 @@ void UEngineGraphicDevice::TextureInit()
 		for (size_t i = 0; i < ImageFiles.size(); i++)
 		{
 			std::string FilePath = ImageFiles[i].GetPathToString();
-			UEngineTexture::Load(FilePath);
+			UEngineTexture::LoadTexture(FilePath);
 		}
 	}
 }

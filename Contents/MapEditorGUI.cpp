@@ -493,7 +493,7 @@ void MapEditorGUI::SaveFile()
 
 void MapEditorGUI::LoadFile()
 {
-	if (true == ImGui::Button("Load"))
+	if (true == ImGui::Button("LoadTexture"))
 	{
 		UEngineDirectory Dir;
 		if (false == Dir.MoveParentToDirectory("ContentsResources"))

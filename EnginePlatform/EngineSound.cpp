@@ -213,15 +213,15 @@ UEngineSound::~UEngineSound()
 	}
 }
 
-void UEngineSound::Load(std::string_view _Path)
+void UEngineSound::LoadSound(std::string_view _Path)
 {
 	UEnginePath EnginePath = UEnginePath(_Path);
 	std::string FileName = EnginePath.GetFileName();
 
-	UEngineSound::Load(FileName.data(), _Path);
+	UEngineSound::LoadSound(FileName.data(), _Path);
 }
 
-void UEngineSound::Load(std::string_view _Name, std::string_view _Path)
+void UEngineSound::LoadSound(std::string_view _Name, std::string_view _Path)
 {
 	// 이녀석은 UTF-8로 경로를 바꿔줘야 할수 있다.
 	std::string UpperString = UEngineString::ToUpper(_Name);

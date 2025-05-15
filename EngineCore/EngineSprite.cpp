@@ -24,7 +24,7 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToFolder(std::string_v
 	}
 
 	std::shared_ptr<UEngineSprite> NewRes = std::make_shared<UEngineSprite>();
-	PushRes<UEngineSprite>(NewRes, _Name, "");
+	PushResource<UEngineSprite>(NewRes, _Name, "");
 
 	for (size_t i = 0; i < Files.size(); i++)
 	{
@@ -61,7 +61,7 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToMeta(std::string_vie
 	}
 
 	std::shared_ptr<UEngineSprite> NewRes = std::make_shared<UEngineSprite>();
-	PushRes<UEngineSprite>(NewRes, _Name, "");
+	PushResource<UEngineSprite>(NewRes, _Name, "");
 
 	UEnginePath Path = Tex->GetPath();
 	std::string FileName = Path.GetFileName();

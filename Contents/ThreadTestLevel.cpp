@@ -1,36 +1,36 @@
 #include "PreCompile.h"
 #include "ThreadTestLevel.h"
+#include "TestGameMode.h"
 
-ThreadTestLevel::ThreadTestLevel()
+AThreadTestLevel::AThreadTestLevel()
 {
 }
 
-ThreadTestLevel::~ThreadTestLevel()
+AThreadTestLevel::~AThreadTestLevel()
 {
 }
 
-void ThreadTestLevel::BeginPlay()
+void AThreadTestLevel::BeginPlay()
 {
 	Super::BeginPlay();
 }
 
-void ThreadTestLevel::Tick(float _DeltaTime)
+void AThreadTestLevel::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
 }
 
-void ThreadTestLevel::LevelChangeStart()
+void AThreadTestLevel::LevelChangeStart()
 {
 	if (false == ThreadLoadingEnd)
 	{
 		Thread.Start("Loading", [this]()
 			{
-				for (size_t i = 0; i < 100000; i++)
-				{
-					UEngineDebug::OutPutString("Loading.....");
-				}
-
-				ThreadLoadingInit = true;
+				UEngineCore::GetThreadPool().WorkQueue([this]()
+					{
+						//UEngineTexture::LoadTexutre
+					});
 			});
+
 	}
 }

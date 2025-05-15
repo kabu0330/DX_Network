@@ -1,20 +1,20 @@
 #pragma once
 #include <EnginePlatform/EngineThread.h>
-#include <EngineCore/Actor.h>
+#include <EngineCore/GameMode.h>
 
 // Ό³Έν :
-class ThreadTestLevel : public AActor
+class AThreadTestLevel : public AGameMode
 {
 public:
 	// construter destructer
-	ThreadTestLevel();
-	~ThreadTestLevel();
+	AThreadTestLevel();
+	~AThreadTestLevel();
 
 	// delete Function
-	ThreadTestLevel(const ThreadTestLevel& _Other) = delete;
-	ThreadTestLevel(ThreadTestLevel&& _Other) noexcept = delete;
-	ThreadTestLevel& operator=(const ThreadTestLevel& _Other) = delete;
-	ThreadTestLevel& operator=(ThreadTestLevel&& _Other) noexcept = delete;
+	AThreadTestLevel(const AThreadTestLevel& _Other) = delete;
+	AThreadTestLevel(AThreadTestLevel&& _Other) noexcept = delete;
+	AThreadTestLevel& operator=(const AThreadTestLevel& _Other) = delete;
+	AThreadTestLevel& operator=(AThreadTestLevel&& _Other) noexcept = delete;
 
 protected:
 	void BeginPlay() override;

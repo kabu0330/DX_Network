@@ -10,37 +10,33 @@ UEngineSampler::~UEngineSampler()
 {
 }
 
-
-
 std::shared_ptr<UEngineSampler> UEngineSampler::Create(std::string_view _Name, const D3D11_SAMPLER_DESC& _Value)
 {
 	std::string UpperName = ToUpperName(_Name);
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 도 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[이름 중복]\n 샘플러 이름을 변경해주세요." + UpperName);
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineSampler> NewRes = std::make_shared<UEngineSampler>();
-	PushResource<UEngineSampler>(NewRes, _Name, "");
-	NewRes->CreateViewObject(_Value);
+	std::shared_ptr<UEngineSampler> NewSampler = std::make_shared<UEngineSampler>();
+	PushResource<UEngineSampler>(NewSampler, _Name, "");
+	NewSampler->CreateSamplerState(_Value);
 
-	return NewRes;
+	return NewSampler;
 }
 
-
-void UEngineSampler::CreateViewObject(const D3D11_SAMPLER_DESC& _Value)
+void UEngineSampler::CreateSamplerState(const D3D11_SAMPLER_DESC& _Value)
 {
 	if (UEngineCore::GetDevice().GetDevice()->CreateSamplerState(&_Value, &State))
 	{
-		MSGASSERT("블랜드 스테이트 생성에 실패했습니다");
+		MSGASSERT("샘플러 스테이트 생성에 실패했습니다.");
 		return;
 	}
-	
 }
 
-void UEngineSampler::Setting(EShaderType _Type, UINT _BindIndex)
+void UEngineSampler::BindToShaderSlot(EShaderType _Type, UINT _BindIndex)
 {
 	ID3D11SamplerState* ArrPtr[1] = { State.Get() };
 
@@ -62,7 +58,7 @@ void UEngineSampler::Setting(EShaderType _Type, UINT _BindIndex)
 	}
 }
 
-void UEngineSampler::Reset(EShaderType _Type, UINT _BindIndex)
+void UEngineSampler::UnbindFromShaderSlot(EShaderType _Type, UINT _BindIndex)
 {
 	ID3D11SamplerState* ArrPtr[1] = { nullptr };
 

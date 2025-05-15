@@ -98,8 +98,7 @@ void UEngineTexture::LoadResource()
 	Size.Y = static_cast<float>(Metadata.height);
 }
 
-// 셰이더 타입에 따라 상수버퍼 세팅
-void UEngineTexture::Setting(EShaderType _Type, UINT _BindIndex)
+void UEngineTexture::BindToShaderSlot(EShaderType _Type, UINT _BindIndex)
 {
 	ID3D11ShaderResourceView* ArrPtr[1] = { SRV.Get() };
 
@@ -116,12 +115,12 @@ void UEngineTexture::Setting(EShaderType _Type, UINT _BindIndex)
 	case EShaderType::GS:
 	case EShaderType::CS:
 	default:
-		MSGASSERT("아직 존재하지 않는 쉐이더에 세팅하려고 했습니다.");
+		MSGASSERT("현재 존재하지 않는 셰이더 타입입니다.");
 		break;
 	}
 }
 
-void UEngineTexture::Reset(EShaderType _Type, UINT _BindIndex)
+void UEngineTexture::UnbindFromShaderSlot(EShaderType _Type, UINT _BindIndex)
 {
 	ID3D11ShaderResourceView* ArrPtr[1] = { nullptr };
 

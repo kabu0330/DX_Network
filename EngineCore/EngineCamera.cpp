@@ -25,8 +25,8 @@ void UEngineCamera::BeginPlay()
 
 	// 카메라마다 렌더 타겟을 가지게 된다.
 	CameraTarget = std::make_shared<UEngineRenderTarget>();
-	CameraTarget->CreateTarget(UEngineCore::GetScreenScale());
-	CameraTarget->CreateDepth();
+	CameraTarget->CreateRenderTargetView(UEngineCore::GetScreenScale());
+	CameraTarget->CreateDepthTexture();
 }
 
 UEngineCamera::~UEngineCamera()
@@ -48,8 +48,8 @@ void UEngineCamera::Render(float _DetlaTime)
 	// 랜더링 진입하기 전에 한번 뷰포트 세팅하고 
 	UEngineCore::GetDevice().GetContext()->RSSetViewports(1, &ViewPortInfo);
 
-	CameraTarget->Clear();	// 화면을 지우고
-	CameraTarget->Setting(); // 출력 병합한다.
+	CameraTarget->ClearRenderTargetView();	// 화면을 지우고
+	CameraTarget->OMSetRenderTargets(); // 출력 병합한다.
 
 	// Ranged for를 돌릴때는 복사가 일어난다.
 	for (std::pair<const int, std::list<std::shared_ptr<URenderer>>>& RenderGroup : Renderers)

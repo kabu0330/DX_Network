@@ -130,7 +130,7 @@
     <ClInclude Include="EngineRasterizerState.h">
       <Filter>07_Resources</Filter>
     </ClInclude>
-    <ClInclude Include="EngineShaderResources.h">
+    <ClInclude Include="ShaderBindingManager.h">
       <Filter>10_Render</Filter>
     </ClInclude>
     <ClInclude Include="RenderUnit.h">
@@ -307,7 +307,7 @@
     <ClCompile Include="RenderUnit.cpp">
       <Filter>10_Render</Filter>
     </ClCompile>
-    <ClCompile Include="EngineShaderResources.cpp">
+    <ClCompile Include="ShaderBindingManager.cpp">
       <Filter>10_Render</Filter>
     </ClCompile>
     <ClCompile Include="EngineDepthStencilState.cpp">

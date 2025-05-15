@@ -198,7 +198,7 @@
     <ClInclude Include="EngineResources.h" />
     <ClInclude Include="EngineSampler.h" />
     <ClInclude Include="EngineShader.h" />
-    <ClInclude Include="EngineShaderResources.h" />
+    <ClInclude Include="ShaderBindingManager.h" />
     <ClInclude Include="EngineSprite.h" />
     <ClInclude Include="EngineTexture.h" />
     <ClInclude Include="EngineVertex.h" />
@@ -266,7 +266,7 @@
     <ClCompile Include="EngineResources.cpp" />
     <ClCompile Include="EngineSampler.cpp" />
     <ClCompile Include="EngineShader.cpp" />
-    <ClCompile Include="EngineShaderResources.cpp" />
+    <ClCompile Include="ShaderBindingManager.cpp" />
     <ClCompile Include="EngineSprite.cpp" />
     <ClCompile Include="EngineTexture.cpp" />
     <ClCompile Include="EngineVertex.cpp" />

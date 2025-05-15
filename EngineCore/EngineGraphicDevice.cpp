@@ -204,17 +204,17 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
 
     // RTV : VRam의 메모리 블록의 쓰기 권한
     BackBufferTarget = std::make_shared<UEngineRenderTarget>();
-    BackBufferTarget->CreateTarget(DXBackBufferTexture);
-    BackBufferTarget->CreateDepth(); // DSV 생성 
+    BackBufferTarget->CreateRenderTargetView(DXBackBufferTexture);
+    BackBufferTarget->CreateDepthTexture(); // DSV 생성 
 }
 
-void UEngineGraphicDevice::RenderStart()
+void UEngineGraphicDevice::ClearRenderTaretView()
 {
-    BackBufferTarget->Clear();
-    BackBufferTarget->Setting();
+    BackBufferTarget->ClearRenderTargetView();
+    BackBufferTarget->OMSetRenderTargets();
 }
 
-void UEngineGraphicDevice::RenderEnd()
+void UEngineGraphicDevice::Present()
 {
     HRESULT Result = SwapChain->Present(0, 0); // 스왑체인이 관리하는 백버퍼와 프론트버퍼를 교환(Swap)
     //             수직동기화 : 0(미사용) / 추가옵션(Flag) : 0(없음)

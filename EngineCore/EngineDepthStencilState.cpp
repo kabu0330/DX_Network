@@ -10,37 +10,33 @@ UEngineDepthStencilState::~UEngineDepthStencilState()
 {
 }
 
-
-
 std::shared_ptr<UEngineDepthStencilState> UEngineDepthStencilState::Create(std::string_view _Name, const D3D11_DEPTH_STENCIL_DESC& _Value)
 {
 	std::string UpperName = ToUpperName(_Name);
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 도 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[이름 중복]\n 뎁스 스텐실 스테이트 이름을 변경해주세요. " + UpperName);
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineDepthStencilState> NewRes = std::make_shared<UEngineDepthStencilState>();
-	PushResource<UEngineDepthStencilState>(NewRes, _Name, "");
-	NewRes->CreateViewObject(_Value);
+	std::shared_ptr<UEngineDepthStencilState> NewDepthStencilState = std::make_shared<UEngineDepthStencilState>();
+	PushResource<UEngineDepthStencilState>(NewDepthStencilState, _Name, "");
+	NewDepthStencilState->CreateDepthStencilState(_Value);
 
-	return NewRes;
+	return NewDepthStencilState;
 }
 
-
-void UEngineDepthStencilState::CreateViewObject(const D3D11_DEPTH_STENCIL_DESC& _Value)
+void UEngineDepthStencilState::CreateDepthStencilState(const D3D11_DEPTH_STENCIL_DESC& _Value)
 {
 	if (UEngineCore::GetDevice().GetDevice()->CreateDepthStencilState(&_Value, &State))
 	{
-		MSGASSERT("블랜드 스테이트 생성에 실패했습니다");
+		MSGASSERT("뎁스 스텐실 스테이트 생성에 실패했습니다.");
 		return;
-	}
-	
+	}	
 }
 
-void UEngineDepthStencilState::Setting()
+void UEngineDepthStencilState::OMSetDepthStencilState()
 {
 	// Omset 최종 픽셀테스트에 영향을 준다.
 	UEngineCore::GetDevice().GetContext()->OMSetDepthStencilState(State.Get(), 0);

@@ -3,7 +3,7 @@
 
 UEngineMaterial::UEngineMaterial()
 {
-	// 이미 만들어진 것들을 저장하는 역할
+	// 초기세팅
 	SetRasterizerState("EngineBase");
 	SetBlend("AlphaBlend");
 	SetDepthStencilState("BaseDepth");
@@ -23,7 +23,6 @@ void UEngineMaterial::SetVertexShader(std::string_view _Name)
 		return;
 	}
 }
-
 
 void UEngineMaterial::SetPixelShader(std::string_view _Name)
 {
@@ -82,7 +81,7 @@ std::shared_ptr<UEngineMaterial> UEngineMaterial::Create(std::string_view _Name)
 	return NewMaterial; 
 }
 
-void UEngineMaterial::PrimitiveTopologySetting()
+void UEngineMaterial::IASetPrimitiveTopology()
 {
 	UEngineCore::GetDevice().GetContext()->IASetPrimitiveTopology(TOPOLOGY);
 }

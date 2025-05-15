@@ -8,28 +8,17 @@
 class UEngineRenderTarget : public UEngineResources
 {
 public:
-	// constrcuter destructer
 	UEngineRenderTarget();
 	~UEngineRenderTarget();
 
-	// delete Function
-	UEngineRenderTarget(const UEngineRenderTarget& _Other) = delete;
-	UEngineRenderTarget(UEngineRenderTarget&& _Other) noexcept = delete;
-	UEngineRenderTarget& operator=(const UEngineRenderTarget& _Other) = delete;
-	UEngineRenderTarget& operator=(UEngineRenderTarget&& _Other) noexcept = delete;
+	ENGINEAPI void CreateRenderTargetView(float4 _Scale, float4 _ClearColor = float4::NONE, DXGI_FORMAT _Format = DXGI_FORMAT::DXGI_FORMAT_R32G32B32A32_FLOAT);
+	ENGINEAPI void CreateRenderTargetView(Microsoft::WRL::ComPtr<ID3D11Texture2D> Texture2D);
 
-	// 백버퍼의 렌더 타겟을 제외한 나머지 렌더 타겟을 만드는 함수
-	ENGINEAPI void CreateTarget(float4 _Scale, float4 _ClearColor = float4::NONE, DXGI_FORMAT _Format = DXGI_FORMAT::DXGI_FORMAT_R32G32B32A32_FLOAT);
+	ENGINEAPI void CreateDepthTexture(int _Index = 0);
 
-	// 백버퍼의 렌더타겟은 스왑체인이 만들어주기 때문에 바로 백버퍼 텍스처를 받아서 렌더타겟뷰를 만든다.
-	ENGINEAPI void CreateTarget(Microsoft::WRL::ComPtr<ID3D11Texture2D> Texture2D);
+	ENGINEAPI void ClearRenderTargetView();
 
-
-	ENGINEAPI void CreateDepth(int _Index = 0);
-
-	ENGINEAPI void Clear();
-
-	ENGINEAPI void Setting();
+	ENGINEAPI void OMSetRenderTargets();
 
 	ENGINEAPI void SetClearColor(float4 _ClearColor)
 	{
@@ -46,12 +35,19 @@ protected:
 private:
 	float4 ClearColor = float4(0.0f, 0.0f, 0.0f, 1.0f);
 
-	std::vector<std::shared_ptr<class UEngineTexture>> ArrTexture;
-	std::vector<ID3D11RenderTargetView*> ArrRTVs;
-	std::vector<ID3D11ShaderResourceView*> ArrSRVs;
+	std::vector<std::shared_ptr<class UEngineTexture>> AllRenderTargetTextures;
+	std::vector<ID3D11RenderTargetView*> AllRTVs;
+	std::vector<ID3D11ShaderResourceView*> AllSRVs;
 
 	std::shared_ptr<class UEngineTexture> DepthTexture;
 
 	URenderUnit TargetUnit;
+
+private:
+	// delete Function
+	UEngineRenderTarget(const UEngineRenderTarget& _Other) = delete;
+	UEngineRenderTarget(UEngineRenderTarget&& _Other) noexcept = delete;
+	UEngineRenderTarget& operator=(const UEngineRenderTarget& _Other) = delete;
+	UEngineRenderTarget& operator=(UEngineRenderTarget&& _Other) noexcept = delete;
 };
 

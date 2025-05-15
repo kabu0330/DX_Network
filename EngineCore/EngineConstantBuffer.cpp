@@ -34,16 +34,16 @@ std::shared_ptr<UEngineConstantBuffer> UEngineConstantBuffer::CreateOrFind(UINT 
 		}
 	} // 그게 아니면 내가 모르는 상수버퍼야. 새로 만들자.
 
-	std::shared_ptr<UEngineConstantBuffer> NewRes = std::make_shared<UEngineConstantBuffer>();
-	NewRes->SetName(UpperName);
-	NewRes->CreateViewObject(_Byte); // 상수 버퍼 생성
-	BufferMap[_Byte][UpperName] = NewRes;
+	std::shared_ptr<UEngineConstantBuffer> NewConstantBuffer = std::make_shared<UEngineConstantBuffer>();
+	NewConstantBuffer->SetName(UpperName);
+	NewConstantBuffer->CreateConstantBuffer(_Byte); 
+	BufferMap[_Byte][UpperName] = NewConstantBuffer;
 
-	return NewRes;
+	return NewConstantBuffer;
 }
 
 // 상수 버퍼 생성, 상수버퍼의 특징은 CPU가 동적으로 계산해준 데이터를 그래픽카드가 읽는 것
-void UEngineConstantBuffer::CreateViewObject(UINT _Byte)
+void UEngineConstantBuffer::CreateConstantBuffer(UINT _Byte)
 {
 	BufferInfo.ByteWidth = _Byte;
 	BufferInfo.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
@@ -69,7 +69,7 @@ void UEngineConstantBuffer::ChangeData(void* _Data, UINT _Size)
 	// FTransform& RendererTrans = GetTransformRef();
 	D3D11_MAPPED_SUBRESOURCE Data = {};
 	// 이 데이터를 사용하는 랜더링 랜더링 잠깐 정지
-	// 잠깐 그래픽카드야 멈 그래픽카드에 있는 상수버퍼 수정해야 해.
+	// 잠깐 그래픽카드야 멈춰. 그래픽카드에 있는 상수버퍼 수정해야 해.
 	UEngineCore::GetDevice().GetContext()->Map(Buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &Data);
 
 	// Data.pData 그래픽카드와 연결된 주소값.
@@ -81,7 +81,7 @@ void UEngineConstantBuffer::ChangeData(void* _Data, UINT _Size)
 	UEngineCore::GetDevice().GetContext()->Unmap(Buffer.Get(), 0);
 }
 
-void UEngineConstantBuffer::Setting(EShaderType _Type, UINT _BindIndex)
+void UEngineConstantBuffer::BindToShaderSlot(EShaderType _Type, UINT _BindIndex)
 {
 	// 같은 상수버퍼를 
 	ID3D11Buffer* ArrPtr[1] = { Buffer.Get() };
@@ -99,7 +99,7 @@ void UEngineConstantBuffer::Setting(EShaderType _Type, UINT _BindIndex)
 	case EShaderType::GS:
 	case EShaderType::CS:
 	default:
-		MSGASSERT("아직 존재하지 않는 쉐이더에 세팅하려고 했습니다.");
+		MSGASSERT("아직 존재하지 않는 셰이더에 세팅하려고 했습니다.");
 		break;
 	}
 }

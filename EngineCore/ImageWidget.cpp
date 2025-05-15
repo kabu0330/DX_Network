@@ -269,7 +269,7 @@ void UImageWidget::Render(UEngineCamera* Camera, float _DeltaTime)
 	{
 		Sprite = CurAnimation->Sprite;
 
-		GetRenderUnit().SetTexture("ImageTexture", Sprite->GetTexture(CurIndex)->GetName());
+		GetRenderUnit().BindTextureToShaderSlotByName("ImageTexture", Sprite->GetTexture(CurIndex)->GetName());
 		SpriteData = Sprite->GetSpriteData(CurIndex);
 	}
 
@@ -282,7 +282,7 @@ void UImageWidget::Render(UEngineCamera* Camera, float _DeltaTime)
 
 	CameraTransUpdate(Camera);
 
-	RenderUnit.Render(Camera, _DeltaTime);
+	RenderUnit.SetRenderingPipelineAndDraw(Camera, _DeltaTime);
 }
 
 
@@ -296,7 +296,7 @@ void UImageWidget::SetSprite(std::string_view _Name, UINT _Index /*= 0*/)
 		return;
 	}
 
-	GetRenderUnit().SetTexture("ImageTexture", Sprite->GetTexture(_Index)->GetName());
+	GetRenderUnit().BindTextureToShaderSlotByName("ImageTexture", Sprite->GetTexture(_Index)->GetName());
 	SpriteData = Sprite->GetSpriteData(_Index);
 }
 
@@ -309,7 +309,7 @@ void UImageWidget::SetTexture(std::string_view _Name, bool AutoScale /*= false*/
 		MSGASSERT("로드하지 않은 텍스처를 사용하려고 했습니다.");
 	}
 
-	GetRenderUnit().SetTexture("ImageTexture", _Name);
+	GetRenderUnit().BindTextureToShaderSlotByName("ImageTexture", _Name);
 
 	if (true == AutoScale)
 	{

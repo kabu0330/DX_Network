@@ -60,7 +60,7 @@ void UEngineIndexBuffer::CreateViewObject(const void* _InitData, size_t _Size, s
 	}
 }
 
-void UEngineIndexBuffer::Setting()
+void UEngineIndexBuffer::IASetIndexBuffer()
 {
 	int Offset = 0;
 	UEngineCore::GetDevice().GetContext()->IASetIndexBuffer(Buffer.Get(), Format, Offset);

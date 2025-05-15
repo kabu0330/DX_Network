@@ -1,5 +1,5 @@
 #pragma once
-#include "EngineShaderResources.h"
+#include "ShaderBindingManager.h"
 #include "Mesh.h"
 #include "EngineMaterial.h"
 #include "EngineEnums.h"
@@ -28,9 +28,9 @@ public:
 	ENGINEAPI void SetMesh(std::string_view _Name);
 	ENGINEAPI void SetMaterial(std::string_view _Name);
 
-	ENGINEAPI virtual void Render(class UEngineCamera* _Camera, float _DeltaTime);
+	ENGINEAPI virtual void SetRenderingPipelineAndDraw(class UEngineCamera* _Camera, float _DeltaTime);
 
-	ENGINEAPI void CheckMaterialResources();
+	ENGINEAPI void InitializeShaderResources();
 
 	template<typename Data>
 	ENGINEAPI void ConstantBufferLinkData(std::string_view _Name, Data& _Data)
@@ -40,11 +40,12 @@ public:
 
 	ENGINEAPI void ConstantBufferLinkData(std::string_view Name, void* _Data);
 
-	ENGINEAPI void SetTexture(std::string_view _Name, std::string_view _ResName);
-	ENGINEAPI void SetTexture(std::string_view _Name, std::shared_ptr<UEngineTexture> _Texture);
+	ENGINEAPI void BindTextureToShaderSlotByName(std::string_view _Name, std::string_view _ResName);
+	ENGINEAPI void BindTextureToShaderSlot(std::string_view _Name, std::shared_ptr<UEngineTexture> _Texture);
+
 	ENGINEAPI void SetSampler(std::string_view Name, std::string_view _ResName);
 
-	std::map<EShaderType, UEngineShaderResources> Resources;
+	std::map<EShaderType, UShaderBindingManager> Resources;
 
 	ENGINEAPI void Reset();
 

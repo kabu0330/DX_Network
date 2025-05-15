@@ -1,7 +1,7 @@
 #pragma once
 #include "EngineEnums.h"
 #include <EngineBase/EngineFile.h>
-#include "EngineShaderResources.h"
+#include "ShaderBindingManager.h"
 
 // Ό³Έν :
 class UEngineShader
@@ -9,19 +9,12 @@ class UEngineShader
 	friend class UEngineVertexShader;
 
 public:
-	// constrcuter destructer
 	UEngineShader();
 	~UEngineShader();
 
-	// delete Function
-	UEngineShader(const UEngineShader& _Other) = delete;
-	UEngineShader(UEngineShader&& _Other) noexcept = delete;
-	UEngineShader& operator=(const UEngineShader& _Other) = delete;
-	UEngineShader& operator=(UEngineShader&& _Other) noexcept = delete;
-
 	ENGINEAPI static void ReflectionCompile(UEngineFile& _File);
 
-	UEngineShaderResources ShaderResources;
+	UShaderBindingManager ShaderResources;
 
 	Microsoft::WRL::ComPtr<ID3DBlob> GetShaderCodeBlob()
 	{
@@ -39,5 +32,10 @@ protected:
 	void ShaderResCheck();
 
 private:
+	// delete Function
+	UEngineShader(const UEngineShader& _Other) = delete;
+	UEngineShader(UEngineShader&& _Other) noexcept = delete;
+	UEngineShader& operator=(const UEngineShader& _Other) = delete;
+	UEngineShader& operator=(UEngineShader&& _Other) noexcept = delete;
 };
 

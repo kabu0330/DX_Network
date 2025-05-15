@@ -16,19 +16,19 @@ std::shared_ptr<UEngineBlend> UEngineBlend::Create(std::string_view _Name, const
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 또 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[이름 중복]\n 블렌드 이름을 변경해주세요. " + UpperName);
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineBlend> NewRes = std::make_shared<UEngineBlend>();
-	PushResource<UEngineBlend>(NewRes, _Name, "");
-	NewRes->CreateViewObject(_Value);
+	std::shared_ptr<UEngineBlend> NewBlend = std::make_shared<UEngineBlend>();
+	PushResource<UEngineBlend>(NewBlend, _Name, "");
+	NewBlend->CreateBlendState(_Value);
 
-	return NewRes;
+	return NewBlend;
 }
 
 
-void UEngineBlend::CreateViewObject(const D3D11_BLEND_DESC& _Value)
+void UEngineBlend::CreateBlendState(const D3D11_BLEND_DESC& _Value)
 {
 	if (UEngineCore::GetDevice().GetDevice()->CreateBlendState(&_Value, &State))
 	{
@@ -37,7 +37,7 @@ void UEngineBlend::CreateViewObject(const D3D11_BLEND_DESC& _Value)
 	}
 }
 
-void UEngineBlend::Setting()
+void UEngineBlend::OMSetBlendState()
 {
 	UEngineCore::GetDevice().GetContext()->OMSetBlendState(State.Get(), BlendFactor.Arr1D, Mask);
 }

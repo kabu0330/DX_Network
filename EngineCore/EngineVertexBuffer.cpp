@@ -48,7 +48,7 @@ void UEngineVertexBuffer::CreateViewObject(const void* _InitData, size_t _Vertex
 	}
 }
 
-void UEngineVertexBuffer::Setting()
+void UEngineVertexBuffer::IASetVertexBuffers()
 {
 	// UINT VertexSize = sizeof(EngineVertex);
 	// 이 버텍스 버퍼가 10개짜리인데 3번째 버텍스 부터 세팅해줘.
@@ -56,5 +56,4 @@ void UEngineVertexBuffer::Setting()
 	ID3D11Buffer* ArrBuffer[1];
 	ArrBuffer[0] = Buffer.Get();
 	UEngineCore::GetDevice().GetContext()->IASetVertexBuffers(0, 1, ArrBuffer, &VertexSize, &Offset);
-	
 }

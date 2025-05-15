@@ -58,7 +58,7 @@ void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 
 	for (size_t i = 0; i < Units.size(); i++)
 	{
-		Units[i].Render(_Camera, _DeltaTime);
+		Units[i].SetRenderingPipelineAndDraw(_Camera, _DeltaTime);
 	}
 }
 

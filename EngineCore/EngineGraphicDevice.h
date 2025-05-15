@@ -32,8 +32,8 @@ public:
 
 	ENGINEAPI void Release();
 
-	void RenderStart();
-	void RenderEnd();
+	void ClearRenderTaretView();
+	void Present();
 
 	ENGINEAPI ID3D11Device* GetDevice()
 	{

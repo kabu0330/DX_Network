@@ -15,7 +15,7 @@ std::shared_ptr<UEngineRasterizerState> UEngineRasterizerState::Create(std::stri
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("이미 로드한 텍스처를 도 로드하려고 했습니다." + UpperName);
+		MSGASSERT("[이름 중복]\n 래스터라이저 스테이트의 이름을 변경하세요. " + UpperName);
 		return nullptr;
 	}
 
@@ -31,12 +31,12 @@ void UEngineRasterizerState::CreateViewObject(const D3D11_RASTERIZER_DESC& _Valu
 {
 	if (UEngineCore::GetDevice().GetDevice()->CreateRasterizerState(&_Value, &State))
 	{
-		MSGASSERT("블랜드 스테이트 생성에 실패했습니다");
+		MSGASSERT("래스터라이저 스테이트 생성에 실패했습니다");
 		return;
 	}
 }
 
-void UEngineRasterizerState::Setting()
+void UEngineRasterizerState::RSSetState()
 {
 	UEngineCore::GetDevice().GetContext()->RSSetState(State.Get());
 }

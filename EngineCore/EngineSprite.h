@@ -10,16 +10,8 @@
 class UEngineSprite : public UEngineResources
 {
 public:
-	// constrcuter destructer
 	UEngineSprite();
 	~UEngineSprite();
-
-	// delete Function
-	UEngineSprite(const UEngineSprite& _Other) = delete;
-	UEngineSprite(UEngineSprite&& _Other) noexcept = delete;
-	UEngineSprite& operator=(const UEngineSprite& _Other) = delete;
-	UEngineSprite& operator=(UEngineSprite&& _Other) noexcept = delete;
-
 
 	ENGINEAPI static std::shared_ptr<UEngineSprite> CreateSpriteToFolder(std::string_view _Path)
 	{
@@ -40,7 +32,10 @@ public:
 	{
 		if (SpriteDatas.size() <= _Index)
 		{
-			MSGASSERT("스프라이트의 인덱스를 초과하여 사용하려고 했습니다.");
+			std::string Size = std::to_string(SpriteDatas.size());
+			std::string Index = std::to_string(_Index);			
+			MSGASSERT("스프라이트 인덱스를 초과한 접근입니다. \n Max : " + Size + ", 요청 : " + Index);
+			return FSpriteData();
 		}
 
 		return SpriteDatas[_Index];
@@ -53,12 +48,17 @@ public:
 		return SpriteTexture.size();
 	}
 
-
 protected:
 
 private:
 	std::vector<UEngineTexture*> SpriteTexture;
 	std::vector<FSpriteData> SpriteDatas;
 
+private:
+	// delete Function
+	UEngineSprite(const UEngineSprite& _Other) = delete;
+	UEngineSprite(UEngineSprite&& _Other) noexcept = delete;
+	UEngineSprite& operator=(const UEngineSprite& _Other) = delete;
+	UEngineSprite& operator=(UEngineSprite&& _Other) noexcept = delete;
 };
 

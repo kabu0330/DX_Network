@@ -18,7 +18,7 @@ public:
 
 	static std::shared_ptr<UEngineVertexBuffer> Create(std::string_view _Name, const void* _InitData, size_t _VertexSize, size_t _VertexCount, UEngineInputLayoutInfo* _InfoPtr = nullptr);
 
-	void Setting();
+	void IASetVertexBuffers();
 
 	ENGINEAPI UEngineInputLayoutInfo* GetInfoPtr()
 	{

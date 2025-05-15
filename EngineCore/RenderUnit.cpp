@@ -11,7 +11,7 @@ URenderUnit::~URenderUnit()
 {
 }
 
-void URenderUnit::CheckMaterialResources()
+void URenderUnit::InitializeShaderResources()
 {
 	if (nullptr == Material)
 	{
@@ -20,12 +20,12 @@ void URenderUnit::CheckMaterialResources()
 	}
 
 	{
-		UEngineShaderResources& VS = Material->GetVertexShader()->ShaderResources;
+		UShaderBindingManager& VS = Material->GetVertexShader()->ShaderResources;
 		Resources[EShaderType::VS] = Material->GetVertexShader()->ShaderResources;
 	}
 
 	{
-		UEngineShaderResources& PS = Material->GetPixelShader()->ShaderResources;
+		UShaderBindingManager& PS = Material->GetPixelShader()->ShaderResources;
 		Resources[EShaderType::PS] = Material->GetPixelShader()->ShaderResources;
 	}
 
@@ -44,13 +44,13 @@ void URenderUnit::CheckMaterialResources()
 				continue;
 			}
 
-			if (false == Resources[i].IsConstantBuffer("FTransform"))
+			if (false == Resources[i].HasConstantBuffer("FTransform"))
 			{
 				continue;
 			}
 
 			FTransform& Ref = TransformObject->GetTransformRef();
-			Resources[i].ConstantBufferLinkData("FTransform", Ref);
+			Resources[i].LinkConstantBufferData("FTransform", Ref);
 		}	
 	}
 }
@@ -64,16 +64,16 @@ void URenderUnit::ConstantBufferLinkData(std::string_view _Name, void* _Data)
 			continue;
 		}
 
-		if (false == Resources[i].IsConstantBuffer(_Name))
+		if (false == Resources[i].HasConstantBuffer(_Name))
 		{
 			continue;
 		}
 
-		Resources[i].ConstantBufferLinkData(_Name, _Data);
+		Resources[i].LinkConstantBufferData(_Name, _Data);
 	}
 }
 
-void URenderUnit::SetTexture(std::string_view _Name, std::string_view _ResName)
+void URenderUnit::BindTextureToShaderSlotByName(std::string_view _Name, std::string_view _ResName)
 {
 	for (EShaderType i = EShaderType::VS; i < EShaderType::MAX_SHADER_TYPE; i = static_cast<EShaderType>(static_cast<int>(i) + 1))
 	{
@@ -82,16 +82,16 @@ void URenderUnit::SetTexture(std::string_view _Name, std::string_view _ResName)
 			continue;
 		}
 
-		if (false == Resources[i].IsTexture(_Name))
+		if (false == Resources[i].HasTexture(_Name))
 		{
 			continue;
 		}
 
-		Resources[i].TextureSetting(_Name, _ResName);
+		Resources[i].RegisterTextureBinding(_Name, _ResName);
 	}
 }
 
-void URenderUnit::SetTexture(std::string_view _Name, std::shared_ptr<UEngineTexture> _Texture)
+void URenderUnit::BindTextureToShaderSlot(std::string_view _Name, std::shared_ptr<UEngineTexture> _Texture)
 {
 	for (EShaderType i = EShaderType::VS; i < EShaderType::MAX_SHADER_TYPE; i = static_cast<EShaderType>(static_cast<int>(i) + 1))
 	{
@@ -100,12 +100,12 @@ void URenderUnit::SetTexture(std::string_view _Name, std::shared_ptr<UEngineText
 			continue;
 		}
 
-		if (false == Resources[i].IsTexture(_Name))
+		if (false == Resources[i].HasTexture(_Name))
 		{
 			continue;
 		}
 
-		Resources[i].TextureSetting(_Name, _Texture);
+		Resources[i].RegisterTextureBinding(_Name, _Texture);
 	}
 }
 
@@ -118,12 +118,12 @@ void URenderUnit::SetSampler(std::string_view _Name, std::string_view _ResName)
 			continue;
 		}
 
-		if (false == Resources[i].IsSampler(_Name))
+		if (false == Resources[i].HasSampler(_Name))
 		{
 			continue;
 		}
 
-		Resources[i].SamplerSetting(_Name, _ResName);
+		Resources[i].RegisterSamplerBinding(_Name, _ResName);
 	}
 }
 
@@ -150,10 +150,11 @@ void URenderUnit::SetMaterial(std::string_view _Name)
 	if (nullptr == Material)
 	{
 		std::string Name = _Name.data();
-		MSGASSERT("존재하지 않는 머티리얼을를 세팅하려고 했습니다." + Name);
+		MSGASSERT(Name + " 머티리얼이 존재하지 않습니다. 이름을 확인해주세요.");
+		return;
 	}
 
-	CheckMaterialResources();
+	InitializeShaderResources();
 
 	if (nullptr != Mesh)
 	{
@@ -161,29 +162,27 @@ void URenderUnit::SetMaterial(std::string_view _Name)
 	}
 }
 
-void URenderUnit::Render(class UEngineCamera* _Camera, float _DeltaTime)
+void URenderUnit::SetRenderingPipelineAndDraw(class UEngineCamera* _Camera, float _DeltaTime)
 {
-	for (std::pair<const EShaderType, UEngineShaderResources>& Pair : Resources)
+	for (std::pair<const EShaderType, UShaderBindingManager>& Pair : Resources)
 	{
-		Pair.second.Setting();
+		Pair.second.BindAllShaderSlots();
 	}
 
-	Mesh->GetVertexBuffer()->Setting();			//	InputAssembler1Setting();
-	Material->GetVertexShader()->Setting();		//	VertexShaderSetting();
+	Mesh->GetVertexBuffer()->IASetVertexBuffers();
 	
-	Mesh->GetIndexBuffer()->Setting();			//	InputAssembler2Setting();
-	Material->PrimitiveTopologySetting();
-
+	Mesh->GetIndexBuffer()->IASetIndexBuffer();
+	Material->IASetPrimitiveTopology();
 	UEngineCore::GetDevice().GetContext()->IASetInputLayout(InputLayout.Get());
 
-	Material->GetRasterizerState()->Setting(); 	//	RasterizerSetting();
+	Material->GetVertexShader()->VSSetShader();
 
-	Material->GetPixelShader()->Setting(); 	//	PixelShaderSetting();
+	Material->GetRasterizerState()->RSSetState();
 
-	//	OutPutMergeSetting();
-	// 랜더타겟이 바뀐다.
-	Material->GetBlend()->Setting();
-	Material->GetDepthStencilState()->Setting();
+	Material->GetPixelShader()->PSSetShader();
+
+	Material->GetBlend()->OMSetBlendState();
+	Material->GetDepthStencilState()->OMSetDepthStencilState();
 
 	UEngineCore::GetDevice().GetContext()->DrawIndexed(Mesh->GetIndexBuffer()->GetIndexCount(), 0, 0);
 }
@@ -206,8 +205,8 @@ void URenderUnit::CreateInputLayout()
 
 void URenderUnit::Reset()
 {
-	for (std::pair<const EShaderType, UEngineShaderResources>& Pair : Resources)
+	for (std::pair<const EShaderType, UShaderBindingManager>& Pair : Resources)
 	{
-		Pair.second.Reset();
+		Pair.second.UnbindAllShaderSlots();
 	}
 }

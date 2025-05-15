@@ -10,23 +10,23 @@ public:
 	UEngineVertexShader();
 	~UEngineVertexShader();
 
-	static std::shared_ptr<UEngineVertexShader> Load(std::string_view _Path, const std::string_view& _EntryPoint, UINT _VersionHigh = 5, UINT _VersionLow = 0)
+	static std::shared_ptr<UEngineVertexShader> CreateVertexShader(std::string_view _Path, const std::string_view& _EntryPoint, UINT _VersionHigh = 5, UINT _VersionLow = 0)
 	{
 		UEnginePath EnginePath = UEnginePath(_Path);
 
 		std::string FileName = EnginePath.GetFileName();
 
-		return Load(FileName, _Path, _EntryPoint, _VersionHigh, _VersionLow);
+		return CreateVertexShader(FileName, _Path, _EntryPoint, _VersionHigh, _VersionLow);
 	}
 
-	ENGINEAPI static std::shared_ptr<UEngineVertexShader> Load(std::string_view _Name, std::string_view _Path, const std::string_view& _EntryPoint, UINT _VersionHigh = 5, UINT _VersionLow = 0);
+	ENGINEAPI static std::shared_ptr<UEngineVertexShader> CreateVertexShader(std::string_view _Name, std::string_view _Path, const std::string_view& _EntryPoint, UINT _VersionHigh = 5, UINT _VersionLow = 0);
 
-	void Setting();
+	void VSSetShader();
 
 protected:
 
 private:
-	ENGINEAPI void LoadResource();
+	ENGINEAPI void CreateVertexShader();
 
 	Microsoft::WRL::ComPtr<ID3D11VertexShader> ShaderRes = nullptr;
 

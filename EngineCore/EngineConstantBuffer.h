@@ -14,7 +14,7 @@ public:
 	static std::shared_ptr<UEngineConstantBuffer> CreateOrFind(UINT _Byte, const std::string_view& _Name);
 
 	void ChangeData(void* _Data, UINT _Size);
-	void Setting(EShaderType _Type, UINT _BindIndex);
+	void BindToShaderSlot(EShaderType _Type, UINT _BindIndex);
 
 	static void Release();
 
@@ -25,7 +25,7 @@ private:
 	// 어떤 이름으로 상수버퍼를 몇 바이트 저장할거냐?
 	static std::map<int, std::map<std::string, std::shared_ptr<UEngineConstantBuffer>>> BufferMap;
 
-	void CreateViewObject(UINT _Byte);
+	void CreateConstantBuffer(UINT _Byte);
 
 
 private:

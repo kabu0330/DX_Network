@@ -247,7 +247,7 @@ void UCollision::DebugRender(UEngineCamera* _Camera, float _DeltaTime)
 	Unit.ConstantBufferLinkData("FTransform", GetTransformRef());
 	Unit.ConstantBufferLinkData("OutColor", DebugColor);
 
-	Unit.Render(_Camera, _DeltaTime);
+	Unit.SetRenderingPipelineAndDraw(_Camera, _DeltaTime);
 
 }
 

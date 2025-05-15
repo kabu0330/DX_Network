@@ -11,22 +11,6 @@
 #include "EngineRenderTarget.h"
 #include "HUD.h"
 
-std::shared_ptr<class ACameraActor> ULevel::SpawnCamera(int _Order)
-{
-	std::shared_ptr<ACameraActor> Camera = std::make_shared<ACameraActor>();
-
-	if (true == Cameras.contains(_Order))
-	{
-		MSGASSERT("이미 존재하는 카메라 Order입니다. 다른 값을 입력해주세요. : " + std::to_string(_Order));
-		return nullptr;
-	}
-
-	Camera->BeginPlay(); 
-
-	Cameras.insert({ _Order , Camera });
-	return Camera;
-}
-
 ULevel::ULevel()
 {
 	SpawnCamera(EEngineCameraType::MAIN_CAMERA); // 메인카메라
@@ -36,42 +20,8 @@ ULevel::ULevel()
 
 	// 화면에 그려질 최종 렌더타겟을 만든다.
 	LastRenderTarget = std::make_shared<UEngineRenderTarget>();
-	LastRenderTarget->CreateTarget(UEngineCore::GetScreenScale());
-	LastRenderTarget->CreateDepth();
-}
-
-ULevel::~ULevel()
-{
-	BeginPlayList.clear();
-	AllActorList.clear();
-	Cameras.clear();
-}
-
-void ULevel::LevelChangeStart()
-{
-	for (std::shared_ptr<class AActor> Actor : BeginPlayList)
-	{
-		Actor->LevelChangeStart();
-	}
-
-
-	for (std::shared_ptr<class AActor> Actor : AllActorList)
-	{
-		Actor->LevelChangeStart();
-	}
-}
-
-void ULevel::LevelChangeEnd()
-{
-	for (std::shared_ptr<class AActor> Actor : BeginPlayList)
-	{
-		Actor->LevelChangeEnd();
-	}
-
-	for (std::shared_ptr<class AActor> Actor : AllActorList)
-	{
-		Actor->LevelChangeEnd();
-	}
+	LastRenderTarget->CreateRenderTargetView(UEngineCore::GetScreenScale());
+	LastRenderTarget->CreateDepthTexture();
 }
 
 void ULevel::Tick(float _DeltaTime)
@@ -121,9 +71,9 @@ void ULevel::Tick(float _DeltaTime)
 
 void ULevel::Render(float _DeltaTime)
 {
-	UEngineCore::GetDevice().RenderStart(); // 백버퍼 초기화 및 OM단계에서 사용할 RTV와 DSV 설정
+	UEngineCore::GetDevice().ClearRenderTaretView(); // 백버퍼 초기화 및 OM단계에서 사용할 RTV와 DSV 설정
 
-	LastRenderTarget->Clear(); // 최종 출력 화면도 화면 한 번 지워
+	LastRenderTarget->ClearRenderTargetView(); // 최종 출력 화면도 화면 한 번 지워
 
 	for (std::pair<const int, std::shared_ptr<ACameraActor>>& Camera : Cameras)
 	{
@@ -157,8 +107,8 @@ void ULevel::Render(float _DeltaTime)
 			std::shared_ptr<UEngineCamera> CameraComponent = Cameras[static_cast<int>(EEngineCameraType::UI_CAMERA)]->GetCameraComponent();
 
 			CameraActor->Tick(_DeltaTime); // 틱도 돌리고
-			CameraComponent->CameraTarget->Clear(); // 화면도 지우고
-			CameraComponent->CameraTarget->Setting(); // 렌더타겟 세팅하고
+			CameraComponent->CameraTarget->ClearRenderTargetView(); // 화면도 지우고
+			CameraComponent->CameraTarget->OMSetRenderTargets(); // 렌더타겟 세팅하고
 
 			HUD->UIRender(CameraComponent.get(), _DeltaTime); // 위젯의 틱, 렌더 돌리고
 
@@ -203,63 +153,8 @@ void ULevel::Render(float _DeltaTime)
 	}
 
 	// Present
-	UEngineCore::GetDevice().RenderEnd(); // 스왑체인이 관리하는 백버퍼와 프론트버퍼를 교환(Swap) 
+	UEngineCore::GetDevice().Present(); // 스왑체인이 관리하는 백버퍼와 프론트버퍼를 교환(Swap) 
 	// 프론트버퍼(윈도우 창)에 출력
-}
-
-void ULevel::ChangeRenderGroup(int _CameraOrder, int _PrevGroupOrder, std::shared_ptr<URenderer> _Renderer)
-{
-	if (false == Cameras.contains(_CameraOrder))
-	{
-		MSGASSERT("존재하지 않는 카메라에 랜더러를 집어넣으려고 했습니다.");
-		return;
-	}
-
-	std::shared_ptr<ACameraActor> Camera = Cameras[_CameraOrder];
-
-	Camera->GetCameraComponent()->ChangeRenderGroup(_PrevGroupOrder, _Renderer);
-}
-
-void ULevel::CreateCollisionProfile(std::string_view _ProfileName)
-{
-	std::string UpperName = UEngineString::ToUpper(_ProfileName);
-
-	Collisions[UpperName];
-}
-
-void ULevel::LinkCollisionProfile(std::string_view _LeftProfileName, std::string_view _RightProfileName)
-{
-	std::string LeftUpperName = UEngineString::ToUpper(_LeftProfileName);
-	std::string RightUpperName = UEngineString::ToUpper(_RightProfileName);
-
-	CollisionLinks[LeftUpperName].push_back(RightUpperName);
-}
-
-void ULevel::PushCollisionProfileEvent(std::shared_ptr<class URenderer> _Renderer)
-{
-
-}
-
-void ULevel::ChangeCollisionProfileName(std::string_view _ProfileName, std::string_view _PrevProfileName, std::shared_ptr<UCollision> _Collision)
-{
-	if (false == Collisions.contains(_ProfileName.data()))
-	{
-		MSGASSERT("존재하지 않는 콜리전 그룹에 랜더러를 집어넣으려고 했습니다.");
-		return;
-	}
-
-	std::string PrevUpperName = UEngineString::ToUpper(_PrevProfileName);
-
-	if (_PrevProfileName != "")
-	{
-		std::list<std::shared_ptr<UCollision>>& PrevCollisionGroup = Collisions[PrevUpperName];
-		PrevCollisionGroup.remove(_Collision);
-	}
-
-	std::string UpperName = UEngineString::ToUpper(_ProfileName);
-
-	std::list<std::shared_ptr<UCollision>>& CollisionGroup = Collisions[UpperName];
-	CollisionGroup.push_back(_Collision);
 }
 
 void ULevel::Collision(float _DeltaTime)
@@ -355,11 +250,111 @@ void ULevel::Release(float _DeltaTime)
 	}
 }
 
+void ULevel::ChangeRenderGroup(int _CameraOrder, int _PrevGroupOrder, std::shared_ptr<URenderer> _Renderer)
+{
+	if (false == Cameras.contains(_CameraOrder))
+	{
+		MSGASSERT("존재하지 않는 카메라에 랜더러를 집어넣으려고 했습니다.");
+		return;
+	}
+
+	std::shared_ptr<ACameraActor> Camera = Cameras[_CameraOrder];
+
+	Camera->GetCameraComponent()->ChangeRenderGroup(_PrevGroupOrder, _Renderer);
+}
+
+std::shared_ptr<class ACameraActor> ULevel::SpawnCamera(int _Order)
+{
+	std::shared_ptr<ACameraActor> Camera = std::make_shared<ACameraActor>();
+
+	if (true == Cameras.contains(_Order))
+	{
+		MSGASSERT("이미 존재하는 카메라 Order입니다. 다른 값을 입력해주세요. : " + std::to_string(_Order));
+		return nullptr;
+	}
+
+	Camera->BeginPlay();
+
+	Cameras.insert({ _Order , Camera });
+	return Camera;
+}
+
+void ULevel::LevelChangeStart()
+{
+	for (std::shared_ptr<class AActor> Actor : BeginPlayList)
+	{
+		Actor->LevelChangeStart();
+	}
+	for (std::shared_ptr<class AActor> Actor : AllActorList)
+	{
+		Actor->LevelChangeStart();
+	}
+}
+
+void ULevel::LevelChangeEnd()
+{
+	for (std::shared_ptr<class AActor> Actor : BeginPlayList)
+	{
+		Actor->LevelChangeEnd();
+	}
+	for (std::shared_ptr<class AActor> Actor : AllActorList)
+	{
+		Actor->LevelChangeEnd();
+	}
+}
+
+void ULevel::CreateCollisionProfile(std::string_view _ProfileName)
+{
+	std::string UpperName = UEngineString::ToUpper(_ProfileName);
+
+	Collisions[UpperName];
+}
+
+void ULevel::LinkCollisionProfile(std::string_view _LeftProfileName, std::string_view _RightProfileName)
+{
+	std::string LeftUpperName = UEngineString::ToUpper(_LeftProfileName);
+	std::string RightUpperName = UEngineString::ToUpper(_RightProfileName);
+
+	CollisionLinks[LeftUpperName].push_back(RightUpperName);
+}
+
+void ULevel::PushCollisionProfileEvent(std::shared_ptr<class URenderer> _Renderer)
+{
+
+}
+
+void ULevel::ChangeCollisionProfileName(std::string_view _ProfileName, std::string_view _PrevProfileName, std::shared_ptr<UCollision> _Collision)
+{
+	if (false == Collisions.contains(_ProfileName.data()))
+	{
+		MSGASSERT("존재하지 않는 콜리전 그룹에 랜더러를 집어넣으려고 했습니다.");
+		return;
+	}
+
+	std::string PrevUpperName = UEngineString::ToUpper(_PrevProfileName);
+
+	if (_PrevProfileName != "")
+	{
+		std::list<std::shared_ptr<UCollision>>& PrevCollisionGroup = Collisions[PrevUpperName];
+		PrevCollisionGroup.remove(_Collision);
+	}
+
+	std::string UpperName = UEngineString::ToUpper(_ProfileName);
+
+	std::list<std::shared_ptr<UCollision>>& CollisionGroup = Collisions[UpperName];
+	CollisionGroup.push_back(_Collision);
+}
+
 void ULevel::InitLevel(AGameMode* _GameMode, APawn* _Pawn, AHUD* _HUD)
 {
 	GameMode = _GameMode;
-
 	MainPawn = _Pawn;
-
 	HUD = _HUD;
+}
+
+ULevel::~ULevel()
+{
+	BeginPlayList.clear();
+	AllActorList.clear();
+	Cameras.clear();
 }

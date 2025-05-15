@@ -11,7 +11,6 @@ UEngineSprite::~UEngineSprite()
 {
 }
 
-
 std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToFolder(std::string_view _Name, std::string_view _Path)
 {
 	UEngineDirectory Dir = _Path;
@@ -20,11 +19,12 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToFolder(std::string_v
 
 	if (0 == Files.size())
 	{
-		MSGASSERT("파일이 존재하지 않는 폴더를 스프라이트로 만들수는 없습니다.");
+		MSGASSERT("폴더 내 이미지가 존재하지 않습니다. \n이 함수는 폴더 내 연속된 스프라이트 이미지가 존재해야 합니다.");
+		return nullptr;
 	}
 
-	std::shared_ptr<UEngineSprite> NewRes = std::make_shared<UEngineSprite>();
-	PushResource<UEngineSprite>(NewRes, _Name, "");
+	std::shared_ptr<UEngineSprite> NewSpriteTexture = std::make_shared<UEngineSprite>();
+	PushResource<UEngineSprite>(NewSpriteTexture, _Name, "");
 
 	for (size_t i = 0; i < Files.size(); i++)
 	{
@@ -34,36 +34,38 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToFolder(std::string_v
 
 		if (nullptr == Texture)
 		{
-			MSGASSERT("텍스처를 먼저 로드하고 폴더 스프라이트를 만들어 주세요." + UpperName);
+			MSGASSERT("텍스처 로드에 실패했습니다. " + UpperName);
 			return nullptr;
 		}
 
-		NewRes->SpriteTexture.push_back(Texture.get());
+		NewSpriteTexture->SpriteTexture.push_back(Texture.get());
 
 		FSpriteData SpriteData;
 		SpriteData.CuttingPos = { 0.0f, 0.0f };
 		SpriteData.CuttingSize = { 1.0f, 1.0f };
 		SpriteData.Pivot = { 0.5f, 0.5f };
-		NewRes->SpriteDatas.push_back(SpriteData);
+		NewSpriteTexture->SpriteDatas.push_back(SpriteData);
 	}
 
-	return NewRes;
+	return NewSpriteTexture;
 }
 
 std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToMeta(std::string_view _Name, std::string_view _DataFileExt)
 {
-	std::shared_ptr<UEngineTexture> Tex = UEngineTexture::Find<UEngineTexture>(_Name);
+	std::shared_ptr<UEngineTexture> MetaFile = UEngineTexture::Find<UEngineTexture>(_Name);
 
-	if (nullptr == Tex)
+	if (nullptr == MetaFile)
 	{
-		MSGASSERT("존재하지 않는 텍스처로 스프라이트를 만들수는 없습니다.");
+		std::string Name = _Name.data();
+		std::string Ext = _DataFileExt.data();
+		MSGASSERT(Name + Ext + " 의 Unity 메타 파일을 찾지 못했습니다. 파일 이름 또는 확장자 명을 확인해주세요.");
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineSprite> NewRes = std::make_shared<UEngineSprite>();
-	PushResource<UEngineSprite>(NewRes, _Name, "");
+	std::shared_ptr<UEngineSprite> NewSpriteTexture = std::make_shared<UEngineSprite>();
+	PushResource<UEngineSprite>(NewSpriteTexture, _Name, "");
 
-	UEnginePath Path = Tex->GetPath();
+	UEnginePath Path = MetaFile->GetPath();
 	std::string FileName = Path.GetFileName();
 	FileName += _DataFileExt;
 	Path.MoveParent();
@@ -88,12 +90,12 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToMeta(std::string_vie
 			break;
 		}
 
-		NewRes->SpriteTexture.push_back(Tex.get());
+		NewSpriteTexture->SpriteTexture.push_back(MetaFile.get());
 		SpriteDataTexts.push_back(Text.substr(RectIndex, AligIndex - RectIndex));
 		StartPosition = AligIndex;
 	}
 
-	FVector TexSize = Tex->GetTextureSize();
+	FVector TexSize = MetaFile->GetTextureSize();
 
 	std::vector<FSpriteData> TestData;
 
@@ -101,10 +103,8 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToMeta(std::string_vie
 	{
 		std::string Text = SpriteDataTexts[i];
 
-		size_t Start = 0;
-
 		FSpriteData SpriteData;
-
+		size_t Start = 0;
 
 		{
 			std::string Number = UEngineString::InterString(Text, "x:", "\n", Start);
@@ -135,9 +135,7 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToMeta(std::string_vie
 			std::string Number = UEngineString::InterString(Text, "y:", "}", Start);
 			SpriteData.Pivot.Y = static_cast<float>(atof(Number.c_str()));
 		}
-
-
-
+		// Y축 반전, 0이 맨 아래, 맨 위가 텍스처 최대 높이
 		SpriteData.CuttingPos.Y = TexSize.Y - SpriteData.CuttingPos.Y - SpriteData.CuttingSize.Y;
 
 		SpriteData.CuttingPos.X /= TexSize.X;
@@ -145,14 +143,12 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToMeta(std::string_vie
 		SpriteData.CuttingSize.X /= TexSize.X;
 		SpriteData.CuttingSize.Y /= TexSize.Y;
 
-
 		TestData.push_back(SpriteData);
 	}
 
+	NewSpriteTexture->SpriteDatas = TestData;
 
-	NewRes->SpriteDatas = TestData;
-
-	return NewRes;
+	return NewSpriteTexture;
 }
 
 UEngineTexture* UEngineSprite::GetTexture(size_t _Index /*= 0*/)
@@ -170,8 +166,9 @@ FVector UEngineSprite::GetSpriteScaleToReal(size_t _Index)
 	if (SpriteDatas.size() <= _Index)
 	{
 		MSGASSERT("스프라이트의 인덱스를 초과하여 사용하려고 했습니다.");
+		return FVector();
 	}
-
+	
 	FVector Result;
 
 	//                0~1사이의 비율이기 때문에

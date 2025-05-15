@@ -4,7 +4,7 @@
 
 #include "ThirdParty/DirectxTex/Inc/DirectXTex.h"
 
-// 설명 : 텍스처
+// 설명 : 텍스처와 뷰 객체
 class UEngineTexture : public UEngineResources
 {
 	friend class UEngineRenderTarget;
@@ -53,8 +53,8 @@ public:
 		return Size;
 	}
 
-	void Setting(EShaderType _Type, UINT _BindIndex);
-	void Reset(EShaderType _Type, UINT _BindIndex);
+	void BindToShaderSlot(EShaderType _Type, UINT _BindIndex);
+	void UnbindFromShaderSlot(EShaderType _Type, UINT _BindIndex);
 
 	ENGINEAPI void CreateViewObject(const D3D11_TEXTURE2D_DESC& _Value);
 
@@ -68,7 +68,7 @@ protected:
 
 private:
 	ENGINEAPI void LoadResource();
-	Microsoft::WRL::ComPtr<ID3D11Texture2D> Texture2D = nullptr; // 로드한 텍스처
+	Microsoft::WRL::ComPtr<ID3D11Texture2D> Texture2D = nullptr; // GPU Texture Data
 
 	FVector Size = FVector::ZERO;
 	DirectX::TexMetadata Metadata = DirectX::TexMetadata();

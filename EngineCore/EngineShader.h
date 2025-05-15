@@ -12,7 +12,7 @@ public:
 	UEngineShader();
 	~UEngineShader();
 
-	ENGINEAPI static void ReflectionCompile(UEngineFile& _File);
+	ENGINEAPI static void AutoCompileShaderByNaming(UEngineFile& _File);
 
 	UShaderBindingManager ShaderResources;
 

@@ -251,7 +251,7 @@ void UContentsResource::LoadShaderResource()
 
 		for (size_t i = 0; i < ShaderFiles.size(); i++)
 		{
-			UEngineShader::ReflectionCompile(ShaderFiles[i]);
+			UEngineShader::AutoCompileShaderByNaming(ShaderFiles[i]);
 		}
 	}
 

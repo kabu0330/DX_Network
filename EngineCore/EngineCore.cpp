@@ -30,12 +30,15 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 			UEngineSound::Init();
 			// UEngineDebug::StartConsole();
 			
-			GEngine->Device.CreateDeviceAndContext();	// 렌더링 파이프라인 세팅
+			GEngine->Device.CreateDeviceAndContext();	
+			GEngine->Device.SetupEngineRenderingPipeline(); // 초기 설정
 
-			GEngine->Core->EngineStart(GEngine->Data);  // 윈도우 크기 세팅, 리소스 로드
+			// 윈도우 크기 세팅, 리소스 로드
+			GEngine->Core->EngineStart(GEngine->Data);  
 			GEngine->MainWindow.SetWindowPosAndScale(GEngine->Data.WindowPos, GEngine->Data.WindowSize);
 
-			GEngine->Device.CreateBackBuffer(GEngine->MainWindow); // 백버퍼 생성
+			// 윈도우 사이즈가 결정된 이후 스왑체인을 생성하므로 컨텐츠 코어에 갔다온 후에 호출하도록 분리
+			GEngine->Device.InitializeRenderingPipelineOutput(GEngine->MainWindow); // 스왑체인 및 백버퍼 생성
 
 			UEngineGUI::Init(); // IMGUI 생성
 		},

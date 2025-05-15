@@ -21,7 +21,7 @@ void UEngineGraphicDevice::Release()
     Device = nullptr;
 }
 
-IDXGIAdapter* UEngineGraphicDevice::GetHighPerFormanceAdapter()
+IDXGIAdapter* UEngineGraphicDevice::FindHighPerformanceAdapter()
 {
     // 1. 그래픽카드가 여러 개일 경우를 대비하여 가장 좋은 그래픽카드를 찾는다.
     IDXGIFactory* Factory = nullptr; // 팩토리 : 그래픽 카드 정보 열거, 출력 장치 관리
@@ -82,7 +82,7 @@ IDXGIAdapter* UEngineGraphicDevice::GetHighPerFormanceAdapter()
 
 void UEngineGraphicDevice::CreateDeviceAndContext()
 {
-    MainAdapter = GetHighPerFormanceAdapter(); // 제일 좋은 성능의 그래픽카드 정보를 MainAdapter에 저장한다.
+    MainAdapter = FindHighPerformanceAdapter(); // 제일 좋은 성능의 그래픽카드 정보를 MainAdapter에 저장한다.
 
     int iFlag = 0;
 
@@ -137,13 +137,9 @@ void UEngineGraphicDevice::CreateDeviceAndContext()
         MSGASSERT("스레드 안정성 적용에 실패했습니다.");
         return;
     }
-   
-    // 렌더링 파이프라인 세팅
-    DefaultResourcesInit();
 }
 
-// 스왑체인 및 백버퍼 생성
-void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
+void UEngineGraphicDevice::InitializeSwapChain(const UEngineWindow& _Window)
 {
     FVector Size = _Window.GetWindowSize(); // 윈도우 크기에 맞는 백버퍼를 만들기 위해 ContentsCore에서 윈도우 세팅값이 설정된 이후 백버퍼를 만든다.
 
@@ -193,7 +189,10 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
         MSGASSERT("스왑체인 생성에 실패했습니다.");
         return;
     }
+}
 
+void UEngineGraphicDevice::InitializeBackBufferRenderTargets()
+{
     // DXBackBufferTexture는 BITMAP이다. 2차원 배열에 색상 정보가 들어있는 핸들
     Microsoft::WRL::ComPtr<ID3D11Texture2D> DXBackBufferTexture = nullptr;
     if (S_OK != SwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), &DXBackBufferTexture))
@@ -208,7 +207,7 @@ void UEngineGraphicDevice::CreateBackBuffer(const UEngineWindow& _Window)
     BackBufferTarget->CreateDepthTexture(); // DSV 생성 
 }
 
-void UEngineGraphicDevice::ClearRenderTaretView()
+void UEngineGraphicDevice::OMSetRenderTargetWithClear()
 {
     BackBufferTarget->ClearRenderTargetView();
     BackBufferTarget->OMSetRenderTargets();

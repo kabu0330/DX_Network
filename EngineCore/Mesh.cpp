@@ -9,7 +9,7 @@ UMesh::~UMesh()
 {
 }
 
-std::shared_ptr<UMesh> UMesh::Create(std::string_view _Name, std::string_view _VertexBuffer, std::string_view _IndexBuffer)
+std::shared_ptr<UMesh> UMesh::CreateWithBuffers(std::string_view _Name, std::string_view _VertexBuffer, std::string_view _IndexBuffer)
 {
 	std::string UpperName = ToUpperName(_Name);
 

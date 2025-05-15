@@ -21,13 +21,13 @@ std::shared_ptr<UEngineRasterizerState> UEngineRasterizerState::Create(std::stri
 
 	std::shared_ptr<UEngineRasterizerState> NewRes = std::make_shared<UEngineRasterizerState>();
 	PushResource<UEngineRasterizerState>(NewRes, _Name, "");
-	NewRes->CreateViewObject(_Value);
+	NewRes->CreateRasterizerState(_Value);
 
 	return NewRes;
 }
 
 
-void UEngineRasterizerState::CreateViewObject(const D3D11_RASTERIZER_DESC& _Value)
+void UEngineRasterizerState::CreateRasterizerState(const D3D11_RASTERIZER_DESC& _Value)
 {
 	if (UEngineCore::GetDevice().GetDevice()->CreateRasterizerState(&_Value, &State))
 	{

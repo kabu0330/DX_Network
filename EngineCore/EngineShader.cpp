@@ -12,7 +12,7 @@ UEngineShader::~UEngineShader()
 {
 }
 
-void UEngineShader::ReflectionCompile(UEngineFile& _File)
+void UEngineShader::AutoCompileShaderByNaming(UEngineFile& _File)
 {
 	_File.FileOpen("rt"); // 읽기 전용
 	std::string ShaderCode = _File.GetAllFileText();

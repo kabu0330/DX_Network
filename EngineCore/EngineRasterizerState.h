@@ -22,7 +22,7 @@ public:
 protected:
 
 private:
-	void CreateViewObject(const D3D11_RASTERIZER_DESC& _Value);
+	void CreateRasterizerState(const D3D11_RASTERIZER_DESC& _Value);
 	Microsoft::WRL::ComPtr<ID3D11RasterizerState> State = nullptr;
 };
 

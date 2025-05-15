@@ -11,23 +11,23 @@
 #include "EngineFont.h"
 #include "EngineDepthStencilState.h"
 
-void UEngineGraphicDevice::DefaultResourcesInit()
+void UEngineGraphicDevice::SetupEngineRenderingPipeline()
 {
 	// 세팅 순서는 중요하지 않다.
-	InitDepthStencil();
-	InitTexture();
-	InitShader();
-	InitRasterizerState();
+	CreateDepthStencilStates();
+	CreateSamplerStates();
+	CreateDefaultShaders();
+	CreateRasterizerStates();
 
-	InitBlend();
+	CreateBlendStates();
 
-	MeshInit();
-	MaterialInit();
+	CreateEngineMeshBuffers();
+	CreateEngineMaterials();
 
 	UEngineFont::LoadFont("궁서", "궁서"); // 기본 폰트
 }
 
-void UEngineGraphicDevice::InitDepthStencil()
+void UEngineGraphicDevice::CreateDepthStencilStates()
 {
 	{
 		D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
@@ -71,7 +71,7 @@ void UEngineGraphicDevice::InitDepthStencil()
 	}
 }
 
-void UEngineGraphicDevice::InitTexture()
+void UEngineGraphicDevice::CreateSamplerStates()
 {
 		D3D11_SAMPLER_DESC SampInfo = { D3D11_FILTER::D3D11_FILTER_MIN_MAG_MIP_POINT };
 		SampInfo.AddressU = D3D11_TEXTURE_ADDRESS_MODE::D3D11_TEXTURE_ADDRESS_WRAP; // 0~1사이만 유효
@@ -103,7 +103,7 @@ void UEngineGraphicDevice::InitTexture()
 	}
 }
 
-void UEngineGraphicDevice::InitShader()
+void UEngineGraphicDevice::CreateDefaultShaders()
 {
 	UEngineDirectory CurDir;
 	CurDir.MoveParentToDirectory("EngineShader");
@@ -113,11 +113,11 @@ void UEngineGraphicDevice::InitShader()
 	// 셰이더 파일을 분석하여 VS, PS 구분하여 데이터 저장
 	for (size_t i = 0; i < ShaderFiles.size(); i++)
 	{
-		UEngineShader::ReflectionCompile(ShaderFiles[i]);
+		UEngineShader::AutoCompileShaderByNaming(ShaderFiles[i]);
 	}
 }
 
-void UEngineGraphicDevice::InitRasterizerState()
+void UEngineGraphicDevice::CreateRasterizerStates()
 {
 	{
 		D3D11_RASTERIZER_DESC Desc = {};
@@ -136,7 +136,7 @@ void UEngineGraphicDevice::InitRasterizerState()
 	}
 }
 
-void UEngineGraphicDevice::InitBlend()
+void UEngineGraphicDevice::CreateBlendStates()
 {
 	D3D11_BLEND_DESC Desc = { 0 };
 
@@ -162,7 +162,7 @@ void UEngineGraphicDevice::InitBlend()
 	UEngineBlend::Create("AlphaBlend", Desc);
 }
 
-void UEngineGraphicDevice::MeshInit()
+void UEngineGraphicDevice::CreateEngineMeshBuffers()
 {
 	{
 		std::vector<FEngineVertex> Vertexs;
@@ -204,12 +204,12 @@ void UEngineGraphicDevice::MeshInit()
 		UMesh::Create("Rect");
 
 		// FullRect 포스트 프로세싱용 화면 전체크기 만한 메시를 제작.
-		UMesh::Create("FullRect", "FullRect", "Rect");
+		UMesh::CreateWithBuffers("FullRect", "FullRect", "Rect");
 	}
 
 }
 
-void UEngineGraphicDevice::MaterialInit()
+void UEngineGraphicDevice::CreateEngineMaterials()
 {
 	{
 		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("SpriteMaterial");

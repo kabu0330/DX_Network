@@ -71,7 +71,7 @@ void ULevel::Tick(float _DeltaTime)
 
 void ULevel::Render(float _DeltaTime)
 {
-	UEngineCore::GetDevice().ClearRenderTaretView(); // 백버퍼 초기화 및 OM단계에서 사용할 RTV와 DSV 설정
+	UEngineCore::GetDevice().OMSetRenderTargetWithClear(); // 백버퍼 초기화 및 OM단계에서 사용할 RTV와 DSV 설정
 
 	LastRenderTarget->ClearRenderTargetView(); // 최종 출력 화면도 화면 한 번 지워
 

@@ -22,14 +22,14 @@ std::shared_ptr<UEngineVertexBuffer> UEngineVertexBuffer::Create(std::string_vie
 
 	std::shared_ptr<UEngineVertexBuffer> NewVertexBuffer = std::make_shared<UEngineVertexBuffer>();
 	PushResource<UEngineVertexBuffer>(NewVertexBuffer, _Name, "");
-	NewVertexBuffer->CreateViewObject(_InitData, _VertexSize, _VertexCount);
+	NewVertexBuffer->CreateBuffer(_InitData, _VertexSize, _VertexCount);
 	NewVertexBuffer->InfoPtr = _InfoPtr;
 	
 
 	return NewVertexBuffer;
 }
 
-void UEngineVertexBuffer::CreateViewObject(const void* _InitData, size_t _VertexSize, size_t _VertexCount)
+void UEngineVertexBuffer::CreateBuffer(const void* _InitData, size_t _VertexSize, size_t _VertexCount)
 {
 	VertexCount = static_cast<UINT>(_VertexCount);
 	VertexSize = static_cast<UINT>(_VertexSize);

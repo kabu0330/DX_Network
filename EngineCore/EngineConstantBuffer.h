@@ -1,10 +1,10 @@
 #pragma once
 #include "EngineResources.h"
-#include "EngineDeviceBuffer.h"
+#include "EngineBufferBase.h"
 #include "EngineEnums.h"
 
-// 설명 :
-class UEngineConstantBuffer : public UEngineResources, public UEngineDeviceBuffer
+// 설명 : 상수버퍼 생성 및 관리
+class UEngineConstantBuffer : public UEngineResources, public UEngineBufferBase
 {
 public:
 	UEngineConstantBuffer();
@@ -13,10 +13,10 @@ public:
 	// 상수버퍼를 만들거나 찾거나
 	static std::shared_ptr<UEngineConstantBuffer> CreateOrFind(UINT _Byte, const std::string_view& _Name);
 
-	void ChangeData(void* _Data, UINT _Size);
+	void UpdateConstantBufferData(void* _Data, UINT _Size);
 	void BindToShaderSlot(EShaderType _Type, UINT _BindIndex);
 
-	static void Release();
+	static void ClearBufferCache();
 
 protected:
 

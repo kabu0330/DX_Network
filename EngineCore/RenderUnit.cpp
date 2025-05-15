@@ -191,7 +191,7 @@ void URenderUnit::CreateInputLayout()
 {
 	Microsoft::WRL::ComPtr<ID3DBlob> Blob = Material->GetVertexShader()->GetShaderCodeBlob();
 
-	UEngineInputLayoutInfo* InfoPtr = Mesh->GetVertexBuffer()->GetInfoPtr();
+	UEngineInputLayoutInfo* InfoPtr = Mesh->GetVertexBuffer()->GetInputLayoutInfo();
 
 	HRESULT Result = UEngineCore::GetDevice().GetDevice()->CreateInputLayout(
 		&InfoPtr->InputLayOutData[0],

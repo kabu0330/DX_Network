@@ -91,7 +91,7 @@
     <ClInclude Include="EngineConstantBuffer.h">
       <Filter>07_Resources\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="EngineDeviceBuffer.h">
+    <ClInclude Include="EngineBufferBase.h">
       <Filter>07_Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EngineIndexBuffer.h">
@@ -268,7 +268,7 @@
     <ClCompile Include="EngineConstantBuffer.cpp">
       <Filter>07_Resources\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="EngineDeviceBuffer.cpp">
+    <ClCompile Include="EngineBufferBase.cpp">
       <Filter>07_Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EngineIndexBuffer.cpp">

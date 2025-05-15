@@ -27,7 +27,7 @@ public:
 	{
 		if (nullptr != Data)
 		{
-			EngineConstantBuffer->ChangeData(Data, BufferSize);
+			EngineConstantBuffer->UpdateConstantBufferData(Data, BufferSize);
 		}
 
 		EngineConstantBuffer->BindToShaderSlot(ShaderType, BindIndex);

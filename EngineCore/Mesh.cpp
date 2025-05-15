@@ -15,7 +15,7 @@ std::shared_ptr<UMesh> UMesh::CreateWithBuffers(std::string_view _Name, std::str
 
 	if (true == Contains(UpperName))
 	{
-		MSGASSERT("[이름 중복] \n 메시 이름을 변경해주세요." + UpperName);
+		MSGASSERT("[Mesh Create Failed] \n 중복된 메시 이름 : " + UpperName);
 		return nullptr;
 	}
 

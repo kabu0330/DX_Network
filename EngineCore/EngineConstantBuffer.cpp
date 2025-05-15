@@ -3,7 +3,7 @@
 
 std::map<int, std::map<std::string, std::shared_ptr<UEngineConstantBuffer>>> UEngineConstantBuffer::BufferMap;
 
-void UEngineConstantBuffer::Release()
+void UEngineConstantBuffer::ClearBufferCache()
 {
 	BufferMap.clear();
 }
@@ -18,9 +18,9 @@ UEngineConstantBuffer::~UEngineConstantBuffer()
 
 std::shared_ptr<UEngineConstantBuffer> UEngineConstantBuffer::CreateOrFind(UINT _Byte, const std::string_view& _Name)
 {
-	if (0 == _Byte) // 어떻게 0바이트에 데이터를 저장할 수 있겠어?
+	if (0 == _Byte) 
 	{
-		MSGASSERT("0바이트 상수버퍼는 만들 수 없습니다.");
+		MSGASSERT("메모리 크기가 없는 데이터는 저장할 수 없습니다.");
 		return nullptr;
 	}
 
@@ -58,7 +58,7 @@ void UEngineConstantBuffer::CreateConstantBuffer(UINT _Byte)
 	
 }
 
-void UEngineConstantBuffer::ChangeData(void* _Data, UINT _Size)
+void UEngineConstantBuffer::UpdateConstantBufferData(void* _Data, UINT _Size)
 {
 	if (_Size != BufferInfo.ByteWidth)
 	{
@@ -66,24 +66,28 @@ void UEngineConstantBuffer::ChangeData(void* _Data, UINT _Size)
 		return;
 	}
 
-	// FTransform& RendererTrans = GetTransformRef();
 	D3D11_MAPPED_SUBRESOURCE Data = {};
-	// 이 데이터를 사용하는 랜더링 랜더링 잠깐 정지
-	// 잠깐 그래픽카드야 멈춰. 그래픽카드에 있는 상수버퍼 수정해야 해.
+
+	// GPU 자원은 CPU가 접근할 수 있게 잠금(Mapping)
+	// D3D11_MAP_WRITE_DISCARD : 기존 버퍼 데이터를 버리고 새로 덮어 쓰기
 	UEngineCore::GetDevice().GetContext()->Map(Buffer.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &Data);
 
 	// Data.pData 그래픽카드와 연결된 주소값.
 	if (nullptr == Data.pData)
 	{
 		MSGASSERT("그래픽카드가 수정을 거부했습니다.");
+		return;
 	}
+
+	// CPU 작업
 	memcpy_s(Data.pData, BufferInfo.ByteWidth, _Data, BufferInfo.ByteWidth);
+
+	// 잠금 해제(Unmap)
 	UEngineCore::GetDevice().GetContext()->Unmap(Buffer.Get(), 0);
 }
 
 void UEngineConstantBuffer::BindToShaderSlot(EShaderType _Type, UINT _BindIndex)
 {
-	// 같은 상수버퍼를 
 	ID3D11Buffer* ArrPtr[1] = { Buffer.Get() };
 
 	switch (_Type)
@@ -99,7 +103,7 @@ void UEngineConstantBuffer::BindToShaderSlot(EShaderType _Type, UINT _BindIndex)
 	case EShaderType::GS:
 	case EShaderType::CS:
 	default:
-		MSGASSERT("아직 존재하지 않는 셰이더에 세팅하려고 했습니다.");
+		MSGASSERT("현재 설정 값이 존재하지 않는 셰이더 타입입니다.");
 		break;
 	}
 }

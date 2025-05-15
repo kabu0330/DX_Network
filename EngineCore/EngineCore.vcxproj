@@ -183,7 +183,7 @@
     </ClInclude>
     <ClInclude Include="EngineDataStruct.h" />
     <ClInclude Include="EngineDepthStencilState.h" />
-    <ClInclude Include="EngineDeviceBuffer.h" />
+    <ClInclude Include="EngineBufferBase.h" />
     <ClInclude Include="EngineEnums.h" />
     <ClInclude Include="EngineFont.h" />
     <ClInclude Include="EngineGraphicDevice.h" />
@@ -251,7 +251,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="EngineDepthStencilState.cpp" />
-    <ClCompile Include="EngineDeviceBuffer.cpp" />
+    <ClCompile Include="EngineBufferBase.cpp" />
     <ClCompile Include="EngineFont.cpp" />
     <ClCompile Include="EngineGraphicDevice.cpp" />
     <ClCompile Include="EngineGraphicDevice_Resources.cpp" />

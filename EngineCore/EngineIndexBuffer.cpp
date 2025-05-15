@@ -21,12 +21,12 @@ std::shared_ptr<UEngineIndexBuffer> UEngineIndexBuffer::Create(std::string_view 
 
 	std::shared_ptr<UEngineIndexBuffer> NewRes = std::make_shared<UEngineIndexBuffer>();
 	PushResource<UEngineIndexBuffer>(NewRes, _Name, "");
-	NewRes->CreateViewObject(_InitData, _VertexSize, _VertexCount);
+	NewRes->CreateIndexBuffer(_InitData, _VertexSize, _VertexCount);
 
 	return NewRes;
 }
 
-void UEngineIndexBuffer::CreateViewObject(const void* _InitData, size_t _Size, size_t _Count)
+void UEngineIndexBuffer::CreateIndexBuffer(const void* _InitData, size_t _Size, size_t _Count)
 {
 	IndexSize = static_cast<UINT>(_Size);
 	IndexCount = static_cast<UINT>(_Count);

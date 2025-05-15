@@ -1,10 +1,10 @@
 #pragma once
 #include "EngineResources.h"
-#include "EngineDeviceBuffer.h"
+#include "EngineBufferBase.h"
 #include "EngineVertex.h"
 
 // Ό³Έν :
-class UEngineVertexBuffer : public UEngineResources, public UEngineDeviceBuffer
+class UEngineVertexBuffer : public UEngineResources, public UEngineBufferBase
 {
 public:
 	UEngineVertexBuffer();
@@ -20,18 +20,18 @@ public:
 
 	void IASetVertexBuffers();
 
-	ENGINEAPI UEngineInputLayoutInfo* GetInfoPtr()
+	ENGINEAPI UEngineInputLayoutInfo* GetInputLayoutInfo()
 	{
-		return InfoPtr;
+		return InputLayoutInfo;
 	}
 
 protected:
-	void CreateBuffer(const void* _InitData, size_t _VertexSize, size_t _VertexCount);
+	void CreateVertexBuffer(const void* _InitData, size_t _VertexSize, size_t _VertexCount);
 
 private:
 	UINT VertexSize = 0;
 	UINT VertexCount = 0;
-	UEngineInputLayoutInfo* InfoPtr;
+	UEngineInputLayoutInfo* InputLayoutInfo;
 
 private:
 	// delete Function

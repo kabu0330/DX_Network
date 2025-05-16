@@ -143,8 +143,7 @@ void UEngineTexture::UnbindFromShaderSlot(EShaderType _Type, UINT _BindIndex)
 	}
 }
 
-// 轰 按眉 积己
-void UEngineTexture::CreateViewObject(const D3D11_TEXTURE2D_DESC& _Value)
+void UEngineTexture::CreateTextureWithView(const D3D11_TEXTURE2D_DESC& _Value)
 {
 	Desc = _Value;
 
@@ -172,8 +171,7 @@ void UEngineTexture::CreateViewObject(const D3D11_TEXTURE2D_DESC& _Value)
 	}
 }
 
-// RTV 积己
-void UEngineTexture::CreateViewObject(Microsoft::WRL::ComPtr<ID3D11Texture2D> _Texture2D)
+void UEngineTexture::CreateRenderTargetView(Microsoft::WRL::ComPtr<ID3D11Texture2D> _Texture2D)
 {
 	Texture2D = _Texture2D;
 	

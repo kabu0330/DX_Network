@@ -113,10 +113,15 @@ void UShaderBindingManager::RegisterTextureBinding(std::string_view _Name, std::
 		return;
 	}
 
-	TextureSlots[TextureUpperName].EngineTexture = UEngineTexture::Find<UEngineTexture>(_ResName);
+	TextureSlots[TextureUpperName].EngineTexture = UEngineTexture::Find<UEngineTexture>(_ResName).get();
 }
 
 void UShaderBindingManager::RegisterTextureBinding(std::string_view _Name, std::shared_ptr<UEngineTexture> _Texture)
+{
+	return RegisterTextureBinding(_Name, _Texture.get());
+}
+
+void UShaderBindingManager::RegisterTextureBinding(std::string_view _Name, UEngineTexture* _Texture)
 {
 	std::string TextureUpperName = UEngineString::ToUpper(_Name);
 

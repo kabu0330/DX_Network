@@ -73,7 +73,7 @@ void ULevel::Render(float _DeltaTime)
 {
 	UEngineCore::GetDevice().OMSetRenderTargetWithClear(); // 백버퍼 초기화 및 OM단계에서 사용할 RTV와 DSV 설정
 
-	LastRenderTarget->ClearRenderTargetView(); // 최종 출력 화면도 화면 한 번 지워
+	LastRenderTarget->ClearRenderTargets(); // 최종 출력 화면도 화면 한 번 지워
 
 	for (std::pair<const int, std::shared_ptr<ACameraActor>>& Camera : Cameras)
 	{
@@ -107,7 +107,7 @@ void ULevel::Render(float _DeltaTime)
 			std::shared_ptr<UEngineCamera> CameraComponent = Cameras[static_cast<int>(EEngineCameraType::UI_CAMERA)]->GetCameraComponent();
 
 			CameraActor->Tick(_DeltaTime); // 틱도 돌리고
-			CameraComponent->CameraTarget->ClearRenderTargetView(); // 화면도 지우고
+			CameraComponent->CameraTarget->ClearRenderTargets(); // 화면도 지우고
 			CameraComponent->CameraTarget->OMSetRenderTargets(); // 렌더타겟 세팅하고
 
 			HUD->UIRender(CameraComponent.get(), _DeltaTime); // 위젯의 틱, 렌더 돌리고

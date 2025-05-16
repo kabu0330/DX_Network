@@ -73,7 +73,7 @@ void URenderUnit::ConstantBufferLinkData(std::string_view _Name, void* _Data)
 	}
 }
 
-void URenderUnit::BindTextureToShaderSlotByName(std::string_view _Name, std::string_view _ResName)
+void URenderUnit::BindTextureToShaderSlot(std::string_view _Name, std::string_view _ResName)
 {
 	for (EShaderType i = EShaderType::VS; i < EShaderType::MAX_SHADER_TYPE; i = static_cast<EShaderType>(static_cast<int>(i) + 1))
 	{
@@ -107,6 +107,11 @@ void URenderUnit::BindTextureToShaderSlot(std::string_view _Name, std::shared_pt
 
 		Resources[i].RegisterTextureBinding(_Name, _Texture);
 	}
+}
+
+void URenderUnit::BindTextureToShaderSlot(std::string_view _Name, UEngineTexture* _Texture)
+{
+
 }
 
 void URenderUnit::SetSampler(std::string_view _Name, std::string_view _ResName)
@@ -164,6 +169,9 @@ void URenderUnit::SetMaterial(std::string_view _Name)
 
 void URenderUnit::SetRenderingPipelineAndDraw(class UEngineCamera* _Camera, float _DeltaTime)
 {
+	RenderBaseData.DeltaTime = _DeltaTime;
+	RenderBaseData.AccTime += _DeltaTime;
+
 	for (std::pair<const EShaderType, UShaderBindingManager>& Pair : Resources)
 	{
 		Pair.second.BindAllShaderSlots();

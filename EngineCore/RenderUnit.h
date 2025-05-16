@@ -3,6 +3,7 @@
 #include "Mesh.h"
 #include "EngineMaterial.h"
 #include "EngineEnums.h"
+#include "EngineDataStruct.h"
 
 // 설명 : 랜더링의 최소단위
 // 주인공이라면 
@@ -13,8 +14,8 @@
 class URenderUnit
 {
 public:
-	URenderUnit();
-	~URenderUnit();
+	ENGINEAPI URenderUnit();
+	ENGINEAPI ~URenderUnit();
 
 	UTransformObject* TransformObject = nullptr;
 
@@ -24,6 +25,8 @@ public:
 	std::shared_ptr<UEngineMaterial> Material; 	// 머티리얼(피부)
 
 	Microsoft::WRL::ComPtr<ID3D11InputLayout> InputLayout;
+
+	FRenderBaseData RenderBaseData;
 
 	ENGINEAPI void SetMesh(std::string_view _Name);
 	ENGINEAPI void SetMaterial(std::string_view _Name);
@@ -40,8 +43,9 @@ public:
 
 	ENGINEAPI void ConstantBufferLinkData(std::string_view Name, void* _Data);
 
-	ENGINEAPI void BindTextureToShaderSlotByName(std::string_view _Name, std::string_view _ResName);
+	ENGINEAPI void BindTextureToShaderSlot(std::string_view _Name, std::string_view _ResName);
 	ENGINEAPI void BindTextureToShaderSlot(std::string_view _Name, std::shared_ptr<UEngineTexture> _Texture);
+	ENGINEAPI void BindTextureToShaderSlot(std::string_view _Name, UEngineTexture* _Texture);
 
 	ENGINEAPI void SetSampler(std::string_view Name, std::string_view _ResName);
 
@@ -51,5 +55,6 @@ public:
 
 private:
 	void CreateInputLayout();
+
 };
 

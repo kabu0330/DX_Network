@@ -19,7 +19,7 @@ void UEngineRenderTarget::CreateRenderTargetView(float4 _Scale, float4 _ClearCol
 {
     ClearColor = _ClearColor; // 처음에 화면을 지울 색상
 
-    std::shared_ptr<class UEngineTexture> NewTarget = std::make_shared<UEngineTexture>();
+    std::shared_ptr<class UEngineTexture> NewTexture = std::make_shared<UEngineTexture>();
 
     D3D11_TEXTURE2D_DESC Desc = { 0 };
     Desc.ArraySize = 1;
@@ -37,28 +37,26 @@ void UEngineRenderTarget::CreateRenderTargetView(float4 _Scale, float4 _ClearCol
     //                                   렌더 타겟이면서                        셰이더도 사용한다.
     Desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_RENDER_TARGET | D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE;
 
-    NewTarget->CreateViewObject(Desc); // 텍스처만들고 DSV도 만들고
-    NewTarget->Size = _Scale;
+    NewTexture->CreateTextureWithView(Desc);
+    NewTexture->Size = _Scale;
 
-    AllRTVs.push_back(NewTarget->GetRTV()); // 렌더타겟뷰를 관리할 자료구조에 넣는다.
-    AllRenderTargetTextures.push_back(NewTarget);
+    AllRTVs.push_back(NewTexture->GetRTV()); // 렌더타겟뷰를 관리할 자료구조에 넣는다.
+    AllRenderTargetTextures.push_back(NewTexture);
 }
 
-// 백버퍼용 렌더타겟뷰 생성 함수
 void UEngineRenderTarget::CreateRenderTargetView(Microsoft::WRL::ComPtr<ID3D11Texture2D> _Texture2D)
 {
-	std::shared_ptr<class UEngineTexture> NewTarget = std::make_shared<UEngineTexture>();
-	NewTarget->CreateViewObject(_Texture2D);
+	std::shared_ptr<class UEngineTexture> NewTexture = std::make_shared<UEngineTexture>();
+	NewTexture->CreateRenderTargetView(_Texture2D);
 
-    if (nullptr == NewTarget->GetRTV())
+    if (nullptr == NewTexture->GetRTV())
     {
         MSGASSERT("백버퍼의 렌더타겟 뷰가 존재하지 않습니다.");
         return;
     }
 
-    AllRTVs.push_back(NewTarget->GetRTV());
-
-    AllRenderTargetTextures.push_back(NewTarget);
+    AllRTVs.push_back(NewTexture->GetRTV());
+    AllRenderTargetTextures.push_back(NewTexture);
 }
 
 // 몇번째 타겟의 사이즈로 깊이버퍼를 만들거냐
@@ -87,17 +85,26 @@ void UEngineRenderTarget::CreateDepthTexture(int _Index)
     Desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL; // 이 구조체의 용도는 뎁스 스텐실
 
     DepthTexture = std::make_shared<UEngineTexture>();
-    DepthTexture->CreateViewObject(Desc);
+    DepthTexture->CreateTextureWithView(Desc);
 }
 
-void UEngineRenderTarget::ClearRenderTargetView()
+void UEngineRenderTarget::ClearRenderTargets()
 {
+    // Clear RTV
     for (size_t i = 0; i < AllRTVs.size(); i++)
     {
-        // 내가 정한 ClearColor로 모든 RTV를 지운다.
         UEngineCore::GetDevice().GetContext()->ClearRenderTargetView(AllRTVs[i], ClearColor.Arr1D);
     }
-    UEngineCore::GetDevice().GetContext()->ClearDepthStencilView(DepthTexture->GetDSV(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+
+    // Clear DSV
+    if (nullptr == DepthTexture)
+    {
+        return;
+    }  
+    if (nullptr != DepthTexture->GetDSV())
+    {
+        UEngineCore::GetDevice().GetContext()->ClearDepthStencilView(DepthTexture->GetDSV(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+    }
 }
 
 void UEngineRenderTarget::OMSetRenderTargets()
@@ -105,17 +112,30 @@ void UEngineRenderTarget::OMSetRenderTargets()
     UEngineCore::GetDevice().GetContext()->OMSetRenderTargets(1, &AllRTVs[0], DepthTexture->GetDSV());
 }
 
-// 최종 렌더타겟에게까지 복사되어야 한다.
 void UEngineRenderTarget::CopyTo(std::shared_ptr<UEngineRenderTarget> _Target)
 {
-    _Target->ClearRenderTargetView(); // 복사하기 전에는 지우고
-    MergeTo(_Target); // 병합한다.
+    // 복사하기 전에는 지우고 병합한다.
+    _Target->ClearRenderTargets(); 
+    MergeTo(_Target); 
 }
 
 void UEngineRenderTarget::MergeTo(std::shared_ptr<UEngineRenderTarget> _Target)
 {
     _Target->OMSetRenderTargets(); // 출력병합
-    TargetUnit.BindTextureToShaderSlot("MergeTex", AllRenderTargetTextures[0]);  // SRV를 셰이더 슬롯에 연결
+    TargetUnit.BindTextureToShaderSlot("MergeTex", AllRenderTargetTextures[0]);  // 셰이더 슬롯에 연결
     TargetUnit.SetRenderingPipelineAndDraw(nullptr, 0.0f);
     TargetUnit.Reset();
+}
+
+void UEngineRenderTarget::Effect(UEngineCamera* _Camera, float _DeltaTime)
+{
+    for (std::shared_ptr<UPostEffect>& Effect : PostEffects)
+    {
+        if (false == Effect->IsActive)
+        {
+            continue;
+        }
+
+        Effect->Effect(_Camera, _DeltaTime);
+    }
 }

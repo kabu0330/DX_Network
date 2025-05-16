@@ -30,15 +30,8 @@ public:
 		}
 	};
 
-	// constrcuter destructer
 	ENGINEAPI USpriteRenderer();
 	ENGINEAPI ~USpriteRenderer();
-
-	// delete Function
-	USpriteRenderer(const USpriteRenderer& _Other) = delete;
-	USpriteRenderer(USpriteRenderer&& _Other) noexcept = delete;
-	USpriteRenderer& operator=(const USpriteRenderer& _Other) = delete;
-	USpriteRenderer& operator=(USpriteRenderer&& _Other) noexcept = delete;
 
 	int GetCurIndex()
 	{
@@ -132,5 +125,13 @@ private:
 	UEngineSprite* Sprite = nullptr;
 	bool IsAutoScale = true;
 	float AutoScaleRatio = 1.0f;
+
+private:
+	// delete Function
+	USpriteRenderer(const USpriteRenderer& _Other) = delete;
+	USpriteRenderer(USpriteRenderer&& _Other) noexcept = delete;
+	USpriteRenderer& operator=(const USpriteRenderer& _Other) = delete;
+	USpriteRenderer& operator=(USpriteRenderer&& _Other) noexcept = delete;
+
 };
 

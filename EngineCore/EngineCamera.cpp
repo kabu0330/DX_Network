@@ -48,7 +48,7 @@ void UEngineCamera::Render(float _DetlaTime)
 	// 랜더링 진입하기 전에 한번 뷰포트 세팅하고 
 	UEngineCore::GetDevice().GetContext()->RSSetViewports(1, &ViewPortInfo);
 
-	CameraTarget->ClearRenderTargetView();	// 화면을 지우고
+	CameraTarget->ClearRenderTargets();	// 화면을 지우고
 	CameraTarget->OMSetRenderTargets(); // 출력 병합한다.
 
 	// Ranged for를 돌릴때는 복사가 일어난다.

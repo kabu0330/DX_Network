@@ -216,7 +216,7 @@ void UEngineGraphicDevice::InitializeBackBufferRenderTargets()
 
 void UEngineGraphicDevice::OMSetRenderTargetWithClear()
 {
-    BackBufferTarget->ClearRenderTargetView();
+    BackBufferTarget->ClearRenderTargets();
     BackBufferTarget->OMSetRenderTargets();
 }
 

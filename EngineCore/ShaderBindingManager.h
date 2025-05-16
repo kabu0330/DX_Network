@@ -20,7 +20,7 @@ class UShaderConstantBufferBinding : public UShaderSlotBindingBase
 {
 public:
 	void* Data = nullptr;
-	UINT BufferSize;
+	UINT BufferSize = 0;
 	std::shared_ptr<UEngineConstantBuffer> EngineConstantBuffer;
 
 	void BindToShaderSlot()
@@ -40,7 +40,7 @@ public:
 class UShaderTextureBinding : public UShaderSlotBindingBase
 {
 public:
-	std::shared_ptr<UEngineTexture> EngineTexture;
+	UEngineTexture* EngineTexture;
 
 	void BindToShaderSlot()
 	{
@@ -90,7 +90,9 @@ public:
 	void LinkConstantBufferData(std::string_view _Name, void* Data);
 
 	void RegisterTextureBinding(std::string_view _Name, std::string_view _ResName);
+	void RegisterTextureBinding(std::string_view _Name, UEngineTexture* _Texture);
 	void RegisterTextureBinding(std::string_view _Name, std::shared_ptr<UEngineTexture> _Texture);
+
 
 	void RegisterSamplerBinding(std::string_view _Name, std::string_view _ResName);
 

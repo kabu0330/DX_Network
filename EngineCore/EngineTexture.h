@@ -56,18 +56,18 @@ public:
 	void BindToShaderSlot(EShaderType _Type, UINT _BindIndex);
 	void UnbindFromShaderSlot(EShaderType _Type, UINT _BindIndex);
 
-	ENGINEAPI void CreateViewObject(const D3D11_TEXTURE2D_DESC& _Value);
+	ENGINEAPI void CreateTextureWithView(const D3D11_TEXTURE2D_DESC& _Value);
 
-	ENGINEAPI void CreateViewObject(Microsoft::WRL::ComPtr<ID3D11Texture2D> _Texture2D);
+	ENGINEAPI void CreateRenderTargetView(Microsoft::WRL::ComPtr<ID3D11Texture2D> _Texture2D);
 
 	ENGINEAPI void CreateRenderTargetView();
 	ENGINEAPI void CreateShaderResourceView();
 	ENGINEAPI void CreateDepthStencilView();
-
 protected:
 
 private:
 	ENGINEAPI void LoadResource();
+
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> Texture2D = nullptr; // GPU Texture Data
 
 	FVector Size = FVector::ZERO;
@@ -75,7 +75,7 @@ private:
 	DirectX::ScratchImage ImageData = DirectX::ScratchImage();
 	
 
-	D3D11_TEXTURE2D_DESC Desc;
+	D3D11_TEXTURE2D_DESC Desc = {};
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> SRV = nullptr; // 읽기
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> RTV = nullptr; // 쓰기
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> DSV = nullptr; // 깊이 테스트

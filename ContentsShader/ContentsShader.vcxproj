@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <FxCompile Include="ContentsShader.fx" />
+    <FxCompile Include="JHJEffect.fx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

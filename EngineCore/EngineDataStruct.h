@@ -21,3 +21,8 @@ struct FSpriteData
 	float4 Pivot = { 0.5f, 0.5f };
 };
 
+struct FRenderBaseData
+{
+	float DeltaTime = 0.0f;
+	float AccTime = 0.0f;
+};

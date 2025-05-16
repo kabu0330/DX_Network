@@ -5,7 +5,6 @@
 class APawn : public AActor
 {
 public:
-	// constrcuter destructer
 	ENGINEAPI APawn();
 	ENGINEAPI ~APawn();
 
@@ -16,8 +15,10 @@ public:
 	APawn& operator=(APawn&& _Other) noexcept = delete;
 
 protected:
+	void BeginPlay() override;
+	void Tick(float _DeltaTime) override;
 
+	class USpriteRenderer* BodyRenderer = nullptr;
 private:
-
 };
 

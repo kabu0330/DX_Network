@@ -111,7 +111,7 @@ void UEngineShader::ReflectAndBindShaderResources()
 			NewRes.ShaderType = ShaderType;
 			NewRes.Name = UpperName;
 			NewRes.BindIndex = ResDesc.BindPoint;
-			NewRes.EngineTexture = Res;
+			NewRes.EngineTexture = Res.get();
 
 			ShaderBindingManager.AddTextureBinding(UpperName, NewRes);
 

@@ -30,7 +30,7 @@ void USpriteRenderer::SetSprite(std::string_view _Name, UINT _Index)
 {
 	Sprite = UEngineSprite::Find<UEngineSprite>(_Name).get();
 
-	GetRenderUnit().BindTextureToShaderSlotByName("ImageTexture", Sprite->GetTexture(_Index)->GetName());
+	GetRenderUnit().BindTextureToShaderSlot("ImageTexture", Sprite->GetTexture(_Index)->GetName());
 	SpriteData = Sprite->GetSpriteData(_Index);
 
 	CurIndex = _Index;
@@ -45,7 +45,7 @@ void USpriteRenderer::SetTexture(std::string_view _Name, bool AutoScale, float _
 		MSGASSERT("로드하지 않은 텍스처를 사용하려고 했습니다." + Name);
 	}
 
-	GetRenderUnit().BindTextureToShaderSlotByName("ImageTexture", _Name);
+	GetRenderUnit().BindTextureToShaderSlot("ImageTexture", _Name);
 
 	if (true == AutoScale)
 	{
@@ -78,7 +78,7 @@ void USpriteRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 	{
 		Sprite = CurAnimation->Sprite;
 
-		GetRenderUnit().BindTextureToShaderSlotByName("ImageTexture", Sprite->GetTexture(CurIndex)->GetName());
+		GetRenderUnit().BindTextureToShaderSlot("ImageTexture", Sprite->GetTexture(CurIndex)->GetName());
 		SpriteData = Sprite->GetSpriteData(CurIndex);
 	}
 

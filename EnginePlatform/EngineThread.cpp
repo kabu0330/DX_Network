@@ -43,5 +43,8 @@ void UEngineThread::ThreadBaseFunction(UEngineThread* _Thread)
 
 void UEngineThread::Join()
 {
-	ThreadInst.join();
+	if (true == ThreadInst.joinable()) // 자기 자신을 Join하지 않도록 예외처리
+	{
+		ThreadInst.join();
+	}
 }

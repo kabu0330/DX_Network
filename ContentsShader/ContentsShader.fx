@@ -43,7 +43,6 @@ cbuffer FTransform : register(b0)
     float4x4 WVP;
 };
 
-
 cbuffer FSpriteData : register(b1)
 {
     float4 CuttingPos;
@@ -51,7 +50,6 @@ cbuffer FSpriteData : register(b1)
     float4 Pivot;
 };
 
-// 버텍스쉐이더를 다 만들었다.
 VertexShaderOutPut MY_VS(EngineVertex _Vertex)
 {
     VertexShaderOutPut OutPut;
@@ -77,7 +75,6 @@ cbuffer ResultColor : register(b0)
 	float4 MulColor;
 };
 
-// 이미지를 샘플링해서 이미지를 보이게 만들고
 float4 MY_PS(VertexShaderOutPut _Vertex) : SV_Target0
 {  
 	float4 Color = ImageTexture.Sample(ImageSampler, _Vertex.UV.xy);

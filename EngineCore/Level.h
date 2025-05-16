@@ -16,6 +16,11 @@ public:
 	void LevelChangeStart();
 	void LevelChangeEnd();
 
+	UEngineRenderTarget* GetLastRenderTarget()
+	{
+		return LastRenderTarget.get();
+	}
+
 	template<typename Type>
 	Type* GetGameMode()
 	{

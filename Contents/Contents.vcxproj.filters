@@ -55,6 +55,12 @@
     <ClInclude Include="ThreadTestLevel.h">
       <Filter>Test</Filter>
     </ClInclude>
+    <ClInclude Include="TestPostEffect.h">
+      <Filter>Test</Filter>
+    </ClInclude>
+    <ClInclude Include="PostEffectGameMode.h">
+      <Filter>Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -106,6 +112,12 @@
       <Filter>02_ContentsSetting</Filter>
     </ClCompile>
     <ClCompile Include="ThreadTestLevel.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="TestPostEffect.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffectGameMode.cpp">
       <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>

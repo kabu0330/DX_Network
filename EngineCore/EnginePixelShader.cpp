@@ -47,7 +47,7 @@ void UEnginePixelShader::CreatePixelShader()
 	D3DCompileFromFile(
 		WPath.c_str(),
 		nullptr, 
-		nullptr,
+		D3D_COMPILE_STANDARD_FILE_INCLUDE,
 		EntryName.c_str(),
 		version.c_str(),
 		Flag0,

@@ -69,6 +69,16 @@ void UEngineGraphicDevice::CreateDepthStencilStates()
 
 		UEngineDepthStencilState::Create("TargetMerge", Desc);
 	}
+
+	{
+		D3D11_DEPTH_STENCIL_DESC Desc = { 0 };
+		Desc.DepthEnable = false;
+		Desc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+		Desc.DepthFunc = D3D11_COMPARISON_ALWAYS;
+		Desc.StencilEnable = false;
+
+		UEngineDepthStencilState::Create("ALWAYS", Desc);
+	}
 }
 
 void UEngineGraphicDevice::CreateSamplerStates()

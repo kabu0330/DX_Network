@@ -21,7 +21,7 @@ std::shared_ptr<UEnginePixelShader> UEnginePixelShader::CreatePixelShader(std::s
 	}
 
 	std::shared_ptr<UEnginePixelShader> NewRes = std::make_shared<UEnginePixelShader>();
-	PushResource<UEnginePixelShader>(NewRes, _Name, _Path);
+	AddResource<UEnginePixelShader>(NewRes, _Name, _Path);
 	NewRes->VersionHigh = _VersionHigh;
 	NewRes->VersionLow = _VersionLow;
 	NewRes->EntryName = _EntryPoint;

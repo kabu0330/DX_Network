@@ -48,12 +48,8 @@ public:
 		}
 	}
 
-	ENGINEAPI static bool IsCurLevel(std::string_view _LevelName);
-	ENGINEAPI static std::shared_ptr<class ULevel> ReadyToNextLevel(std::string_view _LevelName);
-	ENGINEAPI static void SetNextLevel(std::shared_ptr<class ULevel> _NextLevel);
-	static void DestroyLevel(std::string_view _LevelName);
-
 	ENGINEAPI static void OpenLevel(std::string_view _Name);
+
 
 	ENGINEAPI static FVector GetScreenScale();
 
@@ -98,6 +94,10 @@ private:
 	static void EngineFrame();
 	static void EngineEnd();
 
+	ENGINEAPI static bool IsCurLevel(std::string_view _LevelName);
+	ENGINEAPI static std::shared_ptr<class ULevel> ReadyToNextLevel(std::string_view _LevelName);
+	ENGINEAPI static void SetNextLevel(std::shared_ptr<class ULevel> _NextLevel);
+	ENGINEAPI static void DestroyLevel(std::string_view _LevelName);
 	ENGINEAPI static std::shared_ptr<ULevel> NewLevelCreate(std::string_view _Name);
 
 	std::map<std::string, std::shared_ptr<class ULevel>> LevelMap;

@@ -33,6 +33,6 @@ public:
 private:
 
 public:
-	std::vector<URenderUnit> Units;
+	std::vector<URenderUnit> RenderUnits;
 };
 

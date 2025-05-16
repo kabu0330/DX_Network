@@ -25,7 +25,7 @@ std::shared_ptr<UEngineTexture> UEngineTexture::LoadTextureThreadSafe(std::strin
 	}
 
 	std::shared_ptr<UEngineTexture> NewTexture = std::make_shared<UEngineTexture>();
-	PushResourceThreadSafe<UEngineTexture>(NewTexture, _Name, _Path); // 텍스처를 관리구조에 편입
+	AddResourceThreadSafe<UEngineTexture>(NewTexture, _Name, _Path); // 텍스처를 관리구조에 편입
 	NewTexture->LoadResource();
 	return NewTexture;
 }
@@ -41,7 +41,7 @@ std::shared_ptr<UEngineTexture> UEngineTexture::LoadTexture(std::string_view _Na
 	}
 
 	std::shared_ptr<UEngineTexture> NewTexture =  std::make_shared<UEngineTexture>();
-	PushResource<UEngineTexture>(NewTexture, _Name, _Path); // 텍스처를 관리구조에 편입
+	AddResource<UEngineTexture>(NewTexture, _Name, _Path); // 텍스처를 관리구조에 편입
 	NewTexture->LoadResource();
 
 	return NewTexture;
@@ -49,7 +49,7 @@ std::shared_ptr<UEngineTexture> UEngineTexture::LoadTexture(std::string_view _Na
 
 void UEngineTexture::LoadResource()
 {
-	UEngineFile File = Path;
+	UEngineFile File = ResourcePath;
 
 	std::string Str = File.GetPathToString();
 	std::string Ext = File.GetExtension();

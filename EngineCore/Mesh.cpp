@@ -20,7 +20,7 @@ std::shared_ptr<UMesh> UMesh::CreateWithBuffers(std::string_view _Name, std::str
 	}
 
 	std::shared_ptr<UMesh> NewMesh = std::make_shared<UMesh>();
-	PushResource<UMesh>(NewMesh, _Name, "");
+	AddResource<UMesh>(NewMesh, _Name, "");
 	NewMesh->VertexBuffer = UEngineVertexBuffer::Find<UEngineVertexBuffer>(_VertexBuffer);
 	NewMesh->IndexBuffer = UEngineIndexBuffer::Find<UEngineIndexBuffer>(_IndexBuffer);
 

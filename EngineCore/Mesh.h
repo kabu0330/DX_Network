@@ -3,7 +3,7 @@
 #include "EngineVertexBuffer.h"
 
 // 설명 : 버텍스 버퍼 + 인덱스 버퍼
-class UMesh : public UEngineResources
+class UMesh : public UEngineResourceManager
 {
 public:
 	UMesh();

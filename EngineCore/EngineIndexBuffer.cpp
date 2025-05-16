@@ -20,7 +20,7 @@ std::shared_ptr<UEngineIndexBuffer> UEngineIndexBuffer::Create(std::string_view 
 	}
 
 	std::shared_ptr<UEngineIndexBuffer> NewRes = std::make_shared<UEngineIndexBuffer>();
-	PushResource<UEngineIndexBuffer>(NewRes, _Name, "");
+	AddResource<UEngineIndexBuffer>(NewRes, _Name, "");
 	NewRes->CreateIndexBuffer(_InitData, _VertexSize, _VertexCount);
 
 	return NewRes;

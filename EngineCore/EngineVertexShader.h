@@ -1,11 +1,11 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 #include <Windows.h>
 #include "EngineShader.h"
 
 // 설명 : 셰이더 파일로부터 버텍스 셰이더를 컴파일하고 바이트 코드와 리플렉션 정보를 포함하여
 //		  렌더링 파이프라인의 VS 슬롯에 바인딩하는 클래스
-class UEngineVertexShader : public UEngineResources, public UEngineShader
+class UEngineVertexShader : public UEngineResourceManager, public UEngineShader
 {
 public:
 	UEngineVertexShader();

@@ -8,11 +8,9 @@ public:
 	ENGINEAPI virtual ~UGameInstance();
 
 
-
 protected:
 
 private:
-
 
 private:
 	// delete Function

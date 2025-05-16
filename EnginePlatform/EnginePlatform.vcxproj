@@ -170,6 +170,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EngineInput.h" />
+    <ClInclude Include="EngineNetwork.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EngineProtocol.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EngineSound.h" />
     <ClInclude Include="EngineThread.h" />
     <ClInclude Include="EngineWinDebug.h" />
@@ -191,6 +199,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EngineInput.cpp" />
+    <ClCompile Include="EngineNetwork.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EngineProtocol.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EngineSound.cpp" />
     <ClCompile Include="EngineThread.cpp" />
     <ClCompile Include="EngineWinDebug.cpp" />

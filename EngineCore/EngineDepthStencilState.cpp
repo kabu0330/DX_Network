@@ -21,7 +21,7 @@ std::shared_ptr<UEngineDepthStencilState> UEngineDepthStencilState::Create(std::
 	}
 
 	std::shared_ptr<UEngineDepthStencilState> NewDepthStencilState = std::make_shared<UEngineDepthStencilState>();
-	PushResource<UEngineDepthStencilState>(NewDepthStencilState, _Name, "");
+	AddResource<UEngineDepthStencilState>(NewDepthStencilState, _Name, "");
 	NewDepthStencilState->CreateDepthStencilState(_Value);
 
 	return NewDepthStencilState;
@@ -29,7 +29,7 @@ std::shared_ptr<UEngineDepthStencilState> UEngineDepthStencilState::Create(std::
 
 void UEngineDepthStencilState::CreateDepthStencilState(const D3D11_DEPTH_STENCIL_DESC& _Value)
 {
-	if (UEngineCore::GetDevice().GetDevice()->CreateDepthStencilState(&_Value, &State))
+	if (UEngineCore::GetDevice().GetDevice()->CreateDepthStencilState(&_Value, &DepthStencilState))
 	{
 		MSGASSERT("뎁스 스텐실 스테이트 생성에 실패했습니다.");
 		return;
@@ -39,5 +39,5 @@ void UEngineDepthStencilState::CreateDepthStencilState(const D3D11_DEPTH_STENCIL
 void UEngineDepthStencilState::OMSetDepthStencilState()
 {
 	// Omset 최종 픽셀테스트에 영향을 준다.
-	UEngineCore::GetDevice().GetContext()->OMSetDepthStencilState(State.Get(), 0);
+	UEngineCore::GetDevice().GetContext()->OMSetDepthStencilState(DepthStencilState.Get(), 0);
 }

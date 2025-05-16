@@ -21,7 +21,7 @@ std::shared_ptr<UEngineSampler> UEngineSampler::Create(std::string_view _Name, c
 	}
 
 	std::shared_ptr<UEngineSampler> NewSampler = std::make_shared<UEngineSampler>();
-	PushResource<UEngineSampler>(NewSampler, _Name, "");
+	AddResource<UEngineSampler>(NewSampler, _Name, "");
 	NewSampler->CreateSamplerState(_Value);
 
 	return NewSampler;

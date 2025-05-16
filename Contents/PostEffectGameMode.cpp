@@ -39,7 +39,7 @@ void APostEffectGameMode::BeginPlay()
 	AGameMode::BeginPlay();
 
 	UEngineRenderTarget* LastTarget = GetWorld()->GetLastRenderTarget();
-	LastTarget->AddEffet<UTestPostEffect>();
+	LastTarget->AddPostEffet<UTestPostEffect>();
 
 	std::shared_ptr<UPostEffect> Effect = LastTarget->GetPostEffect(0);
 	Effect->IsActive = false;

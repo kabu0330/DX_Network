@@ -5,11 +5,14 @@
 #include <EnginePlatform/EngineSound.h>
 #include <EnginePlatform/EngineInput.h>
 #include "IContentsCore.h"
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 #include "EngineConstantBuffer.h"
 #include "EngineGUI.h"
 #include "Level.h"
 #include "GameInstance.h"
+
+
+UEngineCore* GEngine = nullptr;
 
 void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 {
@@ -28,7 +31,7 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 		[]()
 		{
 			UEngineSound::Init();
-			// UEngineDebug::StartConsole();
+			UEngineDebug::StartConsole();
 			
 			GEngine->Device.CreateDeviceAndContext();	
 			GEngine->Device.SetupEngineRenderingPipeline(); // 초기 설정
@@ -120,7 +123,7 @@ void UEngineCore::EngineFrame()
 
 		GEngine->CurLevel->LevelChangeStart(); 
 		GEngine->NextLevel = nullptr;
-		GEngine->Timer.TimeStart(); // 델타 타임도 처음부터 다시 갱신한다. 혹시 모를 오류가 있을까봐
+		GEngine->Timer.TimeStart(); // 혹시 모를 오류가 있을까봐 델타 타임도 다시 갱신한다. 
 	}
 
 	// 1. 델타 타임 체크
@@ -140,7 +143,7 @@ void UEngineCore::EngineFrame()
 	UEngineSound::Update();
 
 	// 4. 레벨 순회
-	// Core에서 Level이 관리하는 Actor, Renderer, Collision를 'Windows메시지루프'에서 돌려준다.
+	// Core에서 Level이 관리하는 Actor, Renderer, Collision을 'Windows 루프'에서 돌려준다.
 	GEngine->CurLevel->Tick(DeltaTime);
 	GEngine->CurLevel->Render(DeltaTime);
 
@@ -154,7 +157,7 @@ void UEngineCore::EngineEnd()
 
 	GEngine->Device.Release();
 
-	UEngineResources::Release();
+	UEngineResourceManager::Release();
 	UEngineConstantBuffer::Release();
 	UEngineSound::Release();
 
@@ -179,7 +182,7 @@ std::shared_ptr<ULevel> UEngineCore::NewLevelCreate(std::string_view _Name)
 
 	GEngine->LevelMap.insert({ _Name.data(), Ptr}); // 생성된 레벨은 모두 LevelMap에 저장
 
-	std::cout << "NewLevelCreate" << std::endl;
+	std::cout << "Level Create :" << _Name.data() << std::endl;
 
 	return Ptr;
 }
@@ -230,19 +233,9 @@ UEngineWorkThreadPool& UEngineCore::GetThreadPool()
 	return GEngine->ThreadPool;
 }
 
-UEngineCore* GEngine = nullptr;
-
 FVector UEngineCore::GetScreenScale()
 {
 	return GEngine->Data.WindowSize;
-}
-
-UEngineCore::UEngineCore()
-{
-}
-
-UEngineCore::~UEngineCore()
-{
 }
 
 void UEngineCore::SetGameInstance(std::shared_ptr<UGameInstance> _Inst)
@@ -295,4 +288,12 @@ void UEngineCore::DestroyLevel(std::string_view _LevelName)
 	}
 
 	GEngine->LevelMap.erase(FindIter);
+}
+
+UEngineCore::UEngineCore()
+{
+}
+
+UEngineCore::~UEngineCore()
+{
 }

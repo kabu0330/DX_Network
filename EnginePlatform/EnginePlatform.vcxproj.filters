@@ -49,6 +49,12 @@
     <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h">
       <Filter>06_ThirdParty\FMOD\Inc</Filter>
     </ClInclude>
+    <ClInclude Include="EngineNetwork.h">
+      <Filter>08_Network\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineProtocol.h">
+      <Filter>08_Network\Protocol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -74,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="EngineSound.cpp">
       <Filter>07_Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineNetwork.cpp">
+      <Filter>08_Network\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineProtocol.cpp">
+      <Filter>08_Network\Protocol</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +124,15 @@
     </Filter>
     <Filter Include="07_Sound">
       <UniqueIdentifier>{4be9b992-b63e-43ce-8d4d-aa9a3cfc1e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Network">
+      <UniqueIdentifier>{6fc3637c-73dd-4105-88ba-c4a8e84271b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Network\Network">
+      <UniqueIdentifier>{d82b29e3-2af9-439c-a797-486ac335f985}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Network\Protocol">
+      <UniqueIdentifier>{a41792cf-c439-4de6-b2d4-5a8c9f83c6fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

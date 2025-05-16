@@ -77,7 +77,7 @@ std::shared_ptr<UEngineMaterial> UEngineMaterial::Create(std::string_view _Name)
 	}
 
 	std::shared_ptr<UEngineMaterial> NewMaterial = std::make_shared<UEngineMaterial>();
-	PushResource<UEngineMaterial>(NewMaterial, _Name, "");
+	AddResource<UEngineMaterial>(NewMaterial, _Name, "");
 	return NewMaterial; 
 }
 

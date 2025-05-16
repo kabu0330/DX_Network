@@ -1,8 +1,8 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 
 // Ό³Έν :
-class UEngineRasterizerState : public UEngineResources
+class UEngineRasterizerState : public UEngineResourceManager
 {
 public:
 	// constrcuter destructer
@@ -23,6 +23,6 @@ protected:
 
 private:
 	void CreateRasterizerState(const D3D11_RASTERIZER_DESC& _Value);
-	Microsoft::WRL::ComPtr<ID3D11RasterizerState> State = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11RasterizerState> RasterizerState = nullptr;
 };
 

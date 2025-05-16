@@ -37,7 +37,7 @@ ENGINEAPI void URenderer::BeginPlay()
 
 URenderUnit& URenderer::GetRenderUnit(UINT _Index)
 {
-	return Units[_Index];
+	return RenderUnits[_Index];
 }
 
 void URenderer::SetMesh(std::string_view _Name, UINT _Index /*= 0*/)
@@ -56,15 +56,15 @@ void URenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 {
 	this->CameraTransUpdate(_Camera); // WVP 연산
 
-	for (size_t i = 0; i < Units.size(); i++)
+	for (size_t i = 0; i < RenderUnits.size(); i++)
 	{
-		Units[i].SetRenderingPipelineAndDraw(_Camera, _DeltaTime);
+		RenderUnits[i].SetRenderingPipelineAndDraw(_Camera, _DeltaTime);
 	}
 }
 
 URenderUnit& URenderer::CreateRenderUnit()
 {
- 	URenderUnit& NewUnit = Units.emplace_back(); // 내부에서 placement new를 통해 복사를 안해도 되게 최적화 해주는 문법
+ 	URenderUnit& NewUnit = RenderUnits.emplace_back(); // 내부에서 placement new를 통해 복사를 안해도 되게 최적화 해주는 문법
 	NewUnit.ParentRenderer = this;
 	return NewUnit;
 }

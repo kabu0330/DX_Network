@@ -2,12 +2,12 @@
 #include "EngineTexture.h"
 #include <EngineBase/EngineMath.h>
 #include <EngineBase/EngineDirectory.h>
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 #include "EngineDataStruct.h"
 #include "EngineDataStruct.h"
 
 // Ό³Έν :
-class UEngineSprite : public UEngineResources
+class UEngineSprite : public UEngineResourceManager
 {
 public:
 	UEngineSprite();

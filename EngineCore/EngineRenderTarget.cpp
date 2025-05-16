@@ -127,7 +127,7 @@ void UEngineRenderTarget::MergeTo(std::shared_ptr<UEngineRenderTarget> _Target)
     TargetUnit.Reset();
 }
 
-void UEngineRenderTarget::Effect(UEngineCamera* _Camera, float _DeltaTime)
+void UEngineRenderTarget::ShowPostEffect(UEngineCamera* _Camera, float _DeltaTime)
 {
     for (std::shared_ptr<UPostEffect>& Effect : PostEffects)
     {

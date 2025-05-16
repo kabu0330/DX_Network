@@ -20,7 +20,7 @@ std::shared_ptr<UEngineRasterizerState> UEngineRasterizerState::Create(std::stri
 	}
 
 	std::shared_ptr<UEngineRasterizerState> NewRes = std::make_shared<UEngineRasterizerState>();
-	PushResource<UEngineRasterizerState>(NewRes, _Name, "");
+	AddResource<UEngineRasterizerState>(NewRes, _Name, "");
 	NewRes->CreateRasterizerState(_Value);
 
 	return NewRes;
@@ -29,7 +29,7 @@ std::shared_ptr<UEngineRasterizerState> UEngineRasterizerState::Create(std::stri
 
 void UEngineRasterizerState::CreateRasterizerState(const D3D11_RASTERIZER_DESC& _Value)
 {
-	if (UEngineCore::GetDevice().GetDevice()->CreateRasterizerState(&_Value, &State))
+	if (UEngineCore::GetDevice().GetDevice()->CreateRasterizerState(&_Value, &RasterizerState))
 	{
 		MSGASSERT("래스터라이저 스테이트 생성에 실패했습니다");
 		return;
@@ -38,5 +38,5 @@ void UEngineRasterizerState::CreateRasterizerState(const D3D11_RASTERIZER_DESC& 
 
 void UEngineRasterizerState::RSSetState()
 {
-	UEngineCore::GetDevice().GetContext()->RSSetState(State.Get());
+	UEngineCore::GetDevice().GetContext()->RSSetState(RasterizerState.Get());
 }

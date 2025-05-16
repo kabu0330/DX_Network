@@ -44,9 +44,7 @@ void ULevel::Tick(float _DeltaTime)
 			continue;
 		}
 
-		StartIter = BeginPlayList.erase(StartIter); // BeginPlay가 호출된 액터는 해당 리스트에서 제거한다.
-		// 다음 프레임에는 BeginPlay가 또 호출될 일이 없다.
-
+		StartIter = BeginPlayList.erase(StartIter); 
 		CurActor->BeginPlay(); // 호출
 
 		if (nullptr != CurActor->Parent)
@@ -91,13 +89,13 @@ void ULevel::Render(float _DeltaTime)
 		Camera.second->GetCameraComponent()->Render(_DeltaTime);
 
 		// 특정 카메라만 포스트 이펙트
-		// Camera.second->PostEffect();
+		 //Camera.second->ShowPostEffect();
 
 		Camera.second->GetCameraComponent()->CameraTarget->MergeTo(LastRenderTarget); // 렌더링 파이프라인으로
 	}
 
 	// 여기서 하면 화면 전체 포스트 이펙트 적용
-	// LastRenderTarget->PostEffect(); 
+	//LastRenderTarget->ShowPostEffect(); 
 
 	if (true == Cameras.contains(static_cast<int>(EEngineCameraType::UI_CAMERA))) // UI카메라는 따로 렌더를 돌려준다.
 	{
@@ -106,7 +104,8 @@ void ULevel::Render(float _DeltaTime)
 		{
 			std::shared_ptr<UEngineCamera> CameraComponent = Cameras[static_cast<int>(EEngineCameraType::UI_CAMERA)]->GetCameraComponent();
 
-			CameraActor->Tick(_DeltaTime); // 틱도 돌리고
+			CameraActor->Tick(_DeltaTime); 
+
 			CameraComponent->CameraTarget->ClearRenderTargets(); // 화면도 지우고
 			CameraComponent->CameraTarget->OMSetRenderTargets(); // 렌더타겟 세팅하고
 
@@ -146,21 +145,17 @@ void ULevel::Render(float _DeltaTime)
 	}
 
 	// IMGUI 랜더링
-	// GUI랜더링은 기존 랜더링이 다 끝나고 해주는게 좋다.
 	if (true == UEngineWindow::IsApplicationOn())
 	{
 		UEngineGUI::GUIRender(this);
 	}
 
-	// Present
 	UEngineCore::GetDevice().Present(); // 스왑체인이 관리하는 백버퍼와 프론트버퍼를 교환(Swap) 
 	// 프론트버퍼(윈도우 창)에 출력
 }
 
 void ULevel::Collision(float _DeltaTime)
 {
-	// Monster Player 충돌체크 해야 한다.
-	
 	for (std::pair<const std::string, std::list<std::string>>& Links : CollisionLinks)
 	{
 		const std::string& LeftProfile = Links.first;
@@ -196,7 +191,6 @@ void ULevel::Release(float _DeltaTime)
 	}
 
 	{
-		// 충돌체 릴리즈
 		for (std::pair<const std::string, std::list<std::shared_ptr<UCollision>>>& Group : Collisions)
 		{
 			std::list<std::shared_ptr<UCollision>>& List = Group.second;
@@ -204,7 +198,6 @@ void ULevel::Release(float _DeltaTime)
 			std::list<std::shared_ptr<UCollision>>::iterator StartIter = List.begin();
 			std::list<std::shared_ptr<UCollision>>::iterator EndIter = List.end();
 
-			// 언리얼은 중간에 삭제할수 없어.
 			for (; StartIter != EndIter; )
 			{
 				if (false == (*StartIter)->IsDestroy())
@@ -213,27 +206,21 @@ void ULevel::Release(float _DeltaTime)
 					continue;
 				}
 
-				// 랜더러는 지울 필요가 없습니다.
-				// (*RenderStartIter) 누가 지울 권한을 가졌느냐.
-				// 컴포넌트의 메모리를 삭제할수 권한은 오로지 액터만 가지고 있다.
+				// 컴포넌트의 메모리를 삭제할 수 있는 권한은 오로지 액터만 가지고 있다.
 				StartIter = List.erase(StartIter);
 			}
 		}
 	}
-
 	{
 		std::list<std::shared_ptr<AActor>>& List = AllActorList;
 
 		std::list<std::shared_ptr<AActor>>::iterator StartIter = List.begin();
 		std::list<std::shared_ptr<AActor>>::iterator EndIter = List.end();
 
-		// 언리얼은 중간에 삭제할수 없어.
 		for (; StartIter != EndIter; )
 		{
 			if (nullptr != (*StartIter)->Parent)
 			{
-				// 부모가 있는 애는 어차피 부모가 다 tick
-				// 레벨이 돌려줄필요가 없어졌다.
 				StartIter = List.erase(StartIter);
 				continue;
 			}

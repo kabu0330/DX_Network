@@ -1,10 +1,10 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 
 #include "ThirdParty/FW1FontWrapper/Inc/FW1FontWrapper.h"
 
 // Ό³Έν :
-class UEngineFont : public UEngineResources
+class UEngineFont : public UEngineResourceManager
 {
 public:
 	// constrcuter destructer

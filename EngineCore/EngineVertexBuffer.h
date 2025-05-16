@@ -1,10 +1,10 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 #include "EngineBufferBase.h"
 #include "EngineVertex.h"
 
 // 설명 : 정점(Vertex) 정보를 GPU에 전달하는 DX11 버텍스 버퍼 클래스
-class UEngineVertexBuffer : public UEngineResources, public UEngineBufferBase
+class UEngineVertexBuffer : public UEngineResourceManager, public UEngineBufferBase
 {
 public:
 	UEngineVertexBuffer();

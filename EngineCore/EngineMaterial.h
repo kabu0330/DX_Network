@@ -6,7 +6,7 @@
 #include "EngineBlend.h"
 
 // 설명 : 버텍스 셰이더, 픽셀 셰이더, 레스터라이저, 알파블렌드, 뎁스 스텐실, 토폴로지를 모두 한데 묶어서 머티리얼
-class UEngineMaterial : public UEngineResources
+class UEngineMaterial : public UEngineResourceManager
 {
 public:
 	UEngineMaterial();
@@ -56,7 +56,6 @@ private:
 	std::shared_ptr<UEngineDepthStencilState> DepthState;
 
 	D3D11_PRIMITIVE_TOPOLOGY TOPOLOGY = D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST;
-	// UEngineCore::GetDevice().GetContext()->IASetPrimitiveTopology(Topology);
 	
 private:
 	// delete Function

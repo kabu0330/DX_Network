@@ -1,10 +1,10 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 #include "EngineBufferBase.h"
 #include "EngineEnums.h"
 
 // 설명 : 셰이더에서 cbuffer로 참조되는 GPU 상수 버퍼 클래스
-class UEngineConstantBuffer : public UEngineResources, public UEngineBufferBase
+class UEngineConstantBuffer : public UEngineResourceManager, public UEngineBufferBase
 {
 public:
 	UEngineConstantBuffer();

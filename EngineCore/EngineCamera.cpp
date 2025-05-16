@@ -39,7 +39,6 @@ void UEngineCamera::Tick(float _DetlaTime)
 	// 카메라는 Tick에서 View와 Projection을 계산 후 렌더러로 전달
 	Transform.View;
 	Transform.Projection;
-	int a = 0;
 }
 
 // 카메라에서 렌더링한다.
@@ -51,7 +50,6 @@ void UEngineCamera::Render(float _DetlaTime)
 	CameraTarget->ClearRenderTargets();	// 화면을 지우고
 	CameraTarget->OMSetRenderTargets(); // 출력 병합한다.
 
-	// Ranged for를 돌릴때는 복사가 일어난다.
 	for (std::pair<const int, std::list<std::shared_ptr<URenderer>>>& RenderGroup : Renderers)
 	{
 		std::list<std::shared_ptr<URenderer>>& RenderList = RenderGroup.second;
@@ -80,14 +78,12 @@ void UEngineCamera::Render(float _DetlaTime)
 
 void UEngineCamera::Release(float _DeltaTime)
 {
-	// Ranged for를 돌릴때는 복사가 일어나므로
 	for (std::pair<const int, std::list<std::shared_ptr<URenderer>>>& RenderGroup : Renderers)
 	{
 		std::list<std::shared_ptr<URenderer>>& RenderList = RenderGroup.second;
 		std::list<std::shared_ptr<URenderer>>::iterator StartIter = RenderList.begin();
 		std::list<std::shared_ptr<URenderer>>::iterator EndIter = RenderList.end();
 
-		// 언리얼은 중간에 삭제할수 없어.
 		for (; StartIter != EndIter; )
 		{
 			if (false == (*StartIter)->IsDestroy()) // Destory가 false면 삭제하지 않는다.

@@ -8,11 +8,10 @@ struct EngineVertex
 struct VertexShaderOutPut
 {
     float4 SVPOSITION : SV_POSITION; 
-    float4 UV : TEXCOORD; // 
+    float4 UV : TEXCOORD; 
     float4 COLOR : COLOR;
 };
 
-// 상수버퍼를 사용하겠다.
 cbuffer FTransform : register(b0)
 {
     float4 Scale;
@@ -25,7 +24,6 @@ cbuffer FTransform : register(b0)
     float4 RelativeQut;
     float4 RelativeLocation;
 
-	// 월드
     float4 WorldScale;
     float4 WorldRotation;
     float4 WorldQuat;

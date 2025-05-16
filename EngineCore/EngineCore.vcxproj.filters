@@ -31,7 +31,7 @@
     <ClInclude Include="EngineGraphicDevice.h">
       <Filter>05_Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="EngineResources.h">
+    <ClInclude Include="EngineResourceManager.h">
       <Filter>07_Resources</Filter>
     </ClInclude>
     <ClInclude Include="EngineGUI.h">
@@ -211,7 +211,7 @@
     <ClCompile Include="EngineGraphicDevice.cpp">
       <Filter>05_Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="EngineResources.cpp">
+    <ClCompile Include="EngineResourceManager.cpp">
       <Filter>07_Resources</Filter>
     </ClCompile>
     <ClCompile Include="EngineGUI.cpp">

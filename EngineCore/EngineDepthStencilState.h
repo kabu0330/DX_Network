@@ -1,8 +1,8 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 
 // Ό³Έν :
-class UEngineDepthStencilState : public UEngineResources
+class UEngineDepthStencilState : public UEngineResourceManager
 {
 public:
 	UEngineDepthStencilState();
@@ -16,7 +16,7 @@ protected:
 	void CreateDepthStencilState(const D3D11_DEPTH_STENCIL_DESC& _Value);
 
 private:
-	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> State = nullptr;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> DepthStencilState = nullptr;
 
 private:
 	// delete Function

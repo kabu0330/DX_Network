@@ -24,7 +24,7 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToFolder(std::string_v
 	}
 
 	std::shared_ptr<UEngineSprite> NewSpriteTexture = std::make_shared<UEngineSprite>();
-	PushResource<UEngineSprite>(NewSpriteTexture, _Name, "");
+	AddResource<UEngineSprite>(NewSpriteTexture, _Name, "");
 
 	for (size_t i = 0; i < Files.size(); i++)
 	{
@@ -63,15 +63,15 @@ std::shared_ptr<UEngineSprite> UEngineSprite::CreateSpriteToMeta(std::string_vie
 	}
 
 	std::shared_ptr<UEngineSprite> NewSpriteTexture = std::make_shared<UEngineSprite>();
-	PushResource<UEngineSprite>(NewSpriteTexture, _Name, "");
+	AddResource<UEngineSprite>(NewSpriteTexture, _Name, "");
 
-	UEnginePath Path = MetaFile->GetPath();
-	std::string FileName = Path.GetFileName();
+	UEnginePath ResourcePath = MetaFile->GetPath();
+	std::string FileName = ResourcePath.GetFileName();
 	FileName += _DataFileExt;
-	Path.MoveParent();
-	Path.Append(FileName);
+	ResourcePath.MoveParent();
+	ResourcePath.Append(FileName);
 
-	UEngineFile File = Path;
+	UEngineFile File = ResourcePath;
 
 	File.FileOpen("rt");
 

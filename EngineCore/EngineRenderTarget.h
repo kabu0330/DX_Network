@@ -1,5 +1,5 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 #include "EngineTexture.h"
 #include "RenderUnit.h"
 #include "EngineGraphicDevice.h"
@@ -26,7 +26,7 @@ protected:
 
 
 // 설명 : 렌더 타겟 뷰 생성, 깊이버퍼 생성, 출력 병합 후 렌더링 파이프라인으로 전송
-class UEngineRenderTarget : public UEngineResources
+class UEngineRenderTarget : public UEngineResourceManager
 {
 public:
 	ENGINEAPI UEngineRenderTarget();
@@ -58,7 +58,6 @@ public:
 protected:
 
 private:
-
 	float4 ClearColor = float4(0.0f, 0.0f, 1.0f, 1.0f);
 
 	std::vector<std::shared_ptr<class UEngineTexture>> AllRenderTargetTextures;
@@ -73,7 +72,7 @@ private:
 	// 포스트 이펙트
 public:
 	template<typename EffectType>
-	void AddEffet()
+	void AddPostEffet()
 	{
 		std::shared_ptr<EffectType> NewEffect = std::make_shared<EffectType>();
 		std::shared_ptr<UPostEffect> PostEffect = std::dynamic_pointer_cast<UPostEffect>(NewEffect);
@@ -83,7 +82,7 @@ public:
 		PostEffects.push_back(NewEffect);
 	}
 
-	void Effect(class UEngineCamera* _Camera, float _DeltaTime);
+	void ShowPostEffect(class UEngineCamera* _Camera, float _DeltaTime);
 
 	std::shared_ptr<UPostEffect> GetPostEffect(int _Index)
 	{

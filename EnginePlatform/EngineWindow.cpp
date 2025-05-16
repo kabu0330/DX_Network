@@ -2,13 +2,6 @@
 #include "EngineWindow.h"
 #include <EngineBase/EngineDebug.h>
 
-// 멀티플랫폼으로 짜려면
-//#ifdef _WINDOWS
-//#include <Windows.h>
-//#elseif _리눅스
-//
-//#elseif 안드로이드
-//#endif 
 
 HINSTANCE UEngineWindow::hInstance = nullptr;
 std::map<std::string, WNDCLASSEXA> UEngineWindow::WindowClasss;
@@ -118,7 +111,7 @@ int UEngineWindow::WindowMessageLoop(std::function<void()> _StartFunction, std::
 
     if (nullptr == _FrameFunction)
     {
-        MSGASSERT("업데이트 펑션이 바인드 되어 있지 않습니다.");
+        MSGASSERT("업데이트 펑션 바인드는 필수입니다.");
         return 0;
     }
 

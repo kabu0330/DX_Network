@@ -1,11 +1,11 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 #include "EngineEnums.h"
 
 #include "ThirdParty/DirectxTex/Inc/DirectXTex.h"
 
 // ¼³¸í : ÅØ½ºÃ³¿Í ºä °´Ã¼
-class UEngineTexture : public UEngineResources
+class UEngineTexture : public UEngineResourceManager
 {
 	friend class UEngineRenderTarget;
 

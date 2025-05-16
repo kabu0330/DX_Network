@@ -1,9 +1,9 @@
 #pragma once
-#include "EngineResources.h"
+#include "EngineResourceManager.h"
 #include "EngineBufferBase.h"
 
 // 설명 : 삼각형 연결 순서를 정의하는 DX11 인덱스 버퍼 클래스
-class UEngineIndexBuffer : public UEngineResources, public UEngineBufferBase
+class UEngineIndexBuffer : public UEngineResourceManager, public UEngineBufferBase
 {
 public:
 	UEngineIndexBuffer();

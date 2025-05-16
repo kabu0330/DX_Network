@@ -1,10 +1,10 @@
 #include "EngineProtocol.h"
 
-EngineProtocol::EngineProtocol()
+UEngineProtocol::UEngineProtocol()
 {
 }
 
-EngineProtocol::~EngineProtocol()
+UEngineProtocol::~UEngineProtocol()
 {
 }
 

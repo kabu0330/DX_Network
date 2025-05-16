@@ -118,9 +118,48 @@ public:
 		return &Data[0];
 	}
 
+	char* GetDataCharPtr()
+	{
+		return &Data[0];
+	}
+
+	char* GetDataCharPtrByWriteOffset()
+	{
+		return &Data[WriteOffset];
+	}
+
+	template<typename T>
+	T SeekData(int _Offest = 0)
+	{
+		T* Result = reinterpret_cast<T*>(&Data[Offset]);
+		return *Result;
+	}
+
+	template<typename T>
+	T* SeekDataPtr(int _Offset = 0)
+	{
+		T* Result = reinterpret_cast<T*>(&Data[_Offset]);
+		return Result;
+	}
+
+	void AddWriteOffset(int _Size)
+	{
+		WriteOffset += _Size;
+	}
+
 	int GetWriteOffset()
 	{
 		return WriteOffset;
+	}
+
+	int GetReadOffset()
+	{
+		return ReadOffset;
+	}
+
+	int GetRemainOffset()
+	{
+		return static_cast<int>(Data.size() - WriteOffset);
 	}
 
 	void DataResize(int _Value)
@@ -138,13 +177,15 @@ public:
 		ReadOffset = 0;
 	}
 
+	ENGINEAPI void ReadOffsetRemain();
+
 protected:
 
 private:
 	int WriteOffset = 0;
 	int ReadOffset = 0;
 
-	std::vector<char> Data;
+	std::vector<char> Data; 
 
 private:
 	// delete Function
@@ -163,9 +204,7 @@ public:
 
 	}
 
-	// 데이터를 직렬화(압축)
-	ENGINEAPI virtual void Serialize(UEngineSerializer& _Ser);
-	// 데이터를 복구(할때)
-	ENGINEAPI virtual void DeSerialize(UEngineSerializer& _Ser);
+	ENGINEAPI virtual void Serialize(UEngineSerializer& _Ser); 	// 데이터 직렬화(압축)
 
+	ENGINEAPI virtual void DeSerialize(UEngineSerializer& _Ser); // 데이터 복구
 };

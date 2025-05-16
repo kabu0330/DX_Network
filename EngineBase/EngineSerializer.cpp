@@ -12,14 +12,6 @@ void ISerializeObject::DeSerialize(UEngineSerializer& _Ser)
 
 }
 
-UEngineSerializer::UEngineSerializer()
-{
-}
-
-UEngineSerializer::~UEngineSerializer()
-{
-}
-
 void UEngineSerializer::Write(const void* _Data, unsigned int _Size)
 {
 	if (WriteOffset + _Size >= Data.size())
@@ -45,4 +37,20 @@ void UEngineSerializer::Read(void* _Data, unsigned int _Size)
 void UEngineSerializer::operator>>(ISerializeObject& _Data)
 {
 	_Data.DeSerialize(*this);
+}
+
+void UEngineSerializer::ReadOffsetRemain()
+{
+	int RemainSize = WriteOffset - ReadOffset;
+	memcpy_s(&Data[0], RemainSize, &Data[ReadOffset], RemainSize);
+	WriteOffset = RemainSize;
+	ReadOffset = 0;
+}
+
+UEngineSerializer::UEngineSerializer()
+{
+}
+
+UEngineSerializer::~UEngineSerializer()
+{
 }

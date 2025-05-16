@@ -169,6 +169,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="EngineDispatcher.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EngineInput.h" />
     <ClInclude Include="EngineNetwork.h">
       <SubType>
@@ -198,6 +202,10 @@
     <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EngineDispatcher.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EngineInput.cpp" />
     <ClCompile Include="EngineNetwork.cpp">
       <SubType>

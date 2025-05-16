@@ -55,6 +55,9 @@
     <ClInclude Include="EngineProtocol.h">
       <Filter>08_Network\Protocol</Filter>
     </ClInclude>
+    <ClInclude Include="EngineDispatcher.h">
+      <Filter>08_Network\Protocol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -85,6 +88,9 @@
       <Filter>08_Network\Network</Filter>
     </ClCompile>
     <ClCompile Include="EngineProtocol.cpp">
+      <Filter>08_Network\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDispatcher.cpp">
       <Filter>08_Network\Protocol</Filter>
     </ClCompile>
   </ItemGroup>

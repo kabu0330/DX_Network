@@ -10,21 +10,83 @@ enum EEnginePacketType
 };
 
 // 설명 :
-class EngineProtocol : public std::enable_shared_from_this<EngineProtocol>, public ISerializeObject
+class UEngineProtocol : public std::enable_shared_from_this<UEngineProtocol>, public ISerializeObject
 {
 public:
-	EngineProtocol();
-	~EngineProtocol();
+	void SerializePacket(UEngineSerializer& _Ser)
+	{
+		Serialize(_Ser);
+		int* PacketSize = _Ser.SeekDataPtr<int>(4);
+		*PacketSize = _Ser.GetWriteOffset();
+	}
+
+	void Serialize(UEngineSerializer& _Ser)
+	{
+		_Ser << PacketType;
+		_Ser << PacketSize;
+		_Ser << SessionToken;
+		_Ser << ObjectToken;
+	}
+	
+	void DeSerialize(UEngineSerializer& _Ser)
+	{
+		_Ser >> PacketType;
+		_Ser >> PacketSize;
+		_Ser >> SessionToken;
+		_Ser >> ObjectToken;
+	}
 
 
+	template<typename TPacketType>
+	TPacketType GetPacketType()
+	{
+		return static_cast<TPacketType>(PacketType);
+	}
+	int GetPacketType()   { return PacketType; }
+	int GetPacketSize()   { return PacketSize; }
+	int GetSessionToken() { return SessionToken; }
+	int GetObjectToken()  { return ObjectToken; }
+	
+	template<typename TPacketType>
+	void SetPacketType(TPacketType _Value)
+	{
+		PacketType = static_cast<int>(_Value);
+	}
+	void SetPacketType(int _Value) 
+	{ 
+		PacketType = _Value; 
+	}
+	void SetPacketSize(int _Size) 
+	{
+		PacketSize = _Size; 
+	}
+	void SetSessionToken(int _Value) 
+	{ 
+		SessionToken = _Value; 
+	
+	}
+	void SetObjectToken(int _Value)
+	{
+		ObjectToken = _Value;
+	}
 
 protected:
 
 private:
-	// delete Function
-	EngineProtocol(const EngineProtocol& _Other) = delete;
-	EngineProtocol(EngineProtocol&& _Other) noexcept = delete;
-	EngineProtocol& operator=(const EngineProtocol& _Other) = delete;
-	EngineProtocol& operator=(EngineProtocol&& _Other) noexcept = delete;
+	int PacketType = -1; // ex : 이동패킷, 공격패킷, 채팅패킷
+	int PacketSize = -1;
+	int SessionToken = -1; // 서버가 유저에게 부여한 ID
+	int ObjectToken = -1; // 게임 내 오브젝트 식별 ID (처리 대상)
+
+private:
+
 };
 
+class UUserAccessPacket : public UEngineProtocol
+{
+public: 
+	UUserAccessPacket()
+	{
+		SetPacketType(EEnginePacketType::UserAccessPacket);
+	}
+};

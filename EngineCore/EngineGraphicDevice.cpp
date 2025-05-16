@@ -18,6 +18,13 @@ void UEngineGraphicDevice::Release()
     MainAdapter = nullptr;
     SwapChain = nullptr;
     Context = nullptr;
+
+    Microsoft::WRL::ComPtr<ID3D11Debug> DebugInterface;
+    //if (SUCCEEDED(Device->QueryInterface(__uuidof(ID3D11Debug), reinterpret_cast<void**>(DebugInterface.GetAddressOf()))))
+    //{
+    //    DebugInterface->ReportLiveDeviceObjects(D3D11_RLDO_DETAIL);
+    //}
+
     Device = nullptr;
 }
 

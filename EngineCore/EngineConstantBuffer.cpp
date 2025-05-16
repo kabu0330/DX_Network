@@ -3,7 +3,7 @@
 
 std::map<int, std::map<std::string, std::shared_ptr<UEngineConstantBuffer>>> UEngineConstantBuffer::BufferMap;
 
-void UEngineConstantBuffer::ClearBufferCache()
+void UEngineConstantBuffer::Release()
 {
 	BufferMap.clear();
 }

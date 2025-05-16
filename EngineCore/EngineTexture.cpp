@@ -24,9 +24,10 @@ std::shared_ptr<UEngineTexture> UEngineTexture::LoadTextureThreadSafe(std::strin
 		return nullptr;
 	}
 
-	std::shared_ptr<UEngineTexture> NewTexure = std::make_shared<UEngineTexture>();
-
-	return std::shared_ptr<UEngineTexture>();
+	std::shared_ptr<UEngineTexture> NewTexture = std::make_shared<UEngineTexture>();
+	PushResourceThreadSafe<UEngineTexture>(NewTexture, _Name, _Path); // 텍스처를 관리구조에 편입
+	NewTexture->LoadResource();
+	return NewTexture;
 }
 
 std::shared_ptr<UEngineTexture> UEngineTexture::LoadTexture(std::string_view _Name, std::string_view _Path)

@@ -48,7 +48,7 @@ void AThreadTestLevel::LevelChangeStart()
 					MSGASSERT("리소스 폴더를 찾지 못했습니다.");
 					return;
 				}
-				Dir.Append("Image");
+				Dir.Append("MapObjectResources");
 				std::vector<UEngineFile> ImageFiles = Dir.GetAllFile(true, { ".PNG", ".BMP", ".JPG" });
 
 				LoadingCount = static_cast<int>(ImageFiles.size());

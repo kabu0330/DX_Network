@@ -16,7 +16,7 @@ public:
 	void UpdateConstantBufferData(void* _Data, UINT _Size);
 	void BindToShaderSlot(EShaderType _Type, UINT _BindIndex);
 
-	static void ClearBufferCache();
+	static void Release();
 
 protected:
 

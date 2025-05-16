@@ -24,19 +24,19 @@ void UContentsResource::LoadResource()
 		}
 	}
 
-	{
-		// 甘 府家胶
-		UEngineDirectory Dir;
-		Dir.MoveParentToDirectory("ContentsResources");
-		Dir.Append("MapObjectResources");
+	//{
+	//	// 甘 府家胶
+	//	UEngineDirectory Dir;
+	//	Dir.MoveParentToDirectory("ContentsResources");
+	//	Dir.Append("MapObjectResources");
 
-		std::vector<UEngineFile> ImageFiles = Dir.GetAllFile(true, { ".PNG", ".BMP", ".JPG" });
-		for (size_t i = 0; i < ImageFiles.size(); i++)
-		{
-			std::string FilePath = ImageFiles[i].GetPathToString();
-			UEngineTexture::LoadTexture(FilePath);
-		}
-	}
+	//	std::vector<UEngineFile> ImageFiles = Dir.GetAllFile(true, { ".PNG", ".BMP", ".JPG" });
+	//	for (size_t i = 0; i < ImageFiles.size(); i++)
+	//	{
+	//		std::string FilePath = ImageFiles[i].GetPathToString();
+	//		UEngineTexture::LoadTexture(FilePath);
+	//	}
+	//}
 
 	{
 		// 甘 府家胶

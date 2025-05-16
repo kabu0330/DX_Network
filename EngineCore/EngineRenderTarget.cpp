@@ -10,6 +10,9 @@ UEngineRenderTarget::UEngineRenderTarget()
 
 UEngineRenderTarget::~UEngineRenderTarget()
 {
+    AllRenderTargetTextures.clear();
+    AllRTVs.clear();
+    AllSRVs.clear();
 }
 
 void UEngineRenderTarget::CreateRenderTargetView(float4 _Scale, float4 _ClearColor /*= float4::NONE*/, DXGI_FORMAT _Format /*= DXGI_FORMAT::DXGI_FORMAT_R32G32B32A32_FLOAT*/)

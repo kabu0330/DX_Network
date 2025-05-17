@@ -123,43 +123,43 @@ public:
 		return &Data[0];
 	}
 
-	char* GetDataCharPtrByWriteOffset()
+	char* GetWritePointer()
 	{
-		return &Data[WriteOffset];
+		return &Data[WritePos];
 	}
 
 	template<typename T>
-	T SeekData(int _Offest = 0)
+	T ReadDataAt(int _Offest = 0)
 	{
-		T* Result = reinterpret_cast<T*>(&Data[Offset]);
+		T* Result = reinterpret_cast<T*>(&Data[_Offest]);
 		return *Result;
 	}
 
 	template<typename T>
-	T* SeekDataPtr(int _Offset = 0)
+	T* ReadDataPtrAt(int _Offset = 0)
 	{
 		T* Result = reinterpret_cast<T*>(&Data[_Offset]);
 		return Result;
 	}
 
-	void AddWriteOffset(int _Size)
+	void AddWritePos(int _Size)
 	{
-		WriteOffset += _Size;
+		WritePos += _Size;
 	}
 
-	int GetWriteOffset()
+	int GetWritePos()
 	{
-		return WriteOffset;
+		return WritePos;
 	}
 
-	int GetReadOffset()
+	int GetReadPos()
 	{
-		return ReadOffset;
+		return ReadPos;
 	}
 
-	int GetRemainOffset()
+	int GetWritableBites()
 	{
-		return static_cast<int>(Data.size() - WriteOffset);
+		return static_cast<int>(Data.size() - WritePos);
 	}
 
 	void DataResize(int _Value)
@@ -172,18 +172,19 @@ public:
 		return Data.size();
 	}
 
-	void ResetOffset()
+	void ResetReadPos()
 	{
-		ReadOffset = 0;
+		ReadPos = 0;
 	}
 
-	ENGINEAPI void ReadOffsetRemain();
+	// 읽은 데이터는 버리고 안 읽은 데이터를 앞으로 당긴다.
+	ENGINEAPI void CompactBuffer();
 
 protected:
 
 private:
-	int WriteOffset = 0;
-	int ReadOffset = 0;
+	int WritePos = 0;
+	int ReadPos = 0;
 
 	std::vector<char> Data; 
 

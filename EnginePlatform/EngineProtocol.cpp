@@ -1,10 +1,4 @@
+#include "PreCompile.h"
 #include "EngineProtocol.h"
 
-UEngineProtocol::UEngineProtocol()
-{
-}
-
-UEngineProtocol::~UEngineProtocol()
-{
-}
 

@@ -16,11 +16,11 @@ public:
 	void SerializePacket(UEngineSerializer& _Ser)
 	{
 		Serialize(_Ser);
-		int* PacketSize = _Ser.SeekDataPtr<int>(4);
-		*PacketSize = _Ser.GetWriteOffset();
+		int* PacketSizeAddress = _Ser.ReadDataPtrAt<int>(4);
+		*PacketSizeAddress = _Ser.GetWritePos();
 	}
 
-	void Serialize(UEngineSerializer& _Ser)
+	void Serialize(UEngineSerializer& _Ser) override
 	{
 		_Ser << PacketType;
 		_Ser << PacketSize;
@@ -28,7 +28,7 @@ public:
 		_Ser << ObjectToken;
 	}
 	
-	void DeSerialize(UEngineSerializer& _Ser)
+	void DeSerialize(UEngineSerializer& _Ser) override
 	{
 		_Ser >> PacketType;
 		_Ser >> PacketSize;
@@ -70,13 +70,18 @@ public:
 		ObjectToken = _Value;
 	}
 
+	static int GetProtocolSize()
+	{
+		return sizeof(int) * 4;
+	}
+
 protected:
 
 private:
-	int PacketType = -1; // ex : 이동패킷, 공격패킷, 채팅패킷
-	int PacketSize = -1;
-	int SessionToken = -1; // 서버가 유저에게 부여한 ID
-	int ObjectToken = -1; // 게임 내 오브젝트 식별 ID (처리 대상)
+	int PacketType = -1;	// ex : 이동패킷, 공격패킷, 채팅패킷
+	int PacketSize = -1;	// SerializePacket() 함수로 프로토콜 사이즈 알아서 넣어줄 것임
+	int SessionToken = -1;  // 서버가 유저에게 부여한 ID(소켓)
+	int ObjectToken = -1;	// 게임 내 오브젝트 식별 ID (처리 대상)
 
 private:
 

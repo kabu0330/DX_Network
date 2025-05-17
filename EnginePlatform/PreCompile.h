@@ -1,7 +1,12 @@
 #pragma once
 
-#include <EngineBase/PreCompile.h>
+// os
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+#include <Windows.h>
+#pragma comment (lib, "ws2_32")
 
+#include <EngineBase/PreCompile.h>
 #pragma comment(lib, "EngineBase.lib")
 
 

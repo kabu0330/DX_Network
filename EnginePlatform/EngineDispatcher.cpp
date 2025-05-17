@@ -1,10 +1,11 @@
+#include "PreCompile.h"
 #include "EngineDispatcher.h"
 
-EngineDispatcher::EngineDispatcher()
+UEngineDispatcher::UEngineDispatcher()
 {
 }
 
-EngineDispatcher::~EngineDispatcher()
+UEngineDispatcher::~UEngineDispatcher()
 {
 }
 

@@ -50,7 +50,7 @@ void UEngineFile::FileOpen(const char* _Mode)
 
 void UEngineFile::Write(UEngineSerializer& _Ser)
 {
-	Write(_Ser.GetDataPtr(), _Ser.GetWriteOffset());
+	Write(_Ser.GetDataPtr(), _Ser.GetWritePos());
 }
 
 int UEngineFile::GetFileSize()

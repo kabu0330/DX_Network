@@ -18,6 +18,6 @@ public:
 protected:
 
 private:
-
+	class ACameraActor* MainCamera = nullptr;
 };
 

@@ -22,7 +22,7 @@ protected:
 
 
 private:
-	class ACameraActor* Camera = nullptr;
+
 
 };
 

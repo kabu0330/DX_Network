@@ -5,15 +5,8 @@
 class APlayerController : public AActor
 {
 public:
-	// construter destructer
 	ENGINEAPI APlayerController();
 	ENGINEAPI ~APlayerController();
-
-	// delete Function
-	APlayerController(const APlayerController& _Other) = delete;
-	APlayerController(APlayerController&& _Other) noexcept = delete;
-	APlayerController& operator=(const APlayerController& _Other) = delete;
-	APlayerController& operator=(APlayerController&& _Other) noexcept = delete;
 
 	ENGINEAPI void Possess(AActor* _Pawn);
 
@@ -42,5 +35,13 @@ private:
 #define RIGHT_KEY ArrowKeys[1]
 #define UP_KEY ArrowKeys[2]
 #define DOWN_KEY ArrowKeys[3]
+
+
+private:
+	// delete Function
+	APlayerController(const APlayerController& _Other) = delete;
+	APlayerController(APlayerController&& _Other) noexcept = delete;
+	APlayerController& operator=(const APlayerController& _Other) = delete;
+	APlayerController& operator=(APlayerController&& _Other) noexcept = delete;
 };
 

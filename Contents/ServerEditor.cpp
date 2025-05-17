@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "ServerEditor.h"
+#include "ServerPawn.h"
 
 UServerEditor::UServerEditor()
 {

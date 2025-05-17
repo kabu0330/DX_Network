@@ -20,7 +20,7 @@ void UEngineNetwork::Release()
     bIsActive = false;
 }
 
-void UEngineNetwork::NetworkStartup()
+void UEngineNetwork::StartNetwork()
 {
     if (true == bIsNetworking)
     {

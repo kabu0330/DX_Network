@@ -1,0 +1,33 @@
+#pragma once
+#include <EnginePlatform/EngineClient.h>
+#include <EnginePlatform/EngineServer.h>
+
+#include <EngineCore/EngineGUIWindow.h>
+
+
+// Ό³Έν :
+class UServerEditor : public UEngineGUIWindow
+{
+public:
+	UServerEditor();
+	~UServerEditor();
+
+	void CreateServer(std::shared_ptr<UEngineServer> _Net);
+	void Connect(std::shared_ptr<UEngineServer> _Net);
+
+protected:
+	void OnGUI(float _DeltaTime) override;
+
+private:
+	std::string IP = "127.0.0.1";
+	int Port = 20000;
+	std::shared_ptr<UUserAccessPacket> UserAccessPacket;
+
+private:
+	// delete Function
+	UServerEditor(const UServerEditor& _Other) = delete;
+	UServerEditor(UServerEditor&& _Other) noexcept = delete;
+	UServerEditor& operator=(const UServerEditor& _Other) = delete;
+	UServerEditor& operator=(UServerEditor&& _Other) noexcept = delete;
+};
+

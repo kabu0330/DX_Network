@@ -23,7 +23,7 @@ public:
 
 
 protected:
-	void OnGUI() override;
+	void OnGUI(float _DelataTime) override;
 
 private:
 

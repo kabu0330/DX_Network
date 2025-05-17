@@ -29,10 +29,10 @@
       <Filter>04_Object</Filter>
     </ClInclude>
     <ClInclude Include="EngineGraphicDevice.h">
-      <Filter>05_Graphics</Filter>
+      <Filter>11_Graphics</Filter>
     </ClInclude>
     <ClInclude Include="EngineResourceManager.h">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClInclude>
     <ClInclude Include="EngineGUI.h">
       <Filter>08_GUI</Filter>
@@ -80,64 +80,64 @@
       <Filter>04_Object\Component\Contents</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
-      <Filter>07_Resources\Mesh</Filter>
+      <Filter>12_Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="EngineVertex.h">
-      <Filter>07_Resources\Mesh</Filter>
+      <Filter>12_Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="EngineInputLayoutInfo.h">
-      <Filter>07_Resources\Mesh</Filter>
+      <Filter>12_Resources\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="EngineConstantBuffer.h">
-      <Filter>07_Resources\Buffer</Filter>
+      <Filter>12_Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EngineBufferBase.h">
-      <Filter>07_Resources\Buffer</Filter>
+      <Filter>12_Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EngineIndexBuffer.h">
-      <Filter>07_Resources\Buffer</Filter>
+      <Filter>12_Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EngineVertexBuffer.h">
-      <Filter>07_Resources\Buffer</Filter>
+      <Filter>12_Resources\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="EngineTexture.h">
-      <Filter>07_Resources\Texture</Filter>
+      <Filter>12_Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="EngineSampler.h">
-      <Filter>07_Resources\Texture</Filter>
+      <Filter>12_Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="EngineSprite.h">
-      <Filter>07_Resources\Texture</Filter>
+      <Filter>12_Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="EnginePixelShader.h">
-      <Filter>07_Resources\Shader</Filter>
+      <Filter>12_Resources\Shader</Filter>
     </ClInclude>
     <ClInclude Include="EngineShader.h">
-      <Filter>07_Resources\Shader</Filter>
+      <Filter>12_Resources\Shader</Filter>
     </ClInclude>
     <ClInclude Include="EngineVertexShader.h">
-      <Filter>07_Resources\Shader</Filter>
+      <Filter>12_Resources\Shader</Filter>
     </ClInclude>
     <ClInclude Include="EngineEnums.h">
       <Filter>09_Data</Filter>
     </ClInclude>
     <ClInclude Include="EngineBlend.h">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClInclude>
     <ClInclude Include="EngineMaterial.h">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClInclude>
     <ClInclude Include="EngineRasterizerState.h">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClInclude>
     <ClInclude Include="ShaderBindingManager.h">
-      <Filter>10_Render</Filter>
+      <Filter>13_Render</Filter>
     </ClInclude>
     <ClInclude Include="RenderUnit.h">
-      <Filter>10_Render</Filter>
+      <Filter>13_Render</Filter>
     </ClInclude>
     <ClInclude Include="EngineDepthStencilState.h">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>04_Object\Component\Collision</Filter>
@@ -152,10 +152,10 @@
       <Filter>04_Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="EngineFont.h">
-      <Filter>07_Resources\Font</Filter>
+      <Filter>12_Resources\Font</Filter>
     </ClInclude>
     <ClInclude Include="EngineRenderTarget.h">
-      <Filter>07_Resources\Texture</Filter>
+      <Filter>12_Resources\Texture</Filter>
     </ClInclude>
     <ClInclude Include="FontWidget.h">
       <Filter>04_Object\UI</Filter>
@@ -181,6 +181,9 @@
     </ClInclude>
     <ClInclude Include="ThirdParty\FW1FontWrapper\Inc\FW1FontWrapper.h">
       <Filter>06_ThirdParty\FW1FontWrapper\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="NetObject.h">
+      <Filter>21_Network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -209,10 +212,10 @@
       <Filter>04_Object</Filter>
     </ClCompile>
     <ClCompile Include="EngineGraphicDevice.cpp">
-      <Filter>05_Graphics</Filter>
+      <Filter>11_Graphics</Filter>
     </ClCompile>
     <ClCompile Include="EngineResourceManager.cpp">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClCompile>
     <ClCompile Include="EngineGUI.cpp">
       <Filter>08_GUI</Filter>
@@ -254,64 +257,64 @@
       <Filter>04_Object\Component\Contents</Filter>
     </ClCompile>
     <ClCompile Include="EngineGraphicDevice_Resources.cpp">
-      <Filter>05_Graphics</Filter>
+      <Filter>11_Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Mesh.cpp">
-      <Filter>07_Resources\Mesh</Filter>
+      <Filter>12_Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineVertex.cpp">
-      <Filter>07_Resources\Mesh</Filter>
+      <Filter>12_Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineInputLayoutInfo.cpp">
-      <Filter>07_Resources\Mesh</Filter>
+      <Filter>12_Resources\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="EngineConstantBuffer.cpp">
-      <Filter>07_Resources\Buffer</Filter>
+      <Filter>12_Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EngineBufferBase.cpp">
-      <Filter>07_Resources\Buffer</Filter>
+      <Filter>12_Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EngineIndexBuffer.cpp">
-      <Filter>07_Resources\Buffer</Filter>
+      <Filter>12_Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EngineVertexBuffer.cpp">
-      <Filter>07_Resources\Buffer</Filter>
+      <Filter>12_Resources\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="EngineTexture.cpp">
-      <Filter>07_Resources\Texture</Filter>
+      <Filter>12_Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="EngineSampler.cpp">
-      <Filter>07_Resources\Texture</Filter>
+      <Filter>12_Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="EngineSprite.cpp">
-      <Filter>07_Resources\Texture</Filter>
+      <Filter>12_Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="EnginePixelShader.cpp">
-      <Filter>07_Resources\Shader</Filter>
+      <Filter>12_Resources\Shader</Filter>
     </ClCompile>
     <ClCompile Include="EngineShader.cpp">
-      <Filter>07_Resources\Shader</Filter>
+      <Filter>12_Resources\Shader</Filter>
     </ClCompile>
     <ClCompile Include="EngineVertexShader.cpp">
-      <Filter>07_Resources\Shader</Filter>
+      <Filter>12_Resources\Shader</Filter>
     </ClCompile>
     <ClCompile Include="EngineBlend.cpp">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClCompile>
     <ClCompile Include="EngineMaterial.cpp">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClCompile>
     <ClCompile Include="EngineRasterizerState.cpp">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClCompile>
     <ClCompile Include="RenderUnit.cpp">
-      <Filter>10_Render</Filter>
+      <Filter>13_Render</Filter>
     </ClCompile>
     <ClCompile Include="ShaderBindingManager.cpp">
-      <Filter>10_Render</Filter>
+      <Filter>13_Render</Filter>
     </ClCompile>
     <ClCompile Include="EngineDepthStencilState.cpp">
-      <Filter>07_Resources</Filter>
+      <Filter>12_Resources</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>04_Object\Component\Collision</Filter>
@@ -323,10 +326,10 @@
       <Filter>04_Object\UI</Filter>
     </ClCompile>
     <ClCompile Include="EngineFont.cpp">
-      <Filter>07_Resources\Font</Filter>
+      <Filter>12_Resources\Font</Filter>
     </ClCompile>
     <ClCompile Include="EngineRenderTarget.cpp">
-      <Filter>07_Resources\Texture</Filter>
+      <Filter>12_Resources\Texture</Filter>
     </ClCompile>
     <ClCompile Include="FontWidget.cpp">
       <Filter>04_Object\UI</Filter>
@@ -347,6 +350,9 @@
       <Filter>04_Object\Component</Filter>
     </ClCompile>
     <ClCompile Include="PlayerController.cpp" />
+    <ClCompile Include="NetObject.cpp">
+      <Filter>21_Network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="00_PreCompile">
@@ -373,9 +379,6 @@
     <Filter Include="04_Object\Component\Contents">
       <UniqueIdentifier>{09853dd8-b1c0-4862-aff3-0846b792b761}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05_Graphics">
-      <UniqueIdentifier>{0022a7e8-d2e3-43df-853e-a96ac8c511be}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04_Object\Component\Render">
       <UniqueIdentifier>{05426816-4eab-4608-a200-e5943dd6607e}</UniqueIdentifier>
     </Filter>
@@ -394,23 +397,8 @@
     <Filter Include="06_ThirdParty\DirectxTex\Release">
       <UniqueIdentifier>{6fad4dca-b645-447a-b936-362c15932b8b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="07_Resources">
-      <UniqueIdentifier>{f44ad2df-9292-4705-aa1f-9cca10d1056d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04_Object\Render">
       <UniqueIdentifier>{f0fc40e5-8297-44dc-ae31-6620bca09549}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="07_Resources\Buffer">
-      <UniqueIdentifier>{099f2c83-2650-4681-9bbf-09c9625b50f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="07_Resources\Shader">
-      <UniqueIdentifier>{a39b64b2-8ab0-41c6-ba32-0d4f88342717}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="07_Resources\Mesh">
-      <UniqueIdentifier>{1871e9e6-b6c2-4aab-80ae-f47248dc33fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="07_Resources\Texture">
-      <UniqueIdentifier>{64d02e29-ae4a-4f3c-aaf2-9d243e1d740f}</UniqueIdentifier>
     </Filter>
     <Filter Include="08_GUI">
       <UniqueIdentifier>{52de7838-98ca-4a71-b8a2-6382f149fa19}</UniqueIdentifier>
@@ -420,9 +408,6 @@
     </Filter>
     <Filter Include="09_Data">
       <UniqueIdentifier>{2d7190c1-7dae-4bc2-99e4-d3a33753bd8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="10_Render">
-      <UniqueIdentifier>{b4a2530f-4b09-485a-93bb-5896ba254221}</UniqueIdentifier>
     </Filter>
     <Filter Include="04_Object\Component\Collision">
       <UniqueIdentifier>{e101feb8-a92d-471e-acdb-f621139da07c}</UniqueIdentifier>
@@ -439,11 +424,35 @@
     <Filter Include="06_ThirdParty\FW1FontWrapper\Inc">
       <UniqueIdentifier>{feffa54c-fc8a-4164-b597-a683fd27acff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="07_Resources\Font">
-      <UniqueIdentifier>{7455c403-b120-4677-b007-381a53235298}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04_Object\UI">
       <UniqueIdentifier>{5c644b65-9af3-4291-93e6-26e0a070c8ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="21_Network">
+      <UniqueIdentifier>{7cefc47e-06e2-4439-91fe-63aa6d3d7278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Graphics">
+      <UniqueIdentifier>{0022a7e8-d2e3-43df-853e-a96ac8c511be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12_Resources">
+      <UniqueIdentifier>{f44ad2df-9292-4705-aa1f-9cca10d1056d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12_Resources\Buffer">
+      <UniqueIdentifier>{099f2c83-2650-4681-9bbf-09c9625b50f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12_Resources\Shader">
+      <UniqueIdentifier>{a39b64b2-8ab0-41c6-ba32-0d4f88342717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12_Resources\Mesh">
+      <UniqueIdentifier>{1871e9e6-b6c2-4aab-80ae-f47248dc33fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12_Resources\Texture">
+      <UniqueIdentifier>{64d02e29-ae4a-4f3c-aaf2-9d243e1d740f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="12_Resources\Font">
+      <UniqueIdentifier>{7455c403-b120-4677-b007-381a53235298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="13_Render">
+      <UniqueIdentifier>{b4a2530f-4b09-485a-93bb-5896ba254221}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

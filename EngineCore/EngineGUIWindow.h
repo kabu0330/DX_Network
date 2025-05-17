@@ -5,6 +5,7 @@
 class UEngineGUIWindow : public UObject
 {
 	friend class UEngineGUI;
+
 public:
 	// constrcuter destructer
 	ENGINEAPI UEngineGUIWindow();
@@ -17,7 +18,7 @@ public:
 	UEngineGUIWindow& operator=(UEngineGUIWindow&& _Other) noexcept = delete;
 
 	virtual void BeginPlay() {}
-	virtual void OnGUI() = 0;
+	virtual void OnGUI(float _DeltaTime) = 0;
 
 	ULevel* GetWorld()
 	{

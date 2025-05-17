@@ -10,17 +10,8 @@
     <ClInclude Include="Global.h">
       <Filter>HollowKnight\Global</Filter>
     </ClInclude>
-    <ClInclude Include="ContentsEditorGUI.h">
-      <Filter>02_ContentsSetting\GUI</Filter>
-    </ClInclude>
     <ClInclude Include="MapEditorGameMode.h">
       <Filter>HollowKnight\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugWindowGUI.h">
-      <Filter>02_ContentsSetting\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="MapEditorGUI.h">
-      <Filter>02_ContentsSetting\GUI</Filter>
     </ClInclude>
     <ClInclude Include="ContentsResource.h">
       <Filter>02_ContentsSetting\Resource</Filter>
@@ -29,7 +20,7 @@
       <Filter>HollowKnight\Play\Setting</Filter>
     </ClInclude>
     <ClInclude Include="ContentsRenderer.h">
-      <Filter>02_ContentsSetting\Render</Filter>
+      <Filter>02_ContentsSetting\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>HollowKnight\Global</Filter>
@@ -61,6 +52,24 @@
     <ClInclude Include="PostEffectGameMode.h">
       <Filter>Test</Filter>
     </ClInclude>
+    <ClInclude Include="ServerGameMode.h">
+      <Filter>04_GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerEditor.h">
+      <Filter>03_Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsEditorGUI.h">
+      <Filter>03_Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugWindowGUI.h">
+      <Filter>03_Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="MapEditorGUI.h">
+      <Filter>03_Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerPawn.h">
+      <Filter>Test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -72,17 +81,8 @@
     <ClCompile Include="Global.cpp">
       <Filter>HollowKnight\Global</Filter>
     </ClCompile>
-    <ClCompile Include="ContentsEditorGUI.cpp">
-      <Filter>02_ContentsSetting\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="MapEditorGameMode.cpp">
       <Filter>HollowKnight\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="DebugWindowGUI.cpp">
-      <Filter>02_ContentsSetting\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="MapEditorGUI.cpp">
-      <Filter>02_ContentsSetting\GUI</Filter>
     </ClCompile>
     <ClCompile Include="ContentsResource.cpp">
       <Filter>02_ContentsSetting\Resource</Filter>
@@ -91,7 +91,7 @@
       <Filter>HollowKnight\Play\Setting</Filter>
     </ClCompile>
     <ClCompile Include="ContentsRenderer.cpp">
-      <Filter>02_ContentsSetting\Render</Filter>
+      <Filter>02_ContentsSetting\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Skill.cpp">
       <Filter>HollowKnight\Global</Filter>
@@ -118,6 +118,24 @@
       <Filter>Test</Filter>
     </ClCompile>
     <ClCompile Include="PostEffectGameMode.cpp">
+      <Filter>Test</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerGameMode.cpp">
+      <Filter>04_GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentsEditorGUI.cpp">
+      <Filter>03_Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugWindowGUI.cpp">
+      <Filter>03_Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="MapEditorGUI.cpp">
+      <Filter>03_Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerEditor.cpp">
+      <Filter>03_Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerPawn.cpp">
       <Filter>Test</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,14 +170,17 @@
     <Filter Include="02_ContentsSetting\Resource">
       <UniqueIdentifier>{318effba-c84a-4d4f-8a42-98637e2f0fa4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02_ContentsSetting\GUI">
-      <UniqueIdentifier>{8d190253-6f67-4848-947a-2155a14ebc95}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02_ContentsSetting\Render">
-      <UniqueIdentifier>{487692e4-6b76-4236-8869-624e3b36942f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="00_PreCompile">
       <UniqueIdentifier>{e77ec849-f508-4c7f-93bd-8088b5abd8c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03_Editor">
+      <UniqueIdentifier>{fbc009dd-2ed6-4ef0-8b47-08afcdd00ede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_GameMode">
+      <UniqueIdentifier>{050e6bd2-8bb9-4826-95ee-937e59d4bf37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_ContentsSetting\Renderer">
+      <UniqueIdentifier>{487692e4-6b76-4236-8869-624e3b36942f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

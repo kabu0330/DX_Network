@@ -22,7 +22,7 @@ enum class ESpawnList
 	Object,
 };
 
-void MapEditorGUI::OnGUI()
+void MapEditorGUI::OnGUI(float _DelataTime)
 {
 	//float DeltaTime = UEngineCore::GetDeltaTime();
 	//std::string DeltaTimeText = "FPS : " + std::to_string(static_cast<int>(1.0f / DeltaTime));

@@ -16,7 +16,7 @@ public:
 	virtual ~UEngineNetwork();
 
 	// Windows 네트워크 설정 함수
-	ENGINEAPI static void NetworkStartup();
+	ENGINEAPI static void StartNetwork();
 	ENGINEAPI SOCKET	  CreateSocket	(ENetworkType _Type);
 	ENGINEAPI SOCKADDR_IN CreateAddress (std::string _IP, int _Port);
 	ENGINEAPI bool		  Bind			(SOCKET _Socket, const SOCKADDR_IN& _Address);
@@ -60,7 +60,7 @@ public:
 
 protected:
 	int SessionToken = -1;
-	std::string IpAddress = "";
+	std::string IPAddress = "";
 	int Port = -1;
 
 	bool bIsActive = true;

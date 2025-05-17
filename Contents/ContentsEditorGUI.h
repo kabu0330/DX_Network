@@ -16,7 +16,7 @@ public:
 	UContentsEditorGUI& operator=(UContentsEditorGUI&& _Other) noexcept = delete;
 
 protected:
-	void OnGUI() override;
+	void OnGUI(float _DelataTime) override;
 
 private:
 

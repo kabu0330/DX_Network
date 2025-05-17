@@ -20,7 +20,7 @@ public:
 		return bIsPreview;
 	}
 protected:
-	void OnGUI() override;
+	void OnGUI(float _DelataTime) override;
 
 	void ShowSpriteImageButton();
 	void RenderPreview();

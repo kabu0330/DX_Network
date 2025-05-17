@@ -12,7 +12,7 @@ UContentsEditorGUI::~UContentsEditorGUI()
 {
 }
 
-void UContentsEditorGUI::OnGUI()
+void UContentsEditorGUI::OnGUI(float _DelataTime)
 {
 	std::map<std::string, std::shared_ptr<class ULevel>> Map = UEngineCore::GetAllLevelMap();
 

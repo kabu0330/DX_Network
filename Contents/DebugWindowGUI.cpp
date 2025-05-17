@@ -11,7 +11,7 @@ UDebugWindowGUI::~UDebugWindowGUI()
 {
 }
 
-void UDebugWindowGUI::OnGUI()
+void UDebugWindowGUI::OnGUI(float _DelataTime)
 {
 	if (true == ImGui::Button("FreeCameraOn"))
 	{

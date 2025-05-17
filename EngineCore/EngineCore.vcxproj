@@ -198,6 +198,10 @@
     <ClInclude Include="EngineResourceManager.h" />
     <ClInclude Include="EngineSampler.h" />
     <ClInclude Include="EngineShader.h" />
+    <ClInclude Include="NetObject.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ShaderBindingManager.h" />
     <ClInclude Include="EngineSprite.h" />
     <ClInclude Include="EngineTexture.h" />
@@ -266,6 +270,10 @@
     <ClCompile Include="EngineResourceManager.cpp" />
     <ClCompile Include="EngineSampler.cpp" />
     <ClCompile Include="EngineShader.cpp" />
+    <ClCompile Include="NetObject.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ShaderBindingManager.cpp" />
     <ClCompile Include="EngineSprite.cpp" />
     <ClCompile Include="EngineTexture.cpp" />

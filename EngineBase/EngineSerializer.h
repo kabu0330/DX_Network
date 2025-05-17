@@ -118,7 +118,7 @@ public:
 		return &Data[0];
 	}
 
-	char* GetDataCharPtr()
+	char* GetDataBuffer()
 	{
 		return &Data[0];
 	}

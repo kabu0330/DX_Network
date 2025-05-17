@@ -7,8 +7,8 @@
 class UNetObject
 {
 public:
-	UNetObject();
-	virtual ~UNetObject();
+	ENGINEAPI UNetObject();
+	ENGINEAPI virtual ~UNetObject();
 
 	ENGINEAPI void InitNetObject(int _ObjectToken, int _SessionToken);
 
@@ -26,7 +26,7 @@ public:
 	{
 		std::shared_ptr<PacketType> NewPacket = std::make_shared<PacketType>();
 		NewPacket->SetSessionToken(SessionToken);
-		NEwPacket->SetObjectToken(ObjectToken);
+		NewPacket->SetObjectToken(ObjectToken);
 		return NewPacket;
 	}
 

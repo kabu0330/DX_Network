@@ -16,6 +16,8 @@ void APlayerController::Possess(AActor* _Pawn)
 	{
 		Pawn = _Pawn;
 		Pawn->SetOwner(this);
+
+		bIsDebugNotify = false;
 	}
 }
 
@@ -69,5 +71,17 @@ void APlayerController::HandleInput(float _DeltaTime)
 		Velocity.Y -= Speed.Y * _DeltaTime;
 	}
 
-	Pawn->AddActorLocation(Velocity);
+	if (nullptr != Pawn)
+	{
+		Pawn->AddActorLocation(Velocity);
+	}
+	else
+	{
+		if (true == bIsDebugNotify)
+		{
+			std::cout << "컨트롤러 대상이 설정되지 않았습니다. PlayController->Possess(액터)로 설정 가능합니다." << std::endl;
+			bIsDebugNotify = false;
+		}
+		
+	}
 }

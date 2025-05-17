@@ -5,6 +5,7 @@
 
 ServerPawn::ServerPawn()
 {
+	CurFramePacketTime = 20.0f * 30.0f;
 }
 
 ServerPawn::~ServerPawn()

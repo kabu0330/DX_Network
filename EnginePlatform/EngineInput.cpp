@@ -19,7 +19,7 @@ void UEngineInput::UEngineKey::KeyCheck(float _DeltaTime)
 		}
 		else if(true == IsDown)
 		{
-			// 한프레임을 지연시킨것.
+			// 한 프레임을 지연
 			FreeTime = 0.0f;
 			IsDown = false;
 			IsPress = true;
@@ -29,13 +29,11 @@ void UEngineInput::UEngineKey::KeyCheck(float _DeltaTime)
 
 	} else 
 	{
-		// 안누른 시간 누적되는데
 		if (true == IsFree)
 		{
 			FreeTime += _DeltaTime;
 		}
 		
-		// B키가 안눌렸다면
 		if (true == IsPress)
 		{
 			IsDown = false;
@@ -176,16 +174,16 @@ UEngineInput::UEngineInput()
 	Keys.insert({ VK_SEPARATOR	, UEngineKey(VK_SEPARATOR) });
 	Keys.insert({ VK_SUBTRACT	, UEngineKey(VK_SUBTRACT) });
 	Keys.insert({ VK_DECIMAL	, UEngineKey(VK_DECIMAL) });
-	Keys.insert({ VK_DIVIDE	, UEngineKey(VK_DIVIDE) });
-	Keys.insert({ VK_F1		, UEngineKey(VK_F1) });
-	Keys.insert({ VK_F2		, UEngineKey(VK_F2) });
-	Keys.insert({ VK_F3		, UEngineKey(VK_F3) });
-	Keys.insert({ VK_F4		, UEngineKey(VK_F4) });
-	Keys.insert({ VK_F5		, UEngineKey(VK_F5) });
-	Keys.insert({ VK_F6		, UEngineKey(VK_F6) });
-	Keys.insert({ VK_F7		, UEngineKey(VK_F7) });
-	Keys.insert({ VK_F8		, UEngineKey(VK_F8) });
-	Keys.insert({ VK_F9		, UEngineKey(VK_F9) });
+	Keys.insert({ VK_DIVIDE		, UEngineKey(VK_DIVIDE) });
+	Keys.insert({ VK_F1			, UEngineKey(VK_F1) });
+	Keys.insert({ VK_F2			, UEngineKey(VK_F2) });
+	Keys.insert({ VK_F3			, UEngineKey(VK_F3) });
+	Keys.insert({ VK_F4			, UEngineKey(VK_F4) });
+	Keys.insert({ VK_F5			, UEngineKey(VK_F5) });
+	Keys.insert({ VK_F6			, UEngineKey(VK_F6) });
+	Keys.insert({ VK_F7			, UEngineKey(VK_F7) });
+	Keys.insert({ VK_F8			, UEngineKey(VK_F8) });
+	Keys.insert({ VK_F9			, UEngineKey(VK_F9) });
 	Keys.insert({ VK_F10		, UEngineKey(VK_F10) });
 	Keys.insert({ VK_F11		, UEngineKey(VK_F11) });
 	Keys.insert({ VK_F12		, UEngineKey(VK_F12) });
@@ -229,10 +227,6 @@ void UEngineInput::KeyCheck(float _DeltaTime)
 	EventCheck(_DeltaTime);
 }
 
-UEngineInput::~UEngineInput()
-{
-}
-
 void UEngineInput::BindAction(int _KeyIndex, KeyEvent _EventType, std::function<void() > _Function)
 {
 	if (false == Keys.contains(_KeyIndex))
@@ -270,4 +264,8 @@ void UEngineInput::KeyReset()
 		UEngineKey& CurKey = StartIter->second;
 		CurKey.Reset();
 	}
+}
+
+UEngineInput::~UEngineInput()
+{
 }

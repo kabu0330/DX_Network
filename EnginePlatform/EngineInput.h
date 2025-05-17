@@ -16,15 +16,7 @@ enum class KeyEvent
 class UEngineInput
 {
 public:
-	// constrcuter destructer
 	~UEngineInput();
-
-	// delete Function
-	UEngineInput(const UEngineInput& _Other) = delete;
-	UEngineInput(UEngineInput&& _Other) noexcept = delete;
-	UEngineInput& operator=(const UEngineInput& _Other) = delete;
-	UEngineInput& operator=(UEngineInput&& _Other) noexcept = delete;
-
 
 private:
 	class UEngineKey
@@ -153,5 +145,13 @@ private:
 	std::map<int, UEngineKey> Keys;
 
 	UEngineInput();
+
+private:
+	// delete Function
+	UEngineInput(const UEngineInput& _Other) = delete;
+	UEngineInput(UEngineInput&& _Other) noexcept = delete;
+	UEngineInput& operator=(const UEngineInput& _Other) = delete;
+	UEngineInput& operator=(UEngineInput&& _Other) noexcept = delete;
+
 };
 

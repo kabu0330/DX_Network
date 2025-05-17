@@ -14,6 +14,7 @@
 #include "ContentsEditorGUI.h"
 #include "ThreadTestLevel.h"
 #include "PostEffectGameMode.h"
+#include "ServerGameMode.h"
 
 #include "TestGameMode.h"
 
@@ -50,13 +51,14 @@ void UContentsCore::CreateLevel()
 	UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
 	UEngineCore::CreateLevel<AThreadTestLevel, APawn, AHUD>("Test");
 	UEngineCore::CreateLevel<APostEffectGameMode, APawn, AHUD>("PostEffect");
+	UEngineCore::CreateLevel<AServerGameMode, APawn, AHUD>("Server");
 	//UEngineCore::CreateLevel<AMapEditorGameMode, APawn, AHUD>("MapEditorMode");
 }
 
 void UContentsCore::OpenLevel()
 {
 #ifdef _DEBUG
-	UEngineCore::OpenLevel("PostEffect");
+	UEngineCore::OpenLevel("Server");
 #else
 	UEngineCore::OpenLevel("Title");
 #endif

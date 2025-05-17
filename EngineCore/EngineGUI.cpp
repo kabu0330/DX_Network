@@ -175,7 +175,8 @@ void UEngineGUI::GUIRender(ULevel* _Level)
         bool Result = ImGui::Begin(Window.first.c_str(), ActivePtr);
 
         Window.second->World = _Level;
-        Window.second->OnGUI();
+
+        Window.second->OnGUI(0.0f);
         ImGui::End();
     }
     UEngineGUI::GUIRenderEnd();

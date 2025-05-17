@@ -37,6 +37,30 @@ namespace UEngineDebug
 		{
 			fclose(pErr);
 		}
+
+		HWND hConsole = GetConsoleWindow();
+
+		if (nullptr != hConsole)
+		{
+			int X = 1450;
+			int Y = 0;
+			int Width = 800;
+			int Height = 400;
+
+			MoveWindow(hConsole, X, Y, Width, Height, TRUE);
+		}
+
+		CONSOLE_FONT_INFOEX FontInfo = { 0 };
+		FontInfo.cbSize = sizeof(FontInfo);
+		FontInfo.nFont = 0;
+		FontInfo.dwFontSize.X = 8;
+		FontInfo.dwFontSize.Y = 16;
+		FontInfo.FontFamily = FF_DONTCARE;
+		FontInfo.FontWeight = FW_NORMAL;
+		wcscpy_s(FontInfo.FaceName, L"Consolas");
+
+		HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetCurrentConsoleFontEx(hConsoleHandle, FALSE, &FontInfo);
 	}
 
 	ENGINEAPI void EndConsole()

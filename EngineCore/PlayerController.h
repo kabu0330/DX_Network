@@ -31,6 +31,8 @@ private:
 	AActor* Pawn = nullptr;
 	int ArrowKeys[4] = {'A', 'D', 'W', 'S'};
 
+	bool bIsDebugNotify = true;
+
 #define LEFT_KEY ArrowKeys[0]
 #define RIGHT_KEY ArrowKeys[1]
 #define UP_KEY ArrowKeys[2]

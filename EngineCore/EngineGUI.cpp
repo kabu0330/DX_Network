@@ -1,4 +1,4 @@
-#include "PreCompile.h"
+ï»¿#include "PreCompile.h"
 #include "EngineGUI.h"
 #include "EngineCore/EngineCore.h"
 #include <EnginePlatform/EngineWindow.h>
@@ -53,18 +53,29 @@ void UEngineGUI::Init()
     ImGui_ImplWin32_Init(UEngineCore::GetMainWindow().GetWindowHandle());
     ImGui_ImplDX11_Init(UEngineCore::GetDevice().GetDevice(), UEngineCore::GetDevice().GetContext());
 
-    // ÇÑ±ÛÀ» »ç¿ëÇÒ¼ö ¾ø´Â ÆùÆ®¶ó Á÷Á¢ Ã³¸®ÇÑ´Ù.
+    // í•œê¸€ì„ ì‚¬ìš©í• ìˆ˜ ì—†ëŠ” í°íŠ¸ë¼ ì§ì ‘ ì²˜ë¦¬í•œë‹¤.
 
     UEngineDirectory NewDir;
-    NewDir.MoveParentToDirectory("EngineResources");
+    NewDir.MoveParentToDirectory("ContentsResources");
     NewDir.Move("Font");
     UEngineFile File = NewDir.GetFile("malgun.ttf");
 
     File.GetPathToString();
     std::string UTF8Path = UEngineString::AnsiToUTF8(File.GetPathToString());
 
-    io.Fonts->AddFontFromFileTTF(UTF8Path.c_str(), 18.0f, nullptr, io.Fonts->GetGlyphRangesKorean());
-
+    ImFont* Font = io.Fonts->AddFontFromFileTTF(UTF8Path.c_str(), 18.0f, nullptr, io.Fonts->GetGlyphRangesKorean());
+    if (nullptr != Font)
+    {
+        if (nullptr == Font->FindGlyph(u'í•œ'))
+        {
+            std::cout << "í•œê¸€ í°íŠ¸ ì—†ìŒ" << std::endl;
+        }
+        else
+        {
+            std::cout << "í•œê¸€ ì¶œë ¥ ê°€ëŠ¥" << std::endl;
+        }
+    }
+  
 
     // Load Fonts
     // - If no fonts are loaded, dear imgui will use the default font. You can also load multiple fonts and use ImGui::PushFont()/PopFont() to select them.
@@ -161,7 +172,7 @@ void UEngineGUI::AllWindowOff()
     }
 }
 
-void UEngineGUI::GUIRender(ULevel* _Level)
+void UEngineGUI::GUIRender(ULevel* _Level, float _DeltaTime)
 {
     UEngineGUI::GUIRenderStart();
     for (std::pair<const std::string, std::shared_ptr<UEngineGUIWindow>>& Window : Windows)
@@ -175,8 +186,7 @@ void UEngineGUI::GUIRender(ULevel* _Level)
         bool Result = ImGui::Begin(Window.first.c_str(), ActivePtr);
 
         Window.second->World = _Level;
-
-        Window.second->OnGUI(0.0f);
+        Window.second->OnGUI(_DeltaTime);
         ImGui::End();
     }
     UEngineGUI::GUIRenderEnd();

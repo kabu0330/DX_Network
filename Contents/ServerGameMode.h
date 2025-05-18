@@ -1,5 +1,6 @@
 #pragma once
 #include <EngineCore/GameMode.h>
+#include "ServerEditor.h"
 
 // Ό³Έν :
 class AServerGameMode : public AGameMode
@@ -14,8 +15,10 @@ protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
 
+	void LevelChangeStart() override;
+
 private:
-	
+	std::shared_ptr<UServerEditor> ServerEditor = nullptr;
 
 private:
 	// delete Function

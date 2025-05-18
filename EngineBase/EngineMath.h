@@ -492,6 +492,9 @@ template<>
 const TVector<float> TVector<float>::ZERO = TVector<float>(0.0f, 0.0f, 0.0f, 1.0f);
 
 template<>
+const TVector<float> TVector<float>::UNIT = TVector<float>(1.0f, 1.0f, 1.0f, 0.0f);
+
+template<>
 const TVector<float> TVector<float>::LEFT = TVector<float>(-1.0f, 0.0f, 0.0f, 0.0f);
 
 template<>
@@ -509,8 +512,7 @@ const TVector<float> TVector<float>::FORWARD = TVector<float>(0.0f, 0.0f, 1.0f, 
 template<>
 const TVector<float> TVector<float>::BACK = TVector<float>(0.0f, 0.0f, -1.0f, 0.0f);
 
-template<>
-const TVector<float> TVector<float>::UNIT = TVector<float>(0.0f, 0.0f, -1.0f, 0.0f);
+
 
 class FQuat
 {

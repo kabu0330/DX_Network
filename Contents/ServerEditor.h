@@ -1,11 +1,11 @@
-#pragma once
+ο»Ώ#pragma once
 #include <EnginePlatform/EngineClient.h>
 #include <EnginePlatform/EngineServer.h>
 
 #include <EngineCore/EngineGUIWindow.h>
 
 
-// Ό³Έν :
+// μ„¤λª… :
 class UServerEditor : public UEngineGUIWindow
 {
 public:
@@ -13,7 +13,7 @@ public:
 	~UServerEditor();
 
 	void CreateServer(std::shared_ptr<UEngineServer> _Net);
-	void Connect(std::shared_ptr<UEngineServer> _Net);
+	void Connect(std::shared_ptr<UEngineClient> _Net);
 
 protected:
 	void OnGUI(float _DeltaTime) override;

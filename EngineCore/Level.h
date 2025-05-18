@@ -1,7 +1,11 @@
 #pragma once
+#include <mutex>
+#include <queue>
 
 #include <EngineBase/Object.h>
 #include <EngineBase/EngineDebug.h>
+#include <EnginePlatform/EngineProtocol.h>
+
 
 // Ό³Έν :
 class ULevel : public UObject
@@ -165,6 +169,12 @@ public:
 		return List;
 	}
 
+	void AddProtocol(std::shared_ptr<UEngineProtocol> _Protocol)
+	{
+		std::lock_guard LockGuard(PacketLock);
+		PacketQueue.push(_Protocol);
+	}
+
 protected:
 
 private:
@@ -193,6 +203,9 @@ private:
 	std::map<int, std::list<std::shared_ptr<class UWidget>>> Widgets;
 
 	ENGINEAPI void InitLevel(AGameMode* _GameMode, APawn* _Pawn, AHUD* _HUD);
+
+	std::mutex PacketLock;
+	std::queue<std::shared_ptr<UEngineProtocol>> PacketQueue;
 
 private:
 	// delete Function

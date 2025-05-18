@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 
 #include "imgui.h"
 #include "imgui_impl_dx11.h"
 #include "imgui_impl_win32.h"
 
-// ¼³¸í :
+// ì„¤ëª… :
 class UEngineGUI
 {
 public:
@@ -33,7 +33,7 @@ public:
 
 		if (nullptr != FindGUIWindow(UpperName))
 		{
-			MSGASSERT("ÀÌ¹Ì ¸¸µé¾îÁø À©µµ¿ì¸¦ ¶Ç ¸¸µé¼ö´Â ¾ø½À´Ï´Ù.");
+			MSGASSERT("ì´ë¯¸ ìƒì„±ëœ GUIì…ë‹ˆë‹¤. ë‹¤ë¥¸ ì´ë¦„ìœ¼ë¡œ ìƒì„±í•´ì£¼ì„¸ìš”.");
 			return nullptr;
 		}
 
@@ -51,7 +51,7 @@ public:
 
 	ENGINEAPI static std::shared_ptr<UEngineGUIWindow> FindGUIWindow(std::string_view _Text);
 
-	static void GUIRender(ULevel* _Level);
+	static void GUIRender(ULevel* _Level, float _DeltaTime);
 
 	ENGINEAPI static void AllWindowOff();
 

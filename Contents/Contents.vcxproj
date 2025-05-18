@@ -171,6 +171,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ContentPacket.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ContentPacketType.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ContentsConst.h">
       <SubType>
       </SubType>
@@ -253,6 +261,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CollisionManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ContentPacket.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ContentPacketType.cpp">
       <SubType>
       </SubType>
     </ClCompile>

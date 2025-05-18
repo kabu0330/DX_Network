@@ -50,10 +50,10 @@ public:
 		return SessionToken;
 	}
 
-	//UEngineDispatcher GetDispatcher() const
-	//{
-	//	return Dispatcher;
-	//}
+	UEngineDispatcher& GetDispatcher() 
+	{
+		return Dispatcher;
+	}
 
 	virtual void Release();
 

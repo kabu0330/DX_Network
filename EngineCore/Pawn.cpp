@@ -7,7 +7,8 @@ APawn::APawn()
 {
 	std::shared_ptr<UDefaultSceneComponent> SceneComponent = CreateDefaultSubObject<UDefaultSceneComponent>();
 	RootComponent = SceneComponent;
-	BodyRenderer = CreateDefaultSubObject<USpriteRenderer>().get();
+
+	BodyRenderer = CreateDefaultSubObject<USpriteRenderer>();
 	BodyRenderer->SetupAttachment(RootComponent);
 	BodyRenderer->SetScale3D(FVector(50, 50, 50));
 }

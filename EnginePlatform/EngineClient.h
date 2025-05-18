@@ -6,8 +6,8 @@
 class UEngineClient : public UEngineNetwork
 {
 public:
-	UEngineClient();
-	~UEngineClient();
+	ENGINEAPI UEngineClient();
+	ENGINEAPI ~UEngineClient();
 
 	ENGINEAPI void Connect(std::string_view _IP, int _Port);
 	

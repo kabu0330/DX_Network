@@ -18,7 +18,7 @@ public:
 	template<typename Type>
 	static Type* GetConvertNetObject(int _Token)
 	{
-		return dynamic_cast<Type>(GetNetObject(_Token));
+		return dynamic_cast<Type*>(GetNetObject(_Token));
 	}
 
 	template<typename PacketType>

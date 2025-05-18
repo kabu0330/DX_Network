@@ -6,15 +6,8 @@
 class UFontRenderer : public URenderer
 {
 public:
-	// constrcuter destructer
 	ENGINEAPI UFontRenderer();
 	ENGINEAPI ~UFontRenderer();
-
-	// delete Function
-	UFontRenderer(const UFontRenderer& _Other) = delete;
-	UFontRenderer(UFontRenderer&& _Other) noexcept = delete;
-	UFontRenderer& operator=(const UFontRenderer& _Other) = delete;
-	UFontRenderer& operator=(UFontRenderer&& _Other) noexcept = delete;
 
 	ENGINEAPI void SetFont(std::string_view _Value, float _Scale = 20.0f, UColor _Color = UColor::BLACK, FW1_TEXT_FLAG _Flag = FW1_TEXT_FLAG::FW1_LEFT);
 
@@ -33,5 +26,12 @@ private:
 	float Scale = 20.0f;
 	UColor Color = UColor::BLACK;
 	FW1_TEXT_FLAG Flag = FW1_TEXT_FLAG::FW1_LEFT;
+
+private:
+	// delete Function
+	UFontRenderer(const UFontRenderer& _Other) = delete;
+	UFontRenderer(UFontRenderer&& _Other) noexcept = delete;
+	UFontRenderer& operator=(const UFontRenderer& _Other) = delete;
+	UFontRenderer& operator=(UFontRenderer&& _Other) noexcept = delete;
 };
 

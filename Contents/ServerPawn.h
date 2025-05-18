@@ -3,11 +3,11 @@
 #include <EngineCore/NetObject.h>
 
 // Ό³Έν :
-class ServerPawn : public APawn, public UNetObject
+class AServerPawn : public APawn, public UNetObject
 {
 public:
-	ServerPawn();
-	~ServerPawn();
+	AServerPawn();
+	~AServerPawn();
 
 
 protected:
@@ -16,8 +16,7 @@ protected:
 
 private:
 	std::shared_ptr<class UTimeEventComponent> TimeEventComponent = nullptr;
-	std::shared_ptr<class USpriteRenderer> Renderer = nullptr;
-	std::shared_ptr<class UCollision> Collision = nullptr;
+
 	float CurFramePacketTime = 0.0f;
 
 	void SetNetMode(float _DeltaTime);
@@ -25,10 +24,10 @@ private:
 
 private:
 	// delete Function
-	ServerPawn(const ServerPawn& _Other) = delete;
-	ServerPawn(ServerPawn&& _Other) noexcept = delete;
-	ServerPawn& operator=(const ServerPawn& _Other) = delete;
-	ServerPawn& operator=(ServerPawn&& _Other) noexcept = delete;
+	AServerPawn(const AServerPawn& _Other) = delete;
+	AServerPawn(AServerPawn&& _Other) noexcept = delete;
+	AServerPawn& operator=(const AServerPawn& _Other) = delete;
+	AServerPawn& operator=(AServerPawn&& _Other) noexcept = delete;
 
 };
 

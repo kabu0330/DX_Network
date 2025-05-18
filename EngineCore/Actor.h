@@ -200,18 +200,25 @@ public:
 		return Result;
 	}
 
+	class APlayerController* GetPlayerController()
+	{
+		return PlayerController;
+	}
+
 protected:
 	std::shared_ptr<class USceneComponent> RootComponent = nullptr;
+
 
 private:
 	void SetOwner(class APlayerController* _PlayerController)
 	{
 		PlayerController = _PlayerController;
 	}
-	// 누구의 자식인지도 알고 
+	
+
 	AActor* Parent = nullptr;
-	// 자기 자식들도 알게 된다.
 	std::list<std::shared_ptr<AActor>> ChildList;
+	class APlayerController* PlayerController = nullptr;
 
 	// 스폰액터 방식이 변경되었으니까. 초기화 안한다.
 	ULevel* World;
@@ -221,7 +228,6 @@ private:
 	// 레퍼런스 카운트 유지용 자료구조.
 	std::list<std::shared_ptr<class UActorComponent>> AllComponentList;
 
-	class APlayerController* PlayerController = nullptr;
 };
 
 using Super = AActor;

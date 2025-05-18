@@ -37,6 +37,8 @@ void UEngineServer::OpenServer(int _Port, int _BackLog)
 
     ConnectAcceptThread.Start("ConnectAcceptThread", std::bind(&UEngineServer::AcceptThreadFunction, this, ListenSocket));
 
+    SessionToken = SessionTokenCreator++;
+
 }
 
 void UEngineServer::AcceptThreadFunction(UEngineServer* _Server, SOCKET _ListenSocket)

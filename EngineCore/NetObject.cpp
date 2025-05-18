@@ -7,6 +7,11 @@ UNetObject::UNetObject()
 
 UNetObject::~UNetObject()
 {
+	//for (std::pair<const int, UNetObject*> Object : AllNetObjects)
+	//{
+	//	Object.second = nullptr;
+	//}
+	//AllNetObjects.clear();
 }
 
 void UNetObject::InitNetObject(int _ObjectToken, int _SessionToken)
@@ -19,6 +24,7 @@ void UNetObject::InitNetObject(int _ObjectToken, int _SessionToken)
 		return;
 	}
 	
+	//std::shared_ptr<UNetObject> Object = shared_from_this();
 	AllNetObjects[_ObjectToken] = this;
 }
 

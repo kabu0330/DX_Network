@@ -81,10 +81,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Build\Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\Mid\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>D:\Git\DX_Network\EnginePlatform\ThirdParty\VDL\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Build\Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\Mid\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>D:\Git\DX_Network\EnginePlatform\ThirdParty\VDL\lib;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

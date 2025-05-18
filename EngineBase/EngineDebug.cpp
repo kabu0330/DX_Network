@@ -6,6 +6,7 @@ namespace UEngineDebug
 	void CheckMemoryLeak()
 	{
 		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+		
 	}
 
 	void OutPutString(const std::string& Text)
@@ -16,29 +17,42 @@ namespace UEngineDebug
 
 	ENGINEAPI void StartConsole()
 	{
-		AllocConsole();
+		HWND hConsole = GetConsoleWindow();
+
+		if (nullptr != hConsole)
+		{
+			return;
+		}
+
+		if (false == AllocConsole())
+		{
+			return;
+		}
+
+		hConsole = GetConsoleWindow();
+
 		FILE* pCout = nullptr;
 		FILE* pErr = nullptr;
 		FILE* pCin = nullptr;
 		errno_t Err;
 
 		Err = freopen_s(&pCout, "CONOUT$", "w", stdout);
-		if (pCout != stdout)
+		if (0 == Err && pCout != nullptr && pCout != stdout)
 		{
 			fclose(pCout);
 		}
 		Err = freopen_s(&pCin, "CONIN$", "r", stdin);
-		if (pCin != stdin)
+		if (0 == Err && pCout != nullptr && pCin != stdin)
 		{
 			fclose(pCin);
 		}
+
 		Err = freopen_s(&pErr, "CONERR$", "w", stderr);
-		if (pErr != stderr)
+		if (0 == Err && pCout != nullptr && pErr != stderr)
 		{
 			fclose(pErr);
 		}
 
-		HWND hConsole = GetConsoleWindow();
 
 		if (nullptr != hConsole)
 		{
@@ -46,7 +60,6 @@ namespace UEngineDebug
 			int Y = 0;
 			int Width = 800;
 			int Height = 400;
-
 			MoveWindow(hConsole, X, Y, Width, Height, TRUE);
 		}
 

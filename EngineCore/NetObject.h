@@ -4,7 +4,7 @@
 #include <memory>
 
 // Ό³Έν :
-class UNetObject
+class UNetObject : public std::enable_shared_from_this<UNetObject>
 {
 public:
 	ENGINEAPI UNetObject();

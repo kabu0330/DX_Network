@@ -72,6 +72,27 @@ void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 
 void UServerEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 {
+	_Net->SetUserAccessFunction([this](std::shared_ptr<UUserAccessPacket> _Packet)
+		{
+			UserAccessPacket = _Packet;
+			AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
+			Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
+		});
+
+	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), [this]
+	(std::shared_ptr<UObjectUpdatePacket> _Packet)
+		{
+			int Token = _Packet->GetObjectToken();
+			AServerPawn* ServerPawn = UNetObject::GetConvertNetObject<AServerPawn>(Token);
+			if (false == UNetObject::IsNetObject(Token))
+			{
+				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<AServerPawn>();
+				ServerPawn = NewServerPawn.get();
+				ServerPawn->SetControllOff();
+				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
+			}
+			ServerPawn->SetActorLocation(_Packet->GetPosition());
+		});
 }
 
 UServerEditor::UServerEditor()

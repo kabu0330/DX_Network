@@ -64,6 +64,8 @@ public:
 		PacketHandler[_Packet->GetPacketType()](_Packet);
 	}
 
+	void Release();
+
 protected:
 
 private:

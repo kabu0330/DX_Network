@@ -45,42 +45,61 @@ void UEngineServer::AcceptThreadFunction(UEngineServer* _Server, SOCKET _ListenS
 {
     while (true == _Server->bIsActive)
     {
-        int AddressLength = sizeof(SOCKADDR_IN);
-        SOCKADDR_IN ClientAddress;
-        memset(&ClientAddress, 0, sizeof(ClientAddress));
-        SOCKET ConnectSocket = accept(_ListenSocket, (sockaddr*)&ClientAddress, &AddressLength);
-        std::cout << "[Server] 클라이언트 소켓 획득 : " << ConnectSocket << std::endl;
+		fd_set ReadSet;
+		FD_ZERO(&ReadSet);
+		FD_SET(_ListenSocket, &ReadSet);
 
-        if (INVALID_SOCKET == ConnectSocket || SOCKET_ERROR == ConnectSocket)
-        {
-            std::cout << "[Server] 클라이언트 소켓 생성 실패" << std::endl;
-            return;
-        }
+		timeval Timeout = { 1, 0 }; // 1초 체크
+		int Result = select(0, &ReadSet, nullptr, nullptr, &Timeout);
 
-        {
-            std::lock_guard<std::mutex> Lock(_Server->UserLock);
-            std::shared_ptr<UEngineThread> Thread = std::make_shared<UEngineThread>();
+		if (Result == 0)
+		{
+			continue; // 타임아웃, 루프 재진입
+		}
 
-            UEngineSerializer Ser;
+		if (Result < 0)
+		{
+			break; // 소켓 에러
+		}
 
-            std::shared_ptr<UUserAccessPacket> AcceptProtocol = std::make_shared<UUserAccessPacket>();
-            AcceptProtocol->SetPacketType(EEnginePacketType::UserAccessPacket);
-            AcceptProtocol->SetSessionToken(_Server->CreateSessionToken());
-            AcceptProtocol->SetObjectToken(_Server->CreateObjectToken());
+		if (FD_ISSET(_ListenSocket, &ReadSet))
+		{
+			int AddressLength = sizeof(SOCKADDR_IN);
+			SOCKADDR_IN ClientAddress;
+			memset(&ClientAddress, 0, sizeof(ClientAddress));
 
-            AcceptProtocol->SerializePacket(Ser);
+			SOCKET ConnectSocket = accept(_ListenSocket, (sockaddr*)&ClientAddress, &AddressLength);
+			if (ConnectSocket == INVALID_SOCKET)
+			{
+				std::cout << "[Server] 클라이언트 accept 실패" << std::endl;
+				continue;
+			}
 
-            // 서버는 세션토큰으로 클라이언트를 관리한다.
-            _Server->AllUserSockets.insert({ AcceptProtocol->GetSessionToken(), ConnectSocket });
+			{
+				std::lock_guard<std::mutex> Lock(_Server->UserLock);
+				std::shared_ptr<UEngineThread> Thread = std::make_shared<UEngineThread>();
 
-            send(ConnectSocket, Ser.GetDataBuffer(), Ser.GetWritePos(), 0);
+				UEngineSerializer Ser;
 
-            std::string Client = std::to_string(ConnectSocket);
-            Thread->Start("User " + Client, std::bind(&UEngineNetwork::RecvTCPThreadFunction, _Server, ConnectSocket));
+				std::shared_ptr<UUserAccessPacket> AcceptProtocol = std::make_shared<UUserAccessPacket>();
+				AcceptProtocol->SetPacketType(EEnginePacketType::UserAccessPacket);
+				AcceptProtocol->SetSessionToken(_Server->CreateSessionToken());
+				AcceptProtocol->SetObjectToken(_Server->CreateObjectToken());
 
-            _Server->AllUserThreads.push_back(Thread);
-        }     
-    }
+				AcceptProtocol->SerializePacket(Ser);
+
+				// 서버는 세션토큰으로 클라이언트를 관리한다.
+				_Server->AllUserSockets.insert({ AcceptProtocol->GetSessionToken(), ConnectSocket });
+
+				send(ConnectSocket, Ser.GetDataBuffer(), Ser.GetWritePos(), 0);
+
+				std::string Client = std::to_string(ConnectSocket);
+				Thread->Start("User " + Client, std::bind(&UEngineNetwork::RecvTCPThreadFunction, _Server, ConnectSocket));
+
+				_Server->AllUserThreads.push_back(Thread);
+			}
+		}
+	}
 }
 
 void UEngineServer::SendPacket(UEngineProtocol* _Protocol)
@@ -119,6 +138,14 @@ int UEngineServer::CreateSessionToken()
 
 void UEngineServer::Release()
 {
+    UEngineNetwork::Release();
+
+    bIsActive = false;
+
+    shutdown(ListenSocket, SD_BOTH);
+    closesocket(ListenSocket);
+    ConnectAcceptThread.Join();
+
     {
         std::lock_guard<std::mutex> Lock(UserLock);
         for (std::pair<const int, SOCKET>& Session : AllUserSockets)
@@ -136,5 +163,6 @@ void UEngineServer::Release()
     }
 
     AllUserThreads.clear();
+
 }
 

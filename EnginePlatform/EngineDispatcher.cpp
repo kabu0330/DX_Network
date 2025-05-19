@@ -9,3 +9,9 @@ UEngineDispatcher::~UEngineDispatcher()
 {
 }
 
+void UEngineDispatcher::Release()
+{
+	ConvertPacketHandler.clear();
+	PacketHandler.clear();
+}
+

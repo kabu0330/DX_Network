@@ -14,8 +14,6 @@ class UEngineWorkThreadPool
 {
 	// 
 public:
-	// constrcuter destructer
-	// 0개를 넣으면 알아서 코어개수를 파악해서 쓰레드를 만들어준다.
 	ENGINEAPI UEngineWorkThreadPool();
 	ENGINEAPI ~UEngineWorkThreadPool();
 

@@ -46,5 +46,6 @@ void AGameMode::JoinServer(std::string_view _IP, int _Port)
 
 AGameMode::~AGameMode()
 {
+	NetworkInstance = nullptr;
 }
 

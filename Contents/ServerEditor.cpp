@@ -16,7 +16,7 @@ void UServerEditor::OnGUI(float _DeltaTime)
 		if (true == ImGui::Button(UEngineString::AnsiToUTF8("방만들기").c_str()))
 		{
 			GetWorld()->GetGameMode()->StartServer(Port);
-			std::shared_ptr<UEngineServer> Server = GetWorld()->GetGameMode()->GetServer();
+			Server = GetWorld()->GetGameMode()->GetServer();
 			CreateServer(Server);
 			GEngine->GetMainWindow().SetWindowTitle("Server");
 		}
@@ -107,4 +107,7 @@ UServerEditor::UServerEditor()
 
 UServerEditor::~UServerEditor()
 {
+	Server->Release();
+
+
 }

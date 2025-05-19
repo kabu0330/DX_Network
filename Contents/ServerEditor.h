@@ -25,6 +25,8 @@ private:
 	int Port = 20000;
 	std::shared_ptr<UUserAccessPacket> UserAccessPacket;
 
+	std::shared_ptr<class UEngineServer> Server;
+
 private:
 	// delete Function
 	UServerEditor(const UServerEditor& _Other) = delete;

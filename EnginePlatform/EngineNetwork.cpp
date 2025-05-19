@@ -18,6 +18,8 @@ UEngineNetwork::~UEngineNetwork()
 void UEngineNetwork::Release()
 {
     bIsActive = false;
+    Dispatcher.Release();
+  
 }
 
 void UEngineNetwork::StartNetwork()

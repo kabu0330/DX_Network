@@ -1,12 +1,13 @@
 #pragma once
-#include <thread>
+
+//#include <thread>
 #include <functional>
+#include <process.h> 
 
 // 설명 : 
 class UEngineThread
 {
 public:
-	// constrcuter destructer
 	ENGINEAPI UEngineThread();
 	ENGINEAPI virtual ~UEngineThread();
 
@@ -23,8 +24,12 @@ protected:
 
 private:
 	std::string Name;
-	std::thread ThreadInst;
+	//std::thread ThreadInst;
 	std::function<void()> ThreadFunction;
+
+	HANDLE ThreadHandle = nullptr;
+	// CRT 스레드 엔트리 포인트
+	static unsigned __stdcall ThreadEntry(void* _Param);
 
 	static void ThreadBaseFunction(UEngineThread* _Thread);
 };

@@ -456,7 +456,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
     <None Include="ThirdParty\DirectxTex\Inc\DirectXTex.inl">
       <Filter>06_ThirdParty\DirectxTex\Inc</Filter>
     </None>

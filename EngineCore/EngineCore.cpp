@@ -1,9 +1,12 @@
 #include "PreCompile.h"
 #include "EngineCore.h"
+
 #include <EngineBase/EngineDebug.h>
 #include <EnginePlatform/EngineWindow.h>
 #include <EnginePlatform/EngineSound.h>
 #include <EnginePlatform/EngineInput.h>
+#include <EnginePlatform/TaskQueue.h>
+
 #include "IContentsCore.h"
 #include "EngineResourceManager.h"
 #include "EngineConstantBuffer.h"
@@ -22,7 +25,8 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 	UEngineCore EngineCore;
 	GEngine = &EngineCore;
 
-	//GEngine->ThreadPool.Initialize();
+	GEngine->ThreadPool.Initialize();
+	RegisterTaskQueue(&GEngine->ThreadPool);
 
 	WindowInit(_Instance);
 	LoadContentsDll(_DllName);

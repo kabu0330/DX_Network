@@ -6,29 +6,6 @@
 
 bool bIsNetworking = false;
 
-UEngineNetwork::UEngineNetwork()
-{
-}
-
-UEngineNetwork::~UEngineNetwork()
-{
-    Release();
-}
-
-void UEngineNetwork::Release()
-{
-    bIsActive = false;
-    Dispatcher.Release();
-    ProtocolFunction = nullptr;
-    DisConnectFunction = nullptr;
-
-    if (true == bIsNetworking)
-    {
-        WSACleanup();
-        bIsNetworking = false;
-    }
-}
-
 void UEngineNetwork::StartNetwork()
 {
     if (true == bIsNetworking)
@@ -57,6 +34,16 @@ SOCKET UEngineNetwork::CreateSocket(ENetworkType _Type)
         break;
     case UDP:
         Result = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+        break;
+    case IOCP:
+        Result = WSASocketW(
+            AF_INET,              // IPv4
+            SOCK_STREAM,          // TCP
+            IPPROTO_TCP,          // Protocol TCP
+            nullptr,              // lpProtocolInfo
+            0,                    // GROUP
+            WSA_FLAG_OVERLAPPED   // OVERLAPPED : 비동기 I/O
+        );
         break;
     default:
         MSGASSERT("Engine에서 지원하지 않는 네트워크 통신 타입입니다.");
@@ -167,5 +154,26 @@ void UEngineNetwork::RecvTCPThreadFunction(UEngineNetwork* _Server, SOCKET _Sock
 
 }
 
+UEngineNetwork::UEngineNetwork()
+{
+}
 
+UEngineNetwork::~UEngineNetwork()
+{
+    Release();
+}
+
+void UEngineNetwork::Release()
+{
+    bIsActive = false;
+    Dispatcher.Release();
+    ProtocolFunction = nullptr;
+    DisConnectFunction = nullptr;
+
+    if (true == bIsNetworking)
+    {
+        WSACleanup();
+        bIsNetworking = false;
+    }
+}
 

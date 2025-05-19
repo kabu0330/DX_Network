@@ -6,6 +6,7 @@ enum ENetworkType
 {
 	TCP,
 	UDP,
+	IOCP
 };
 
 // Ό³Έν :

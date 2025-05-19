@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "EngineServer.h"
+#include "TaskQueue.h"
 
 UEngineServer::UEngineServer()
 {
@@ -159,7 +160,7 @@ void UEngineServer::Release()
         ListenSocket = 0;
     }
 
-    ConnectAcceptThread.Join();
+    //ConnectAcceptThread.Join();
 
     for (std::shared_ptr<UEngineThread>& Thread : AllUserThreads)
     {

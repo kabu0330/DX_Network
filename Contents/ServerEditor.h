@@ -23,9 +23,9 @@ protected:
 private:
 	std::string IP = "127.0.0.1";
 	int Port = 20000;
-	std::shared_ptr<UUserAccessPacket> UserAccessPacket;
+	std::shared_ptr<UUserAccessPacket> UserAccessPacket = nullptr;
 
-	std::shared_ptr<class UEngineServer> Server;
+	std::shared_ptr<class UEngineServer> Server = nullptr;
 
 private:
 	// delete Function

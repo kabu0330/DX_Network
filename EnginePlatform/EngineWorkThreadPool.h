@@ -2,6 +2,7 @@
 #include <functional>
 #include "EngineThread.h"
 #include <atomic>
+#include "TaskQueue.h"
 
 enum class EThreadStatus
 {
@@ -10,22 +11,15 @@ enum class EThreadStatus
 };
 
 // Ό³Έν :
-class UEngineWorkThreadPool
+class UEngineWorkThreadPool : public ITaskQueue
 {
-	// 
 public:
 	ENGINEAPI UEngineWorkThreadPool();
 	ENGINEAPI ~UEngineWorkThreadPool();
 
-	// delete Function
-	UEngineWorkThreadPool(const UEngineWorkThreadPool& _Other) = delete;
-	UEngineWorkThreadPool(UEngineWorkThreadPool&& _Other) noexcept = delete;
-	UEngineWorkThreadPool& operator=(const UEngineWorkThreadPool& _Other) = delete;
-	UEngineWorkThreadPool& operator=(UEngineWorkThreadPool&& _Other) noexcept = delete;
-
 	ENGINEAPI void Initialize(std::string_view ThreadName = "WorkThread", int Count = 0);
 
-	ENGINEAPI void WorkQueue(std::function<void()> _Work);
+	ENGINEAPI void WorkQueue(std::function<void()> _Work) override;
 
 protected:
 
@@ -40,5 +34,11 @@ private:
 	std::vector<std::shared_ptr<UEngineThread>> Threads;
 
 	static void ThreadQueueFunction(HANDLE _IOCPHandle, UEngineWorkThreadPool* _JobQueue);
-};
 
+private:
+	// delete Function
+	UEngineWorkThreadPool(const UEngineWorkThreadPool& _Other) = delete;
+	UEngineWorkThreadPool(UEngineWorkThreadPool&& _Other) noexcept = delete;
+	UEngineWorkThreadPool& operator=(const UEngineWorkThreadPool& _Other) = delete;
+	UEngineWorkThreadPool& operator=(UEngineWorkThreadPool&& _Other) noexcept = delete;
+};

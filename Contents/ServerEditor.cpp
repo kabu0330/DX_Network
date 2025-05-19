@@ -5,6 +5,8 @@
 #include "ContentPacket.h"
 #include "ServerGameMode.h"
 #include <EngineCore/PlayerController.h>
+#include <EnginePlatform/EngineWindow.h>
+#include <EngineCore/EngineCore.h>
 
 void UServerEditor::OnGUI(float _DeltaTime)
 {
@@ -16,6 +18,7 @@ void UServerEditor::OnGUI(float _DeltaTime)
 			GetWorld()->GetGameMode()->StartServer(Port);
 			std::shared_ptr<UEngineServer> Server = GetWorld()->GetGameMode()->GetServer();
 			CreateServer(Server);
+			GEngine->GetMainWindow().SetWindowTitle("Server");
 		}
 
 		IP.resize(256);
@@ -25,6 +28,7 @@ void UServerEditor::OnGUI(float _DeltaTime)
 			GetWorld()->GetGameMode()->JoinServer(IP, Port);
 			std::shared_ptr<UEngineClient> Client = GetWorld()->GetGameMode()->GetClient();
 			Connect(Client);
+			GEngine->GetMainWindow().SetWindowTitle("Client");
 		}
 	}
 	else
@@ -47,8 +51,8 @@ void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 	int ObjectToken = _Net->CreateSessionToken();
 	Pawn->InitNetObject(ObjectToken, _Net->GetSessionToken());
 
-	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), [this, _Net]
-		(std::shared_ptr<UObjectUpdatePacket> _Packet)
+	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), 
+		[this, _Net](std::shared_ptr<UObjectUpdatePacket> _Packet)
 		{
 			int Token = _Packet->GetObjectToken();
 			AServerPawn* ServerPawn = UNetObject::GetConvertNetObject<AServerPawn>(Token);
@@ -58,9 +62,9 @@ void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 				ServerPawn = NewServerPawn.get();
 				ServerPawn->SetControllOff();
 
-				AServerGameMode* GameMode = ServerPawn->GetWorld()->GetGameMode<AServerGameMode>();
-				APlayerController* PlayerController = GameMode->GetPlayerController();
-				PlayerController->Possess(ServerPawn);
+				//AServerGameMode* GameMode = ServerPawn->GetWorld()->GetGameMode<AServerGameMode>();
+				//APlayerController* PlayerController = GameMode->GetPlayerController();
+				//PlayerController->Possess(ServerPawn);
 				
 				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
 			}
@@ -70,17 +74,19 @@ void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 		});
 }
 
+void UServerEditor::CreateNetObject(std::shared_ptr<UUserAccessPacket> _Packet)
+{
+	UserAccessPacket = _Packet;
+	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
+	Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
+}
+
 void UServerEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 {
-	_Net->SetUserAccessFunction([this](std::shared_ptr<UUserAccessPacket> _Packet)
-		{
-			UserAccessPacket = _Packet;
-			AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
-			Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
-		});
+	_Net->SetUserAccessFunction(std::bind(&UServerEditor::CreateNetObject, this, std::placeholders::_1));
 
-	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), [this]
-	(std::shared_ptr<UObjectUpdatePacket> _Packet)
+	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), 
+		[this](std::shared_ptr<UObjectUpdatePacket> _Packet)
 		{
 			int Token = _Packet->GetObjectToken();
 			AServerPawn* ServerPawn = UNetObject::GetConvertNetObject<AServerPawn>(Token);

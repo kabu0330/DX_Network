@@ -40,7 +40,7 @@ public:
 	{
 		Dispatcher.AddHandler(static_cast<int>(EEnginePacketType::UserAccessPacket), _UserAccessFunction);
 	}
-	void SetProtocolFUnction(std::function<void(std::shared_ptr<UEngineProtocol> _Packet)> _ProtocolFunction)
+	void SetProtocolFunction(std::function<void(std::shared_ptr<UEngineProtocol> _Packet)> _ProtocolFunction)
 	{
 		ProtocolFunction = _ProtocolFunction;
 	}

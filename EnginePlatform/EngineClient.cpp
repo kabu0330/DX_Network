@@ -24,6 +24,8 @@ void UEngineClient::Connect(std::string_view _IP, int _Port)
 		ENGINEMSG("클라이언트 소켓 생성에 실패했습니다.");
 		return;
 	}
+	
+	std::cout << "[Client] 서버 접속 성공" << std::endl;
 
 	RecvThread = std::make_shared<UEngineThread>();
 	RecvThread->Start("Client Recv Thread", std::bind(&UEngineNetwork::RecvTCPThreadFunction, this, ConnectSocket));

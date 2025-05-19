@@ -4,6 +4,7 @@
 #include <EngineCore/PlayerController.h>
 #include "ServerGameMode.h"
 #include "ContentPacket.h"
+#include <EnginePlatform/EngineInput.h>
 
 AServerPawn::AServerPawn()
 {
@@ -38,6 +39,28 @@ void AServerPawn::SetNetMode(float _DeltaTime)
 
 void AServerPawn::SetControllMode(float _DeltaTime)
 {
+	FVector Velocity = FVector::ZERO;
+	FVector Speed(100.0f, 100.0f);
+
+	if (true == UEngineInput::IsPress('A'))
+	{
+		Velocity.X -= Speed.X * _DeltaTime;
+	}
+	if (true == UEngineInput::IsPress('D'))
+	{
+		Velocity.X += Speed.X * _DeltaTime;
+	}
+	if (true == UEngineInput::IsPress('W'))
+	{
+		Velocity.Y += Speed.Y * _DeltaTime;
+	}
+	if (true == UEngineInput::IsPress('S'))
+	{
+		Velocity.Y -= Speed.Y * _DeltaTime;
+	}
+
+	AddActorLocation(Velocity);
+
 	AServerGameMode* GameMode = GetWorld()->GetGameMode<AServerGameMode>();
 	if (nullptr != GameMode->GetNetwork())
 	{

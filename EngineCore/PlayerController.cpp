@@ -47,7 +47,7 @@ void APlayerController::BeginPlay()
 void APlayerController::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	HandleInput(_DeltaTime);
+	//HandleInput(_DeltaTime);
 }
 
 void APlayerController::HandleInput(float _DeltaTime)
@@ -81,7 +81,6 @@ void APlayerController::HandleInput(float _DeltaTime)
 		{
 			std::cout << "컨트롤러 대상이 설정되지 않았습니다. PlayController->Possess(액터)로 설정 가능합니다." << std::endl;
 			bIsDebugNotify = false;
-		}
-		
+		}	
 	}
 }

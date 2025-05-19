@@ -26,6 +26,15 @@ ULevel::ULevel()
 
 void ULevel::Tick(float _DeltaTime)
 {
+	{
+		std::lock_guard PacketLockGuard(PacketLock);
+		while (0 != PacketQueue.size())
+		{
+			std::shared_ptr<UEngineProtocol> Packet = PacketQueue.front();
+			GetGameMode()->GetNetwork()->GetDispatcher().ProcessPacket(Packet);
+			PacketQueue.pop();
+		}
+	}
 	if (GetMainCamera()->IsFreeCamera()) // 프리 카메라를 켜면 액터의 Tick은 일시정지
 	{
 		return;

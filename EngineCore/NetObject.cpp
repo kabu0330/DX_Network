@@ -11,7 +11,7 @@ UNetObject::~UNetObject()
 	//{
 	//	Object.second = nullptr;
 	//}
-	//AllNetObjects.clear();
+	AllNetObjects.clear();
 }
 
 void UNetObject::InitNetObject(int _ObjectToken, int _SessionToken)
@@ -24,8 +24,8 @@ void UNetObject::InitNetObject(int _ObjectToken, int _SessionToken)
 		return;
 	}
 	
-	//std::shared_ptr<UNetObject> Object = shared_from_this();
 	AllNetObjects[_ObjectToken] = this;
+	std::cout << "오브젝트 토큰 : " << _ObjectToken << ", 세션 토큰 : " << _SessionToken << std::endl;
 }
 
 bool UNetObject::IsNetObject(int _Token)

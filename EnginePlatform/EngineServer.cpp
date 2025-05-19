@@ -33,7 +33,7 @@ void UEngineServer::OpenServer(int _Port, int _BackLog)
         return;
     }
 
-    std::cout << "리슨 서버 오픈" << std::endl;
+    std::cout << "[Server] 리슨 서버 오픈" << std::endl;
 
     ConnectAcceptThread.Start("ConnectAcceptThread", std::bind(&UEngineServer::AcceptThreadFunction, this, ListenSocket));
 
@@ -49,10 +49,11 @@ void UEngineServer::AcceptThreadFunction(UEngineServer* _Server, SOCKET _ListenS
         SOCKADDR_IN ClientAddress;
         memset(&ClientAddress, 0, sizeof(ClientAddress));
         SOCKET ConnectSocket = accept(_ListenSocket, (sockaddr*)&ClientAddress, &AddressLength);
+        std::cout << "[Server] 클라이언트 소켓 획득 : " << ConnectSocket << std::endl;
 
         if (INVALID_SOCKET == ConnectSocket || SOCKET_ERROR == ConnectSocket)
         {
-            std::cout << "클라이언트 소켓 생성 실패" << std::endl;
+            std::cout << "[Server] 클라이언트 소켓 생성 실패" << std::endl;
             return;
         }
 

@@ -39,6 +39,15 @@ bool UEngineThread::Start(std::string _Name, std::function<void()> _Function)
 		return false;
 	}
 
+
+#if defined(_MSC_VER) && defined(_DEBUG)
+	// 디버거에 표시할 스레드 이름 설정
+	SetThreadName(
+		GetThreadId(ThreadHandle),
+		Name.c_str()
+	);
+#endif
+
 	return true;
 
 	//if (true == ThreadInst.joinable())
@@ -61,8 +70,8 @@ bool UEngineThread::Start(std::string _Name, std::function<void()> _Function)
 unsigned __stdcall UEngineThread::ThreadEntry(void* _Param)
 {
 	UEngineThread* Self = static_cast<UEngineThread*>(_Param);
-	std::wstring WName = UEngineString::AnsiToUnicode(Self->Name);
-	SetThreadDescription(GetCurrentThread(), WName.c_str());
+	//std::wstring WName = UEngineString::AnsiToUnicode(Self->Name);
+	//SetThreadDescription(GetCurrentThread(), WName.c_str());
 
 	Self->ThreadFunction();
 
@@ -70,14 +79,14 @@ unsigned __stdcall UEngineThread::ThreadEntry(void* _Param)
 	return 0;
 }
 
-void UEngineThread::ThreadBaseFunction(UEngineThread* _Thread)
-{
-	// 스레드 작업의 진입점
-	std::wstring WName = UEngineString::AnsiToUnicode(_Thread->Name);
-	SetThreadDescription(GetCurrentThread(), WName.c_str());
-
-	_Thread->ThreadFunction(); // Start()에서 넘겨준 함수 호출
-}
+//void UEngineThread::ThreadBaseFunction(UEngineThread* _Thread)
+//{
+//	// 스레드 작업의 진입점
+//	std::wstring WName = UEngineString::AnsiToUnicode(_Thread->Name);
+//	SetThreadDescription(GetCurrentThread(), WName.c_str());
+//
+//	_Thread->ThreadFunction(); // Start()에서 넘겨준 함수 호출
+//}
 
 void UEngineThread::Join()
 {
@@ -87,13 +96,8 @@ void UEngineThread::Join()
 		CloseHandle(ThreadHandle);
 		ThreadHandle = nullptr;
 	}
-	// (2) ThreadFunction 내부 할당 객체 완전 해제
-	std::function<void()>().swap(ThreadFunction);
 
-	// (3) Name 내부 버퍼 완전 해제
-	std::string().swap(Name);
-
-
+	ThreadFunction = nullptr;
 	//if (true == ThreadInst.joinable()) // 자기 자신을 Join하지 않도록 예외처리
 	//{
 	//	ThreadInst.join();

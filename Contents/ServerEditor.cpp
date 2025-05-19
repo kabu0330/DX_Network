@@ -107,7 +107,9 @@ UServerEditor::UServerEditor()
 
 UServerEditor::~UServerEditor()
 {
-	Server->Release();
-
-
+	UserAccessPacket = nullptr;
+	if (nullptr != Server)
+	{
+		Server->Release();
+	}
 }

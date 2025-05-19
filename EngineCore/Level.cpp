@@ -353,4 +353,10 @@ ULevel::~ULevel()
 	BeginPlayList.clear();
 	AllActorList.clear();
 	Cameras.clear();
+	while (false == PacketQueue.empty())
+	{
+		std::shared_ptr<UEngineProtocol> Packet = PacketQueue.front();
+		PacketQueue.pop();
+		Packet = nullptr;
+	}
 }

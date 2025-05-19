@@ -19,7 +19,14 @@ void UEngineNetwork::Release()
 {
     bIsActive = false;
     Dispatcher.Release();
-  
+    ProtocolFunction = nullptr;
+    DisConnectFunction = nullptr;
+
+    if (true == bIsNetworking)
+    {
+        WSACleanup();
+        bIsNetworking = false;
+    }
 }
 
 void UEngineNetwork::StartNetwork()

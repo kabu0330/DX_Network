@@ -142,10 +142,6 @@ void UEngineServer::Release()
 
     bIsActive = false;
 
-    shutdown(ListenSocket, SD_BOTH);
-    closesocket(ListenSocket);
-    ConnectAcceptThread.Join();
-
     {
         std::lock_guard<std::mutex> Lock(UserLock);
         for (std::pair<const int, SOCKET>& Session : AllUserSockets)
@@ -158,10 +154,20 @@ void UEngineServer::Release()
 
     if (0 != ListenSocket)
     {
+        shutdown(ListenSocket, SD_BOTH);
         closesocket(ListenSocket);
         ListenSocket = 0;
     }
 
+    ConnectAcceptThread.Join();
+
+    for (std::shared_ptr<UEngineThread>& Thread : AllUserThreads)
+    {
+        if (nullptr != Thread)
+        {
+            Thread->Join();
+        }
+    }
     AllUserThreads.clear();
 
 }

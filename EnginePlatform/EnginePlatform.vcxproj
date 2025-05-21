@@ -180,6 +180,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="EngineInput.h" />
+    <ClInclude Include="EngineIOCPServer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EngineNetwork.h">
       <SubType>
       </SubType>
@@ -198,6 +202,7 @@
     </ClInclude>
     <ClInclude Include="EngineSound.h" />
     <ClInclude Include="EngineThread.h" />
+    <ClInclude Include="EngineNetworkData.h" />
     <ClInclude Include="EngineWinDebug.h" />
     <ClInclude Include="EngineWindow.h">
       <SubType>
@@ -229,6 +234,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="EngineInput.cpp" />
+    <ClCompile Include="EngineIOCPServer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EngineNetwork.cpp">
       <SubType>
       </SubType>

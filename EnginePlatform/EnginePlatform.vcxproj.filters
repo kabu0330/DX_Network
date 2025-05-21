@@ -70,6 +70,12 @@
     <ClInclude Include="TaskQueue.h">
       <Filter>04_Thread</Filter>
     </ClInclude>
+    <ClInclude Include="EngineIOCPServer.h">
+      <Filter>08_Network\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineNetworkData.h">
+      <Filter>08_Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -116,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="TaskQueue.cpp">
       <Filter>04_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineIOCPServer.cpp">
+      <Filter>08_Network\Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

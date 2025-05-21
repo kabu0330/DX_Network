@@ -10,6 +10,9 @@ public:
 	virtual ~ITaskQueue() = default;
 };
 
+// EngineCore에서 ThreadPool 받아오기
+ENGINEAPI void RegisterTaskQueue(ITaskQueue* _Queue); 
+
+// 스레드에 작업 명령
 ENGINEAPI void WorkQueue(std::function<void()> _Work);
-ENGINEAPI void RegisterTaskQueue(ITaskQueue* _Queue);
 

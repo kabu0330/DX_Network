@@ -12,7 +12,6 @@ public:
 	ENGINEAPI ~UEngineServer();
 
 	ENGINEAPI void OpenServer(int _Port, int _BackLog = 512);
-	ENGINEAPI void OpenIOCPServer(int _Port, int _BackLog = 512);
 
 	ENGINEAPI static void AcceptThreadFunction(UEngineServer* _Server, SOCKET _ListenSocket);
 

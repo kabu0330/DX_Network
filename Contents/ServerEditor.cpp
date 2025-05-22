@@ -16,9 +16,17 @@ void UServerEditor::OnGUI(float _DeltaTime)
 		if (true == ImGui::Button(UEngineString::AnsiToUTF8("방만들기").c_str()))
 		{
 			GetWorld()->GetGameMode()->StartServer(Port);
-			Server = GetWorld()->GetGameMode()->GetServer();
+			Server = GetWorld()->GetGameMode()->GetServer<UEngineServer>();
 			CreateServer(Server);
 			GEngine->GetMainWindow().SetWindowTitle("Server");
+		}
+
+		if (true == ImGui::Button(UEngineString::AnsiToUTF8("IOCP방만들기").c_str()))
+		{
+			GetWorld()->GetGameMode()->StartIOCPServer(Port);
+			IOCPServer = GetWorld()->GetGameMode()->GetServer<UEngineIOCPServer>();
+			CreateServer(IOCPServer);
+			GEngine->GetMainWindow().SetWindowTitle("IOCP Server");
 		}
 
 		IP.resize(256);
@@ -41,6 +49,10 @@ void UServerEditor::OnGUI(float _DeltaTime)
 		else if (nullptr != std::dynamic_pointer_cast<UEngineServer>(Net))
 		{
 			ImGui::Text("Server");
+		}
+		else if (nullptr != std::dynamic_pointer_cast<UEngineIOCPServer>(Net))
+		{
+			ImGui::Text("IOCP Server");
 		}
 	}
 }
@@ -108,8 +120,4 @@ UServerEditor::UServerEditor()
 UServerEditor::~UServerEditor()
 {
 	UserAccessPacket = nullptr;
-	if (nullptr != Server)
-	{
-		Server->Release();
-	}
 }

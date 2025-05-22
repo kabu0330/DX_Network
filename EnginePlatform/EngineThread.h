@@ -20,6 +20,7 @@ public:
 	ENGINEAPI bool Start(std::string _Name, std::function<void()> _Function);
 	ENGINEAPI void Join();
 
+    static void SetThreadNameDynamic(const std::string& _ThreadName);
 protected:
 
 private:
@@ -78,3 +79,4 @@ inline void SetThreadName(
     }
 }
 #endif
+

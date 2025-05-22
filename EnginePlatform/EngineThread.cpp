@@ -24,7 +24,7 @@ bool UEngineThread::Start(std::string _Name, std::function<void()> _Function)
 
 	unsigned threadID = 0;
 	ThreadHandle = reinterpret_cast<HANDLE>(
-		_beginthreadex(
+		::_beginthreadex(
 			nullptr,
 			0,
 			ThreadEntry,
@@ -42,10 +42,7 @@ bool UEngineThread::Start(std::string _Name, std::function<void()> _Function)
 
 #if defined(_MSC_VER) && defined(_DEBUG)
 	// 디버거에 표시할 스레드 이름 설정
-	SetThreadName(
-		GetThreadId(ThreadHandle),
-		Name.c_str()
-	);
+	SetThreadName(::GetThreadId(ThreadHandle), Name.c_str());
 #endif
 
 	return true;
@@ -75,7 +72,7 @@ unsigned __stdcall UEngineThread::ThreadEntry(void* _Param)
 
 	Self->ThreadFunction();
 
-	_endthreadex(0); // 내부 정리
+	::_endthreadex(0); // 내부 정리
 	return 0;
 }
 
@@ -92,8 +89,8 @@ void UEngineThread::Join()
 {
 	if (nullptr != ThreadHandle)
 	{
-		WaitForSingleObject(ThreadHandle, INFINITE);
-		CloseHandle(ThreadHandle);
+		::WaitForSingleObject(ThreadHandle, INFINITE);
+		::CloseHandle(ThreadHandle);
 		ThreadHandle = nullptr;
 	}
 
@@ -103,3 +100,9 @@ void UEngineThread::Join()
 	//	ThreadInst.join();
 	//}
 }
+
+void UEngineThread::SetThreadNameDynamic(const std::string& _ThreadName)
+{
+	SetThreadName(::GetCurrentThreadId(), _ThreadName.c_str());
+}
+

@@ -166,6 +166,7 @@ UEngineNetwork::~UEngineNetwork()
 void UEngineNetwork::Release()
 {
     bIsActive = false;
+
     Dispatcher.Release();
     ProtocolFunction = nullptr;
     DisConnectFunction = nullptr;

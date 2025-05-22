@@ -26,9 +26,11 @@ public:
 		return NetworkInstance;
 	}
 	
-	std::shared_ptr<UEngineServer> GetServer()
+	template<typename ServerType>
+	std::shared_ptr<ServerType> GetServer()
 	{
-		return std::dynamic_pointer_cast<UEngineServer>(NetworkInstance);
+		static_assert(std::is_base_of<UEngineServer, ServerType>::value, "ServerType은 UEngineServer를 상속해야 합니다.");
+		return std::dynamic_pointer_cast<ServerType>(NetworkInstance);
 	}
 	std::shared_ptr<UEngineClient> GetClient()
 	{
@@ -36,6 +38,7 @@ public:
 	}
 	
 	ENGINEAPI void StartServer(int _Port);
+	ENGINEAPI void StartIOCPServer(int _Port);
 	ENGINEAPI void JoinServer(std::string_view _IP, int _Port);
 
 protected:

@@ -58,23 +58,26 @@
     <ClInclude Include="EngineDispatcher.h">
       <Filter>08_Network\Protocol</Filter>
     </ClInclude>
-    <ClInclude Include="EngineServer.h">
-      <Filter>08_Network\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineClient.h">
-      <Filter>08_Network\Network</Filter>
-    </ClInclude>
     <ClInclude Include="EnginePacket.h">
       <Filter>08_Network\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="TaskQueue.h">
       <Filter>07_Thread</Filter>
     </ClInclude>
-    <ClInclude Include="EngineIOCPServer.h">
-      <Filter>08_Network\Network</Filter>
-    </ClInclude>
     <ClInclude Include="EngineNetworkData.h">
       <Filter>08_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineClient.h">
+      <Filter>08_Network\Network\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineIOCPServer.h">
+      <Filter>08_Network\Network\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineListenServer.h">
+      <Filter>08_Network\Network\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineServer.h">
+      <Filter>08_Network\Network\Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -111,20 +114,23 @@
     <ClCompile Include="EngineDispatcher.cpp">
       <Filter>08_Network\Protocol</Filter>
     </ClCompile>
-    <ClCompile Include="EngineServer.cpp">
-      <Filter>08_Network\Network</Filter>
-    </ClCompile>
-    <ClCompile Include="EngineClient.cpp">
-      <Filter>08_Network\Network</Filter>
-    </ClCompile>
     <ClCompile Include="EnginePacket.cpp">
       <Filter>08_Network\Protocol</Filter>
     </ClCompile>
     <ClCompile Include="TaskQueue.cpp">
       <Filter>07_Thread</Filter>
     </ClCompile>
+    <ClCompile Include="EngineClient.cpp">
+      <Filter>08_Network\Network\Client</Filter>
+    </ClCompile>
     <ClCompile Include="EngineIOCPServer.cpp">
-      <Filter>08_Network\Network</Filter>
+      <Filter>08_Network\Network\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineListenServer.cpp">
+      <Filter>08_Network\Network\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineServer.cpp">
+      <Filter>08_Network\Network\Server</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +178,12 @@
     </Filter>
     <Filter Include="07_Thread">
       <UniqueIdentifier>{418f8da2-b379-4849-9b3d-bc005b9bc11b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Network\Network\Client">
+      <UniqueIdentifier>{7b94e239-9cf3-42e2-a27e-e7fc4f4e484a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Network\Network\Server">
+      <UniqueIdentifier>{c0b071d5-c794-477a-a1be-2bfaf8315227}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -54,18 +54,14 @@ void UEngineWorkThreadPool::ThreadQueueFunction(HANDLE _IOCPHandle, UEngineWorkT
 
 	while (true == _JobQueue->IsWork)
 	{
-		// 일이 있을때까지 잔다.
-		// _IOCPHandle <= 주체 일이있으면 깨워 
-		// 마지막 인자는 1000의 시간이 지나면 그냥 아무일 없어도 일어나
-
 		GetQueuedCompletionStatus(_IOCPHandle, &Byte, &Ptr, &OverPtr, INFINITE);
 
-		if (-1 == Byte)
+		if (static_cast<int>(EThreadStatus::Destroy) == Byte)
 		{
 			break;
 		}
 
-		if (-2 == Byte)
+		if (static_cast<int>(EThreadStatus::Work) == Byte)
 		{
 			UWork* Work = reinterpret_cast<UWork*>(Ptr);
 

@@ -88,6 +88,7 @@ private:
 
 	UEngineTimer Timer = UEngineTimer();
 
+
 	static void WindowInit(HINSTANCE _Instance);
 	static void LoadContentsDll(std::string_view _DllName);
 

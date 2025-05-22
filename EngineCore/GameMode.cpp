@@ -3,6 +3,8 @@
 #include "CameraActor.h"
 #include "EngineCamera.h"
 #include "PlayerController.h"
+#include <EnginePlatform/EngineIOCPServer.h>
+#include <EnginePlatform/EngineListenServer.h>
 
 AGameMode::AGameMode()
 {
@@ -24,9 +26,20 @@ void AGameMode::BeginPlay()
 
 void AGameMode::StartServer(int _Port)
 {
-	std::shared_ptr<UEngineServer> Server = std::make_shared<UEngineServer>();
+	std::shared_ptr<UEngineListenServer> Server = std::make_shared<UEngineListenServer>();
 	NetworkInstance = Server;
 	Server->OpenServer(_Port);
+	Server->SetProtocolFunction([this](std::shared_ptr<UEngineProtocol> _Protocol)
+		{
+			GetWorld()->AddProtocol(_Protocol);
+		});
+}
+
+void AGameMode::StartIOCPServer(int _Port)
+{
+	std::shared_ptr<UEngineIOCPServer> Server = std::make_shared<UEngineIOCPServer>();
+	NetworkInstance = Server;
+	Server->OpenIOCPServer(_Port);
 	Server->SetProtocolFunction([this](std::shared_ptr<UEngineProtocol> _Protocol)
 		{
 			GetWorld()->AddProtocol(_Protocol);
@@ -46,6 +59,10 @@ void AGameMode::JoinServer(std::string_view _IP, int _Port)
 
 AGameMode::~AGameMode()
 {
+	if (nullptr != NetworkInstance)
+	{
+		NetworkInstance->Release();
+	}
 	NetworkInstance = nullptr;
 }
 

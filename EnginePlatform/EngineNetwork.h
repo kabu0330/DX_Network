@@ -1,6 +1,7 @@
 #pragma once
 #include "EngineProtocol.h"
 #include "EngineDispatcher.h"
+#include "EnginePacket.h"
 
 enum ENetworkType
 {
@@ -78,4 +79,3 @@ private:
 	UEngineNetwork& operator=(const UEngineNetwork& _Other) = delete;
 	UEngineNetwork& operator=(UEngineNetwork&& _Other) noexcept = delete;
 };
-

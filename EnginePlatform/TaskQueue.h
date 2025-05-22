@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include "EngineBase/EngineDefine.h"
+#include "EngineThread.h"
 
 // 설명 : ThreadPool을 상위계층에서 사용하기 위한 인터페이스
 class ITaskQueue

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <EnginePlatform/EngineClient.h>
 #include <EnginePlatform/EngineServer.h>
+#include <EnginePlatform/EngineIOCPServer.h>
 
 #include <EngineCore/EngineGUIWindow.h>
 
@@ -11,6 +12,7 @@ class UServerEditor : public UEngineGUIWindow
 public:
 	UServerEditor();
 	~UServerEditor();
+
 
 	void CreateServer(std::shared_ptr<UEngineServer> _Net);
 	void Connect(std::shared_ptr<UEngineClient> _Net);
@@ -26,6 +28,7 @@ private:
 	std::shared_ptr<UUserAccessPacket> UserAccessPacket = nullptr;
 
 	std::shared_ptr<class UEngineServer> Server = nullptr;
+	std::shared_ptr<class UEngineIOCPServer> IOCPServer = nullptr;
 
 private:
 	// delete Function

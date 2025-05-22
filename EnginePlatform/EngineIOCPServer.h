@@ -3,13 +3,14 @@
 
 #include "EngineNetwork.h"
 #include "EngineNetworkData.h"
+#include "EngineServer.h"
 
 // Ό³Έν :
-class UEngineIOCPServer : public UEngineNetwork
+class UEngineIOCPServer : public UEngineServer
 {
 public:
-	UEngineIOCPServer();
-	~UEngineIOCPServer();
+	ENGINEAPI UEngineIOCPServer();
+	ENGINEAPI ~UEngineIOCPServer();
 
 	ENGINEAPI void OpenIOCPServer(int _Port);
 	void Release() override;
@@ -19,7 +20,7 @@ protected:
 	void OpenListenServer();
 	void CreateIOCP();
 	void GetAcceptEx();
-	void SetWorkerThread();
+	void SetWorkThread();
 	
 	void CallAcceptEx();
 	void AcceptThread(UEngineIOCPServer* _Server);
@@ -37,8 +38,7 @@ protected:
 
 	std::unordered_map<SOCKET, FClientData> AllClients;
 
-	std::atomic<int> SessionTokenCreator;
-	std::atomic<int> ObjectTokenCreator;
+
 
 private:
 	// delete Function

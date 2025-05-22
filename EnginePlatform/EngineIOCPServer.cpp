@@ -29,7 +29,7 @@ void UEngineIOCPServer::OpenIOCPServer(int _Port)
     GetAcceptEx();
     CallAcceptEx();
 
-    SetWorkerThread();
+    SetWorkThread();
 
     SessionToken = SessionTokenCreator++;
 }
@@ -103,7 +103,7 @@ void UEngineIOCPServer::CallAcceptEx()
     std::cout << "[Server] 비동기 접속 대기" << std::endl;
 }
 
-void UEngineIOCPServer::SetWorkerThread()
+void UEngineIOCPServer::SetWorkThread()
 {
     WorkQueue(std::bind(&UEngineIOCPServer::AcceptThread, this, this));
 
@@ -115,8 +115,12 @@ void UEngineIOCPServer::AcceptThread(UEngineIOCPServer* _Server)
     ULONG_PTR Key = 0;
     OVERLAPPED* OverlappedPtr = nullptr;
     DWORD dwBytes = 0;
-    while (true)
+    static int AcceptThreadNumber = 0;
+    while (true == _Server->bIsActive)
     {
+        UEngineThread::SetThreadNameDynamic("AcceptThread" + std::to_string(AcceptThreadNumber));
+        ++AcceptThreadNumber;
+
         BOOL bIsOK = GetQueuedCompletionStatus(AcceptPort, &BytesTransferred, &Key, &OverlappedPtr, INFINITE);
         if (false == bIsOK || nullptr == OverlappedPtr)
         {
@@ -142,15 +146,40 @@ void UEngineIOCPServer::AcceptThread(UEngineIOCPServer* _Server)
 
 
         }
-
     }
+    --AcceptThreadNumber;
 }
 
 void UEngineIOCPServer::Release()
 {
 	UEngineNetwork::Release();
 
-	bIsActive = false;
+	bIsActive = false; // 종료 트리거
+
+    // AcceptEx 취소
+    CancelIoEx((HANDLE)ListenSocket, &AcceptOverlapped);
+
+    // 종료 신호용 Completion Port 알림
+    PostQueuedCompletionStatus(AcceptPort, 0, 0, nullptr);
+
+    DWORD Bytes = 0;
+    ULONG_PTR Key = 0;
+    OVERLAPPED* Overlapped = nullptr;
+    BOOL bIsDelay = GetQueuedCompletionStatus(AcceptPort, &Bytes, &Key, &Overlapped, 3000);
+    
+    closesocket(AcceptSocket);
+    closesocket(ListenSocket);
+
+    if (INVALID_HANDLE_VALUE != AcceptPort)
+    {
+        CloseHandle(AcceptPort);
+    }
+    if (INVALID_HANDLE_VALUE != SendRecvPort)
+    {
+        CloseHandle(SendRecvPort);
+    }
+
+    WSACleanup();
 }
 
 

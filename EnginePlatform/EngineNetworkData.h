@@ -30,9 +30,12 @@ struct FOverlappedEx
 	}
 };
 
-class UPlatformData
+class UNetData
 {
 public:
 	static const int BackLog = SOMAXCONN;
+	static const int SockAddrSize = (sizeof(sockaddr_in) + 16);
+	inline static char AcceptBuffer[SockAddrSize * 2] = {};
+	static const int BufferSize = 1024;
 };
 

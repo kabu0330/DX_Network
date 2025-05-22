@@ -20,6 +20,9 @@ protected:
 	void CreateIOCP();
 	void GetAcceptEx();
 	void SetWorkerThread();
+	
+	void CallAcceptEx();
+	void AcceptThread(UEngineIOCPServer* _Server);
 
 	SOCKET ListenSocket;
 	SOCKET AcceptSocket;
@@ -28,6 +31,7 @@ protected:
 	HANDLE SendRecvPort = nullptr;
 
 	LPFN_ACCEPTEX FnAccetEx = nullptr;
+	OVERLAPPED AcceptOverlapped = {};
 
 	CRITICAL_SECTION Lock;
 

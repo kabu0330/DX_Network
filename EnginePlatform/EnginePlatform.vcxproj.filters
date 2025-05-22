@@ -14,16 +14,16 @@
       <Filter>01_Debug</Filter>
     </ClInclude>
     <ClInclude Include="EngineWorkThreadPool.h">
-      <Filter>04_Thread</Filter>
+      <Filter>07_Thread</Filter>
     </ClInclude>
     <ClInclude Include="EngineThread.h">
-      <Filter>04_Thread</Filter>
+      <Filter>07_Thread</Filter>
     </ClInclude>
     <ClInclude Include="EngineWinImage.h">
-      <Filter>05_WindowImage</Filter>
+      <Filter>04_WindowImage</Filter>
     </ClInclude>
     <ClInclude Include="EngineSound.h">
-      <Filter>07_Sound</Filter>
+      <Filter>05_Sound</Filter>
     </ClInclude>
     <ClInclude Include="ThirdParty\FMOD\inc\fmod.h">
       <Filter>06_ThirdParty\FMOD\Inc</Filter>
@@ -68,7 +68,7 @@
       <Filter>08_Network\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="TaskQueue.h">
-      <Filter>04_Thread</Filter>
+      <Filter>07_Thread</Filter>
     </ClInclude>
     <ClInclude Include="EngineIOCPServer.h">
       <Filter>08_Network\Network</Filter>
@@ -91,16 +91,16 @@
       <Filter>01_Debug</Filter>
     </ClCompile>
     <ClCompile Include="EngineWorkThreadPool.cpp">
-      <Filter>04_Thread</Filter>
+      <Filter>07_Thread</Filter>
     </ClCompile>
     <ClCompile Include="EngineThread.cpp">
-      <Filter>04_Thread</Filter>
+      <Filter>07_Thread</Filter>
     </ClCompile>
     <ClCompile Include="EngineWinImage.cpp">
-      <Filter>05_WindowImage</Filter>
+      <Filter>04_WindowImage</Filter>
     </ClCompile>
     <ClCompile Include="EngineSound.cpp">
-      <Filter>07_Sound</Filter>
+      <Filter>05_Sound</Filter>
     </ClCompile>
     <ClCompile Include="EngineNetwork.cpp">
       <Filter>08_Network\Network</Filter>
@@ -121,7 +121,7 @@
       <Filter>08_Network\Protocol</Filter>
     </ClCompile>
     <ClCompile Include="TaskQueue.cpp">
-      <Filter>04_Thread</Filter>
+      <Filter>07_Thread</Filter>
     </ClCompile>
     <ClCompile Include="EngineIOCPServer.cpp">
       <Filter>08_Network\Network</Filter>
@@ -140,12 +140,6 @@
     <Filter Include="03_Input">
       <UniqueIdentifier>{3963d26f-2bf5-4c94-a005-d9391d6546fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04_Thread">
-      <UniqueIdentifier>{418f8da2-b379-4849-9b3d-bc005b9bc11b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05_WindowImage">
-      <UniqueIdentifier>{5f89d3e4-be10-47af-921f-ea936f38f95e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="06_ThirdParty">
       <UniqueIdentifier>{76e32047-9d52-404a-b31b-5ba344c9af43}</UniqueIdentifier>
     </Filter>
@@ -161,9 +155,6 @@
     <Filter Include="06_ThirdParty\FMOD\Release">
       <UniqueIdentifier>{533db269-c48e-46ed-934c-83234308cb68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="07_Sound">
-      <UniqueIdentifier>{4be9b992-b63e-43ce-8d4d-aa9a3cfc1e51}</UniqueIdentifier>
-    </Filter>
     <Filter Include="08_Network">
       <UniqueIdentifier>{6fc3637c-73dd-4105-88ba-c4a8e84271b7}</UniqueIdentifier>
     </Filter>
@@ -172,6 +163,15 @@
     </Filter>
     <Filter Include="08_Network\Protocol">
       <UniqueIdentifier>{a41792cf-c439-4de6-b2d4-5a8c9f83c6fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_WindowImage">
+      <UniqueIdentifier>{5f89d3e4-be10-47af-921f-ea936f38f95e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_Sound">
+      <UniqueIdentifier>{4be9b992-b63e-43ce-8d4d-aa9a3cfc1e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="07_Thread">
+      <UniqueIdentifier>{418f8da2-b379-4849-9b3d-bc005b9bc11b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

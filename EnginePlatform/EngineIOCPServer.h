@@ -16,7 +16,8 @@ public:
 	void Release() override;
 
 protected:
-	void CreateIOCPSockets();
+	void CreateListenSocket();
+	void CreateAcceptSocket();
 	void OpenListenServer();
 	void CreateIOCP();
 	void GetAcceptEx();
@@ -24,6 +25,9 @@ protected:
 	
 	void CallAcceptEx();
 	void AcceptThread(UEngineIOCPServer* _Server);
+	bool SetWSARecv(char* _Buffer, FOverlappedEx* _Context);
+
+	//std::shared_ptr<char[]> CreateBuffer();
 
 	SOCKET ListenSocket;
 	SOCKET AcceptSocket;

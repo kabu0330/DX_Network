@@ -31,7 +31,7 @@ void AGameMode::StartServer(int _Port)
 	Server->OpenServer(_Port);
 	Server->SetProtocolFunction([this](std::shared_ptr<UEngineProtocol> _Protocol)
 		{
-			GetWorld()->AddProtocol(_Protocol);
+			GetWorld()->AddPacketQueue(_Protocol);
 		});
 }
 
@@ -42,7 +42,7 @@ void AGameMode::StartIOCPServer(int _Port)
 	Server->OpenIOCPServer(_Port);
 	Server->SetProtocolFunction([this](std::shared_ptr<UEngineProtocol> _Protocol)
 		{
-			GetWorld()->AddProtocol(_Protocol);
+			GetWorld()->AddPacketQueue(_Protocol);
 		});
 }
 
@@ -53,7 +53,7 @@ void AGameMode::JoinServer(std::string_view _IP, int _Port)
 	Client->Connect(_IP, _Port);
 	Client->SetProtocolFunction([this](std::shared_ptr<UEngineProtocol> _Protocol)
 		{
-			GetWorld()->AddProtocol(_Protocol);
+			GetWorld()->AddPacketQueue(_Protocol);
 		});
 }
 

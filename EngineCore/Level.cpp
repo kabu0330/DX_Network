@@ -35,6 +35,7 @@ void ULevel::Tick(float _DeltaTime)
 			PacketQueue.pop();
 		}
 	}
+
 	if (GetMainCamera()->IsFreeCamera()) // 프리 카메라를 켜면 액터의 Tick은 일시정지
 	{
 		return;

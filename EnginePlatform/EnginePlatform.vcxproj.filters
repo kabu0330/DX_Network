@@ -200,7 +200,4 @@
       <Filter>06_ThirdParty\FMOD\Debug</Filter>
     </CopyFileToFolders>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
-  </ItemGroup>
 </Project>

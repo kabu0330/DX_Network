@@ -21,13 +21,13 @@ void UServerEditor::OnGUI(float _DeltaTime)
 			GEngine->GetMainWindow().SetWindowTitle("Server");
 		}
 
-		if (true == ImGui::Button(UEngineString::AnsiToUTF8("IOCP방만들기").c_str()))
-		{
-			GetWorld()->GetGameMode()->StartIOCPServer(Port);
-			IOCPServer = GetWorld()->GetGameMode()->GetServer<UEngineIOCPServer>();
-			CreateServer(IOCPServer);
-			GEngine->GetMainWindow().SetWindowTitle("IOCP Server");
-		}
+		//if (true == ImGui::Button(UEngineString::AnsiToUTF8("IOCP방만들기").c_str()))
+		//{
+		//	GetWorld()->GetGameMode()->StartIOCPServer(Port);
+		//	IOCPServer = GetWorld()->GetGameMode()->GetServer<UEngineIOCPServer>();
+		//	CreateServer(IOCPServer);
+		//	GEngine->GetMainWindow().SetWindowTitle("IOCP Server");
+		//}
 
 		IP.resize(256);
 		ImGui::InputText("IP", &IP[0], IP.size());

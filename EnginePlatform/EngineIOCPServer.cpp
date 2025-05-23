@@ -18,7 +18,7 @@ void UEngineIOCPServer::OpenIOCPServer(int _Port)
 	
     IPAddress = "0.0.0.0";
 
-    CreateIOCPSockets();
+    CreateListenSocket();
 
     OpenListenServer();
     std::cout << "[Server] 리슨 서버 오픈" << std::endl;
@@ -27,6 +27,7 @@ void UEngineIOCPServer::OpenIOCPServer(int _Port)
     std::cout << "[Server] IOCP 생성" << std::endl;
 
     GetAcceptEx();
+    CreateAcceptSocket();
     CallAcceptEx();
 
     SetWorkThread();
@@ -34,20 +35,23 @@ void UEngineIOCPServer::OpenIOCPServer(int _Port)
     SessionToken = SessionTokenCreator++;
 }
 
-void UEngineIOCPServer::CreateIOCPSockets()
+void UEngineIOCPServer::CreateListenSocket()
 {
     ListenSocket = CreateSocket(ENetworkType::IOCP);
     if (INVALID_SOCKET == ListenSocket)
     {
-        MSGASSERT("리슨 소켓 생성에 실패했습니다.");
+        MSGASSERT("ListenSocket 생성에 실패했습니다.");
         return;
     }
+}
 
+void UEngineIOCPServer::CreateAcceptSocket()
+{
     AcceptSocket = CreateSocket(ENetworkType::IOCP);
     if (INVALID_SOCKET == AcceptSocket)
     {
-        MSGASSERT("접속 소켓 생성에 실패했습니다.");
-        return; 
+        MSGASSERT("AcceptSocket 생성에 실패했습니다.");
+        return;
     }
 }
 
@@ -88,6 +92,7 @@ void UEngineIOCPServer::GetAcceptEx()
 {
     GUID GuidAcceptEx = WSAID_ACCEPTEX;
     DWORD DwBytes = 0;
+
     WSAIoctl(ListenSocket, SIO_GET_EXTENSION_FUNCTION_POINTER, &GuidAcceptEx, sizeof(GuidAcceptEx), &FnAccetEx, sizeof(FnAccetEx), &DwBytes, nullptr, nullptr);
     if (nullptr == FnAccetEx)
     {
@@ -99,14 +104,16 @@ void UEngineIOCPServer::GetAcceptEx()
 void UEngineIOCPServer::CallAcceptEx()
 {
     DWORD DwBytes = 0;
+    ZeroMemory(&AcceptOverlapped, sizeof(OVERLAPPED));
+
     FnAccetEx(ListenSocket, AcceptSocket, UNetData::AcceptBuffer, 0, UNetData::SockAddrSize, UNetData::SockAddrSize, &DwBytes, &AcceptOverlapped); // 비동기 클라 접속 수락 함수
+
     std::cout << "[Server] 비동기 접속 대기" << std::endl;
 }
 
 void UEngineIOCPServer::SetWorkThread()
 {
     WorkQueue(std::bind(&UEngineIOCPServer::AcceptThread, this, this));
-
 }
 
 void UEngineIOCPServer::AcceptThread(UEngineIOCPServer* _Server)
@@ -142,12 +149,46 @@ void UEngineIOCPServer::AcceptThread(UEngineIOCPServer* _Server)
             LeaveCriticalSection(&Lock);
 
             std::shared_ptr<char[]> RecvBuffer = std::make_shared<char[]>(UNetData::BufferSize);
+            WSABUF WsaBuffer = {};
+            WsaBuffer.buf = RecvBuffer.get();
+            WsaBuffer.len = UNetData::BufferSize;
+
+            std::shared_ptr<FOverlappedEx> RecvContext = std::make_shared<FOverlappedEx>();
+            ZeroMemory(RecvContext.get(), sizeof(*RecvContext));
+
+            RecvContext->Socket = ClientSocket;
+            RecvContext->WsaBuf = WsaBuffer;
+            RecvContext->Buffer = WsaBuffer.buf;
+            RecvContext->OperationType = EOperationType::ACCEPT;
             
+            ZeroMemory(&RecvContext->Overlapped, sizeof(OVERLAPPED));
 
-
+            SetWSARecv(RecvBuffer.get(), RecvContext.get());
+            
+            // 다시 AcceptEx 요청
+            CreateAcceptSocket();
+            CallAcceptEx();
         }
     }
     --AcceptThreadNumber;
+}
+
+bool UEngineIOCPServer::SetWSARecv(char* _Buffer, FOverlappedEx* _Context)
+{
+    DWORD Flags = 0;
+    int Result = WSARecv(_Context->Socket, &_Context->WsaBuf, 1, nullptr, &Flags, &_Context->Overlapped, nullptr);
+    int Error = WSAGetLastError();
+    if (SOCKET_ERROR == Result && ERROR_IO_PENDING != Error)
+    {
+        std::cerr << "WSA Recv Failed : " << Error << std::endl;
+        closesocket(_Context->Socket);
+        _Buffer = nullptr;
+        _Context = nullptr;
+        
+        return false;
+    }
+
+    return true;
 }
 
 void UEngineIOCPServer::Release()

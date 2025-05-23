@@ -14,8 +14,8 @@ enum ENetworkType
 class UEngineNetwork
 {
 public:
-	UEngineNetwork();
-	virtual ~UEngineNetwork();
+	ENGINEAPI UEngineNetwork();
+	ENGINEAPI virtual ~UEngineNetwork();
 
 	// Windows 네트워크 설정 함수
 	ENGINEAPI static void StartNetwork();
@@ -44,7 +44,7 @@ public:
 	}
 	void SetProtocolFunction(std::function<void(std::shared_ptr<UEngineProtocol> _Packet)> _ProtocolFunction)
 	{
-		ProtocolFunction = _ProtocolFunction;
+		ProtocolFunction = _ProtocolFunction; // Getworld()->AddPacketQueue(프로토콜);
 	}
 
 	int GetSessionToken() const
@@ -57,7 +57,7 @@ public:
 		return Dispatcher;
 	}
 
-	virtual void Release();
+	ENGINEAPI virtual void Release();
 
 
 protected:

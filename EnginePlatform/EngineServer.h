@@ -5,8 +5,8 @@
 class UEngineServer : public UEngineNetwork
 {
 public:
-	UEngineServer();
-	~UEngineServer();
+	ENGINEAPI UEngineServer() {}
+	ENGINEAPI ~UEngineServer() {}
 
 	ENGINEAPI int CreateObjectToken()
 	{
@@ -17,11 +17,9 @@ public:
 		return SessionTokenCreator++;
 	}
 
-
 protected:
 	std::atomic<int> SessionTokenCreator;
 	std::atomic<int> ObjectTokenCreator;
-
 
 private:
 	// delete Function

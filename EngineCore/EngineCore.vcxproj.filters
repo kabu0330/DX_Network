@@ -185,6 +185,9 @@
     <ClInclude Include="NetObject.h">
       <Filter>21_Network</Filter>
     </ClInclude>
+    <ClInclude Include="ChatComponent.h">
+      <Filter>21_Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -351,6 +354,9 @@
     </ClCompile>
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="NetObject.cpp">
+      <Filter>21_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="ChatComponent.cpp">
       <Filter>21_Network</Filter>
     </ClCompile>
   </ItemGroup>

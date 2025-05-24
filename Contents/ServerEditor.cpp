@@ -60,7 +60,7 @@ void UServerEditor::OnGUI(float _DeltaTime)
 void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 {
 	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
-	int ObjectToken = _Net->CreateSessionToken();
+	int ObjectToken = _Net->CreateObjectToken();
 	Pawn->InitNetObject(ObjectToken, _Net->GetSessionToken());
 
 	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), 

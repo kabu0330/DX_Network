@@ -83,7 +83,7 @@ void UEngineListenServer::AcceptThreadFunction(UEngineListenServer* _Server, SOC
 				UEngineSerializer Ser;
 
 				std::shared_ptr<UUserAccessPacket> AcceptProtocol = std::make_shared<UUserAccessPacket>();
-				AcceptProtocol->SetPacketType(EEnginePacketType::UserAccessPacket);
+				AcceptProtocol->SetPacketType(EEnginePacketType::USER_ACCESS);
 				AcceptProtocol->SetSessionToken(_Server->CreateSessionToken());
 				AcceptProtocol->SetObjectToken(_Server->CreateObjectToken());
 

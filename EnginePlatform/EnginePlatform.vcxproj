@@ -171,6 +171,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ChatManager.h" />
     <ClInclude Include="EngineClient.h">
       <SubType>
       </SubType>
@@ -229,6 +230,7 @@
     <ClInclude Include="ThirdParty\FMOD\inc\fmod_output.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChatManager.cpp" />
     <ClCompile Include="EngineClient.cpp">
       <SubType>
       </SubType>

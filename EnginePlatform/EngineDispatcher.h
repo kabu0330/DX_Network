@@ -6,7 +6,7 @@
 #include <EngineBase/EngineDebug.h>
 #include "EngineProtocol.h"
 
-// 설명 :
+// 설명 : 패킷을 처리하는 함수를 저장하고 실행하는 클래스
 class UEngineDispatcher
 {
 public:

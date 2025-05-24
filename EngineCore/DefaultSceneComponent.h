@@ -5,7 +5,6 @@
 class UDefaultSceneComponent : public USceneComponent
 {
 public:
-	// constrcuter destructer
 	ENGINEAPI UDefaultSceneComponent();
 	ENGINEAPI ~UDefaultSceneComponent();
 

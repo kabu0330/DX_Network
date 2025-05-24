@@ -27,7 +27,6 @@ void AActor::BeginPlay()
 	{
 		ActorComponent->BeginPlay();
 	}
-	
 }
 
 void AActor::Tick(float _DeltaTime)
@@ -71,7 +70,7 @@ void AActor::AttachToActor(AActor* _Parent)
 	}
 
 	Parent = _Parent;
-	// 나는 부모님 자식으로 들어간다.
+
 	_Parent->ChildList.push_back(GetThis<AActor>());
 	RootComponent->SetupAttachment(_Parent->RootComponent);
 }

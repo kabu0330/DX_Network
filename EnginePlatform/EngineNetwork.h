@@ -30,7 +30,6 @@ public:
 	}
 	ENGINEAPI virtual void SendPacket(UEngineProtocol* _Protocol) {};
 
-
 	static void RecvTCPThreadFunction(UEngineNetwork* _Server, SOCKET _Socket);
 
 	bool IsNetworking()
@@ -38,18 +37,14 @@ public:
 		return -1 != SessionToken;
 	}
 
-	void SetUserAccessFunction(std::function<void(std::shared_ptr<UUserAccessPacket> _Packet)> _UserAccessFunction)
-	{
-		Dispatcher.AddHandler(static_cast<int>(EEnginePacketType::UserAccessPacket), _UserAccessFunction);
-	}
-	void SetProtocolFunction(std::function<void(std::shared_ptr<UEngineProtocol> _Packet)> _ProtocolFunction)
-	{
-		ProtocolFunction = _ProtocolFunction; // Getworld()->AddPacketQueue(프로토콜);
-	}
-
 	int GetSessionToken() const
 	{
 		return SessionToken;
+	}
+
+	void SetProtocolFunction(std::function<void(std::shared_ptr<UEngineProtocol> _Packet)> _ProtocolFunction)
+	{
+		ProtocolFunction = _ProtocolFunction; // Getworld()->AddPacketQueue(프로토콜);
 	}
 
 	UEngineDispatcher& GetDispatcher() 
@@ -59,6 +54,11 @@ public:
 
 	ENGINEAPI virtual void Release();
 
+	// 패킷 처리 설정 함수. 외부에서 호출해줘야 함
+	void SetUserAccessFunction(std::function<void(std::shared_ptr<UUserAccessPacket> _Packet)> _UserAccessFunction)
+	{
+		Dispatcher.AddHandler(static_cast<int>(EEnginePacketType::USER_ACCESS), _UserAccessFunction);
+	}
 
 protected:
 	int SessionToken = -1;

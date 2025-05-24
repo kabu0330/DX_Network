@@ -79,6 +79,9 @@
     <ClInclude Include="EngineServer.h">
       <Filter>08_Network\Network\Server</Filter>
     </ClInclude>
+    <ClInclude Include="ChatManager.h">
+      <Filter>08_Network\Chat</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -132,6 +135,9 @@
     <ClCompile Include="EngineServer.cpp">
       <Filter>08_Network\Network\Server</Filter>
     </ClCompile>
+    <ClCompile Include="ChatManager.cpp">
+      <Filter>08_Network\Chat</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="00_PreCompile">
@@ -184,6 +190,9 @@
     </Filter>
     <Filter Include="08_Network\Network\Server">
       <UniqueIdentifier>{c0b071d5-c794-477a-a1be-2bfaf8315227}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Network\Chat">
+      <UniqueIdentifier>{99dc0602-c959-4576-84a1-e2c790c575e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

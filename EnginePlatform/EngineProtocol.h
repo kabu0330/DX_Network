@@ -11,7 +11,7 @@ public:
 	void SerializePacket(UEngineSerializer& _Ser)
 	{
 		Serialize(_Ser);
-		int* PacketSizeAddress = _Ser.ReadDataPtrAt<int>(4);
+		int* PacketSizeAddress = _Ser.ReadDataPtrAt<int>(4); // PacketSize는 자동 계산
 		*PacketSizeAddress = _Ser.GetWritePos();
 	}
 

@@ -36,3 +36,36 @@ private:
 	FVector Position = FVector::ZERO;
 };
 
+
+class UChatPacket : public UEngineProtocol
+{
+public:
+	UChatPacket()
+	{
+		SetPacketType(EContentsPacketType::CHAT);
+	}
+
+	void Serialize(UEngineSerializer& _Ser) override
+	{
+		UEngineProtocol::Serialize(_Ser);
+		_Ser << Text;
+	}
+	void DeSerialize(UEngineSerializer& _Ser) override
+	{
+		UEngineProtocol::DeSerialize(_Ser);
+		_Ser >> Text;
+	}
+
+	void SetText(std::string_view _Text)
+	{
+		Text = _Text;
+	}
+	std::string GetText() const
+	{
+		return Text;
+	}
+
+private:
+	std::string Text;
+};
+

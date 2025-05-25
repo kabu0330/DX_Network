@@ -188,6 +188,9 @@
     <ClInclude Include="ChatComponent.h">
       <Filter>21_Network</Filter>
     </ClInclude>
+    <ClInclude Include="GridRenderer.h">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -358,6 +361,9 @@
     </ClCompile>
     <ClCompile Include="ChatComponent.cpp">
       <Filter>21_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="GridRenderer.cpp">
+      <Filter>04_Object\Component\Contents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

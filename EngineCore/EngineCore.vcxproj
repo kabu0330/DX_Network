@@ -204,6 +204,10 @@
     <ClInclude Include="EngineResourceManager.h" />
     <ClInclude Include="EngineSampler.h" />
     <ClInclude Include="EngineShader.h" />
+    <ClInclude Include="GridRenderer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="NetObject.h">
       <SubType>
       </SubType>
@@ -280,6 +284,10 @@
     <ClCompile Include="EngineResourceManager.cpp" />
     <ClCompile Include="EngineSampler.cpp" />
     <ClCompile Include="EngineShader.cpp" />
+    <ClCompile Include="GridRenderer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="NetObject.cpp">
       <SubType>
       </SubType>

@@ -213,10 +213,25 @@ void UEngineGraphicDevice::CreateEngineMeshBuffers()
 	{
 		UMesh::Create("Rect");
 
-		// FullRect 포스트 프로세싱용 화면 전체크기 만한 메시를 제작.
+		// FullRect 포스트 프로세싱용 화면 전체크기 만한 메시를 제작
 		UMesh::CreateWithBuffers("FullRect", "FullRect", "Rect");
 	}
 
+	{
+		std::vector<FEngineVertex> Vertexs;
+		Vertexs.resize(2);
+		Vertexs[0] = FEngineVertex{ FVector(-0.5f, 0.0f, 0.0f), {0.0f , 0.0f }, {1.0f, 1.0f, 1.0f, 1.0f} };
+		Vertexs[1] = FEngineVertex{ FVector(0.5f, 0.0f, 0.0f), {1.0f , 0.0f } , {1.0f, 1.0f, 1.0f, 1.0f} };
+
+		UEngineVertexBuffer::Create("Line", Vertexs);
+
+
+		std::vector<unsigned int> Indices;
+
+		Indices.push_back(0);
+		Indices.push_back(1);
+		UEngineIndexBuffer::Create("Line", Indices);
+	}
 }
 
 void UEngineGraphicDevice::CreateEngineMaterials()

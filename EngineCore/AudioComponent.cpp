@@ -137,6 +137,8 @@ void UAudioComponent::Fade(float _DeltaTime)
 
 		bIsFading = false;
 		SetVolume(FadeTargetVolume);
+
+		InitFadeVar(); // Fade Á¾·á
 	}
 	else
 	{

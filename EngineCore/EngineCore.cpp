@@ -34,7 +34,7 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 	UEngineWindow::WindowMessageLoop(
 		[]()
 		{
-			UEngineSound::Init();
+			UEngineSoundManager::Init();
 			UEngineDebug::StartConsole();
 			
 			GEngine->Device.CreateDeviceAndContext();	
@@ -144,7 +144,7 @@ void UEngineCore::EngineFrame()
 	}
 
 	// 3. 사운드 체크
-	UEngineSound::Update();
+	UEngineSoundManager::Update();
 
 	// 4. 레벨 순회
 	// Core에서 Level이 관리하는 Actor, Renderer, Collision을 'Windows 루프'에서 돌려준다.
@@ -163,7 +163,7 @@ void UEngineCore::EngineEnd()
 
 	UEngineResourceManager::Release();
 	UEngineConstantBuffer::Release();
-	UEngineSound::Release();
+	UEngineSoundManager::Release();
 
 	GEngine->CurLevel = nullptr;
 	GEngine->NextLevel = nullptr;

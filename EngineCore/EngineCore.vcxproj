@@ -173,6 +173,10 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorComponent.h" />
+    <ClInclude Include="AudioComponent.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CameraActor.h" />
     <ClInclude Include="ChatComponent.h">
       <SubType>
@@ -258,6 +262,10 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorComponent.cpp" />
+    <ClCompile Include="AudioComponent.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CameraActor.cpp" />
     <ClCompile Include="ChatComponent.cpp">
       <SubType>

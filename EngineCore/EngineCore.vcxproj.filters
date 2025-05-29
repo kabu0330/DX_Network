@@ -194,6 +194,9 @@
     <ClInclude Include="FSMComponent.h">
       <Filter>04_Object\Component\Contents</Filter>
     </ClInclude>
+    <ClInclude Include="AudioComponent.h">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -369,6 +372,9 @@
       <Filter>04_Object\Component\Contents</Filter>
     </ClCompile>
     <ClCompile Include="FSMComponent.cpp">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioComponent.cpp">
       <Filter>04_Object\Component\Contents</Filter>
     </ClCompile>
   </ItemGroup>

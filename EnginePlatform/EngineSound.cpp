@@ -3,8 +3,8 @@
 #include <EngineBase/EngineString.h>
 #include <EngineBase/EngineDebug.h>
 
-std::map<std::string, UEngineSound*> UEngineSound::Sounds;
-std::list<USoundPlayer> UEngineSound::Players;
+std::map<std::string, UEngineSoundManager*> UEngineSoundManager::Sounds;
+std::list<USoundPlayer> UEngineSoundManager::Players;
 
 // 사운드를 제어하기위한 핸들
 FMOD::System* SoundSystem = nullptr;
@@ -52,7 +52,7 @@ void USoundPlayer::SetVolume(float _Volume)
 	Control->setVolume(_Volume);
 }
 
-void USoundPlayer::OnOffSwtich()
+void USoundPlayer::SwtichPause()
 {
 	bool Check = false;
 	Control->getPaused(&Check);
@@ -77,19 +77,19 @@ void USoundPlayer::Loop(int Count/* = -1*/)
 	Control->setLoopCount(Count);
 }
 
-void USoundPlayer::ReStart()
+void USoundPlayer::Restart()
 {
 	SetPosition(0);
 }
 
-unsigned int USoundPlayer::LengthMs()
+unsigned int USoundPlayer::GetLengthMs()
 {
 	unsigned int ResultLength = 0;
 	SoundHandle->getLength(&ResultLength, FMOD_TIMEUNIT_MS);
 	return ResultLength;
 }
 
-void UEngineSound::Init()
+void UEngineSoundManager::Init()
 {
 	if (FMOD_RESULT::FMOD_OK != FMOD::System_Create(&SoundSystem))
 	{
@@ -108,7 +108,7 @@ void UEngineSound::Init()
 	}
 }
 
-void UEngineSound::AllSoundStop()
+void UEngineSoundManager::AllSoundStop()
 {
 	std::list<USoundPlayer>::iterator StartIter = Players.begin();
 	std::list<USoundPlayer>::iterator EndIter = Players.end();
@@ -120,7 +120,7 @@ void UEngineSound::AllSoundStop()
 	}
 }
 
-void UEngineSound::AllSoundOn()
+void UEngineSoundManager::AllSoundOn()
 {
 	std::list<USoundPlayer>::iterator StartIter = Players.begin();
 	std::list<USoundPlayer>::iterator EndIter = Players.end();
@@ -132,7 +132,7 @@ void UEngineSound::AllSoundOn()
 	}
 }
 
-void UEngineSound::AllSoundOff()
+void UEngineSoundManager::AllSoundOff()
 {
 	std::list<USoundPlayer>::iterator StartIter = Players.begin();
 	std::list<USoundPlayer>::iterator EndIter = Players.end();
@@ -144,7 +144,7 @@ void UEngineSound::AllSoundOff()
 	}
 }
 
-void UEngineSound::Update()
+void UEngineSoundManager::Update()
 {
 	if (nullptr == SoundSystem)
 	{
@@ -175,10 +175,10 @@ void UEngineSound::Update()
 }
 
 // 엔진이 끝날때 직접 호출
-void UEngineSound::Release()
+void UEngineSoundManager::Release()
 {
-	std::map<std::string, UEngineSound*>::iterator StartIter = Sounds.begin();
-	std::map<std::string, UEngineSound*>::iterator EndIter = Sounds.end();
+	std::map<std::string, UEngineSoundManager*>::iterator StartIter = Sounds.begin();
+	std::map<std::string, UEngineSoundManager*>::iterator EndIter = Sounds.end();
 
 	for (; StartIter != EndIter; ++StartIter)
 	{
@@ -198,14 +198,12 @@ void UEngineSound::Release()
 	}
 }
 
-UEngineSound::UEngineSound()
+UEngineSoundManager::UEngineSoundManager()
 {
 }
 
-UEngineSound::~UEngineSound()
+UEngineSoundManager::~UEngineSoundManager()
 {
-	
-	
 	if (nullptr != SoundHandle)
 	{
 		SoundHandle->release();
@@ -213,22 +211,22 @@ UEngineSound::~UEngineSound()
 	}
 }
 
-void UEngineSound::LoadSound(std::string_view _Path)
+void UEngineSoundManager::LoadSound(std::string_view _Path)
 {
 	UEnginePath EnginePath = UEnginePath(_Path);
 	std::string FileName = EnginePath.GetFileName();
 
-	UEngineSound::LoadSound(FileName.data(), _Path);
+	UEngineSoundManager::LoadSound(FileName.data(), _Path);
 }
 
-void UEngineSound::LoadSound(std::string_view _Name, std::string_view _Path)
+void UEngineSoundManager::LoadSound(std::string_view _Name, std::string_view _Path)
 {
 	// 이녀석은 UTF-8로 경로를 바꿔줘야 할수 있다.
 	std::string UpperString = UEngineString::ToUpper(_Name);
 
-	UEngineSound* NewSound = new UEngineSound();
+	UEngineSoundManager* NewSound = new UEngineSoundManager();
 
-	if (false != UEngineSound::Sounds.contains(UpperString))
+	if (false != UEngineSoundManager::Sounds.contains(UpperString))
 	{
 		delete NewSound;
 		MSGASSERT("이미 로드한 사운드를 또 로드하려고 했습니다." + UpperString);
@@ -242,11 +240,11 @@ void UEngineSound::LoadSound(std::string_view _Name, std::string_view _Path)
 		return;
 	}
 
-	UEngineSound::Sounds.insert({ UpperString, NewSound });
+	UEngineSoundManager::Sounds.insert({ UpperString, NewSound });
 	// Load(FileName, Path);
 }
 
-UEngineSound* UEngineSound::Find(std::string_view _Name)
+UEngineSoundManager* UEngineSoundManager::Find(std::string_view _Name)
 {
 	std::string UpperString = UEngineString::ToUpper(_Name);
 
@@ -258,11 +256,11 @@ UEngineSound* UEngineSound::Find(std::string_view _Name)
 	return Sounds[UpperString];
 }
 
-USoundPlayer UEngineSound::Play(std::string_view _Name)
+USoundPlayer UEngineSoundManager::Play(std::string_view _Name)
 {
 	std::string UpperString = UEngineString::ToUpper(_Name);
 
-	UEngineSound* FindSound = Find(_Name);
+	UEngineSoundManager* FindSound = Find(_Name);
 
 	if (nullptr == FindSound)
 	{
@@ -291,7 +289,7 @@ USoundPlayer UEngineSound::Play(std::string_view _Name)
 }
 
 
-bool UEngineSound::ResLoad(std::string_view _Path)
+bool UEngineSoundManager::ResLoad(std::string_view _Path)
 {
 	SoundSystem->createSound(_Path.data(), FMOD_LOOP_NORMAL, nullptr, &SoundHandle);
 

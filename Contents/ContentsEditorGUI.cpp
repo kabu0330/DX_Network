@@ -20,7 +20,7 @@ void UContentsEditorGUI::OnGUI(float _DelataTime)
 	{
 		if (ImGui::Button(Pair.first.c_str()))
 		{
-			UEngineSound::AllSoundOff();
+			UEngineSoundManager::AllSoundOff();
 			UEngineCore::OpenLevel(Pair.first);
 		}
 	}

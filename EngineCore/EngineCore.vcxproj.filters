@@ -191,6 +191,9 @@
     <ClInclude Include="GridRenderer.h">
       <Filter>04_Object\Component\Contents</Filter>
     </ClInclude>
+    <ClInclude Include="FSMComponent.h">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -363,6 +366,9 @@
       <Filter>21_Network</Filter>
     </ClCompile>
     <ClCompile Include="GridRenderer.cpp">
+      <Filter>04_Object\Component\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="FSMComponent.cpp">
       <Filter>04_Object\Component\Contents</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,12 +19,12 @@ public:
 	};
 
 	template<typename EnumType>
-	void CreateState(EnumType _Key, std::function<void(float)> _UpdateFunction, std::function<void()> _Start = nullptr)
+	void CreateState(EnumType _Key, std::function<void(float)> _UpdateFunction, std::function<void()> _Start = nullptr, std::function<void()> _End = nullptr)
 	{
-		CreateState(static_cast<int>(_Key), _UpdateFunction, _Start);
+		CreateState(static_cast<int>(_Key), _UpdateFunction, _Start, _End);
 	}
 
-	void CreateState(int _Key, std::function<void(float)> _UpdateFunction, std::function<void()> _Start = nullptr)
+	void CreateState(int _Key, std::function<void(float)> _UpdateFunction, std::function<void()> _Start = nullptr, std::function<void()> _End = nullptr)
 	{
 		if (true == States.contains(_Key))
 		{
@@ -34,6 +34,7 @@ public:
 
 		States[_Key].UpdateFunction = _UpdateFunction;
 		States[_Key].StartFunction = _Start;
+		States[_Key].EndFunction = _End;
 	}
 
 	void Update(float _DeltaTime)
@@ -60,9 +61,15 @@ public:
 			MSGASSERT("존재하지 않는 상태입니다. CreateState()로 상태를 추가해주세요.");
 			return;
 		}
+		// 이전 동작 종료 함수 호출
+		if (nullptr != CurState->EndFunction)
+		{
+			CurState->EndFunction();
+		}
 
 		PrevState = CurState;
 		CurState = &States[_Key];
+
 		if (nullptr != CurState->StartFunction)
 		{
 			CurState->StartFunction();
@@ -71,7 +78,13 @@ public:
 
 	void ChangePrevState()
 	{
+		if (nullptr != CurState->EndFunction)
+		{
+			CurState->EndFunction();
+		}
+
 		CurState = PrevState;
+
 		if (nullptr != CurState->StartFunction)
 		{
 			CurState->StartFunction();
@@ -84,7 +97,6 @@ private:
 	FSMState* CurState = nullptr;
 	FSMState* PrevState = nullptr;
 	std::map<int, FSMState> States;
-
 
 private:
 	// delete Function

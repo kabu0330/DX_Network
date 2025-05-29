@@ -32,6 +32,7 @@ void UTimeEventComponent::AddEvent(float _Time, std::function<void(float, float)
 
 void UTimeEventComponent::BeginPlay()
 {
+	UActorComponent::BeginPlay();
 
 }
 

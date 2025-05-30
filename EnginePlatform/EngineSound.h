@@ -25,10 +25,8 @@ public:
 	ENGINEAPI void Restart();
 	ENGINEAPI unsigned int GetLengthMs();
 
-	ENGINEAPI FMOD::Channel* GetControl()
-	{
-		return Control;
-	}
+	ENGINEAPI bool GetPause();
+
 
 private:
 	// 채널이 사운드 재생권한 소유

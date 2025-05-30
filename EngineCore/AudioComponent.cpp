@@ -61,7 +61,7 @@ bool UAudioComponent::SwitchPause()
 	Sound.SwtichPause();
 
 	bool Check = false;
-	return Sound.GetControl()->getPaused(&Check);
+	return Sound.GetPause();
 }
 
 void UAudioComponent::Restart()

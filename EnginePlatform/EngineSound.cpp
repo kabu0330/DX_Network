@@ -89,6 +89,13 @@ unsigned int USoundPlayer::GetLengthMs()
 	return ResultLength;
 }
 
+bool USoundPlayer::GetPause()
+{
+	bool Check = false;
+	Control->getPaused(&Check);
+	return Check;
+}
+
 void UEngineSoundManager::Init()
 {
 	if (FMOD_RESULT::FMOD_OK != FMOD::System_Create(&SoundSystem))

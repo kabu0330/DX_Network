@@ -31,6 +31,7 @@ public:
 	ENGINEAPI virtual void SendPacket(UEngineProtocol* _Protocol) {};
 
 	static void RecvTCPThreadFunction(UEngineNetwork* _Server, SOCKET _Socket);
+	static void RecvIOCPThreadFunction(UEngineNetwork* _Server, SOCKET _Socket);
 
 	bool IsNetworking()
 	{

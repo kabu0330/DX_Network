@@ -128,12 +128,12 @@ void UEngineIOCPServer::AcceptThread(UEngineIOCPServer* _Server)
         UEngineThread::SetThreadNameDynamic("AcceptThread" + std::to_string(AcceptThreadNumber));
         ++AcceptThreadNumber;
 
-        BOOL bIsOK = GetQueuedCompletionStatus(AcceptPort, &BytesTransferred, &Key, &OverlappedPtr, INFINITE);
-        if (false == bIsOK || nullptr == OverlappedPtr)
-        {
-            std::cout << "[Server] 클라이언트 접속 실패 알림" << std::endl;
-            continue;
-        }
+        //BOOL bIsOK = GetQueuedCompletionStatus(AcceptPort, &BytesTransferred, &Key, &OverlappedPtr, INFINITE);
+        //if (false == bIsOK || nullptr == OverlappedPtr)
+        //{
+        //    std::cout << "[Server] 클라이언트 접속 실패 알림" << std::endl;
+        //    continue;
+        //}
         
         // 최초 통신
         if (&AcceptOverlapped == OverlappedPtr)

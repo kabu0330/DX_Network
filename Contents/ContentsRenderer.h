@@ -31,15 +31,8 @@ public:
 		}
 	};
 
-	// constrcuter destructer
 	ENGINEAPI UContentsRenderer();
 	ENGINEAPI ~UContentsRenderer();
-
-	// delete Function
-	UContentsRenderer(const UContentsRenderer& _Other) = delete;
-	UContentsRenderer(UContentsRenderer&& _Other) noexcept = delete;
-	UContentsRenderer& operator=(const UContentsRenderer& _Other) = delete;
-	UContentsRenderer& operator=(UContentsRenderer&& _Other) noexcept = delete;
 
 	int GetCurIndex()
 	{
@@ -177,5 +170,11 @@ private:
 	bool IsAutoScale = true;
 	float AutoScaleRatio = 1.0f;
 
+private:
+	// delete Function
+	UContentsRenderer(const UContentsRenderer& _Other) = delete;
+	UContentsRenderer(UContentsRenderer&& _Other) noexcept = delete;
+	UContentsRenderer& operator=(const UContentsRenderer& _Other) = delete;
+	UContentsRenderer& operator=(UContentsRenderer&& _Other) noexcept = delete;
 };
 

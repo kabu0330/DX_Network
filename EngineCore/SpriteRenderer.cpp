@@ -194,7 +194,7 @@ void USpriteRenderer::ComponentTick(float _DeltaTime)
 	}
 }
 
-void USpriteRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float Time /*= 0.1f*/, bool _Loop /*= true*/)
+void USpriteRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float _Frame /*= 0.1f*/, bool _Loop /*= true*/)
 {
 	int Inter = 0;
 
@@ -207,7 +207,7 @@ void USpriteRenderer::CreateAnimation(std::string_view _AnimationName, std::stri
 		for (size_t i = 0; i < Inter; i++)
 		{
 			Indexs.push_back(_Start);
-			Times.push_back(Time);
+			Times.push_back(_Frame);
 			++_Start;
 		}
 
@@ -218,7 +218,7 @@ void USpriteRenderer::CreateAnimation(std::string_view _AnimationName, std::stri
 		for (size_t i = 0; i < Inter; i++)
 		{
 			Indexs.push_back(_End);
-			Times.push_back(Time);
+			Times.push_back(_Frame);
 			++_End;
 		}
 	}

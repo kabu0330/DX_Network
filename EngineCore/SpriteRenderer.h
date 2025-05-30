@@ -43,7 +43,7 @@ public:
 		return CurAnimation->CurIndex;
 	}
 
-	ENGINEAPI void CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float Time = 0.1f, bool _Loop = true);
+	ENGINEAPI void CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float _Frame = 0.1f, bool _Loop = true);
 
 	ENGINEAPI void CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, std::vector<int> _Indexs, std::vector<float> _Frame, bool _Loop = true);
 
@@ -101,6 +101,44 @@ public:
 	}
 
 	void SetSprite(UEngineSprite* _Sprite);
+
+	FVector GetScale()
+	{
+		return CurAnimation->Sprite->GetTexture()->GetTextureSize();
+	}
+	FVector GetRealScale()
+	{
+		return Sprite->GetSpriteScaleToReal(CurIndex);
+	}
+
+	FVector GetActorLocation()
+	{
+		return Transform.RelativeLocation;
+	}
+
+	void SetZSort(float _ZValue)
+	{
+		Transform.WorldLocation.Z = _ZValue;
+	}
+	template<typename ZType>
+	void SetZSort(ZType _ZValue)
+	{
+		SetZSort(static_cast<float>(_ZValue));
+	}
+
+	void AddPlusColor(FVector _PlusColor)
+	{
+		ColorData.PlusColor += _PlusColor;
+	}
+	void SetMulColor(FVector _RGB, float _W = 1.0f)
+	{
+		ColorData.MulColor = _RGB;
+		ColorData.MulColor.W = _W;
+	}
+	void SetAlpha(float _Alpha = 1.0f)
+	{
+		ColorData.MulColor.W = _Alpha;
+	}
 
 	FResultColor ColorData;
 	FUVValue UVValue;

@@ -41,6 +41,6 @@ void UEngineClient::SendPacket(UEngineProtocol* _Protocol)
 	UEngineSerializer Ser;
 	_Protocol->SerializePacket(Ser);
 
-	send(ConnectSocket, Ser.GetDataBuffer(), Ser.GetWritePos(), 0);
+	::send(ConnectSocket, Ser.GetDataBuffer(), Ser.GetWritePos(), 0);
 }
 

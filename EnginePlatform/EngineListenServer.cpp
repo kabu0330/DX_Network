@@ -92,7 +92,7 @@ void UEngineListenServer::AcceptThreadFunction(UEngineListenServer* _Server, SOC
 				// 서버는 세션토큰으로 클라이언트를 관리한다.
 				_Server->AllUserSockets.insert({ AcceptProtocol->GetSessionToken(), ConnectSocket });
 
-				send(ConnectSocket, Ser.GetDataBuffer(), Ser.GetWritePos(), 0);
+				::send(ConnectSocket, Ser.GetDataBuffer(), Ser.GetWritePos(), 0);
 
 				std::string Client = std::to_string(ConnectSocket);
 				Thread->Start("User " + Client, std::bind(&UEngineNetwork::RecvTCPThreadFunction, _Server, ConnectSocket));
@@ -122,7 +122,7 @@ void UEngineListenServer::SendPacket(UEngineProtocol* _Protocol)
                 continue; // 패킷을 서버로 보낸 대상은 제외하고 나머지 클라에게 패킷을 보내야한다.
             } 
 
-            send(Session.second, Ser.GetDataBuffer(), Ser.GetWritePos(), 0);
+            ::send(Session.second, Ser.GetDataBuffer(), Ser.GetWritePos(), 0);
         }
     }
 }

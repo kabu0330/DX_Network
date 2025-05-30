@@ -10,15 +10,8 @@ class AActor : public UObject
 	friend class APlayerController;
 
 public:
-	// constrcuter destructer
 	ENGINEAPI AActor();
 	ENGINEAPI ~AActor();
-
-	// delete Function
-	AActor(const AActor& _Other) = delete;
-	AActor(AActor&& _Other) noexcept = delete;
-	AActor& operator=(const AActor& _Other) = delete;
-	AActor& operator=(AActor&& _Other) noexcept = delete;
 
 	ENGINEAPI virtual void BeginPlay();
 	ENGINEAPI virtual void Tick(float _DeltaTime);
@@ -228,6 +221,12 @@ private:
 	// 레퍼런스 카운트 유지용 자료구조.
 	std::list<std::shared_ptr<class UActorComponent>> AllComponentList;
 
+private:
+	// delete Function
+	AActor(const AActor& _Other) = delete;
+	AActor(AActor&& _Other) noexcept = delete;
+	AActor& operator=(const AActor& _Other) = delete;
+	AActor& operator=(AActor&& _Other) noexcept = delete;
 };
 
 using Super = AActor;

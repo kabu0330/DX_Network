@@ -37,44 +37,50 @@
     <ClInclude Include="Particle.h">
       <Filter>HollowKnight\Global</Filter>
     </ClInclude>
-    <ClInclude Include="TestGameMode.h">
-      <Filter>Test</Filter>
-    </ClInclude>
     <ClInclude Include="BasicVisualActor.h">
       <Filter>02_ContentsSetting</Filter>
     </ClInclude>
     <ClInclude Include="ThreadTestLevel.h">
-      <Filter>Test</Filter>
+      <Filter>99_Test</Filter>
     </ClInclude>
     <ClInclude Include="TestPostEffect.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="PostEffectGameMode.h">
-      <Filter>Test</Filter>
-    </ClInclude>
-    <ClInclude Include="ServerGameMode.h">
-      <Filter>04_GameMode</Filter>
+      <Filter>99_Test</Filter>
     </ClInclude>
     <ClInclude Include="ServerEditor.h">
-      <Filter>03_Editor</Filter>
+      <Filter>04_Editor</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEditorGUI.h">
-      <Filter>03_Editor</Filter>
+      <Filter>04_Editor</Filter>
     </ClInclude>
     <ClInclude Include="DebugWindowGUI.h">
-      <Filter>03_Editor</Filter>
+      <Filter>04_Editor</Filter>
     </ClInclude>
     <ClInclude Include="MapEditorGUI.h">
-      <Filter>03_Editor</Filter>
+      <Filter>04_Editor</Filter>
     </ClInclude>
-    <ClInclude Include="ServerPawn.h">
-      <Filter>Test</Filter>
+    <ClInclude Include="TetrisGameMode.h">
+      <Filter>03_GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="TestGameMode.h">
+      <Filter>99_Test\03_GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerGameMode.h">
+      <Filter>99_Test\03_GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="PostEffectGameMode.h">
+      <Filter>99_Test\03_GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolRegistrar.h">
+      <Filter>05_Network\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="ContentPacket.h">
-      <Filter>05_Network</Filter>
+      <Filter>05_Network\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="ContentPacketType.h">
-      <Filter>05_Network</Filter>
+      <Filter>05_Network\Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerPawn.h">
+      <Filter>05_Network\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -111,44 +117,50 @@
     <ClCompile Include="Particle.cpp">
       <Filter>HollowKnight\Global</Filter>
     </ClCompile>
-    <ClCompile Include="TestGameMode.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
     <ClCompile Include="BasicVisualActor.cpp">
       <Filter>02_ContentsSetting</Filter>
     </ClCompile>
     <ClCompile Include="ThreadTestLevel.cpp">
-      <Filter>Test</Filter>
+      <Filter>99_Test</Filter>
     </ClCompile>
     <ClCompile Include="TestPostEffect.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="PostEffectGameMode.cpp">
-      <Filter>Test</Filter>
-    </ClCompile>
-    <ClCompile Include="ServerGameMode.cpp">
-      <Filter>04_GameMode</Filter>
+      <Filter>99_Test</Filter>
     </ClCompile>
     <ClCompile Include="ContentsEditorGUI.cpp">
-      <Filter>03_Editor</Filter>
+      <Filter>04_Editor</Filter>
     </ClCompile>
     <ClCompile Include="DebugWindowGUI.cpp">
-      <Filter>03_Editor</Filter>
+      <Filter>04_Editor</Filter>
     </ClCompile>
     <ClCompile Include="MapEditorGUI.cpp">
-      <Filter>03_Editor</Filter>
+      <Filter>04_Editor</Filter>
     </ClCompile>
     <ClCompile Include="ServerEditor.cpp">
-      <Filter>03_Editor</Filter>
+      <Filter>04_Editor</Filter>
     </ClCompile>
-    <ClCompile Include="ServerPawn.cpp">
-      <Filter>Test</Filter>
+    <ClCompile Include="TetrisGameMode.cpp">
+      <Filter>03_GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="TestGameMode.cpp">
+      <Filter>99_Test\03_GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="PostEffectGameMode.cpp">
+      <Filter>99_Test\03_GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerGameMode.cpp">
+      <Filter>99_Test\03_GameMode</Filter>
     </ClCompile>
     <ClCompile Include="ContentPacket.cpp">
-      <Filter>05_Network</Filter>
+      <Filter>05_Network\Protocol</Filter>
     </ClCompile>
     <ClCompile Include="ContentPacketType.cpp">
-      <Filter>05_Network</Filter>
+      <Filter>05_Network\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolRegistrar.cpp">
+      <Filter>05_Network\Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerPawn.cpp">
+      <Filter>05_Network\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,9 +182,6 @@
     <Filter Include="HollowKnight\Global">
       <UniqueIdentifier>{73895d3d-87b8-4ffd-a962-7cd03df8a97f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Test">
-      <UniqueIdentifier>{43cd829c-2afe-4280-b415-e406698d6a8c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01_Core">
       <UniqueIdentifier>{09ff3bdc-96dc-4229-8b75-39c1c3dc0dd8}</UniqueIdentifier>
     </Filter>
@@ -185,17 +194,32 @@
     <Filter Include="00_PreCompile">
       <UniqueIdentifier>{e77ec849-f508-4c7f-93bd-8088b5abd8c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03_Editor">
-      <UniqueIdentifier>{fbc009dd-2ed6-4ef0-8b47-08afcdd00ede}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="04_GameMode">
-      <UniqueIdentifier>{050e6bd2-8bb9-4826-95ee-937e59d4bf37}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02_ContentsSetting\Renderer">
       <UniqueIdentifier>{487692e4-6b76-4236-8869-624e3b36942f}</UniqueIdentifier>
     </Filter>
     <Filter Include="05_Network">
       <UniqueIdentifier>{22f7d8bb-be8a-48e3-b729-cb267b014837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Tetris">
+      <UniqueIdentifier>{0e0ebcfa-31af-4495-84f2-1542b0d708f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99_Test">
+      <UniqueIdentifier>{43cd829c-2afe-4280-b415-e406698d6a8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03_GameMode">
+      <UniqueIdentifier>{050e6bd2-8bb9-4826-95ee-937e59d4bf37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="04_Editor">
+      <UniqueIdentifier>{fbc009dd-2ed6-4ef0-8b47-08afcdd00ede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="99_Test\03_GameMode">
+      <UniqueIdentifier>{0dc0856f-f188-4bbd-a58c-443f506ba724}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_Network\Protocol">
+      <UniqueIdentifier>{f80d8988-2038-457d-9523-8b16b5c135e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05_Network\Object">
+      <UniqueIdentifier>{203adcac-203a-4862-93dc-e89e908b5a08}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

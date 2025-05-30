@@ -24,6 +24,7 @@
     <ProjectGuid>{fe67980b-18fc-4bd2-bdef-5be1042b47fc}</ProjectGuid>
     <RootNamespace>Contents</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Content</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -181,6 +182,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ProtocolRegistrar.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ContentsConst.h">
       <SubType>
       </SubType>
@@ -256,6 +261,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TetrisGameMode.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ThreadTestLevel.h">
       <SubType>
       </SubType>
@@ -271,6 +280,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ContentPacketType.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ProtocolRegistrar.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -351,6 +364,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TestPostEffect.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TetrisGameMode.cpp">
       <SubType>
       </SubType>
     </ClCompile>

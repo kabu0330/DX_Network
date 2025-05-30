@@ -7,6 +7,7 @@
 #include <EngineCore/PlayerController.h>
 #include <EnginePlatform/EngineWindow.h>
 #include <EngineCore/EngineCore.h>
+#include "ProtocolRegistrar.h"
 
 void UServerEditor::OnGUI(float _DeltaTime)
 {
@@ -63,33 +64,31 @@ void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 	int ObjectToken = _Net->CreateObjectToken();
 	Pawn->InitNetObject(ObjectToken, _Net->GetSessionToken());
 
+	// 다른 플레이어 생성 및 위치 동기화
 	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), 
 		[this, _Net](std::shared_ptr<UObjectUpdatePacket> _Packet)
 		{
 			int Token = _Packet->GetObjectToken();
 			AServerPawn* ServerPawn = UNetObject::GetConvertNetObject<AServerPawn>(Token);
-			if (false == UNetObject::IsNetObject(Token))
+			if (false == UNetObject::IsNetObject(Token)) // 최초 접속 이라면
 			{
 				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<AServerPawn>();
 				ServerPawn = NewServerPawn.get();
-				ServerPawn->SetControllOff();
-
-				//AServerGameMode* GameMode = ServerPawn->GetWorld()->GetGameMode<AServerGameMode>();
-				//APlayerController* PlayerController = GameMode->GetPlayerController();
-				//PlayerController->Possess(ServerPawn);
-				
+				ServerPawn->SetControllOff(); // 서버가 클라의 통제권을 갖지 않는다.
 				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
 			}
 
 			ServerPawn->SetActorLocation(_Packet->GetPosition());
-			_Net->SendPacket(_Packet);
+
+			_Net->SendPacket(_Packet); // 다른 클라에게도 전송
 		});
 }
 
 void UServerEditor::CreateNetObject(std::shared_ptr<UUserAccessPacket> _Packet)
 {
+	// 이미 기존에 만들어진 자신에게 오브젝트 토큰 + 세션 토큰을 저장
 	UserAccessPacket = _Packet;
-	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
+	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>(); 
 	Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
 }
 
@@ -102,13 +101,14 @@ void UServerEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 		{
 			int Token = _Packet->GetObjectToken();
 			AServerPawn* ServerPawn = UNetObject::GetConvertNetObject<AServerPawn>(Token);
-			if (false == UNetObject::IsNetObject(Token))
+			if (false == UNetObject::IsNetObject(Token)) // 최초 접속이라면 클라 화면에도 스폰시키고
 			{
 				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<AServerPawn>();
 				ServerPawn = NewServerPawn.get();
 				ServerPawn->SetControllOff();
 				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
 			}
+
 			ServerPawn->SetActorLocation(_Packet->GetPosition());
 		});
 }

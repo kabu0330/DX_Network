@@ -5,6 +5,7 @@
 #include "ServerGameMode.h"
 #include "ContentPacket.h"
 #include <EnginePlatform/EngineInput.h>
+#include <EngineCore/NetPacketSender.h>
 
 AServerPawn::AServerPawn()
 {
@@ -63,19 +64,26 @@ void AServerPawn::SetControllMode(float _DeltaTime)
 
 	AddActorLocation(Velocity);
 
-	AServerGameMode* GameMode = GetWorld()->GetGameMode<AServerGameMode>();
-	if (nullptr != GameMode->GetNetwork())
-	{
-		static float FrameCheck = 1.0f / 60.0f;
-		CurFramePacketTime += _DeltaTime;
-		if (CurFramePacketTime >= FrameCheck)
-		{
-			std::shared_ptr<UObjectUpdatePacket> Packet = CreatePacket<UObjectUpdatePacket>();
-			Packet->SetPosition(GetActorLocation());
-			GameMode->GetNetwork()->SendPacket(Packet);
+	//AServerGameMode* GameMode = GetWorld()->GetGameMode<AServerGameMode>();
+	//if (nullptr != GameMode->GetNetwork())
+	//{
+	//	static float FrameCheck = 1.0f / 60.0f;
+	//	CurFramePacketTime += _DeltaTime;
+	//	if (CurFramePacketTime >= FrameCheck)
+	//	{
+	//		std::shared_ptr<UObjectUpdatePacket> Packet = CreatePacket<UObjectUpdatePacket>();
+	//		Packet->SetPosition(GetActorLocation());
+	//		GameMode->GetNetwork()->SendPacket(Packet);
 
-			CurFramePacketTime -= _DeltaTime;
-		}
-	}
+	//		CurFramePacketTime -= _DeltaTime;
+	//	}
+	//}
+	
+	auto SyncPosition = [this](std::shared_ptr<UObjectUpdatePacket> _Packet)
+		{
+			_Packet->SetPosition(this->GetActorLocation());
+		};
+
+	UNetPacketSender::SendPacket<UObjectUpdatePacket>(this, GetWorld(), SyncPosition);
 }
 

@@ -58,9 +58,6 @@
     <ClInclude Include="MapEditorGUI.h">
       <Filter>04_Editor</Filter>
     </ClInclude>
-    <ClInclude Include="TetrisGameMode.h">
-      <Filter>03_GameMode</Filter>
-    </ClInclude>
     <ClInclude Include="TestGameMode.h">
       <Filter>99_Test\03_GameMode</Filter>
     </ClInclude>
@@ -81,6 +78,12 @@
     </ClInclude>
     <ClInclude Include="ServerPawn.h">
       <Filter>05_Network\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrisGameMode.h">
+      <Filter>11_Tetris\03_GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrisPlayEditor.h">
+      <Filter>11_Tetris\03_GameMode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -138,9 +141,6 @@
     <ClCompile Include="ServerEditor.cpp">
       <Filter>04_Editor</Filter>
     </ClCompile>
-    <ClCompile Include="TetrisGameMode.cpp">
-      <Filter>03_GameMode</Filter>
-    </ClCompile>
     <ClCompile Include="TestGameMode.cpp">
       <Filter>99_Test\03_GameMode</Filter>
     </ClCompile>
@@ -161,6 +161,12 @@
     </ClCompile>
     <ClCompile Include="ServerPawn.cpp">
       <Filter>05_Network\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrisGameMode.cpp">
+      <Filter>11_Tetris\03_GameMode</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrisPlayEditor.cpp">
+      <Filter>11_Tetris\03_GameMode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -206,9 +212,6 @@
     <Filter Include="99_Test">
       <UniqueIdentifier>{43cd829c-2afe-4280-b415-e406698d6a8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03_GameMode">
-      <UniqueIdentifier>{050e6bd2-8bb9-4826-95ee-937e59d4bf37}</UniqueIdentifier>
-    </Filter>
     <Filter Include="04_Editor">
       <UniqueIdentifier>{fbc009dd-2ed6-4ef0-8b47-08afcdd00ede}</UniqueIdentifier>
     </Filter>
@@ -220,6 +223,12 @@
     </Filter>
     <Filter Include="05_Network\Object">
       <UniqueIdentifier>{203adcac-203a-4862-93dc-e89e908b5a08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Tetris\03_GameMode">
+      <UniqueIdentifier>{050e6bd2-8bb9-4826-95ee-937e59d4bf37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Tetris\04_Editor">
+      <UniqueIdentifier>{5b7d63c3-4ca8-4668-b2c3-f47ce09eda91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

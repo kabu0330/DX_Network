@@ -1,5 +1,6 @@
 #pragma once
 #include "Actor.h"
+#include "NetPacketSender.h"
 
 // 설명 :
 class APlayerController : public AActor
@@ -27,11 +28,29 @@ protected:
 
 private:
 	void HandleInput(float _DeltaTime);
+
+	template<typename PacketType>
+	void SendMovePacekt()
+	{
+		static_assert(std::is_base_of_v(PacketType, UEngineProtocol), "SendMovePacket()의 두번째 타입은 UEngineProtocol을 상속해야 합니다.");
+
+		auto SyncPosition = [this](std::shared_ptr<PacketType> _Packet)
+			{
+				_Packet->SetPosition(this->GetActorLocation());
+			};
+
+		UNetPacketSender::SendPacket<PacketType>(this, GetWorld(), SyncPosition);
+	}
+
 	FVector Speed = FVector(100.0f, 100.0f, 100.0f);
 	AActor* Pawn = nullptr;
 	int ArrowKeys[4] = {'A', 'D', 'W', 'S'};
 
 	bool bIsDebugNotify = true;
+	bool bIsControlled = true;
+
+
+
 
 #define LEFT_KEY ArrowKeys[0]
 #define RIGHT_KEY ArrowKeys[1]

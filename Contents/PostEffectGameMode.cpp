@@ -9,10 +9,6 @@
 
 APostEffectGameMode::APostEffectGameMode()
 {
-	Camera = GetWorld()->GetMainCamera().get();
-	Camera->SetActorLocation({ 0.0f, 0.0f, 1.0f, 1.0f });
-	Camera->GetCameraComponent()->SetZSort(0, true);
-
 	{
 		std::shared_ptr<UEngineMaterial> Mat = UEngineMaterial::Create("JHJEffect");
 		Mat->SetVertexShader("JHJEffect.fx");
@@ -37,6 +33,10 @@ APostEffectGameMode::~APostEffectGameMode()
 void APostEffectGameMode::BeginPlay()
 {
 	AGameMode::BeginPlay();
+
+	Camera = GetWorld()->GetMainCamera().get();
+	Camera->SetActorLocation({ 0.0f, 0.0f, 1.0f, 1.0f });
+	Camera->GetCameraComponent()->SetZSort(0, true);
 
 	UEngineRenderTarget* LastTarget = GetWorld()->GetLastRenderTarget();
 	LastTarget->AddPostEffet<UTestPostEffect>();

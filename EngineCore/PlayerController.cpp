@@ -47,7 +47,15 @@ void APlayerController::BeginPlay()
 void APlayerController::Tick(float _DeltaTime)
 {
 	Super::Tick(_DeltaTime);
-	//HandleInput(_DeltaTime);
+
+	if (true == bIsControlled)
+	{
+		HandleInput(_DeltaTime);
+	}
+	else
+	{
+
+	}
 }
 
 void APlayerController::HandleInput(float _DeltaTime)
@@ -74,6 +82,7 @@ void APlayerController::HandleInput(float _DeltaTime)
 	if (nullptr != Pawn)
 	{
 		Pawn->AddActorLocation(Velocity);
+		
 	}
 	else
 	{

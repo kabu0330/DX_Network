@@ -265,6 +265,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TetrisPlayEditor.h" />
     <ClInclude Include="ThreadTestLevel.h">
       <SubType>
       </SubType>
@@ -371,6 +372,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TetrisPlayEditor.cpp" />
     <ClCompile Include="ThreadTestLevel.cpp">
       <SubType>
       </SubType>

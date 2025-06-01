@@ -85,6 +85,12 @@
     <ClInclude Include="TetrisPlayEditor.h">
       <Filter>11_Tetris\03_GameMode</Filter>
     </ClInclude>
+    <ClInclude Include="Tetromino.h">
+      <Filter>11_Tetris\05_Object\02_Mino</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrisPlayHUD.h">
+      <Filter>11_Tetris\06_UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -168,6 +174,12 @@
     <ClCompile Include="TetrisPlayEditor.cpp">
       <Filter>11_Tetris\03_GameMode</Filter>
     </ClCompile>
+    <ClCompile Include="Tetromino.cpp">
+      <Filter>11_Tetris\05_Object\02_Mino</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrisPlayHUD.cpp">
+      <Filter>11_Tetris\06_UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HollowKnight">
@@ -229,6 +241,18 @@
     </Filter>
     <Filter Include="11_Tetris\04_Editor">
       <UniqueIdentifier>{5b7d63c3-4ca8-4668-b2c3-f47ce09eda91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Tetris\05_Object">
+      <UniqueIdentifier>{2dd37152-2838-4627-a68c-9df82e4be9e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Tetris\05_Object\01_Global">
+      <UniqueIdentifier>{589bbfea-8f26-406b-8a35-ef6bf3fc6afd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Tetris\05_Object\02_Mino">
+      <UniqueIdentifier>{b00ca03e-b7f3-4568-815f-b6f6470772e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="11_Tetris\06_UI">
+      <UniqueIdentifier>{fea408a2-54ce-4c50-8bde-6ba5eb8ff50c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

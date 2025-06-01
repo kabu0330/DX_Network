@@ -1,26 +1,26 @@
 #include "PreCompile.h"
 #include "TetrisGameMode.h"
 
-TetrisGameMode::TetrisGameMode()
+ATetrisGameMode::ATetrisGameMode()
 {
 }
 
-TetrisGameMode::~TetrisGameMode()
+ATetrisGameMode::~ATetrisGameMode()
 {
 }
 
-void TetrisGameMode::BeginPlay()
+void ATetrisGameMode::BeginPlay()
 {
 	AGameMode::BeginPlay();
 }
 
-void TetrisGameMode::Tick(float _DeltaTime)
+void ATetrisGameMode::Tick(float _DeltaTime)
 {
 	AGameMode::Tick(_DeltaTime);
 
 }
 
-void TetrisGameMode::LevelChangeStart()
+void ATetrisGameMode::LevelChangeStart()
 {
 	UEngineGUI::AllWindowOff();
 	{

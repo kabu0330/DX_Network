@@ -9,18 +9,16 @@ public:
 	AServerPawn();
 	~AServerPawn();
 
-
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime) override;
-
-private:
-	std::shared_ptr<class UTimeEventComponent> TimeEventComponent = nullptr;
+	void SetNetMode(float _DeltaTime);
+	virtual void SetControllMode(float _DeltaTime);
 
 	float CurFramePacketTime = 0.0f;
+	std::shared_ptr<class UTimeEventComponent> TimeEventComponent = nullptr;
 
-	void SetNetMode(float _DeltaTime);
-	void SetControllMode(float _DeltaTime);
+private:
 
 private:
 	// delete Function

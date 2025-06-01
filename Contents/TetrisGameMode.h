@@ -3,11 +3,11 @@
 #include "ServerEditor.h"
 
 // Ό³Έν :
-class TetrisGameMode : public AGameMode
+class ATetrisGameMode : public AGameMode
 {
 public:
-	TetrisGameMode();
-	~TetrisGameMode();
+	ATetrisGameMode();
+	~ATetrisGameMode();
 
 
 
@@ -22,9 +22,9 @@ private:
 
 private:
 	// delete Function
-	TetrisGameMode(const TetrisGameMode& _Other) = delete;
-	TetrisGameMode(TetrisGameMode&& _Other) noexcept = delete;
-	TetrisGameMode& operator=(const TetrisGameMode& _Other) = delete;
-	TetrisGameMode& operator=(TetrisGameMode&& _Other) noexcept = delete;
+	ATetrisGameMode(const ATetrisGameMode& _Other) = delete;
+	ATetrisGameMode(ATetrisGameMode&& _Other) noexcept = delete;
+	ATetrisGameMode& operator=(const ATetrisGameMode& _Other) = delete;
+	ATetrisGameMode& operator=(ATetrisGameMode&& _Other) noexcept = delete;
 };
 

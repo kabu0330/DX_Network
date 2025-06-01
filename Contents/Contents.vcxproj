@@ -266,6 +266,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TetrisPlayEditor.h" />
+    <ClInclude Include="TetrisPlayHUD.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Tetromino.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ThreadTestLevel.h">
       <SubType>
       </SubType>
@@ -373,6 +381,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TetrisPlayEditor.cpp" />
+    <ClCompile Include="TetrisPlayHUD.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Tetromino.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ThreadTestLevel.cpp">
       <SubType>
       </SubType>

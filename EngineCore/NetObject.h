@@ -30,7 +30,6 @@ public:
 		return NewPacket;
 	}
 
-
 	void SetControllOff()
 	{
 		bIsControll = false;
@@ -45,8 +44,6 @@ public:
 	{
 		return ObjectToken;
 	}
-
-
 
 protected:
 

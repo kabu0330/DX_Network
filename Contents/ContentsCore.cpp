@@ -17,6 +17,11 @@
 #include "ServerGameMode.h"
 #include "ServerPawn.h"
 
+#include "TetrisGameMode.h"
+#include "TetrisPlayEditor.h"
+#include "Tetromino.h"
+#include "TetrisPlayHUD.h"
+
 #include "TestGameMode.h"
 
 // 상위 엔진 레벨에 해당 클래스를 EngineCore에 간접적인 제어권한을 가지는 컨텐츠 코어로 설정한다.
@@ -49,17 +54,18 @@ void UContentsCore::SetWindowSize(UEngineInitData& _Data)
 
 void UContentsCore::CreateLevel()
 {
-	UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
-	UEngineCore::CreateLevel<AThreadTestLevel, APawn, AHUD>("Test");
-	UEngineCore::CreateLevel<APostEffectGameMode, APawn, AHUD>("PostEffect");
-	UEngineCore::CreateLevel<AServerGameMode, AServerPawn, AHUD>("Server");
+	//UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
+	//UEngineCore::CreateLevel<AThreadTestLevel, APawn, AHUD>("Test");
+	//UEngineCore::CreateLevel<APostEffectGameMode, APawn, AHUD>("PostEffect");
+	//UEngineCore::CreateLevel<AServerGameMode, AServerPawn, AHUD>("Server");
+	UEngineCore::CreateLevel<ATetrisGameMode, ATetromino, ATetrisPlayHUD>("TetrisPlay");
 	//UEngineCore::CreateLevel<AMapEditorGameMode, APawn, AHUD>("MapEditorMode");
 }
 
 void UContentsCore::OpenLevel()
 {
 #ifdef _DEBUG
-	UEngineCore::OpenLevel("Server");
+	UEngineCore::OpenLevel("TetrisPlay");
 #else
 	UEngineCore::OpenLevel("Title");
 #endif

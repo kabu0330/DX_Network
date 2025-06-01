@@ -25,7 +25,6 @@ public:
 		AGameMode* GameMode = _World->GetGameMode();
 		if (nullptr == GameMode->GetNetwork())
 		{
-			std::cout << "싱글 모드에서 SendPacket() 함수를 호출했습니다." << std::endl;
 			return;
 		}
 

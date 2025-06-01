@@ -21,6 +21,10 @@ public:
 	{
 		return Speed;
 	}
+	void SwitchControlled()
+	{
+		bIsControlled = !bIsControlled;
+	}
 
 protected:
 	void BeginPlay() override;

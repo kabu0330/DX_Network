@@ -15,11 +15,13 @@ public:
 	{
 		UEngineProtocol::Serialize(_Ser);
 		_Ser << Position;
+		_Ser << Rotation;
 	}
 	void DeSerialize(UEngineSerializer& _Ser) override
 	{
 		UEngineProtocol::DeSerialize(_Ser);
 		_Ser >> Position;
+		_Ser >> Rotation;
 	}
 
 	void SetPosition(FVector _Position)
@@ -32,8 +34,18 @@ public:
 		return Position;
 	}
 
+	void SetRotation(FVector _Rotation)
+	{
+		Rotation = _Rotation;
+	}
+	FVector GetRotation()
+	{
+		return Rotation;
+	}
+
 private:
 	FVector Position = FVector::ZERO;
+	FVector Rotation = FVector::ZERO;
 };
 
 

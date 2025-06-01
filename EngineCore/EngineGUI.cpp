@@ -64,14 +64,14 @@ void UEngineGUI::Init()
     ImFont* Font = io.Fonts->AddFontFromFileTTF(UTF8Path.c_str(), 18.0f, nullptr, io.Fonts->GetGlyphRangesKorean());
     if (nullptr != Font)
     {
-        if (nullptr == Font->FindGlyph(u'한'))
-        {
-            std::cout << "한글 폰트 없음" << std::endl;
-        }
-        else
-        {
-            std::cout << "한글 출력 가능" << std::endl;
-        }
+    //    if (nullptr == Font->FindGlyph(u'한'))
+    //    {
+    //        std::cout << "한글 폰트 없음" << std::endl;
+    //    }
+    //    else
+    //    {
+    //        std::cout << "한글 출력 가능" << std::endl;
+    //    }
     }
   
 

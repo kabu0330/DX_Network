@@ -9,6 +9,7 @@
 #include <EngineCore/DefaultSceneComponent.h>
 #include <EngineCore/CameraActor.h>
 #include <EngineCore/Collision.h>
+#include <EngineCore/NetPacketSender.h>
 
 #pragma comment(lib, "EngineBase.lib")
 #pragma comment(lib, "EnginePlatform.lib")
@@ -17,3 +18,4 @@
 #include "Global.h"
 #include "ContentsRenderer.h"
 #include "ContentsConst.h"
+#include "ContentPacket.h"

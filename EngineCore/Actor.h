@@ -164,7 +164,7 @@ public:
 			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
 			return FVector();
 		}
-
+		
 		return RootComponent->Transform.Rotation;
 	}
 	void SetActorRotation(const FVector& _Value)

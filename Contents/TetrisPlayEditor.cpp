@@ -52,6 +52,7 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 	AServerPawn* Pawn = GetWorld()->GetMainPawn<ATetromino>();
 	int ObjectToken = _Net->CreateObjectToken();
 	Pawn->InitNetObject(ObjectToken, _Net->GetSessionToken());
+	Pawn->GetPlayerController()->SwitchControlled();
 
 	// 다른 플레이어 생성 및 위치 동기화
 	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), 
@@ -68,6 +69,7 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 			}
 
 			ServerPawn->SetActorLocation(_Packet->GetPosition());
+			ServerPawn->SetActorRotation(_Packet->GetRotation());
 
 			_Net->SendPacket(_Packet); // 다른 클라에게도 전송
 		});
@@ -79,6 +81,7 @@ void UTetrisPlayEditor::CreateNetObject(std::shared_ptr<UUserAccessPacket> _Pack
 	UserAccessPacket = _Packet;
 	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>(); 
 	Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
+	Pawn->GetPlayerController()->SwitchControlled();
 }
 
 void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
@@ -99,6 +102,7 @@ void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 			}
 
 			ServerPawn->SetActorLocation(_Packet->GetPosition());
+			ServerPawn->SetActorRotation(_Packet->GetRotation());
 		});
 }
 

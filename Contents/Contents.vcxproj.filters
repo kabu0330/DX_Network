@@ -79,17 +79,17 @@
     <ClInclude Include="ServerPawn.h">
       <Filter>05_Network\Object</Filter>
     </ClInclude>
-    <ClInclude Include="TetrisGameMode.h">
-      <Filter>11_Tetris\03_GameMode</Filter>
-    </ClInclude>
-    <ClInclude Include="TetrisPlayEditor.h">
-      <Filter>11_Tetris\03_GameMode</Filter>
-    </ClInclude>
     <ClInclude Include="Tetromino.h">
       <Filter>11_Tetris\05_Object\02_Mino</Filter>
     </ClInclude>
     <ClInclude Include="TetrisPlayHUD.h">
       <Filter>11_Tetris\06_UI</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrisGameMode.h">
+      <Filter>11_Tetris\03_GameMode</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrisPlayEditor.h">
+      <Filter>11_Tetris\04_Editor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,14 +171,14 @@
     <ClCompile Include="TetrisGameMode.cpp">
       <Filter>11_Tetris\03_GameMode</Filter>
     </ClCompile>
-    <ClCompile Include="TetrisPlayEditor.cpp">
-      <Filter>11_Tetris\03_GameMode</Filter>
-    </ClCompile>
     <ClCompile Include="Tetromino.cpp">
       <Filter>11_Tetris\05_Object\02_Mino</Filter>
     </ClCompile>
     <ClCompile Include="TetrisPlayHUD.cpp">
       <Filter>11_Tetris\06_UI</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrisPlayEditor.cpp">
+      <Filter>11_Tetris\04_Editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

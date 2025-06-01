@@ -68,6 +68,7 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
 			}
 
+			// 처리
 			ServerPawn->SetActorLocation(_Packet->GetPosition());
 			ServerPawn->SetActorRotation(_Packet->GetRotation());
 
@@ -75,20 +76,18 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 		});
 }
 
-void UTetrisPlayEditor::CreateNetObject(std::shared_ptr<UUserAccessPacket> _Packet)
-{
-	// 이미 기존에 만들어진 자신에게 오브젝트 토큰 + 세션 토큰을 저장
-	UserAccessPacket = _Packet;
-	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>(); 
-	Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
-	Pawn->GetPlayerController()->SwitchControlled();
-}
-
 void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 {
-	_Net->SetUserAccessFunction(std::bind(&UTetrisPlayEditor::CreateNetObject, this, std::placeholders::_1));
+	_Net->SetUserAccessFunction([this](std::shared_ptr<UUserAccessPacket> _Packet)
+		{
 
-	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), 
+			UserAccessPacket = _Packet;
+			AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
+			Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
+			Pawn->GetPlayerController()->SwitchControlled();
+		});
+
+	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE),
 		[this](std::shared_ptr<UObjectUpdatePacket> _Packet)
 		{
 			int Token = _Packet->GetObjectToken();

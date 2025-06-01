@@ -1,6 +1,6 @@
 #pragma once
 #include "Actor.h"
-#include "NetPacketSender.h"
+#include "NetHandler.h"
 
 // Ό³Έν :
 class APlayerController : public AActor
@@ -43,7 +43,7 @@ private:
 				_Packet->SetPosition(this->GetActorLocation());
 			};
 
-		UNetPacketSender::SendPacket<PacketType>(this, GetWorld(), SyncPosition);
+		UNetHandler::SendPacket<PacketType>(this, GetWorld(), SyncPosition);
 	}
 
 	FVector Speed = FVector(100.0f, 100.0f, 100.0f);

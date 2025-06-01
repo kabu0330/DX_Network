@@ -220,7 +220,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="NetPacketSender.h">
+    <ClInclude Include="NetHandler.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -312,7 +312,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="NetPacketSender.cpp">
+    <ClCompile Include="NetHandler.cpp">
       <SubType>
       </SubType>
     </ClCompile>

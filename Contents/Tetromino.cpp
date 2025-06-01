@@ -1,7 +1,7 @@
 #include "PreCompile.h"
 #include "Tetromino.h"
 #include <Engineplatform/EngineInput.h>
-
+#include <EngineCore/NetHandler.h>
 
 ATetromino::ATetromino()
 {
@@ -82,6 +82,14 @@ void ATetromino::SetControllMode(float _DeltaTime)
 
 	AddActorWorldOffset(Velocity);
 
+	auto SyncPosition = [this](std::shared_ptr<UObjectUpdatePacket> _Packet)
+		{
+			_Packet->SetPosition(this->GetActorLocation());
+			_Packet->SetRotation(this->GetActorRotation());
+		};
+
+	GetNetHandler()->SendPacket<UObjectUpdatePacket>(SyncPosition);
+
 	//AServerGameMode* GameMode = GetWorld()->GetGameMode<AServerGameMode>();
 	//if (nullptr != GameMode->GetNetwork())
 	//{
@@ -96,15 +104,5 @@ void ATetromino::SetControllMode(float _DeltaTime)
 	//		CurFramePacketTime -= _DeltaTime;
 	//	}
 	//}
-
-	auto SyncPosition = [this](std::shared_ptr<UObjectUpdatePacket> _Packet)
-		{
-			_Packet->SetPosition(this->GetActorLocation());
-			_Packet->SetRotation(this->GetActorRotation());
-			FVector Rotation = GetActorRotation();
-			
-		};
-
-	UNetPacketSender::SendPacket<UObjectUpdatePacket>(this, GetWorld(), SyncPosition);
 }
 

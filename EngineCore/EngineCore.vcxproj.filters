@@ -197,7 +197,7 @@
     <ClInclude Include="AudioComponent.h">
       <Filter>04_Object\Component\Contents</Filter>
     </ClInclude>
-    <ClInclude Include="NetPacketSender.h">
+    <ClInclude Include="NetHandler.h">
       <Filter>21_Network</Filter>
     </ClInclude>
   </ItemGroup>
@@ -380,7 +380,7 @@
     <ClCompile Include="AudioComponent.cpp">
       <Filter>04_Object\Component\Contents</Filter>
     </ClCompile>
-    <ClCompile Include="NetPacketSender.cpp">
+    <ClCompile Include="NetHandler.cpp">
       <Filter>21_Network</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,10 +5,11 @@
 #include "ServerGameMode.h"
 #include "ContentPacket.h"
 #include <EnginePlatform/EngineInput.h>
-#include <EngineCore/NetPacketSender.h>
 
 AServerPawn::AServerPawn()
 {
+	InitActorData(this);
+
 	CurFramePacketTime = 20.0f * 30.0f;
 	BodyRenderer->CreateAnimation("Mino", "minos00.png", 0, 0);
 	BodyRenderer->ChangeAnimation("Mino");
@@ -84,6 +85,6 @@ void AServerPawn::SetControllMode(float _DeltaTime)
 			_Packet->SetPosition(this->GetActorLocation());
 		};
 
-	UNetPacketSender::SendPacket<UObjectUpdatePacket>(this, GetWorld(), SyncPosition);
+	GetNetHandler()->SendPacket<UObjectUpdatePacket>(SyncPosition);
 }
 

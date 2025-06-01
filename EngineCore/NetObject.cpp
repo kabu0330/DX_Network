@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "NetObject.h"
+#include "NetHandler.h"
 
 UNetObject::UNetObject()
 {
@@ -26,6 +27,11 @@ void UNetObject::InitNetObject(int _ObjectToken, int _SessionToken)
 	
 	AllNetObjects[_ObjectToken] = this;
 	std::cout << "오브젝트 토큰 : " << _ObjectToken << ", 세션 토큰 : " << _SessionToken << std::endl;
+}
+
+void UNetObject::InitActorData(AActor* _Actor)
+{
+	NetHandler = std::make_shared<UNetHandler>(this, _Actor);
 }
 
 bool UNetObject::IsNetObject(int _Token)

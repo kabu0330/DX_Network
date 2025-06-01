@@ -12,6 +12,8 @@ public:
 
 	ENGINEAPI void InitNetObject(int _ObjectToken, int _SessionToken);
 
+	ENGINEAPI void InitActorData(AActor* _Actor);
+
 	ENGINEAPI static bool		 IsNetObject (int _Token);
 	ENGINEAPI static UNetObject* GetNetObject(int _Token);
 
@@ -45,13 +47,20 @@ public:
 		return ObjectToken;
 	}
 
+	std::shared_ptr<class UNetHandler> GetNetHandler()
+	{
+		return NetHandler;
+	}
+
 protected:
 
 private:
 	bool bIsControll = true;
 	int SessionToken = -1;
 	int ObjectToken = -1;
+
 	inline static std::map<int, UNetObject*> AllNetObjects;
+	std::shared_ptr<class UNetHandler> NetHandler = nullptr;
 
 private:
 	// delete Function

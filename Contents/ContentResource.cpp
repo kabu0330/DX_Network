@@ -1,10 +1,10 @@
 #include "PreCompile.h"
-#include "ContentsResource.h"
+#include "ContentResource.h"
 #include <EnginePlatform/EngineSound.h>
 #include <EngineCore/EngineFont.h>
 #include <EngineCore/EngineTexture.h>
 
-void UContentsResource::LoadResource()
+void UContentResource::LoadResource()
 {
 	{	// 1. 이미지 파일 로드
 		UEngineDirectory Dir;
@@ -72,7 +72,7 @@ void UContentsResource::LoadResource()
 	//}
 }
 
-void UContentsResource::LoadFont()
+void UContentResource::LoadFont()
 {
 	{
 		// 폰트
@@ -108,7 +108,7 @@ void UContentsResource::LoadFont()
 	}
 }
 
-void UContentsResource::LoadContentsResource(std::string_view _Path)
+void UContentResource::LoadContentsResource(std::string_view _Path)
 {
 	std::string Path = _Path.data();
 	UEngineDirectory Dir;
@@ -121,7 +121,7 @@ void UContentsResource::LoadContentsResource(std::string_view _Path)
 	UEngineSprite::CreateSpriteToFolder(Dir.GetPathToString());
 }
 
-void UContentsResource::LoadResourceDirectory()
+void UContentResource::LoadResourceDirectory()
 {
 	LoadResource(); // 최초 1회 리소스 폴더를 로드해야 한다.
 	LoadFont();
@@ -130,19 +130,19 @@ void UContentsResource::LoadResourceDirectory()
 
 }
 
-void UContentsResource::LoadFolder()
+void UContentResource::LoadFolder()
 {
 	//UEngineDirectory TitleMain;
 	//TitleMain.MoveParentToDirectory("ContentsResources//Image//Title");
 	//TitleMain.Append("TitleBackGround");
 }
 
-void UContentsResource::LoadSprite()
+void UContentResource::LoadSprite()
 {
 	UEngineSprite::CreateSpriteToMeta("minos00.png", ".smeta");
 }
 
-void UContentsResource::LoadShaderResource()
+void UContentResource::LoadShaderResource()
 {
 	// Shader
 	{
@@ -173,10 +173,10 @@ void UContentsResource::LoadShaderResource()
 	}
 }
 
-UContentsResource::UContentsResource()
+UContentResource::UContentResource()
 {
 }
 
-UContentsResource::~UContentsResource()
+UContentResource::~UContentResource()
 {
 }

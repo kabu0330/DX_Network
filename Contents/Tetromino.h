@@ -1,17 +1,6 @@
 #pragma once
 #include "ServerPawn.h"
-
-enum class EMinoType : __int8
-{
-	I_MINO,
-	O_MINO,
-	T_MINO,
-	J_MINO,
-	L_MINO,
-	S_MINO,
-	Z_MINO,
-	MAX
-};
+#include "ContentEnum.h"
 
 // Ό³Έν :
 class ATetromino : public AServerPawn
@@ -22,6 +11,7 @@ public:
 
 	void SetType(EMinoType _Type);
 
+
 protected:
 	void BeginPlay() override;
 	void Tick(float _DeltaTime)	override;
@@ -29,9 +19,11 @@ protected:
 	void SetControllMode(float _DeltaTime) override;
 	
 
+
 private:
 	void CreateRenderers();
 	void InitType();
+	void ChangeMino();
 
 	std::vector<std::vector<USpriteRenderer*>> MinoRenders;
 	EMinoType MinoType = EMinoType::Z_MINO;

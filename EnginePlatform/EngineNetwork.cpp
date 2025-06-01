@@ -207,7 +207,7 @@ void UEngineNetwork::RecvIOCPThreadFunction(UEngineNetwork* _Server, SOCKET _Soc
 
             if (nullptr != Packet) // 패킷 처리
             {
-                _Server->ProtocolFunction(Packet);
+                _Server->ProtocolFunction(Packet); // GetWorld()->AddPacketQueue();
             }
 
             // 다음 패킷 처리

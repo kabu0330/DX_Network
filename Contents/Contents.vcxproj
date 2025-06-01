@@ -24,7 +24,7 @@
     <ProjectGuid>{fe67980b-18fc-4bd2-bdef-5be1042b47fc}</ProjectGuid>
     <RootNamespace>Contents</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Contents</ProjectName>
+    <ProjectName>Content</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -174,6 +174,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ContentEnum.h" />
     <ClInclude Include="ContentPacket.h">
       <SubType>
       </SubType>
@@ -182,21 +183,17 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ProtocolRegistrar.h">
+    <ClInclude Include="ContentConst.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ContentsConst.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="ContentsCore.h" />
+    <ClInclude Include="ContentCore.h" />
     <ClInclude Include="ContentsEditorGUI.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ContentsRenderer.h" />
-    <ClInclude Include="ContentsResource.h">
+    <ClInclude Include="ContentRenderer.h" />
+    <ClInclude Include="ContentResource.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -292,17 +289,13 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ProtocolRegistrar.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="ContentsCore.cpp" />
+    <ClCompile Include="ContentCore.cpp" />
     <ClCompile Include="ContentsEditorGUI.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ContentsRenderer.cpp" />
-    <ClCompile Include="ContentsResource.cpp">
+    <ClCompile Include="ContentRenderer.cpp" />
+    <ClCompile Include="ContentResource.cpp">
       <SubType>
       </SubType>
     </ClCompile>

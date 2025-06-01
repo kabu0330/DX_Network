@@ -4,38 +4,35 @@
     <ClInclude Include="PreCompile.h">
       <Filter>00_PreCompile</Filter>
     </ClInclude>
-    <ClInclude Include="ContentsCore.h">
+    <ClInclude Include="ContentCore.h">
       <Filter>01_Core</Filter>
     </ClInclude>
     <ClInclude Include="Global.h">
-      <Filter>HollowKnight\Global</Filter>
+      <Filter>03_Global</Filter>
     </ClInclude>
     <ClInclude Include="MapEditorGameMode.h">
       <Filter>HollowKnight\Level</Filter>
     </ClInclude>
-    <ClInclude Include="ContentsResource.h">
+    <ClInclude Include="ContentResource.h">
       <Filter>02_ContentsSetting\Resource</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
       <Filter>HollowKnight\Play\Setting</Filter>
     </ClInclude>
-    <ClInclude Include="ContentsRenderer.h">
+    <ClInclude Include="ContentRenderer.h">
       <Filter>02_ContentsSetting\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Skill.h">
-      <Filter>HollowKnight\Global</Filter>
+      <Filter>03_Global</Filter>
     </ClInclude>
     <ClInclude Include="Effect.h">
-      <Filter>HollowKnight\Global</Filter>
-    </ClInclude>
-    <ClInclude Include="ContentsConst.h">
-      <Filter>HollowKnight\Global</Filter>
+      <Filter>03_Global</Filter>
     </ClInclude>
     <ClInclude Include="MapObject.h">
       <Filter>HollowKnight\Play\MapEditor</Filter>
     </ClInclude>
     <ClInclude Include="Particle.h">
-      <Filter>HollowKnight\Global</Filter>
+      <Filter>03_Global</Filter>
     </ClInclude>
     <ClInclude Include="BasicVisualActor.h">
       <Filter>02_ContentsSetting</Filter>
@@ -47,16 +44,16 @@
       <Filter>99_Test</Filter>
     </ClInclude>
     <ClInclude Include="ServerEditor.h">
-      <Filter>04_Editor</Filter>
+      <Filter>08_Editor</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEditorGUI.h">
-      <Filter>04_Editor</Filter>
+      <Filter>08_Editor</Filter>
     </ClInclude>
     <ClInclude Include="DebugWindowGUI.h">
-      <Filter>04_Editor</Filter>
+      <Filter>08_Editor</Filter>
     </ClInclude>
     <ClInclude Include="MapEditorGUI.h">
-      <Filter>04_Editor</Filter>
+      <Filter>08_Editor</Filter>
     </ClInclude>
     <ClInclude Include="TestGameMode.h">
       <Filter>99_Test\03_GameMode</Filter>
@@ -67,17 +64,14 @@
     <ClInclude Include="PostEffectGameMode.h">
       <Filter>99_Test\03_GameMode</Filter>
     </ClInclude>
-    <ClInclude Include="ProtocolRegistrar.h">
-      <Filter>05_Network\Protocol</Filter>
-    </ClInclude>
     <ClInclude Include="ContentPacket.h">
-      <Filter>05_Network\Protocol</Filter>
+      <Filter>09_Network\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="ContentPacketType.h">
-      <Filter>05_Network\Protocol</Filter>
+      <Filter>09_Network\Protocol</Filter>
     </ClInclude>
     <ClInclude Include="ServerPawn.h">
-      <Filter>05_Network\Object</Filter>
+      <Filter>09_Network\Object</Filter>
     </ClInclude>
     <ClInclude Include="Tetromino.h">
       <Filter>11_Tetris\05_Object\02_Mino</Filter>
@@ -91,40 +85,46 @@
     <ClInclude Include="TetrisPlayEditor.h">
       <Filter>11_Tetris\04_Editor</Filter>
     </ClInclude>
+    <ClInclude Include="ContentConst.h">
+      <Filter>03_Global\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentEnum.h">
+      <Filter>03_Global\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
       <Filter>00_PreCompile</Filter>
     </ClCompile>
-    <ClCompile Include="ContentsCore.cpp">
+    <ClCompile Include="ContentCore.cpp">
       <Filter>01_Core</Filter>
     </ClCompile>
     <ClCompile Include="Global.cpp">
-      <Filter>HollowKnight\Global</Filter>
+      <Filter>03_Global</Filter>
     </ClCompile>
     <ClCompile Include="MapEditorGameMode.cpp">
       <Filter>HollowKnight\Level</Filter>
     </ClCompile>
-    <ClCompile Include="ContentsResource.cpp">
+    <ClCompile Include="ContentResource.cpp">
       <Filter>02_ContentsSetting\Resource</Filter>
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>HollowKnight\Play\Setting</Filter>
     </ClCompile>
-    <ClCompile Include="ContentsRenderer.cpp">
+    <ClCompile Include="ContentRenderer.cpp">
       <Filter>02_ContentsSetting\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Skill.cpp">
-      <Filter>HollowKnight\Global</Filter>
+      <Filter>03_Global</Filter>
     </ClCompile>
     <ClCompile Include="Effect.cpp">
-      <Filter>HollowKnight\Global</Filter>
+      <Filter>03_Global</Filter>
     </ClCompile>
     <ClCompile Include="MapObject.cpp">
       <Filter>HollowKnight\Play\MapEditor</Filter>
     </ClCompile>
     <ClCompile Include="Particle.cpp">
-      <Filter>HollowKnight\Global</Filter>
+      <Filter>03_Global</Filter>
     </ClCompile>
     <ClCompile Include="BasicVisualActor.cpp">
       <Filter>02_ContentsSetting</Filter>
@@ -136,16 +136,16 @@
       <Filter>99_Test</Filter>
     </ClCompile>
     <ClCompile Include="ContentsEditorGUI.cpp">
-      <Filter>04_Editor</Filter>
+      <Filter>08_Editor</Filter>
     </ClCompile>
     <ClCompile Include="DebugWindowGUI.cpp">
-      <Filter>04_Editor</Filter>
+      <Filter>08_Editor</Filter>
     </ClCompile>
     <ClCompile Include="MapEditorGUI.cpp">
-      <Filter>04_Editor</Filter>
+      <Filter>08_Editor</Filter>
     </ClCompile>
     <ClCompile Include="ServerEditor.cpp">
-      <Filter>04_Editor</Filter>
+      <Filter>08_Editor</Filter>
     </ClCompile>
     <ClCompile Include="TestGameMode.cpp">
       <Filter>99_Test\03_GameMode</Filter>
@@ -157,16 +157,13 @@
       <Filter>99_Test\03_GameMode</Filter>
     </ClCompile>
     <ClCompile Include="ContentPacket.cpp">
-      <Filter>05_Network\Protocol</Filter>
+      <Filter>09_Network\Protocol</Filter>
     </ClCompile>
     <ClCompile Include="ContentPacketType.cpp">
-      <Filter>05_Network\Protocol</Filter>
-    </ClCompile>
-    <ClCompile Include="ProtocolRegistrar.cpp">
-      <Filter>05_Network\Protocol</Filter>
+      <Filter>09_Network\Protocol</Filter>
     </ClCompile>
     <ClCompile Include="ServerPawn.cpp">
-      <Filter>05_Network\Object</Filter>
+      <Filter>09_Network\Object</Filter>
     </ClCompile>
     <ClCompile Include="TetrisGameMode.cpp">
       <Filter>11_Tetris\03_GameMode</Filter>
@@ -197,9 +194,6 @@
     <Filter Include="HollowKnight\Level">
       <UniqueIdentifier>{58d3821e-f186-4e77-a861-8f16b9ad13ed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HollowKnight\Global">
-      <UniqueIdentifier>{73895d3d-87b8-4ffd-a962-7cd03df8a97f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01_Core">
       <UniqueIdentifier>{09ff3bdc-96dc-4229-8b75-39c1c3dc0dd8}</UniqueIdentifier>
     </Filter>
@@ -215,26 +209,14 @@
     <Filter Include="02_ContentsSetting\Renderer">
       <UniqueIdentifier>{487692e4-6b76-4236-8869-624e3b36942f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05_Network">
-      <UniqueIdentifier>{22f7d8bb-be8a-48e3-b729-cb267b014837}</UniqueIdentifier>
-    </Filter>
     <Filter Include="11_Tetris">
       <UniqueIdentifier>{0e0ebcfa-31af-4495-84f2-1542b0d708f7}</UniqueIdentifier>
     </Filter>
     <Filter Include="99_Test">
       <UniqueIdentifier>{43cd829c-2afe-4280-b415-e406698d6a8c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="04_Editor">
-      <UniqueIdentifier>{fbc009dd-2ed6-4ef0-8b47-08afcdd00ede}</UniqueIdentifier>
-    </Filter>
     <Filter Include="99_Test\03_GameMode">
       <UniqueIdentifier>{0dc0856f-f188-4bbd-a58c-443f506ba724}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05_Network\Protocol">
-      <UniqueIdentifier>{f80d8988-2038-457d-9523-8b16b5c135e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="05_Network\Object">
-      <UniqueIdentifier>{203adcac-203a-4862-93dc-e89e908b5a08}</UniqueIdentifier>
     </Filter>
     <Filter Include="11_Tetris\03_GameMode">
       <UniqueIdentifier>{050e6bd2-8bb9-4826-95ee-937e59d4bf37}</UniqueIdentifier>
@@ -253,6 +235,24 @@
     </Filter>
     <Filter Include="11_Tetris\06_UI">
       <UniqueIdentifier>{fea408a2-54ce-4c50-8bde-6ba5eb8ff50c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="08_Editor">
+      <UniqueIdentifier>{fbc009dd-2ed6-4ef0-8b47-08afcdd00ede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09_Network">
+      <UniqueIdentifier>{22f7d8bb-be8a-48e3-b729-cb267b014837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09_Network\Protocol">
+      <UniqueIdentifier>{f80d8988-2038-457d-9523-8b16b5c135e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="09_Network\Object">
+      <UniqueIdentifier>{203adcac-203a-4862-93dc-e89e908b5a08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03_Global">
+      <UniqueIdentifier>{73895d3d-87b8-4ffd-a962-7cd03df8a97f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03_Global\Data">
+      <UniqueIdentifier>{f3e31203-a7f2-4c8e-bb9d-12eb45e76837}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

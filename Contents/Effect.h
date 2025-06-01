@@ -1,13 +1,12 @@
 #pragma once
 #include <EngineCore/Actor.h>
 #include "Global.h"
-#include "ContentsRenderer.h"
+#include "ContentRenderer.h"
 
 // 설명 :
 class AEffect : public AActor
 {
 public:
-	// constrcuter destructer
 	AEffect();
 	~AEffect();
 
@@ -17,7 +16,7 @@ public:
 	AEffect& operator=(const AEffect& _Other) = delete;
 	AEffect& operator=(AEffect&& _Other) noexcept = delete;
 
-	class UContentsRenderer* GetRenderer()
+	class UContentRenderer* GetRenderer()
 	{
 		return BodyRenderer.get();
 	}
@@ -150,7 +149,7 @@ protected:
 	bool bInitSetPos = false;
 
 	float ZSort = 0.0f;
-	std::shared_ptr<UContentsRenderer> BodyRenderer;
+	std::shared_ptr<UContentRenderer> BodyRenderer;
 private:
 
 	float ScaleRatio = 0.0f; // 파티클 옵션

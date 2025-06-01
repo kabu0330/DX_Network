@@ -10,7 +10,7 @@ ATetromino::ATetromino()
 
 	CreateRenderers();	
 	InitType();
-	SetType(MinoType);
+
 }
 
 void ATetromino::CreateRenderers()
@@ -50,6 +50,13 @@ void ATetromino::CreateRenderers()
 	}
 }
 
+void ATetromino::SetType(EMinoType _Type)
+{
+	MinoType = _Type;
+
+	ChangeMino();
+}
+
 void ATetromino::InitType()
 {
 	for (size_t y = 0; y < MinoRenders.size(); y++)
@@ -61,11 +68,11 @@ void ATetromino::InitType()
 	}
 }
 
-void ATetromino::SetType(EMinoType _Type)
+void ATetromino::ChangeMino()
 {
 	InitType();
 
-	switch (_Type)
+	switch (MinoType)
 	{
 	case EMinoType::I_MINO:
 		for (size_t y = 0; y < MinoRenders.size(); y++)
@@ -165,6 +172,8 @@ void ATetromino::SetType(EMinoType _Type)
 void ATetromino::BeginPlay()
 {
 	AServerPawn::BeginPlay();
+
+	SetType(MinoType);
 }
 
 void ATetromino::Tick(float _DeltaTime)
@@ -198,6 +207,10 @@ void ATetromino::SetControllMode(float _DeltaTime)
 		AddActorRotation(FVector(0.0f, 0.0f, 90.0f));
 		FVector Rotation = GetActorRotation();
 	}
+	if (true == UEngineInput::IsDown('E'))
+	{
+		SetType(EMinoType::I_MINO);
+	}
 
 	AddActorWorldOffset(Velocity);
 
@@ -208,6 +221,13 @@ void ATetromino::SetControllMode(float _DeltaTime)
 		};
 
 	GetNetHandler()->SendPacket<UObjectUpdatePacket>(SyncPosition);
+
+	auto SyncFunction = [this](std::shared_ptr<UMinoUpdatePacket> _Packet)
+		{
+			_Packet->SetMinoType(MinoType);
+		};
+
+	GetNetHandler()->SendPacket<UMinoUpdatePacket>(SyncFunction);
 
 	//AServerGameMode* GameMode = GetWorld()->GetGameMode<AServerGameMode>();
 	//if (nullptr != GameMode->GetNetwork())

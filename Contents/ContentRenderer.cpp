@@ -1,8 +1,8 @@
 #include "PreCompile.h"
-#include "ContentsRenderer.h"
+#include "ContentRenderer.h"
 #include <EngineCore/EngineCamera.h>
 
-UContentsRenderer::UContentsRenderer()
+UContentRenderer::UContentRenderer()
 {
 	CreateRenderUnit();
 	SetMesh("Rect");
@@ -22,11 +22,11 @@ UContentsRenderer::UContentsRenderer()
 	ColorData.MulColor = { 1.0f, 1.0f, 1.0f, 1.0f };
 }
 
-UContentsRenderer::~UContentsRenderer()
+UContentRenderer::~UContentRenderer()
 {
 }
 
-void UContentsRenderer::SetSprite(std::string_view _Name, UINT _Index)
+void UContentRenderer::SetSprite(std::string_view _Name, UINT _Index)
 {
 	Sprite = UEngineSprite::Find<UEngineSprite>(_Name).get();
 
@@ -36,7 +36,7 @@ void UContentsRenderer::SetSprite(std::string_view _Name, UINT _Index)
 	CurIndex = _Index;
 }
 
-void UContentsRenderer::SetTexture(std::string_view _Name, bool AutoScale, float _Ratio)
+void UContentRenderer::SetTexture(std::string_view _Name, bool AutoScale, float _Ratio)
 {
 	std::shared_ptr<UEngineTexture> Texture = UEngineTexture::Find<UEngineTexture>(_Name);
 	std::string Name = _Name.data();
@@ -55,12 +55,12 @@ void UContentsRenderer::SetTexture(std::string_view _Name, bool AutoScale, float
 	}
 }
 
-void UContentsRenderer::BeginPlay()
+void UContentRenderer::BeginPlay()
 {
 	URenderer::BeginPlay();
 }
 
-UContentsRenderer::FrameAnimation* UContentsRenderer::FindAnimation(std::string_view _AnimationName)
+UContentRenderer::FrameAnimation* UContentRenderer::FindAnimation(std::string_view _AnimationName)
 {
 	std::string UpperString = UEngineString::ToUpper(_AnimationName);
 
@@ -72,7 +72,7 @@ UContentsRenderer::FrameAnimation* UContentsRenderer::FindAnimation(std::string_
 	return &FrameAnimations[UpperString];
 }
 
-void UContentsRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
+void UContentRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 {
 	if (nullptr != CurAnimation)
 	{
@@ -97,7 +97,7 @@ void UContentsRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 	}
 }
 
-void UContentsRenderer::CameraTransUpdate(UEngineCamera* _Camera)
+void UContentRenderer::CameraTransUpdate(UEngineCamera* _Camera)
 {
 	FTransform& CameraTrans = _Camera->GetTransformRef();
 	FTransform& RendererTrans = GetTransformRef();
@@ -119,7 +119,7 @@ void UContentsRenderer::CameraTransUpdate(UEngineCamera* _Camera)
 	RendererTrans.WVP = CurWorld * RendererTrans.View * RendererTrans.Projection;
 }
 
-void UContentsRenderer::ComponentTick(float _DeltaTime)
+void UContentRenderer::ComponentTick(float _DeltaTime)
 {
 	URenderer::ComponentTick(_DeltaTime);
 
@@ -195,7 +195,7 @@ void UContentsRenderer::ComponentTick(float _DeltaTime)
 	}
 }
 
-void UContentsRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float Time /*= 0.1f*/, bool _Loop /*= true*/)
+void UContentRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, int _Start, int _End, float Time /*= 0.1f*/, bool _Loop /*= true*/)
 {
 	int Inter = 0;
 
@@ -227,7 +227,7 @@ void UContentsRenderer::CreateAnimation(std::string_view _AnimationName, std::st
 	CreateAnimation(_AnimationName, _SpriteName, Indexs, Times, _Loop);
 }
 
-void UContentsRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, std::vector<int> _Indexs, float _Frame, bool _Loop /*= true*/)
+void UContentRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, std::vector<int> _Indexs, float _Frame, bool _Loop /*= true*/)
 {
 	std::vector<float> Times;
 
@@ -239,7 +239,7 @@ void UContentsRenderer::CreateAnimation(std::string_view _AnimationName, std::st
 	CreateAnimation(_AnimationName, _SpriteName, _Indexs, Times, _Loop);
 }
 
-void UContentsRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, std::vector<int> _Indexs, std::vector<float> _Frame, bool _Loop /*= true*/)
+void UContentRenderer::CreateAnimation(std::string_view _AnimationName, std::string_view _SpriteName, std::vector<int> _Indexs, std::vector<float> _Frame, bool _Loop /*= true*/)
 {
 	std::string UpperName = UEngineString::ToUpper(_AnimationName);
 
@@ -273,7 +273,7 @@ void UContentsRenderer::CreateAnimation(std::string_view _AnimationName, std::st
 
 }
 
-void UContentsRenderer::ChangeAnimation(std::string_view _AnimationName, bool _Force /*= false*/)
+void UContentRenderer::ChangeAnimation(std::string_view _AnimationName, bool _Force /*= false*/)
 {
 	std::string UpperName = UEngineString::ToUpper(_AnimationName);
 
@@ -307,7 +307,7 @@ void UContentsRenderer::ChangeAnimation(std::string_view _AnimationName, bool _F
 	}
 }
 
-void UContentsRenderer::SetAnimationEvent(std::string_view _AnimationName, int _Frame, std::function<void()> _Function)
+void UContentRenderer::SetAnimationEvent(std::string_view _AnimationName, int _Frame, std::function<void()> _Function)
 {
 	std::string UpperName = UEngineString::ToUpper(_AnimationName);
 
@@ -340,7 +340,7 @@ void UContentsRenderer::SetAnimationEvent(std::string_view _AnimationName, int _
 
 }
 
-void UContentsRenderer::SetSprite(UEngineSprite* _Sprite)
+void UContentRenderer::SetSprite(UEngineSprite* _Sprite)
 {
 	Sprite = _Sprite;
 

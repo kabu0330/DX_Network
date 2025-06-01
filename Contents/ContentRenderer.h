@@ -5,7 +5,7 @@
 #include "Global.h"
 
 // Ό³Έν :
-class UContentsRenderer : public URenderer
+class UContentRenderer : public URenderer
 {
 public:
 	class FrameAnimation
@@ -31,8 +31,8 @@ public:
 		}
 	};
 
-	ENGINEAPI UContentsRenderer();
-	ENGINEAPI ~UContentsRenderer();
+	ENGINEAPI UContentRenderer();
+	ENGINEAPI ~UContentRenderer();
 
 	int GetCurIndex()
 	{
@@ -172,9 +172,9 @@ private:
 
 private:
 	// delete Function
-	UContentsRenderer(const UContentsRenderer& _Other) = delete;
-	UContentsRenderer(UContentsRenderer&& _Other) noexcept = delete;
-	UContentsRenderer& operator=(const UContentsRenderer& _Other) = delete;
-	UContentsRenderer& operator=(UContentsRenderer&& _Other) noexcept = delete;
+	UContentRenderer(const UContentRenderer& _Other) = delete;
+	UContentRenderer(UContentRenderer&& _Other) noexcept = delete;
+	UContentRenderer& operator=(const UContentRenderer& _Other) = delete;
+	UContentRenderer& operator=(UContentRenderer&& _Other) noexcept = delete;
 };
 

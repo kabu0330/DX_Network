@@ -7,7 +7,6 @@
 #include <EngineCore/PlayerController.h>
 #include <EnginePlatform/EngineWindow.h>
 #include <EngineCore/EngineCore.h>
-#include "ProtocolRegistrar.h"
 
 void UServerEditor::OnGUI(float _DeltaTime)
 {

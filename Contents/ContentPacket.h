@@ -1,6 +1,7 @@
 #pragma once
 #include <EnginePlatform/EngineProtocol.h>
 #include "ContentPacketType.h"
+#include "ContentEnum.h"
 
 // Ό³Έν :
 class UObjectUpdatePacket : public UEngineProtocol
@@ -38,7 +39,7 @@ public:
 	{
 		Rotation = _Rotation;
 	}
-	FVector GetRotation()
+	FVector GetRotation() const
 	{
 		return Rotation;
 	}
@@ -48,6 +49,42 @@ private:
 	FVector Rotation = FVector::ZERO;
 };
 
+class UMinoUpdatePacket : public UEngineProtocol
+{
+public:
+	UMinoUpdatePacket()
+	{
+		SetPacketType(EContentsPacketType::MINO_UPDATE);
+	}
+
+	void Serialize(UEngineSerializer& _Ser) override
+	{
+		UEngineProtocol::Serialize(_Ser);
+		_Ser << static_cast<int>(MinoType);
+	}
+	void DeSerialize(UEngineSerializer& _Ser) override
+	{
+		int Type = 0;
+
+		UEngineProtocol::DeSerialize(_Ser);
+		_Ser >> Type;
+
+		MinoType = static_cast<EMinoType>(Type);
+	}
+
+	void SetMinoType(EMinoType _MinoType)
+	{
+		MinoType = _MinoType;
+	}
+
+	EMinoType GetMinoType() const
+	{
+		return MinoType;
+	}
+
+private:
+	EMinoType MinoType;
+};
 
 class UChatPacket : public UEngineProtocol
 {

@@ -2,11 +2,11 @@
 #include <EngineCore/IContentsCore.h>
 
 // 설명 : 윈도우 크기 설정, 리소스 로드, 레벨 생성
-class UContentsCore : public IContentsCore
+class UContentCore : public IContentsCore
 {
 public:
-	UContentsCore();
-	~UContentsCore();
+	UContentCore();
+	~UContentCore();
 
 protected:
 	void EngineStart(UEngineInitData& _Data);
@@ -21,10 +21,10 @@ private:
 
 private:
 	// delete Function
-	UContentsCore(const UContentsCore& _Other) = delete;
-	UContentsCore(UContentsCore&& _Other) noexcept = delete;
-	UContentsCore& operator=(const UContentsCore& _Other) = delete;
-	UContentsCore& operator=(UContentsCore&& _Other) noexcept = delete;
+	UContentCore(const UContentCore& _Other) = delete;
+	UContentCore(UContentCore&& _Other) noexcept = delete;
+	UContentCore& operator=(const UContentCore& _Other) = delete;
+	UContentCore& operator=(UContentCore&& _Other) noexcept = delete;
 
 };
 

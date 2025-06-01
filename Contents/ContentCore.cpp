@@ -1,5 +1,5 @@
 #include "PreCompile.h"
-#include "ContentsCore.h"
+#include "ContentCore.h"
 
 #include <EnginePlatform/EngineInput.h>
 #include <EngineCore/Level.h>
@@ -9,7 +9,7 @@
 #include <EngineCore/EngineGUIWindow.h>
 #include <EngineCore/HUD.h>
 
-#include "ContentsResource.h"
+#include "ContentResource.h"
 #include "MapEditorGameMode.h"
 #include "ContentsEditorGUI.h"
 #include "ThreadTestLevel.h"
@@ -25,16 +25,16 @@
 #include "TestGameMode.h"
 
 // 상위 엔진 레벨에 해당 클래스를 EngineCore에 간접적인 제어권한을 가지는 컨텐츠 코어로 설정한다.
-CreateContentsCoreDefine(UContentsCore);
+CreateContentsCoreDefine(UContentCore);
 
-void UContentsCore::EngineStart(UEngineInitData& _Data)
+void UContentCore::EngineStart(UEngineInitData& _Data)
 {
 	SetWindowSize(_Data);
 
-	UContentsResource::LoadResourceDirectory();
-	UContentsResource::LoadFolder();
-	UContentsResource::LoadSprite();
-	UContentsResource::LoadShaderResource();
+	UContentResource::LoadResourceDirectory();
+	UContentResource::LoadFolder();
+	UContentResource::LoadSprite();
+	UContentResource::LoadShaderResource();
 
 	CreateLevel();
 	OpenLevel();
@@ -46,13 +46,13 @@ void UContentsCore::EngineStart(UEngineInitData& _Data)
 	Window->SetActive(true);
 }
 
-void UContentsCore::SetWindowSize(UEngineInitData& _Data)
+void UContentCore::SetWindowSize(UEngineInitData& _Data)
 {
 	_Data.WindowPos = { 50,0 };
 	_Data.WindowSize = { 600, 400 };
 }
 
-void UContentsCore::CreateLevel()
+void UContentCore::CreateLevel()
 {
 	//UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
 	//UEngineCore::CreateLevel<AThreadTestLevel, APawn, AHUD>("Test");
@@ -62,7 +62,7 @@ void UContentsCore::CreateLevel()
 	//UEngineCore::CreateLevel<AMapEditorGameMode, APawn, AHUD>("MapEditorMode");
 }
 
-void UContentsCore::OpenLevel()
+void UContentCore::OpenLevel()
 {
 #ifdef _DEBUG
 	UEngineCore::OpenLevel("TetrisPlay");
@@ -71,18 +71,18 @@ void UContentsCore::OpenLevel()
 #endif
 }
 
-void UContentsCore::EngineTick(float _DeltaTime)
+void UContentCore::EngineTick(float _DeltaTime)
 {
 }
 
-void UContentsCore::EngineEnd()
+void UContentCore::EngineEnd()
 {
 }
 
-UContentsCore::UContentsCore()
+UContentCore::UContentCore()
 {
 }
 
-UContentsCore::~UContentsCore()
+UContentCore::~UContentCore()
 {
 }

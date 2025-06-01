@@ -7,7 +7,6 @@
 #include <EngineCore/PlayerController.h>
 #include <EnginePlatform/EngineWindow.h>
 #include <EngineCore/EngineCore.h>
-#include "ProtocolRegistrar.h"
 #include "Tetromino.h"
 
 void UTetrisPlayEditor::OnGUI(float _DeltaTime)
@@ -49,7 +48,7 @@ void UTetrisPlayEditor::OnGUI(float _DeltaTime)
 
 void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 {
-	AServerPawn* Pawn = GetWorld()->GetMainPawn<ATetromino>();
+	ATetromino* Pawn = GetWorld()->GetMainPawn<ATetromino>();
 	int ObjectToken = _Net->CreateObjectToken();
 	Pawn->InitNetObject(ObjectToken, _Net->GetSessionToken());
 	Pawn->GetPlayerController()->SwitchControlled();
@@ -74,6 +73,17 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 
 			_Net->SendPacket(_Packet); // 다른 클라에게도 전송
 		});
+
+	_Net->GetDispatcher().AddHandler<UMinoUpdatePacket>(static_cast<int>(EContentsPacketType::MINO_UPDATE),
+		[this, _Net](std::shared_ptr<UMinoUpdatePacket> _Packet)
+		{
+			int Token = _Packet->GetObjectToken();
+			ATetromino* ServerPawn = UNetObject::GetConvertNetObject<ATetromino>(Token);
+
+			ServerPawn->SetType(_Packet->GetMinoType());
+
+			_Net->SendPacket(_Packet);
+		});
 }
 
 void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
@@ -82,7 +92,7 @@ void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 		{
 
 			UserAccessPacket = _Packet;
-			AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
+			ATetromino* Pawn = GetWorld()->GetMainPawn<ATetromino>();
 			Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
 			Pawn->GetPlayerController()->SwitchControlled();
 		});
@@ -102,6 +112,17 @@ void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 
 			ServerPawn->SetActorLocation(_Packet->GetPosition());
 			ServerPawn->SetActorRotation(_Packet->GetRotation());
+		});
+
+	_Net->GetDispatcher().AddHandler<UMinoUpdatePacket>(static_cast<int>(EContentsPacketType::MINO_UPDATE),
+		[this, _Net](std::shared_ptr<UMinoUpdatePacket> _Packet)
+		{
+			int Token = _Packet->GetObjectToken();
+			ATetromino* ServerPawn = UNetObject::GetConvertNetObject<ATetromino>(Token);
+
+			ServerPawn->SetType(_Packet->GetMinoType());
+
+			//_Net->SendPacket(_Packet);
 		});
 }
 

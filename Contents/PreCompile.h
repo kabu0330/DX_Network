@@ -15,6 +15,7 @@
 #pragma comment(lib, "EngineCore.lib")
 
 #include "Global.h"
-#include "ContentsRenderer.h"
-#include "ContentsConst.h"
+#include "ContentRenderer.h"
+#include "ContentConst.h"
 #include "ContentPacket.h"
+#include "ContentEnum.h"

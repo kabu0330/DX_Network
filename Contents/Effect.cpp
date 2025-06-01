@@ -11,7 +11,7 @@ AEffect::AEffect()
 	std::shared_ptr<UDefaultSceneComponent> Default = CreateDefaultSubObject<UDefaultSceneComponent>();
 	RootComponent = Default;
 
-	BodyRenderer = CreateDefaultSubObject<UContentsRenderer>();
+	BodyRenderer = CreateDefaultSubObject<UContentRenderer>();
 	BodyRenderer->SetupAttachment(RootComponent);
 	BodyRenderer->SetAutoScaleRatio(1.0f);
 	ZSort = static_cast<float>(EZOrder::KNIGHT_SKILL_FRONT);

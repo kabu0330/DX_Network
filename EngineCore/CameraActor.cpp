@@ -56,32 +56,32 @@ void ACameraActor::Tick(float _DeltaTime)
 
 		if (UEngineInput::IsPress('A'))
 		{
-			AddActorLocation(-GetActorTransform().GetWorldRight() * _DeltaTime * Speed);
+			AddActorWorldOffset(-GetActorTransform().GetWorldRight() * _DeltaTime * Speed);
 		}
 
 		if (UEngineInput::IsPress('D'))
 		{
-			AddActorLocation(GetActorTransform().GetWorldRight() * _DeltaTime * Speed);
+			AddActorWorldOffset(GetActorTransform().GetWorldRight() * _DeltaTime * Speed);
 		}
 
 		if (UEngineInput::IsPress('W'))
 		{
-			AddActorLocation(GetActorTransform().GetWorldFoward() * _DeltaTime * Speed);
+			AddActorWorldOffset(GetActorTransform().GetWorldFoward() * _DeltaTime * Speed);
 		}
 
 		if (UEngineInput::IsPress('S'))
 		{
-			AddActorLocation(-GetActorTransform().GetWorldFoward() * _DeltaTime * Speed);
+			AddActorWorldOffset(-GetActorTransform().GetWorldFoward() * _DeltaTime * Speed);
 		}
 
 		if (UEngineInput::IsPress('Q'))
 		{
-			AddActorLocation(GetActorTransform().GetWorldUp() * _DeltaTime * Speed);
+			AddActorWorldOffset(GetActorTransform().GetWorldUp() * _DeltaTime * Speed);
 		}
 
 		if (UEngineInput::IsPress('E'))
 		{
-			AddActorLocation(-GetActorTransform().GetWorldUp() * _DeltaTime * Speed);
+			AddActorWorldOffset(-GetActorTransform().GetWorldUp() * _DeltaTime * Speed);
 		}
 
 		if (UEngineInput::IsPress(VK_RBUTTON))

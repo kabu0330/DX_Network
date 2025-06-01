@@ -13,7 +13,7 @@ ASkill::ASkill()
 	Collision->SetCollisionProfileName("KnightObject");
 	//Collision->SetCollisionType(ECollisionType::AABB);
 
-	BodyRenderer->SetWorldLocation({ 0.0f, 0.0f, ZSort });
+	BodyRenderer->SetActorLocation({ 0.0f, 0.0f, ZSort });
 }
 
 void ASkill::BeginPlay()

@@ -1,5 +1,6 @@
 #include "PreCompile.h"
 #include "TetrisGameMode.h"
+#include "TetrisPlayEditor.h"
 
 ATetrisGameMode::ATetrisGameMode()
 {
@@ -24,10 +25,10 @@ void ATetrisGameMode::LevelChangeStart()
 {
 	UEngineGUI::AllWindowOff();
 	{
-		ServerEditor = UEngineGUI::FindGUIWindow<UServerEditor>(UEngineString::AnsiToUTF8("네트워크_에디터"));
+		ServerEditor = UEngineGUI::FindGUIWindow<UTetrisPlayEditor>(UEngineString::AnsiToUTF8("네트워크_에디터"));
 		if (nullptr == ServerEditor)
 		{
-			ServerEditor = UEngineGUI::CreateGUIWindow<UServerEditor>(UEngineString::AnsiToUTF8("네트워크_에디터"));
+			ServerEditor = UEngineGUI::CreateGUIWindow<UTetrisPlayEditor>(UEngineString::AnsiToUTF8("네트워크_에디터"));
 		}
 
 		ServerEditor->SetActive(true);

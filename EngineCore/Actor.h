@@ -73,82 +73,13 @@ public:
 		return World;
 	}
 
-	void SetActorLocation(const FVector& _Value)
-	{
-		if (nullptr == RootComponent)
-		{
-			return;
-		}
-
-		RootComponent->SetWorldLocation(_Value);
-	}
-
-	void AddActorLocation(const FVector& _Value)
-	{
-		if (nullptr == RootComponent)
-		{
-			return;
-		}
-
-		RootComponent->AddWorldLocation(_Value);
-	}
-
-	void SetActorRelativeScale3D(const FVector& _Scale)
-	{
-		if (nullptr == RootComponent)
-		{
-			return;
-		}
-
-		RootComponent->SetRelativeScale3D(_Scale);
-	}
-
-	void AddRelativeLocation(const FVector& _Value)
-	{
-		if (nullptr == RootComponent)
-		{
-			return;
-		}
-
-		RootComponent->AddRelativeLocation(_Value);
-	}
-
-	void SetActorRotation(const FVector& _Value)
-	{
-		if (nullptr == RootComponent)
-		{
-			return;
-		}
-
-		RootComponent->SetLocalRotation(_Value);
-	}
-
-	FVector GetActorRotation()
-	{
-		return RootComponent->Transform.Rotation;
-	}
-
-	void AddActorRotation(const FVector& _Value)
-	{
-		if (nullptr == RootComponent)
-		{
-			return;
-		}
-
-		RootComponent->AddWorldRotation(_Value);
-	}
-
 	ENGINEAPI void AttachToActor(AActor* _Parent);
-
-	FVector GetActorLocation()
-	{
-		return RootComponent->Transform.WorldLocation;
-	}
 
 	FTransform GetActorTransform()
 	{
 		if (nullptr == RootComponent)
 		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
 			return FTransform();
 		}
 
@@ -159,6 +90,7 @@ public:
 	{
 		if (nullptr == RootComponent)
 		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
 			return;
 		}
 
@@ -169,8 +101,160 @@ public:
 
 	class USceneComponent* GetRootComponent()
 	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return nullptr;
+		}
 		return RootComponent.get();
 	}
+
+
+
+	// Scale
+	// World
+	FVector GetActorWorldScale3D()
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return FVector();
+		}
+		return RootComponent->GetWorldScale3D();
+	}
+	void SetActorWorldScale3D(const FVector& _Scale)
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return;
+		}
+
+		RootComponent->SetScale3D(_Scale);
+	}
+
+	// Local
+	void SetActorRelativeScale3D(const FVector& _Scale)
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return;
+		}
+
+		RootComponent->SetRelativeScale3D(_Scale);
+	}
+	FVector GetActorRelativeScale3D()
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return FVector();
+		}
+		return RootComponent->GetRelativeScale3D();
+	}
+
+
+	// Rotation
+	// World
+	FVector GetActorRotation()
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return FVector();
+		}
+
+		return RootComponent->Transform.Rotation;
+	}
+	void SetActorRotation(const FVector& _Value)
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return;
+		}
+
+		RootComponent->SetLocalRotation(_Value);
+	}
+	void AddActorRotation(const FVector& _Value)
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return;
+		}
+
+		RootComponent->AddWorldRotation(_Value);
+	}
+
+
+	// Location
+    // World
+	FVector GetActorLocation()
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return FVector();
+		}
+
+		return RootComponent->Transform.WorldLocation;
+	}
+	void SetActorLocation(const FVector& _Value)
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return;
+		}
+
+		RootComponent->SetActorLocation(_Value);
+	}
+	void AddActorWorldOffset(const FVector& _Value)
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return;
+		}
+
+		RootComponent->AddWorldLocation(_Value);
+	}
+
+	// Local
+	FVector GetActorRelativeLocation()
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return FVector();
+		}
+
+		return RootComponent->Transform.RelativeLocation;
+	}
+	void SetActorRelativeLocation(const FVector& _Value)
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return;
+		}
+
+		RootComponent->SetRelativeLocation(_Value);
+	}
+	void AddActorLocalOffset(const FVector& _Value)
+	{
+		if (nullptr == RootComponent)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return;
+		}
+
+		RootComponent->AddRelativeLocation(_Value);
+	}
+
+
 
 	ENGINEAPI FVector GetActorUpVector();
 	ENGINEAPI FVector GetActorRightVector();
@@ -195,6 +279,11 @@ public:
 
 	class APlayerController* GetPlayerController()
 	{
+		if (nullptr == PlayerController)
+		{
+			MSGASSERT("SetupAttachment()로 RootComponent를 설정해주세요.");
+			return nullptr;
+		}
 		return PlayerController;
 	}
 
@@ -208,13 +297,11 @@ private:
 		PlayerController = _PlayerController;
 	}
 	
-
 	AActor* Parent = nullptr;
 	std::list<std::shared_ptr<AActor>> ChildList;
 	class APlayerController* PlayerController = nullptr;
 
-	// 스폰액터 방식이 변경되었으니까. 초기화 안한다.
-	ULevel* World;
+	ULevel* World; 	// 스폰액터 방식이 변경되었으니까. 초기화 안한다.
 
 	std::list<std::shared_ptr<class UActorComponent>> ActorComponentList;
 

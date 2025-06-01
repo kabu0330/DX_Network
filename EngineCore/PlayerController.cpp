@@ -81,7 +81,7 @@ void APlayerController::HandleInput(float _DeltaTime)
 
 	if (nullptr != Pawn)
 	{
-		Pawn->AddActorLocation(Velocity);
+		Pawn->AddActorWorldOffset(Velocity);
 		
 	}
 	else

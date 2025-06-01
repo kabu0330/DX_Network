@@ -111,7 +111,13 @@ public:
 		return Sprite->GetSpriteScaleToReal(CurIndex);
 	}
 
-	FVector GetActorLocation()
+	// 현재 애니메이션의 텍스처 크기를 가져와주는 함수
+	FVector GetCurScale()
+	{
+		return CurScale;
+	}
+
+	FVector GetRelativeLocation()
 	{
 		return Transform.RelativeLocation;
 	}
@@ -154,6 +160,7 @@ private:
 	bool IsBillboard = false;
 
 	URenderUnit* MainUnit = nullptr;
+	FVector CurScale = FVector::ZERO;
 
 	int CurIndex = 0;
 	float CurAnimationSpeed = 1.0f;

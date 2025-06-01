@@ -62,7 +62,7 @@ void AServerPawn::SetControllMode(float _DeltaTime)
 		Velocity.Y -= Speed.Y * _DeltaTime;
 	}
 
-	AddActorLocation(Velocity);
+	AddActorWorldOffset(Velocity);
 
 	//AServerGameMode* GameMode = GetWorld()->GetGameMode<AServerGameMode>();
 	//if (nullptr != GameMode->GetNetwork())

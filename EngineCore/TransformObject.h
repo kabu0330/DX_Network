@@ -33,7 +33,7 @@ public:
 		Transform.Location = _Value;
 		TransformUpdate();
 	}
-	void SetWorldLocation(const FVector& _Value)
+	void SetActorLocation(const FVector& _Value)
 	{
 		bIsAbsolute = true;
 		Transform.Location = _Value;
@@ -101,6 +101,10 @@ public:
 	FVector GetWorldScale3D()
 	{
 		return Transform.WorldScale;
+	}
+	FVector GetRelativeScale3D()
+	{
+		return Transform.Scale;
 	}
 
 

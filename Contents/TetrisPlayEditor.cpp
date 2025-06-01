@@ -8,6 +8,7 @@
 #include <EnginePlatform/EngineWindow.h>
 #include <EngineCore/EngineCore.h>
 #include "ProtocolRegistrar.h"
+#include "Tetromino.h"
 
 void UTetrisPlayEditor::OnGUI(float _DeltaTime)
 {
@@ -48,7 +49,7 @@ void UTetrisPlayEditor::OnGUI(float _DeltaTime)
 
 void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 {
-	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
+	AServerPawn* Pawn = GetWorld()->GetMainPawn<ATetromino>();
 	int ObjectToken = _Net->CreateObjectToken();
 	Pawn->InitNetObject(ObjectToken, _Net->GetSessionToken());
 
@@ -60,7 +61,7 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 			AServerPawn* ServerPawn = UNetObject::GetConvertNetObject<AServerPawn>(Token);
 			if (false == UNetObject::IsNetObject(Token)) // 최초 접속 이라면
 			{
-				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<AServerPawn>();
+				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<ATetromino>();
 				ServerPawn = NewServerPawn.get();
 				ServerPawn->SetControllOff(); // 서버가 클라의 통제권을 갖지 않는다.
 				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
@@ -91,7 +92,7 @@ void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 			AServerPawn* ServerPawn = UNetObject::GetConvertNetObject<AServerPawn>(Token);
 			if (false == UNetObject::IsNetObject(Token)) // 최초 접속이라면 클라 화면에도 스폰시키고
 			{
-				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<AServerPawn>();
+				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<ATetromino>();
 				ServerPawn = NewServerPawn.get();
 				ServerPawn->SetControllOff();
 				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());

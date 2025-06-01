@@ -15,7 +15,7 @@ protected:
 	void SetControllMode(float _DeltaTime) override;
 
 private:
-
+	std::vector<std::vector<USpriteRenderer*>> MinoRenders;
 
 private:
 	// delete Function

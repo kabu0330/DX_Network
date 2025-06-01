@@ -52,6 +52,7 @@ void USpriteRenderer::SetTexture(std::string_view _Name, bool AutoScale, float _
 		FVector Scale = Texture->GetTextureSize()* _Ratio;
 		Scale.Z = 1.0f;
 		SetRelativeScale3D(Scale);
+		CurScale = GetRelativeScale3D();
 	}
 }
 
@@ -87,6 +88,7 @@ void USpriteRenderer::Render(UEngineCamera* _Camera, float _DeltaTime)
 		FVector Scale = Sprite->GetSpriteScaleToReal(CurIndex);
 		Scale.Z = 1.0f;
 		SetRelativeScale3D(Scale * AutoScaleRatio);
+		CurScale = GetRelativeScale3D();
 	}
 
 	URenderer::Render(_Camera, _DeltaTime);
@@ -302,6 +304,7 @@ void USpriteRenderer::ChangeAnimation(std::string_view _AnimationName, bool _For
 		FVector Scale = CurAnimation->Sprite->GetSpriteScaleToReal(CurIndex);
 		Scale.Z = 1.0f;
 		SetRelativeScale3D(Scale * AutoScaleRatio);
+		CurScale = GetRelativeScale3D();
 	}
 }
 

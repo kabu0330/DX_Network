@@ -18,7 +18,7 @@ protected:
 	void LevelChangeStart() override;
 
 private:
-	std::shared_ptr<UServerEditor> ServerEditor = nullptr;
+	std::shared_ptr<UEngineGUIWindow> ServerEditor = nullptr;
 
 private:
 	// delete Function

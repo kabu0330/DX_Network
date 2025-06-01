@@ -60,19 +60,19 @@ void AMapEditorGameMode::CheckInput(float _DeltaTime)
 	float Speed = 700.0f;
 	if (UEngineInput::IsPress('A'))
 	{
-		Camera->AddActorLocation({ - Speed * _DeltaTime, 0.0f, 0.0f, 0.0f });
+		Camera->AddActorWorldOffset({ - Speed * _DeltaTime, 0.0f, 0.0f, 0.0f });
 	}
 	if (UEngineInput::IsPress('D'))
 	{
-		Camera->AddActorLocation({ Speed * _DeltaTime, 0.0f, 0.0f, 0.0f });
+		Camera->AddActorWorldOffset({ Speed * _DeltaTime, 0.0f, 0.0f, 0.0f });
 	}
 	if (UEngineInput::IsPress('W'))
 	{
-		Camera->AddActorLocation({ 0.0f , Speed * _DeltaTime, 0.0f, 0.0f });
+		Camera->AddActorWorldOffset({ 0.0f , Speed * _DeltaTime, 0.0f, 0.0f });
 	}
 	if (UEngineInput::IsPress('S'))
 	{
-		Camera->AddActorLocation({ 0.0f , -Speed * _DeltaTime, 0.0f, 0.0f });
+		Camera->AddActorWorldOffset({ 0.0f , -Speed * _DeltaTime, 0.0f, 0.0f });
 	}
 
 	// 미리보기 취소

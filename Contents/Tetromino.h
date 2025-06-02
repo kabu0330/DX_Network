@@ -9,6 +9,10 @@ public:
 	ATetromino();
 	~ATetromino() {};
 
+	void SetType(int _Type)
+	{
+		SetType(static_cast<EMinoType>(_Type));
+	}
 	void SetType(EMinoType _Type);
 
 
@@ -27,6 +31,7 @@ private:
 
 	std::vector<std::vector<USpriteRenderer*>> MinoRenders;
 	EMinoType MinoType = EMinoType::Z_MINO;
+	FVector Scale = FVector::ZERO;
 
 private:
 	// delete Function

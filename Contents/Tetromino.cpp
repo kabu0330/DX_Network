@@ -39,7 +39,7 @@ void ATetromino::CreateRenderers()
 			NewMinoRenderer->CreateAnimation("I_Mino", "minos00.png", 6, 6);
 			NewMinoRenderer->CreateAnimation("O_Mino", "minos00.png", 7, 7);
 			NewMinoRenderer->ChangeAnimation("S_Mino");
-			FVector Scale = NewMinoRenderer->GetCurScale();
+			Scale = NewMinoRenderer->GetCurScale();
 
 			float XPos = (Scale.X * static_cast<float>(x)) - (Scale.X * 1.5f);
 			float YPos = (Scale.Y * 1.0f) - (static_cast<float>(y) * Scale.Y);
@@ -184,7 +184,7 @@ void ATetromino::Tick(float _DeltaTime)
 void ATetromino::SetControllMode(float _DeltaTime)
 {
 	FVector Velocity = FVector::ZERO;
-	FVector Speed(100.0f, 100.0f);
+	FVector Speed(Scale.X, Scale.Y);
 
 	if (true == UEngineInput::IsDown('A') || UEngineInput::IsDown(VK_LEFT))
 	{
@@ -209,7 +209,13 @@ void ATetromino::SetControllMode(float _DeltaTime)
 	}
 	if (true == UEngineInput::IsDown('E'))
 	{
-		SetType(EMinoType::I_MINO);
+		int Type = static_cast<int>(MinoType);
+		++Type;
+		if (Type == static_cast<int>(EMinoType::MAX))
+		{
+			Type = 0;
+		}
+		SetType(Type);
 	}
 
 	AddActorWorldOffset(Velocity);

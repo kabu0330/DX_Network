@@ -91,6 +91,12 @@
     <ClInclude Include="ContentEnum.h">
       <Filter>03_Global\Data</Filter>
     </ClInclude>
+    <ClInclude Include="GameField.h">
+      <Filter>11_Tetris\05_Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerActor.h">
+      <Filter>09_Network\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PreCompile.cpp">
@@ -176,6 +182,12 @@
     </ClCompile>
     <ClCompile Include="TetrisPlayEditor.cpp">
       <Filter>11_Tetris\04_Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="GameField.cpp">
+      <Filter>11_Tetris\05_Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerActor.cpp">
+      <Filter>09_Network\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -53,6 +53,7 @@ public:
 	}
 
 protected:
+	float CurFramePacketTime = 0.0f;
 
 private:
 	bool bIsControll = true;
@@ -61,6 +62,7 @@ private:
 
 	inline static std::map<int, UNetObject*> AllNetObjects;
 	std::shared_ptr<class UNetHandler> NetHandler = nullptr;
+
 
 private:
 	// delete Function

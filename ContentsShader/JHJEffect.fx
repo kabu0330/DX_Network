@@ -8,7 +8,7 @@ struct FEngineVertex
 
 struct VertexShaderOutPut
 {
-	float4 SVPOSITION : SV_POSITION; // 뷰포트행렬이 곱해지는 포지션입니다.
+	float4 SVPOSITION : SV_POSITION; 
 	float4 UV : TEXCOORD; // 
 };
 

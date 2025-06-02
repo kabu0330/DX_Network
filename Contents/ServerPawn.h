@@ -15,7 +15,7 @@ protected:
 	void SetNetMode(float _DeltaTime);
 	virtual void SetControllMode(float _DeltaTime);
 
-	float CurFramePacketTime = 0.0f;
+
 	std::shared_ptr<class UTimeEventComponent> TimeEventComponent = nullptr;
 
 private:

@@ -15,7 +15,7 @@ AEffect::AEffect()
 	BodyRenderer->SetupAttachment(RootComponent);
 	BodyRenderer->SetAutoScaleRatio(1.0f);
 	ZSort = static_cast<float>(EZOrder::KNIGHT_SKILL_FRONT);
-	BodyRenderer->SetActorLocation({ 0.0f, 0.0f, ZSort });
+	BodyRenderer->SetWorldLocation({ 0.0f, 0.0f, ZSort });
 
 	
 	// 가져가서 만들 부분
@@ -105,7 +105,7 @@ void AEffect::Release()
 void AEffect::SetZSort(int _Value)
 {
 	float ZSort = static_cast<float>(_Value);
-	BodyRenderer->SetActorLocation({ GetActorLocation().X, GetActorLocation().Y, ZSort });
+	BodyRenderer->SetWorldLocation({ GetActorLocation().X, GetActorLocation().Y, ZSort });
 }
 
 void AEffect::BeginPlay()

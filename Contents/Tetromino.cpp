@@ -2,6 +2,8 @@
 #include "Tetromino.h"
 #include <Engineplatform/EngineInput.h>
 #include <EngineCore/NetHandler.h>
+#include "TetrisGameMode.h"
+#include "GameField.h"
 
 ATetromino::ATetromino()
 {
@@ -39,8 +41,10 @@ void ATetromino::CreateRenderers()
 			NewMinoRenderer->CreateAnimation("I_Mino", "minos00.png", 6, 6);
 			NewMinoRenderer->CreateAnimation("O_Mino", "minos00.png", 7, 7);
 			NewMinoRenderer->ChangeAnimation("S_Mino");
-			Scale = NewMinoRenderer->GetCurScale();
 
+			Scale = NewMinoRenderer->GetCurScale();
+			FGlobals::MinoSize = Scale;
+			
 			float XPos = (Scale.X * static_cast<float>(x)) - (Scale.X * 1.5f);
 			float YPos = (Scale.Y * 1.0f) - (static_cast<float>(y) * Scale.Y);
 			NewMinoRenderer->SetRelativeLocation({ XPos, YPos });
@@ -63,7 +67,7 @@ void ATetromino::InitType()
 	{
 		for (size_t x = 0; x < MinoRenders[0].size(); x++)
 		{
-			MinoRenders[y][x]->SetActive(false);
+			MinoRenders[y][x]->SetActive(true);
 		}
 	}
 }
@@ -174,6 +178,14 @@ void ATetromino::BeginPlay()
 	AServerPawn::BeginPlay();
 
 	SetType(MinoType);
+
+	StartPos.Y = Scale.Y * 8.0f;
+	SetActorLocation({ FConst::FirstPlayerPos.X, FConst::FirstPlayerPos.Y + StartPos.Y });
+
+	ATetrisGameMode* GameMode = GetWorld()->GetGameMode<ATetrisGameMode>();
+	AGameField* GameField = GameMode->GetGameField();
+	FPoint Point = GameField->GetPoint(MinoRenders[0][0]->GetWorldLocation());
+	int a = 0;
 }
 
 void ATetromino::Tick(float _DeltaTime)

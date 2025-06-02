@@ -24,12 +24,12 @@ FQuat TVector<float>::DegAngleToQuaternion()
 	return Result;
 }
 
-const FIntPoint FIntPoint::LEFT = { -1, 0 };
-const FIntPoint FIntPoint::RIGHT = { 1, 0 };
-const FIntPoint FIntPoint::UP = { 0, -1 };
-const FIntPoint FIntPoint::DOWN = { 0, 1 };
+const FPoint FPoint::LEFT = { -1, 0 };
+const FPoint FPoint::RIGHT = { 1, 0 };
+const FPoint FPoint::UP = { 0, -1 };
+const FPoint FPoint::DOWN = { 0, 1 };
 
-FIntPoint FVector::ConvertToPoint() const
+FPoint FVector::ConvertToPoint() const
 {
 	return { iX(), iY() };
 }

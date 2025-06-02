@@ -209,7 +209,7 @@ public:
 			return;
 		}
 
-		RootComponent->SetActorLocation(_Value);
+		RootComponent->SetWorldLocation(_Value);
 	}
 	void AddActorWorldOffset(const FVector& _Value)
 	{

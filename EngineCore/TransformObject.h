@@ -33,7 +33,7 @@ public:
 		Transform.Location = _Value;
 		TransformUpdate();
 	}
-	void SetActorLocation(const FVector& _Value)
+	void SetWorldLocation(const FVector& _Value)
 	{
 		bIsAbsolute = true;
 		Transform.Location = _Value;

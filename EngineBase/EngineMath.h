@@ -257,7 +257,7 @@ public:
 		return { iX(), iY() };
 	}
 
-	ENGINEAPI class FIntPoint ConvertToPoint() const;
+	ENGINEAPI class FPoint ConvertToPoint() const;
 
 	void Normalize()
 	{
@@ -930,52 +930,52 @@ public:
 	{
 		return Location.Y - Scale.hY();
 	}
-};
+}; 
 
-class FIntPoint
+class FPoint
 {
 public:
 	int X = 0;
 	int Y = 0;
 
-	static const FIntPoint LEFT;
-	static const FIntPoint RIGHT;
-	static const FIntPoint UP;
-	static const FIntPoint DOWN;
+	static const FPoint LEFT;
+	static const FPoint RIGHT;
+	static const FPoint UP;
+	static const FPoint DOWN;
 
-	ENGINEAPI FIntPoint()
+	ENGINEAPI FPoint()
 	{
 
 	}
 
-	FIntPoint(int _X, int _Y) : X(_X), Y(_Y)
+	FPoint(int _X, int _Y) : X(_X), Y(_Y)
 	{
 
 	}
 
-	FIntPoint operator+(FIntPoint _Other) const
+	FPoint operator+(FPoint _Other) const
 	{
-		FIntPoint Result;
+		FPoint Result;
 		Result.X = X + _Other.X;
 		Result.Y = Y + _Other.Y;
 		return Result;
 	}
 
-	FIntPoint operator/(int _Value) const
+	FPoint operator/(int _Value) const
 	{
-		FIntPoint Result;
+		FPoint Result;
 		Result.X = X / _Value;
 		Result.Y = Y / _Value;
 		return Result;
 	}
 
 
-	bool operator==(FIntPoint _Other) const
+	bool operator==(FPoint _Other) const
 	{
 		return X == _Other.X && Y == _Other.Y;
 	}
 
-	FIntPoint& operator+=(FIntPoint _Other)
+	FPoint& operator+=(FPoint _Other)
 	{
 		X += _Other.X;
 		Y += _Other.Y;

@@ -183,7 +183,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ContentConst.h">
+    <ClInclude Include="ContentData.h">
       <SubType>
       </SubType>
     </ClInclude>

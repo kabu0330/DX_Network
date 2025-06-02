@@ -5,6 +5,7 @@
 
 ATetrisGameMode::ATetrisGameMode()
 {
+	GetWorld()->CreateCollisionProfile("Debug");
 }
 
 ATetrisGameMode::~ATetrisGameMode()
@@ -15,7 +16,7 @@ void ATetrisGameMode::BeginPlay()
 {
 	AGameMode::BeginPlay();
 
-	AGameField* GameField = GetWorld()->SpawnActor<AGameField>().get();
+	GameField = GetWorld()->SpawnActor<AGameField>().get();
 }
 
 void ATetrisGameMode::Tick(float _DeltaTime)

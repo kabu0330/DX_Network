@@ -54,7 +54,7 @@ public:
 		return GetColor(_Point.ConvertToPoint(), _DefaultColor);
 	}
 
-	ENGINEAPI UColor GetColor(FIntPoint _Point, UColor _DefaultColor);
+	ENGINEAPI UColor GetColor(FPoint _Point, UColor _DefaultColor);
 
 protected:
 

@@ -239,7 +239,7 @@ void UEngineWinImage::Load(UEngineWinImage* _TargetImage, std::string_view _Path
 	GetObject(hBitMap, sizeof(BITMAP), &Info);
 }
 
-UColor UEngineWinImage::GetColor(FIntPoint _Point, UColor _DefaultColor /*= UColor::WHITE*/)
+UColor UEngineWinImage::GetColor(FPoint _Point, UColor _DefaultColor /*= UColor::WHITE*/)
 {
 	if (0 > _Point.X)
 	{

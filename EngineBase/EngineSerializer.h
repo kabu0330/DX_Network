@@ -28,9 +28,9 @@ public:
 		Write(&_Data, sizeof(FVector));
 	}
 
-	ENGINEAPI void operator<<(const FIntPoint& _Data)
+	ENGINEAPI void operator<<(const FPoint& _Data)
 	{
-		Write(&_Data, sizeof(FIntPoint));
+		Write(&_Data, sizeof(FPoint));
 	}
 
 	ENGINEAPI void operator<<(const FTransform& _Data)
@@ -79,9 +79,9 @@ public:
 		Read(&_Data, sizeof(FVector));
 	}
 
-	ENGINEAPI void operator>>(FIntPoint& _Data)
+	ENGINEAPI void operator>>(FPoint& _Data)
 	{
-		Read(&_Data, sizeof(FIntPoint));
+		Read(&_Data, sizeof(FPoint));
 	}
 
 	ENGINEAPI void operator>>(FTransform& _Data)

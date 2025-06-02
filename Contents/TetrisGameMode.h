@@ -9,7 +9,10 @@ public:
 	ATetrisGameMode();
 	~ATetrisGameMode();
 
-
+	class AGameField* GetGameField()
+	{
+		return GameField;
+	}
 
 protected:
 	void BeginPlay() override;
@@ -19,6 +22,7 @@ protected:
 
 private:
 	std::shared_ptr<UEngineGUIWindow> ServerEditor = nullptr;
+	class AGameField* GameField = nullptr;
 
 private:
 	// delete Function

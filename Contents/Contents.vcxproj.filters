@@ -85,7 +85,7 @@
     <ClInclude Include="TetrisPlayEditor.h">
       <Filter>11_Tetris\04_Editor</Filter>
     </ClInclude>
-    <ClInclude Include="ContentConst.h">
+    <ClInclude Include="ContentData.h">
       <Filter>03_Global\Data</Filter>
     </ClInclude>
     <ClInclude Include="ContentEnum.h">

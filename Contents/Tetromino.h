@@ -22,8 +22,6 @@ protected:
 
 	void SetControllMode(float _DeltaTime) override;
 	
-
-
 private:
 	void CreateRenderers();
 	void InitType();
@@ -31,7 +29,13 @@ private:
 
 	std::vector<std::vector<USpriteRenderer*>> MinoRenders;
 	EMinoType MinoType = EMinoType::Z_MINO;
+
 	FVector Scale = FVector::ZERO;
+
+	FVector StartPos = FVector::ZERO;
+
+	FPoint Point = FPoint({ 0, 0 });
+
 
 private:
 	// delete Function

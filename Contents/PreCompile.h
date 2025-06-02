@@ -16,6 +16,6 @@
 
 #include "Global.h"
 #include "ContentRenderer.h"
-#include "ContentConst.h"
+#include "ContentData.h"
 #include "ContentPacket.h"
 #include "ContentEnum.h"

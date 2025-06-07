@@ -2,7 +2,6 @@
 #include <EngineCore/Renderer.h>
 #include <EngineBase/EngineDelegate.h>
 #include <map>
-#include "Global.h"
 
 // Ό³Έν :
 class UContentRenderer : public URenderer

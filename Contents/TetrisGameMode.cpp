@@ -27,15 +27,16 @@ void ATetrisGameMode::Tick(float _DeltaTime)
 
 void ATetrisGameMode::LevelChangeStart()
 {
-	UEngineGUI::AllWindowOff();
+	//UEngineGUI::AllWindowOff();
 	{
-		ServerEditor = UEngineGUI::FindGUIWindow<UTetrisPlayEditor>(UEngineString::AnsiToUTF8("네트워크_에디터"));
+		ServerEditor = UEngineGUI::FindGUIWindow<UTetrisPlayEditor>("Network");
 		if (nullptr == ServerEditor)
 		{
-			ServerEditor = UEngineGUI::CreateGUIWindow<UTetrisPlayEditor>(UEngineString::AnsiToUTF8("네트워크_에디터"));
+			ServerEditor = UEngineGUI::CreateGUIWindow<UTetrisPlayEditor>("Network");
 		}
 
 		ServerEditor->SetActive(true);
+
 	}
 }
 

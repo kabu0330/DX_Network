@@ -9,6 +9,9 @@ ATetromino::ATetromino()
 {
 	CurFramePacketTime = 20.0f * 30.0f;
 	BodyRenderer->SetActive(false);
+	BodyRenderer->SetZSort(FConst::MinoZSort);
+	float Value = BodyRenderer->GetZSort();
+
 
 	CreateRenderers();	
 	InitType();

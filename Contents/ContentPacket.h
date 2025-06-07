@@ -29,7 +29,6 @@ public:
 	{
 		Position = _Position;
 	}
-
 	FVector GetPosition() const
 	{
 		return Position;
@@ -76,14 +75,13 @@ public:
 	{
 		MinoType = _MinoType;
 	}
-
 	EMinoType GetMinoType() const
 	{
 		return MinoType;
 	}
 
 private:
-	EMinoType MinoType;
+	EMinoType MinoType = EMinoType::MAX;
 };
 
 class UChatPacket : public UEngineProtocol

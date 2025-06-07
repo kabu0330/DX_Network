@@ -154,10 +154,10 @@ void ULevel::Render(float _DeltaTime)
 		}
 	}
 
-	// IMGUI 랜더링
+	// ImGui 랜더링
 	if (true == UEngineWindow::IsApplicationOn())
 	{
-		UEngineGUI::GUIRender(this, _DeltaTime);
+		UEngineGUI::RenderGUI(this, _DeltaTime);
 	}
 
 	UEngineCore::GetDevice().Present(); // 스왑체인이 관리하는 백버퍼와 프론트버퍼를 교환(Swap) 

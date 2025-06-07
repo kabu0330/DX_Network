@@ -131,6 +131,10 @@ public:
 	{
 		SetZSort(static_cast<float>(_ZValue));
 	}
+	float GetZSort() const
+	{
+		return Transform.WorldLocation.Z;
+	}
 
 	void AddPlusColor(FVector _PlusColor)
 	{

@@ -1,6 +1,5 @@
 #pragma once
 #include <EngineCore/Actor.h>
-#include "Global.h"
 #include "ContentRenderer.h"
 
 // Ό³Έν :
@@ -125,7 +124,6 @@ public:
 	}
 
 protected:
-	//AKnight* Knight = nullptr;
 	class UTimeEventComponent* TimeEventer = nullptr;
 
 	void BeginPlay() override;

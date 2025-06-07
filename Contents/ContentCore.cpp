@@ -9,9 +9,11 @@
 #include <EngineCore/EngineGUIWindow.h>
 #include <EngineCore/HUD.h>
 
+#include "DebugWindowGUI.h"
+#include "ContentsEditorGUI.h"
+
 #include "ContentResource.h"
 #include "MapEditorGameMode.h"
-#include "ContentsEditorGUI.h"
 #include "ThreadTestLevel.h"
 #include "PostEffectGameMode.h"
 #include "ServerGameMode.h"
@@ -39,11 +41,8 @@ void UContentCore::EngineStart(UEngineInitData& _Data)
 	CreateLevel();
 	OpenLevel();
 
-	UEngineGUI::AllWindowOff();
+	//CreateEditior();
 
-	UEngineGUI::CreateGUIWindow<UContentsEditorGUI>("ContentsEditorGUI");
-	std::shared_ptr<UContentsEditorGUI> Window = UEngineGUI::FindGUIWindow<UContentsEditorGUI>("ContentsEditorGUI");
-	Window->SetActive(true);
 }
 
 void UContentCore::SetWindowSize(UEngineInitData& _Data)
@@ -69,6 +68,24 @@ void UContentCore::OpenLevel()
 #else
 	UEngineCore::OpenLevel("Title");
 #endif
+}
+
+void UContentCore::CreateEditior()
+{
+	UEngineGUI::AllWindowOff();
+
+	{
+		UEngineGUI::CreateGUIWindow<UContentsEditorGUI>(UEngineString::AnsiToUTF8("레벨"));
+		std::shared_ptr<UContentsEditorGUI> Window = UEngineGUI::FindGUIWindow<UContentsEditorGUI>(UEngineString::AnsiToUTF8("레벨"));
+		Window->SetActive(true);
+		UEngineGUI::PushAlwaysOnGUI(Window);
+	}
+	{
+		UEngineGUI::CreateGUIWindow<UDebugWindowGUI>(UEngineString::AnsiToUTF8("디버그"));
+		std::shared_ptr<UDebugWindowGUI> Window = UEngineGUI::FindGUIWindow<UDebugWindowGUI>(UEngineString::AnsiToUTF8("디버그"));
+		Window->SetActive(true);
+		UEngineGUI::PushAlwaysOnGUI(Window);
+	}
 }
 
 void UContentCore::EngineTick(float _DeltaTime)

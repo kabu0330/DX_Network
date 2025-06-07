@@ -5,7 +5,6 @@
 class MapEditorGUI : public UEngineGUIWindow
 {
 public:
-	// constrcuter destructer
 	MapEditorGUI();
 	~MapEditorGUI();
 

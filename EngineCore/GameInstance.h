@@ -7,7 +7,6 @@ public:
 	ENGINEAPI UGameInstance();
 	ENGINEAPI virtual ~UGameInstance();
 
-
 protected:
 
 private:

@@ -14,7 +14,6 @@
 #pragma comment(lib, "EnginePlatform.lib")
 #pragma comment(lib, "EngineCore.lib")
 
-#include "Global.h"
 #include "ContentRenderer.h"
 #include "ContentData.h"
 #include "ContentPacket.h"

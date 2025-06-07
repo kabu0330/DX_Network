@@ -142,6 +142,11 @@ void UEngineGUI::PushGUIWindow(std::shared_ptr<class UEngineGUIWindow> _Window)
     Windows.insert({ _Window->GetName(), _Window });
 }
 
+void UEngineGUI::PushAlwaysOnGUI(std::shared_ptr<class UEngineGUIWindow> _Window)
+{
+    AlwaysOnWindows.insert({ _Window->GetName(), _Window });
+}
+
 std::shared_ptr<UEngineGUIWindow> UEngineGUI::FindGUIWindow(std::string_view _Text)
 {
     std::string UpperName = UEngineString::ToUpper(_Text);
@@ -168,9 +173,15 @@ void UEngineGUI::AllWindowOff()
     {
         Window.second->SetActive(false);
     }
+
+    // 항상 화면에 출력할 GUI
+    for (std::pair<const std::string, std::shared_ptr<UEngineGUIWindow>>& Window : AlwaysOnWindows)
+    {
+        Window.second->SetActive(true);
+    }
 }
 
-void UEngineGUI::GUIRender(ULevel* _Level, float _DeltaTime)
+void UEngineGUI::RenderGUI(ULevel* _Level, float _DeltaTime)
 {
     UEngineGUI::GUIRenderStart();
     for (std::pair<const std::string, std::shared_ptr<UEngineGUIWindow>>& Window : Windows)

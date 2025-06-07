@@ -477,7 +477,7 @@ void MapEditorGUI::SaveFile()
 			for (std::shared_ptr<AMapObject> Actor : AllMapObjectList)
 			{
 				// 여기서 저장할 수 있는 데이터는 여기서 저장하고
-				Ser << static_cast<int>(Actor->MapObjectTypeValue); 
+				//Ser << static_cast<int>(Actor->MapObjectTypeValue); 
 
 				// Actor가 가지고 있는 데이터는 클래스의 Serialize에서 저장한다.
 				Actor->Serialize(Ser);
@@ -539,26 +539,26 @@ void MapEditorGUI::LoadFile()
 				// 여기서 꺼낼 데이터는 먼저 꺼내서 쓰고
 				Ser >> TypeValue;
 
-				EMapObjectType ObjectType = static_cast<EMapObjectType>(TypeValue);
+				//EMapObjectType ObjectType = static_cast<EMapObjectType>(TypeValue);
 
 
-				switch (ObjectType)
-				{
-				//case BACKGROUND_COLOR:
-				//	AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>();
+				//switch (ObjectType)
+				//{
+				////case BACKGROUND_COLOR:
+				////	AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>();
+				////	break;
+				////case BACKGROUND_OBJECT:
+				////	AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>();
 				//	break;
-				//case BACKGROUND_OBJECT:
-				//	AMapEditorGameMode::GetMapObject() = GetWorld()->SpawnActor<ABackground>();
-					break;
-				case COLLISION_OBJECT:
-					break;
-				case NONE_COLLISION_OBJECT:
-					break;
-				case MAX_OBJECT_TYPE:
-					break;
-				default:
-					break;
-				}
+				//case COLLISION_OBJECT:
+				//	break;
+				//case NONE_COLLISION_OBJECT:
+				//	break;
+				//case MAX_OBJECT_TYPE:
+				//	break;
+				//default:
+				//	break;
+				//}
 
 				// 나머지는 여기서 역직렬화를 한다.
 				AMapEditorGameMode::GetMapObject()->DeSerialize(Ser);

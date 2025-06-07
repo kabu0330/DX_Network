@@ -209,10 +209,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Global.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="MapEditorGameMode.h">
       <SubType>
       </SubType>
@@ -316,10 +312,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GameField.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Global.cpp">
       <SubType>
       </SubType>
     </ClCompile>

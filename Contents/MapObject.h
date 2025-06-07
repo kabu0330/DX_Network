@@ -37,7 +37,7 @@ public:
 		return Renderer;
 	}
 
-	EMapObjectType MapObjectTypeValue;
+	//EMapObjectType MapObjectTypeValue;
 
 protected:
 	std::shared_ptr<class USpriteRenderer> Renderer;

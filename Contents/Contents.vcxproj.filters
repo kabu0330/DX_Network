@@ -7,20 +7,17 @@
     <ClInclude Include="ContentCore.h">
       <Filter>01_Core</Filter>
     </ClInclude>
-    <ClInclude Include="Global.h">
-      <Filter>03_Global</Filter>
-    </ClInclude>
     <ClInclude Include="MapEditorGameMode.h">
       <Filter>HollowKnight\Level</Filter>
     </ClInclude>
     <ClInclude Include="ContentResource.h">
-      <Filter>02_ContentsSetting\Resource</Filter>
+      <Filter>02_Setting\Resource</Filter>
     </ClInclude>
     <ClInclude Include="CollisionManager.h">
       <Filter>HollowKnight\Play\Setting</Filter>
     </ClInclude>
     <ClInclude Include="ContentRenderer.h">
-      <Filter>02_ContentsSetting\Renderer</Filter>
+      <Filter>02_Setting\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>03_Global</Filter>
@@ -35,7 +32,7 @@
       <Filter>03_Global</Filter>
     </ClInclude>
     <ClInclude Include="BasicVisualActor.h">
-      <Filter>02_ContentsSetting</Filter>
+      <Filter>02_Setting</Filter>
     </ClInclude>
     <ClInclude Include="ThreadTestLevel.h">
       <Filter>99_Test</Filter>
@@ -105,20 +102,17 @@
     <ClCompile Include="ContentCore.cpp">
       <Filter>01_Core</Filter>
     </ClCompile>
-    <ClCompile Include="Global.cpp">
-      <Filter>03_Global</Filter>
-    </ClCompile>
     <ClCompile Include="MapEditorGameMode.cpp">
       <Filter>HollowKnight\Level</Filter>
     </ClCompile>
     <ClCompile Include="ContentResource.cpp">
-      <Filter>02_ContentsSetting\Resource</Filter>
+      <Filter>02_Setting\Resource</Filter>
     </ClCompile>
     <ClCompile Include="CollisionManager.cpp">
       <Filter>HollowKnight\Play\Setting</Filter>
     </ClCompile>
     <ClCompile Include="ContentRenderer.cpp">
-      <Filter>02_ContentsSetting\Renderer</Filter>
+      <Filter>02_Setting\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="Skill.cpp">
       <Filter>03_Global</Filter>
@@ -133,7 +127,7 @@
       <Filter>03_Global</Filter>
     </ClCompile>
     <ClCompile Include="BasicVisualActor.cpp">
-      <Filter>02_ContentsSetting</Filter>
+      <Filter>02_Setting</Filter>
     </ClCompile>
     <ClCompile Include="ThreadTestLevel.cpp">
       <Filter>99_Test</Filter>
@@ -209,17 +203,8 @@
     <Filter Include="01_Core">
       <UniqueIdentifier>{09ff3bdc-96dc-4229-8b75-39c1c3dc0dd8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02_ContentsSetting">
-      <UniqueIdentifier>{705f4313-018d-4c2b-84c9-0b0201018210}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02_ContentsSetting\Resource">
-      <UniqueIdentifier>{318effba-c84a-4d4f-8a42-98637e2f0fa4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="00_PreCompile">
       <UniqueIdentifier>{e77ec849-f508-4c7f-93bd-8088b5abd8c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="02_ContentsSetting\Renderer">
-      <UniqueIdentifier>{487692e4-6b76-4236-8869-624e3b36942f}</UniqueIdentifier>
     </Filter>
     <Filter Include="11_Tetris">
       <UniqueIdentifier>{0e0ebcfa-31af-4495-84f2-1542b0d708f7}</UniqueIdentifier>
@@ -265,6 +250,15 @@
     </Filter>
     <Filter Include="03_Global\Data">
       <UniqueIdentifier>{f3e31203-a7f2-4c8e-bb9d-12eb45e76837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_Setting">
+      <UniqueIdentifier>{705f4313-018d-4c2b-84c9-0b0201018210}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_Setting\Resource">
+      <UniqueIdentifier>{318effba-c84a-4d4f-8a42-98637e2f0fa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02_Setting\Renderer">
+      <UniqueIdentifier>{487692e4-6b76-4236-8869-624e3b36942f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

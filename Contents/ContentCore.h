@@ -19,6 +19,9 @@ private:
 	void CreateLevel();
 	void OpenLevel();
 
+	void CreateEditior();
+
+	
 private:
 	// delete Function
 	UContentCore(const UContentCore& _Other) = delete;

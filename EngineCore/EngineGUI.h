@@ -25,6 +25,7 @@ public:
 	static void GUIRenderEnd();
 
 	ENGINEAPI static void PushGUIWindow(std::shared_ptr<class UEngineGUIWindow> _Window);
+	ENGINEAPI static void PushAlwaysOnGUI(std::shared_ptr<class UEngineGUIWindow> _Window);
 
 	template<typename WindowType>
 	static std::shared_ptr<WindowType> CreateGUIWindow(std::string_view _Text)
@@ -51,7 +52,7 @@ public:
 
 	ENGINEAPI static std::shared_ptr<UEngineGUIWindow> FindGUIWindow(std::string_view _Text);
 
-	static void GUIRender(ULevel* _Level, float _DeltaTime);
+	static void RenderGUI(ULevel* _Level, float _DeltaTime);
 
 	ENGINEAPI static void AllWindowOff();
 
@@ -61,6 +62,7 @@ protected:
 
 private:
 	static inline std::map<std::string, std::shared_ptr<class UEngineGUIWindow>> Windows;
+	static inline std::map<std::string, std::shared_ptr<class UEngineGUIWindow>> AlwaysOnWindows;
 
 };
 

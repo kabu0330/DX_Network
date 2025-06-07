@@ -41,7 +41,7 @@ void UContentCore::EngineStart(UEngineInitData& _Data)
 	CreateLevel();
 	OpenLevel();
 
-	//CreateEditior();
+	CreateEditior();
 
 }
 
@@ -56,15 +56,15 @@ void UContentCore::CreateLevel()
 	//UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
 	//UEngineCore::CreateLevel<AThreadTestLevel, APawn, AHUD>("Test");
 	//UEngineCore::CreateLevel<APostEffectGameMode, APawn, AHUD>("PostEffect");
-	UEngineCore::CreateLevel<AServerGameMode, AServerPawn, AHUD>("Server");
-	//UEngineCore::CreateLevel<ATetrisGameMode, ATetromino, ATetrisPlayHUD>("TetrisPlay");
+	//UEngineCore::CreateLevel<AServerGameMode, AServerPawn, AHUD>("Server");
+	UEngineCore::CreateLevel<ATetrisGameMode, ATetromino, ATetrisPlayHUD>("TetrisPlay");
 	//UEngineCore::CreateLevel<AMapEditorGameMode, APawn, AHUD>("MapEditorMode");
 }
 
 void UContentCore::OpenLevel()
 {
-	//UEngineCore::OpenLevel("TetrisPlay");
-	UEngineCore::OpenLevel("Server");
+	UEngineCore::OpenLevel("TetrisPlay");
+	//UEngineCore::OpenLevel("Server");
 #ifdef _DEBUG
 
 	//UEngineCore::OpenLevel("Server");
@@ -81,7 +81,7 @@ void UContentCore::CreateEditior()
 		UEngineGUI::CreateGUIWindow<UContentsEditorGUI>(UEngineString::AnsiToUTF8("레벨"));
 		std::shared_ptr<UContentsEditorGUI> Window = UEngineGUI::FindGUIWindow<UContentsEditorGUI>(UEngineString::AnsiToUTF8("레벨"));
 		Window->SetActive(true);
-		UEngineGUI::PushAlwaysOnGUI(Window);
+		UEngineGUI::PushAlwaysOnGUI(Window); // 레벨이 넘어가도 해당 GUI는 다시 켜도록 예외처리
 	}
 	{
 		UEngineGUI::CreateGUIWindow<UDebugWindowGUI>(UEngineString::AnsiToUTF8("디버그"));

@@ -151,7 +151,7 @@ FVector ACameraActor::ScreenMousePosToWorldPos()
 void ACameraActor::FreeCameraOn()
 {
 	IsFreeCameraValue = true;
-	FreeCameraCheck();
+	CheckFreeCamera();
 }
 
 void ACameraActor::FreeCameraOff()
@@ -159,13 +159,13 @@ void ACameraActor::FreeCameraOff()
 	IsFreeCameraValue = false;
 }
 
-void ACameraActor::FreeCameraSwitch()
+void ACameraActor::SwitchFreeCamera()
 {
 	IsFreeCameraValue = !IsFreeCameraValue;
-	FreeCameraCheck();
+	CheckFreeCamera();
 }
 
-void ACameraActor::FreeCameraCheck()
+void ACameraActor::CheckFreeCamera()
 {
 	if (true == IsFreeCameraValue)
 	{

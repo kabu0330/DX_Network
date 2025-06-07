@@ -2,6 +2,7 @@
 #include "DebugWindowGUI.h"
 #include <EngineCore/EngineGUIWindow.h>
 #include <EngineCore/EngineGUI.h>
+#include <EnginePlatform/EngineInput.h>
 
 UDebugWindowGUI::UDebugWindowGUI()
 {
@@ -15,12 +16,21 @@ void UDebugWindowGUI::OnGUI(float _DelataTime)
 {
 	if (true == ImGui::Button("FreeCameraOn"))
 	{
-		GetWorld()->GetMainCamera()->FreeCameraSwitch();
-
+		GetWorld()->GetMainCamera()->SwitchFreeCamera();
 	}
 
 	GetFrame();
 	GetMousePos();
+
+	CheckDebugKey();
+}
+
+void UDebugWindowGUI::CheckDebugKey()
+{
+	if (UEngineInput::IsDown(VK_F8))
+	{
+		GetWorld()->GetMainCamera()->SwitchFreeCamera();
+	}
 }
 
 void UDebugWindowGUI::GetFrame()

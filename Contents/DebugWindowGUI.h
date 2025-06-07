@@ -16,6 +16,7 @@ protected:
 	void OnGUI(float _DelataTime) override;
 
 private:
+	void CheckDebugKey();
 
 private:
 	// delete Function

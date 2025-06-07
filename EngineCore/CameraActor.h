@@ -44,7 +44,7 @@ public:
 
 	ENGINEAPI void FreeCameraOff();
 
-	ENGINEAPI void FreeCameraSwitch();
+	ENGINEAPI void SwitchFreeCamera();
 
 	void SetFreeCameraSpeed(float _Speed)
 	{
@@ -57,7 +57,7 @@ private:
 	std::shared_ptr<class UEngineCamera> CameraComponent = nullptr;
 
 	bool IsFreeCameraValue = false;
-	ENGINEAPI void FreeCameraCheck();
+	ENGINEAPI void CheckFreeCamera();
 
 	FTransform PrevTrans;
 	EProjectionType PrevProjectionType = EProjectionType::ORTHOGRAPHIC;

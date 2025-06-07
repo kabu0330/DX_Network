@@ -12,7 +12,6 @@ ATetromino::ATetromino()
 	BodyRenderer->SetZSort(FConst::MinoZSort);
 	float Value = BodyRenderer->GetZSort();
 
-
 	CreateRenderers();	
 	InitType();
 

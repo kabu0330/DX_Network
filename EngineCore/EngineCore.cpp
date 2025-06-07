@@ -14,6 +14,7 @@
 #include "Level.h"
 #include "GameInstance.h"
 
+#define _ITERATOR_DEBUG_LEVEL 0
 
 UEngineCore* GEngine = nullptr;
 

@@ -78,5 +78,7 @@ private:
 
 	// Ãæµ¹ ³¡.
 	std::function<void(UCollision*, UCollision*)> End;
+
+	URenderUnit RenderUnit;
 };
 

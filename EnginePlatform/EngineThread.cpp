@@ -103,6 +103,8 @@ void UEngineThread::Join()
 
 void UEngineThread::SetThreadNameDynamic(const std::string& _ThreadName)
 {
+#ifdef DEBUG
 	SetThreadName(::GetCurrentThreadId(), _ThreadName.c_str());
+#endif // DEBUG
 }
 

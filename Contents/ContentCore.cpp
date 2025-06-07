@@ -56,17 +56,20 @@ void UContentCore::CreateLevel()
 	//UEngineCore::CreateLevel<ATestGameMode, APawn, AHUD>("Title");
 	//UEngineCore::CreateLevel<AThreadTestLevel, APawn, AHUD>("Test");
 	//UEngineCore::CreateLevel<APostEffectGameMode, APawn, AHUD>("PostEffect");
-	//UEngineCore::CreateLevel<AServerGameMode, AServerPawn, AHUD>("Server");
-	UEngineCore::CreateLevel<ATetrisGameMode, ATetromino, ATetrisPlayHUD>("TetrisPlay");
+	UEngineCore::CreateLevel<AServerGameMode, AServerPawn, AHUD>("Server");
+	//UEngineCore::CreateLevel<ATetrisGameMode, ATetromino, ATetrisPlayHUD>("TetrisPlay");
 	//UEngineCore::CreateLevel<AMapEditorGameMode, APawn, AHUD>("MapEditorMode");
 }
 
 void UContentCore::OpenLevel()
 {
+	//UEngineCore::OpenLevel("TetrisPlay");
+	UEngineCore::OpenLevel("Server");
 #ifdef _DEBUG
-	UEngineCore::OpenLevel("TetrisPlay");
+
+	//UEngineCore::OpenLevel("Server");
 #else
-	UEngineCore::OpenLevel("Title");
+	//UEngineCore::OpenLevel("Server");
 #endif
 }
 

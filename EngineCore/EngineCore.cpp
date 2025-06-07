@@ -25,8 +25,8 @@ void UEngineCore::EngineStart(HINSTANCE _Instance, std::string_view _DllName)
 	UEngineCore EngineCore;
 	GEngine = &EngineCore;
 
-	GEngine->ThreadPool.Initialize();
-	RegisterTaskQueue(&GEngine->ThreadPool);
+	//GEngine->ThreadPool.Initialize();
+	//RegisterTaskQueue(&GEngine->ThreadPool);
 
 	WindowInit(_Instance);
 	LoadContentsDll(_DllName);

@@ -12,6 +12,8 @@ bool& UCollision::GetDebugModeRef()
 
 UCollision::UCollision()
 {
+	RenderUnit.SetMesh("Rect");
+	RenderUnit.SetMaterial("CollisionDebugMaterial");
 }
 
 UCollision::~UCollision()
@@ -233,21 +235,16 @@ void UCollision::DebugRender(UEngineCamera* _Camera, float _DeltaTime)
 		return;
 	}
 
-	URenderUnit Unit;
-
 	FTransform& CameraTrans = _Camera->GetTransformRef();
 	FTransform& RendererTrans = GetTransformRef();
 	RendererTrans.View = CameraTrans.View;
 	RendererTrans.Projection = CameraTrans.Projection;
 	RendererTrans.WVP = RendererTrans.World * RendererTrans.View * RendererTrans.Projection;
 
-	Unit.SetMesh("Rect");
-	Unit.SetMaterial("CollisionDebugMaterial");
+	RenderUnit.ConstantBufferLinkData("FTransform", GetTransformRef());
+	RenderUnit.ConstantBufferLinkData("OutColor", DebugColor);
 
-	Unit.ConstantBufferLinkData("FTransform", GetTransformRef());
-	Unit.ConstantBufferLinkData("OutColor", DebugColor);
-
-	Unit.SetRenderingPipelineAndDraw(_Camera, _DeltaTime);
+	RenderUnit.SetRenderingPipelineAndDraw(_Camera, _DeltaTime);
 
 }
 

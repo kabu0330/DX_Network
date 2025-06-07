@@ -29,13 +29,13 @@ void ATetrisGameMode::LevelChangeStart()
 {
 	//UEngineGUI::AllWindowOff();
 	{
-		ServerEditor = UEngineGUI::FindGUIWindow<UTetrisPlayEditor>("Network");
-		if (nullptr == ServerEditor)
-		{
-			ServerEditor = UEngineGUI::CreateGUIWindow<UTetrisPlayEditor>("Network");
-		}
+		//ServerEditor = UEngineGUI::FindGUIWindow<UTetrisPlayEditor>("Network");
+		//if (nullptr == ServerEditor)
+		//{
+		//	ServerEditor = UEngineGUI::CreateGUIWindow<UTetrisPlayEditor>("Network");
+		//}
 
-		ServerEditor->SetActive(true);
+		//ServerEditor->SetActive(true);
 
 	}
 }

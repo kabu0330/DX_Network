@@ -15,7 +15,7 @@ UNetObject::~UNetObject()
 	AllNetObjects.clear();
 }
 
-void UNetObject::InitNetObject(int _ObjectToken, int _SessionToken)
+void UNetObject::CreateNetObjectSetting(int _ObjectToken, int _SessionToken)
 {
 	ObjectToken = _ObjectToken;
 	SessionToken = _SessionToken;

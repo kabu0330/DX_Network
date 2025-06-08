@@ -17,7 +17,7 @@ public:
 	~UNetHandler();
 
 	template<typename Packet>
-	void SendPacket(std::function<void(std::shared_ptr<Packet>)> _SyncFunction)
+	void SendPacket(std::function<void(std::shared_ptr<Packet>)> _SyncFunction, bool bIsOneShot = false)
 	{
 		if (nullptr == Actor && nullptr == NetObject)
 		{
@@ -32,17 +32,22 @@ public:
 			return;
 		}
 
+		// Tick에서 매번 SendPacket을 보내는 패킷과 최초 한 번만 보내는 패킷을 구분한다.
+		// 최초 1회 패킷을 보내는 경우 이 구간을 생략
 		static float FrameAccumulator = 0.0f;
 		constexpr float FrameInterval = 1.0f / 60.0f;
 
-		float DeltaTime = UEngineCore::GetDeltaTime();
-		FrameAccumulator += DeltaTime;
-		if (FrameAccumulator < FrameInterval)
+		if (false == bIsOneShot)
 		{
-			return;
-		}
+			float DeltaTime = UEngineCore::GetDeltaTime();
+			FrameAccumulator += DeltaTime;
+			if (FrameAccumulator < FrameInterval)
+			{
+				return;
+			}
 
-		FrameAccumulator = 0.0f;
+			FrameAccumulator = 0.0f;
+		}
 
 		std::shared_ptr<Packet> NewPacket = NetObject->CreatePacket<Packet>();
 		if (nullptr == NewPacket)

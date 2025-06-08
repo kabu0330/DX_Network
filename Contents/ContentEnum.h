@@ -32,3 +32,8 @@ enum class EZOrder
 	PIXELCOLLISION = 3999,
 	MAX_ZORDER
 };
+
+enum class ETypeInfo
+{
+	AGameField,
+};

@@ -84,12 +84,72 @@ private:
 	EMinoType MinoType = EMinoType::MAX;
 };
 
+class USpawnPacket : public UEngineProtocol
+{
+public:
+	USpawnPacket()
+	{
+		SetPacketType(EContentsPacketType::MINO_UPDATE);
+	}
+
+	void Serialize(UEngineSerializer& _Ser) override
+	{
+		UEngineProtocol::Serialize(_Ser);
+		_Ser << SubclassType;
+		_Ser << SpawnObjectToken;
+		_Ser << InitPos;
+	}
+	void DeSerialize(UEngineSerializer& _Ser) override
+	{
+		UEngineProtocol::DeSerialize(_Ser);
+		_Ser >> SubclassType;
+		_Ser >> SpawnObjectToken;
+		_Ser >> InitPos;
+	}
+
+	void SetSubclassType(ETypeInfo _SubclassType)
+	{
+		SetSubclassType(static_cast<int>(_SubclassType));
+	}
+	void SetSubclassType(int _SubclassType)
+	{
+		SubclassType = _SubclassType;
+	}
+	int GetSubclassType() const
+	{
+		return SubclassType;
+	}
+
+	void SetSpawnObjectToken(int _ObjectToken)
+	{
+		SpawnObjectToken = _ObjectToken;
+	}
+	int GetSpawnObjectToken() const
+	{
+		return SpawnObjectToken;
+	}
+
+	void SetInitPos(FVector _Pos)
+	{
+		InitPos = _Pos;
+	}
+	FVector GetInitPos() const
+	{
+		return InitPos;
+	}
+
+private:
+	int SubclassType = -1;
+	int SpawnObjectToken = -1;
+	FVector InitPos = FVector::ZERO;
+};
+
 class UChatPacket : public UEngineProtocol
 {
 public:
 	UChatPacket()
 	{
-		SetPacketType(EContentsPacketType::CHAT);
+		//SetPacketType(EContentsPacketType::CHAT);
 	}
 
 	void Serialize(UEngineSerializer& _Ser) override

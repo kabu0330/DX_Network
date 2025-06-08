@@ -8,6 +8,8 @@
 #include <EnginePlatform/EngineWindow.h>
 #include <EngineCore/EngineCore.h>
 #include "Tetromino.h"
+#include "GameField.h"
+#include "GlobalData.h"
 
 void UTetrisPlayEditor::OnGUI(float _DeltaTime)
 {
@@ -50,7 +52,7 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 {
 	ATetromino* Pawn = GetWorld()->GetMainPawn<ATetromino>();
 	int ObjectToken = _Net->CreateObjectToken();
-	Pawn->InitNetObject(ObjectToken, _Net->GetSessionToken());
+	Pawn->CreateNetObjectSetting(ObjectToken, _Net->GetSessionToken());
 	Pawn->GetPlayerController()->SwitchControlled();
 
 	// 다른 플레이어 생성 및 위치 동기화
@@ -64,7 +66,15 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<ATetromino>();
 				ServerPawn = NewServerPawn.get();
 				ServerPawn->SetControllOff(); // 서버가 클라의 통제권을 갖지 않는다.
-				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
+				ServerPawn->CreateNetObjectSetting(_Packet->GetObjectToken(), _Packet->GetSessionToken());
+
+				// 테트리스 맵 생성
+				auto SyncFunction = [this](std::shared_ptr<USpawnPacket> _Packet)
+					{
+						_Packet->SetSubclassType(ETypeInfo::AGameField);
+					};
+
+				GetWorld()->GetMainPawn<ATetromino>()->GetNetHandler()->SendPacket<USpawnPacket>(SyncFunction, true);
 			}
 
 			// 처리
@@ -84,21 +94,62 @@ void UTetrisPlayEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 
 			_Net->SendPacket(_Packet);
 		});
+
+	_Net->GetDispatcher().AddHandler<USpawnPacket>(static_cast<int>(EContentsPacketType::SPAWN_ACTOR),
+		[this, _Net](std::shared_ptr<USpawnPacket> _Packet)
+		{
+			// 1. 타입 설정
+			AServerActor* NetActor = UGlobalData::GetSpawnActor(_Packet->GetSpawnObjectToken(), GetWorld());
+			if (nullptr == NetActor)
+			{
+				MSGASSERT("스폰 요청을 한 액터가 AServerActor를 상속하지 않았습니다.");
+				return;
+			}
+
+			// 2. 오브젝트 토큰 부여
+			int ObjectToken = _Net->CreateObjectToken(); // 서버만이 할 수 있는 작업
+			_Packet->SetSpawnObjectToken(ObjectToken);
+			NetActor->CreateNetObjectSetting(ObjectToken, _Net->GetSessionToken());
+
+			// 3. 초기 위치 설정
+			FVector Pos = _Packet->GetInitPos();
+			NetActor->SetActorLocation({ Pos.X + 300.0f, Pos.Y });
+
+			_Net->SendPacket(_Packet);
+		});
 }
 
 void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 {
 	_Net->SetUserAccessFunction([this](std::shared_ptr<UUserAccessPacket> _Packet)
 		{
-
 			UserAccessPacket = _Packet;
 			ATetromino* Pawn = GetWorld()->GetMainPawn<ATetromino>();
-			Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
+			Pawn->CreateNetObjectSetting(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
 			Pawn->GetPlayerController()->SwitchControlled();
 		});
 
+	_Net->GetDispatcher().AddHandler<USpawnPacket>(static_cast<int>(EContentsPacketType::SPAWN_ACTOR),
+		[this, _Net](std::shared_ptr<USpawnPacket> _Packet)
+		{
+			// 1. 타입 설정
+			AServerActor* NetActor = UGlobalData::GetSpawnActor(_Packet->GetSpawnObjectToken(), GetWorld());
+			if (nullptr == NetActor)
+			{
+				MSGASSERT("스폰 요청을 한 액터가 AServerActor를 상속하지 않았습니다.");
+				return;
+			}
+
+			// 2. 오브젝트 토큰 부여
+			NetActor->CreateNetObjectSetting(_Packet->GetSpawnObjectToken(), _Net->GetSessionToken());
+
+			// 3. 초기 위치 설정
+			FVector Pos = _Packet->GetInitPos();
+			NetActor->SetActorLocation({ Pos.X + 300.0f, Pos.Y });
+		});
+
 	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE),
-		[this](std::shared_ptr<UObjectUpdatePacket> _Packet)
+		[this, _Net](std::shared_ptr<UObjectUpdatePacket> _Packet)
 		{
 			int Token = _Packet->GetObjectToken();
 			AServerPawn* ServerPawn = UNetObject::GetConvertNetObject<AServerPawn>(Token);
@@ -107,7 +158,15 @@ void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<ATetromino>();
 				ServerPawn = NewServerPawn.get();
 				ServerPawn->SetControllOff();
-				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
+				ServerPawn->CreateNetObjectSetting(_Packet->GetObjectToken(), _Packet->GetSessionToken());
+
+				//// 테트리스 맵 생성
+				//auto SyncFunction = [this](std::shared_ptr<USpawnPacket> _Packet)
+				//	{
+				//		_Packet->SetSubclassType(ETypeInfo::AGameField);
+				//	};
+
+				////GetWorld()->GetMainPawn<ATetromino>()->GetNetHandler()->SendPacket<USpawnPacket>(SyncFunction);
 			}
 
 			ServerPawn->SetActorLocation(_Packet->GetPosition());
@@ -121,8 +180,6 @@ void UTetrisPlayEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 			ATetromino* ServerPawn = UNetObject::GetConvertNetObject<ATetromino>(Token);
 
 			ServerPawn->SetType(_Packet->GetMinoType());
-
-			//_Net->SendPacket(_Packet);
 		});
 }
 

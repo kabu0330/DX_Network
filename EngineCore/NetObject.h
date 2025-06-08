@@ -10,7 +10,7 @@ public:
 	ENGINEAPI UNetObject();
 	ENGINEAPI virtual ~UNetObject();
 
-	ENGINEAPI void InitNetObject(int _ObjectToken, int _SessionToken);
+	ENGINEAPI void CreateNetObjectSetting(int _ObjectToken, int _SessionToken);
 
 	ENGINEAPI void InitActorData(AActor* _Actor);
 

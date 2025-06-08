@@ -82,17 +82,20 @@
     <ClInclude Include="TetrisPlayEditor.h">
       <Filter>11_Tetris\04_Editor</Filter>
     </ClInclude>
-    <ClInclude Include="ContentData.h">
-      <Filter>03_Global\Data</Filter>
-    </ClInclude>
-    <ClInclude Include="ContentEnum.h">
-      <Filter>03_Global\Data</Filter>
-    </ClInclude>
     <ClInclude Include="GameField.h">
       <Filter>11_Tetris\05_Object</Filter>
     </ClInclude>
     <ClInclude Include="ServerActor.h">
       <Filter>09_Network\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentEnum.h">
+      <Filter>11_Tetris\05_Object\01_Global</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentData.h">
+      <Filter>11_Tetris\05_Object\01_Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalData.h">
+      <Filter>11_Tetris\05_Object\01_Global</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +186,9 @@
     <ClCompile Include="ServerActor.cpp">
       <Filter>09_Network\Object</Filter>
     </ClCompile>
+    <ClCompile Include="GlobalData.cpp">
+      <Filter>11_Tetris\05_Object\01_Global</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="HollowKnight">
@@ -247,9 +253,6 @@
     </Filter>
     <Filter Include="03_Global">
       <UniqueIdentifier>{73895d3d-87b8-4ffd-a962-7cd03df8a97f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="03_Global\Data">
-      <UniqueIdentifier>{f3e31203-a7f2-4c8e-bb9d-12eb45e76837}</UniqueIdentifier>
     </Filter>
     <Filter Include="02_Setting">
       <UniqueIdentifier>{705f4313-018d-4c2b-84c9-0b0201018210}</UniqueIdentifier>

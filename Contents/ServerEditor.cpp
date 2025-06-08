@@ -61,7 +61,7 @@ void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 {
 	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>();
 	int ObjectToken = _Net->CreateObjectToken();
-	Pawn->InitNetObject(ObjectToken, _Net->GetSessionToken());
+	Pawn->CreateNetObjectSetting(ObjectToken, _Net->GetSessionToken());
 
 	// 다른 플레이어 생성 및 위치 동기화
 	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), 
@@ -74,7 +74,7 @@ void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<AServerPawn>();
 				ServerPawn = NewServerPawn.get();
 				ServerPawn->SetControllOff(); // 서버가 클라의 통제권을 갖지 않는다.
-				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
+				ServerPawn->CreateNetObjectSetting(_Packet->GetObjectToken(), _Packet->GetSessionToken());
 			}
 
 			ServerPawn->SetActorLocation(_Packet->GetPosition());
@@ -83,17 +83,17 @@ void UServerEditor::CreateServer(std::shared_ptr<UEngineServer> _Net)
 		});
 }
 
-void UServerEditor::CreateNetObject(std::shared_ptr<UUserAccessPacket> _Packet)
+void UServerEditor::CreateNetObjectSetting(std::shared_ptr<UUserAccessPacket> _Packet)
 {
 	// 이미 기존에 만들어진 자신에게 오브젝트 토큰 + 세션 토큰을 저장
 	UserAccessPacket = _Packet;
 	AServerPawn* Pawn = GetWorld()->GetMainPawn<AServerPawn>(); 
-	Pawn->InitNetObject(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
+	Pawn->CreateNetObjectSetting(UserAccessPacket->GetObjectToken(), UserAccessPacket->GetSessionToken());
 }
 
 void UServerEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 {
-	_Net->SetUserAccessFunction(std::bind(&UServerEditor::CreateNetObject, this, std::placeholders::_1));
+	_Net->SetUserAccessFunction(std::bind(&UServerEditor::CreateNetObjectSetting, this, std::placeholders::_1));
 
 	_Net->GetDispatcher().AddHandler<UObjectUpdatePacket>(static_cast<int>(EContentsPacketType::OBJECT_UPDATE), 
 		[this](std::shared_ptr<UObjectUpdatePacket> _Packet)
@@ -105,7 +105,7 @@ void UServerEditor::Connect(std::shared_ptr<UEngineClient> _Net)
 				std::shared_ptr<AServerPawn> NewServerPawn = GetWorld()->SpawnActor<AServerPawn>();
 				ServerPawn = NewServerPawn.get();
 				ServerPawn->SetControllOff();
-				ServerPawn->InitNetObject(_Packet->GetObjectToken(), _Packet->GetSessionToken());
+				ServerPawn->CreateNetObjectSetting(_Packet->GetObjectToken(), _Packet->GetSessionToken());
 			}
 
 			ServerPawn->SetActorLocation(_Packet->GetPosition());

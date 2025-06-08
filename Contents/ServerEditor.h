@@ -20,7 +20,7 @@ public:
 protected:
 	void OnGUI(float _DeltaTime) override;
 
-	void CreateNetObject(std::shared_ptr<UUserAccessPacket> _Packet);
+	void CreateNetObjectSetting(std::shared_ptr<UUserAccessPacket> _Packet);
 
 private:
 	std::string IP = "127.0.0.1";
